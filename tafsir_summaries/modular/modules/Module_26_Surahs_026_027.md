@@ -1,11 +1,18 @@
-# Surah 26: Ash-Shuara
+# Module 26
+
+**Surah 26: Ash-Shuara, Surah 27: An-Naml**
 
 **Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
-**PDF pages:** 4078–4164
+
+**Locator:** `modular/modules/Module_26_Surahs_026_027.md` · anchor `module-26`
 
 ---
 
-## Opening
+## Surah 26: Ash-Shuara
+
+*PDF pages 4078–4164*
+
+### Opening
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4078]*
 
@@ -13,7 +20,7 @@ Opening The Tafslrof Surat Ash-Shu ara. (Chapter - 26)
 
 ---
 
-## Which was revealed in Makkah
+### Which was revealed in Makkah
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4078–4090]*
 
@@ -41,7 +48,7 @@ jtt . j# J6 o&t oO J6^ i''iT * ?<** -5 (^iC >. '.iff ^ ,f > ^ *&*&? $ Wafr *^=" 
 
 ---
 
-## what is it then that you command?”}
+### what is it then that you command?”}
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4090–4103]*
 
@@ -71,7 +78,7 @@ destroyed, but Fir'awn and his troops were drowned and not one of them remained 
 
 ---
 
-## The explanation of this phrase has already been discussed
+### The explanation of this phrase has already been discussed
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4103–4104]*
 
@@ -79,7 +86,7 @@ above.' 1 U Ulil x2 {yltt C H ^ kiy j* yii 3Jy&ll Ji Jli & @53 & il^ jti jujT 4@
 
 ---
 
-## How the Close Friend of Allah, Ibrahim spoke out
+### How the Close Friend of Allah, Ibrahim spoke out
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4104–4111]*
 
@@ -101,7 +108,7 @@ iAnd grant me an honorable mention in later generations.} meaning, cause me to b
 
 ---
 
-## the Tafsir of his Sunan Al-Kubra.
+### the Tafsir of his Sunan Al-Kubra.
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4111]*
 
@@ -109,7 +116,7 @@ iAnd grant me an honorable mention in later generations.} meaning, cause me to b
 
 ---
 
-## the Tafsirof SuratAl-Ana‘m (6 :79)
+### the Tafsirof SuratAl-Ana‘m (6 :79)
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4111–4161]*
 
@@ -148,6 +155,8 @@ Ash-Shu'ard' (160 - 164) (Part-19) 4162. "Verily , I am a trustworthy Messenger 
 4170. So, We saved hint and hisfamily, all,} 4171. Except an old woman among those who remained behind.} 4172. Then afterward We destroyed the others.} 4173. And We rained on them a rain, and how evil was the rain of those who had been warned!} 4174. Verily, in this is indeed a sign, yet most of them are not believers.} 4175. And verily your Lord, He is indeed the All-Mighty, the Most Merciful.} Lut's Denunciation of His People's Deeds, Their Response and Their Punishment The Prophet of Allah forbade them from committing evil deeds and intercourse with males, and he taught them that they should have intercourse with their wives whom Allah had created for them. Their response was only to say: 4Ifyou cease not, O hut,} meaning, ifyou do not give up what you have brought, 4U%^ U 4verily, you will be one of those who are driven out!} meaning, *we will expel you from among us. This is like the Ayah, o*'-^ p-fij oi -Jyl J** [f%A o' VI ClA =" 4There was no other answer given by his people except that they said: "Drive out the family of Lutfrom your city. Verily, these are men who want to be clean and pure!"} (27:56). When he saw that they would not give up their ways, and that they were persisting in their misguidance, he declared his innocence of them, saying: 41 am, indeed, of those who disapprove with severe anger and
 
 fury) Of those who are outraged, I do not like it and I do not accept it, and I have nothing to do with you. Then he prayed to Allah against them and said: 4My Lord! Save me and myfamilyfrom what they do.) Allah says: 4So, V\Ie saved him and his family, all. Except an old woman among those who remained behind.) This was his wife, who was a bad old woman. She stayed behind and was destroyed with whoever else was left. This is similar to what Allah says about them in Surat Al-A'raf and Surah Hud, and in Surat Al-Hijr} 1] where Allah commanded him to take his family at night, except for his wife, and not to turn around when they heard the Sayhah as it came upon his people. So they patiently obeyed the command of Allah and persevered, and Allah sent upon the people a punishment which struck them all, and rained upon them stones of baked clay, piled up. Allah says: 4Then afterward We destroyed the others. And We rained on them a ram> |21 until Allah s saying; 48-*^' kf) 4And verily, your Lord, He is indeed the All-Mighty, the Most Merciful.) 4#*Pv ^& oi2*& psi tj it \j& 4176. The companions ofAl-Aykah denied the Messengers.) 111 See 7:80-81, 11:77, 15:58-76. ,21 That was a storm of stones. See the previous refrences for its explanation
+
+268 Tafslr Ibn Kathir i!77. When Shu'ayb said to them: "Will you not have Taqwa?"} 4178. I am a trustworthy Messenger to you."} 4179. "So, have Taqwa ofAllah, and obey me."} 4180. "No reward do I ask of you for it; my reward is only from the Lord ofAl- Alamin."} Shu'ayb and His Preaching to the Dwellers ofAl-Aykah The companions of Al-Aykah were the people of Madyan, according to the most correct view. The Prophet of Allah Shu'ayb was one of them, but it does not say here, their brother Shu'ayb, because they called themselves by a name denoting their deification of Al-Aykah, which was a tree which they used to worship; it was said that it was a group of trees which were tangled, like trees in a thicket. For this reason, when Allah said that the companions of Al-Aykah denied the Messengers, He did not say, When their brother Shu'ayb said to them. Rather, He said: fix iWhen Shu ayb said to them} He is not described as belonging to them because of the meaning that was inherent in the name given to them even though he was their brother by blood. Some people did not notice this point, so they thought that the dwellers of Al-Aykah were different from the people of Madyan, and claimed that Shu'ayb was sent to two nations; some said that he was sent to three. 1 ^} 4The companions of Al-Aykah} were the people of Shu'ayb. This was the view of Ishaq bin Bishr.^ Someone besides Juwaybir said, The dwellers of Al-Aykah and the people of Madyan are one and the same. And Allah knows best. Although there is another opinion that they were different nations with two identities, the correct view is that they were one nation, but they are described differently in different *** Ad-DurrAl-Manthur6 :318 At-Jabari 19:390.
 
 places. Shu'ayb preached to them and commanded them to be fair in their weights and measures, the same as is mentioned in
 
@@ -199,7 +208,7 @@ Allah decrees a matter in heaven, the angels beat their wings in submission to H
 
 ---
 
-## What is meant here is that the Messenger jg, to whom this
+### What is meant here is that the Messenger jg, to whom this
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4161–4162]*
 
@@ -209,7 +218,7 @@ Ash-Shu ard' (221 - 227) (Part-19) (This means) you. it {and remember Allah much
 
 ---
 
-## reason for its revelation be the poets of the Ansar? This is
+### reason for its revelation be the poets of the Ansar? This is
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4162–4164]*
 
@@ -219,15 +228,11 @@ Ash-Shu'ard' (221 - 227) (Part-19) iThe Day when their excuses will be of no pro
 
 ---
 
+## Surah 27: An-Naml
 
-# Surah 27: An-Naml
+*PDF pages 4165–4240*
 
-**Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
-**PDF pages:** 4165–4240
-
----
-
-## Opening
+### Opening
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4165–4180]*
 
@@ -265,7 +270,7 @@ An-Naml (22 - 26) (Part-19 J mm (+4^==*-p**> _-ij jC- VIf|p oil O^LLoUj j S^SS&C
 
 ---
 
-## How the Hoopoe came before Sulayman and told Him
+### How the Hoopoe came before Sulayman and told Him
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4180–4189]*
 
@@ -285,7 +290,7 @@ An-Naml (36 - 37) (Part-19 Prophet, so follow him. ' jiA 21> * "- ii? Hi JLIj Cp
 
 ---
 
-## How the Throne of Bilqis was brought in an Instant
+### How the Throne of Bilqis was brought in an Instant
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4189–4195]*
 
@@ -305,7 +310,7 @@ Uii ji-j' U 4/f was said to her: Enter As-Sarh but when she saw it, she thought 
 
 ---
 
-## What is meant here is that Sulayman built a huge, lofty palace
+### What is meant here is that Sulayman built a huge, lofty palace
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4195]*
 
@@ -313,7 +318,7 @@ of glass for this queen, in order to show her the greatness of his authority and
 
 ---
 
-## the command of Allah and acknowledged that he was a noble
+### the command of Allah and acknowledged that he was a noble
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4195–4197]*
 
@@ -323,7 +328,7 @@ Prophet, so she submitted to Allah and said: iv> 4My Lord! Verily, I have wronge
 
 ---
 
-## what Allah said about the people of Fir'awn:
+### what Allah said about the people of Fir'awn:
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4197–4216]*
 
@@ -359,7 +364,7 @@ $ Cf} inor can they perceive when they shall be resurrected.} That is, the creat
 
 ---
 
-## the meaning of the Hadtth in Sahth. Muslim which states that
+### the meaning of the Hadtth in Sahth. Muslim which states that
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4216–4217]*
 
@@ -369,7 +374,7 @@ An-Naml (67 - 70) (Part-20 meetingfor you (with Us)."} (18:48) i.e., the disbeli
 
 ---
 
-## the end of the criminals."}
+### the end of the criminals."}
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4217–4240]*
 

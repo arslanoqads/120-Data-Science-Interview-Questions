@@ -389,24 +389,47 @@ def assign_modules(surahs: list[dict]) -> list[dict]:
 
 
 def merge_small_surah_tails(modules: list[dict], min_pages: int = 18) -> list[dict]:
-    """Merge undersized final parts of a split surah into the previous part."""
+    """Merge undersized final parts of a split surah into the earlier part of that surah."""
     i = len(modules) - 1
     while i > 0:
         m = modules[i]
-        if m.get("part") and m["est_pages"] < min_pages:
-            prev = modules[i - 1]
+        if not m.get("part") or m["est_pages"] >= min_pages:
+            i -= 1
+            continue
+        if len(m["surahs"]) != 1:
+            i -= 1
+            continue
+        m_num = m["surahs"][0]["meta"]["num"]
+        prev_idx = None
+        for j in range(i - 1, -1, -1):
             if (
-                prev.get("part")
-                and len(prev["surahs"]) == 1
-                and len(m["surahs"]) == 1
-                and prev["surahs"][0]["meta"]["num"] == m["surahs"][0]["meta"]["num"]
+                len(modules[j]["surahs"]) == 1
+                and modules[j]["surahs"][0]["meta"]["num"] == m_num
             ):
-                prev["surahs"][0]["sections"].extend(m["surahs"][0]["sections"])
-                prev["est_pages"] = estimate_pages(surah_to_markdown(prev["surahs"][0]))
-                if m.get("total_parts"):
-                    prev["total_parts"] = m["total_parts"]
-                modules.pop(i)
+                prev_idx = j
+                break
+        if prev_idx is not None:
+            prev = modules[prev_idx]
+            prev["surahs"][0]["sections"].extend(m["surahs"][0]["sections"])
+            prev["est_pages"] = estimate_pages(surah_to_markdown(prev["surahs"][0]))
+            # Merged tail — this module now holds the complete surah
+            prev.pop("part", None)
+            prev.pop("total_parts", None)
+            modules.pop(i)
         i -= 1
+    return modules
+
+
+def finalize_module_labels(modules: list[dict]) -> list[dict]:
+    """Drop part labels when only one module remains for a surah."""
+    by_surah: dict[int, list[dict]] = {}
+    for m in modules:
+        if len(m["surahs"]) == 1 and m.get("part"):
+            by_surah.setdefault(m["surahs"][0]["meta"]["num"], []).append(m)
+    for mods in by_surah.values():
+        if len(mods) == 1:
+            mods[0].pop("part", None)
+            mods[0].pop("total_parts", None)
     return modules
 
 
@@ -445,15 +468,54 @@ def module_filename(module: dict) -> str:
     return f"Module_{mid:02d}_Surahs_{names}.md"
 
 
-def module_title(module: dict) -> str:
+def module_title(module: dict, with_module_id: bool = True) -> str:
     surahs = module["surahs"]
     if len(surahs) == 1:
         meta = surahs[0]["meta"]
         title = f"Surah {meta['num']}: {meta['name']}"
         if module.get("part"):
             title += f" (Part {module['part']} of {module['total_parts']})"
-        return title
-    return ", ".join(f"Surah {s['meta']['num']}: {s['meta']['name']}" for s in surahs)
+    else:
+        title = ", ".join(
+            f"Surah {s['meta']['num']}: {s['meta']['name']}" for s in surahs
+        )
+    if with_module_id:
+        return f"Module {module['id']:02d}: {title}"
+    return title
+
+
+def module_markdown(module: dict) -> str:
+    """Full module document with prominent module number for agent lookup."""
+    lines = [
+        f"# Module {module['id']:02d}",
+        "",
+        f"**{module_title(module, with_module_id=False)}**",
+        "",
+        f"**Source:** {SOURCE_CITATION}",
+        "",
+        f"**Locator:** `modular/modules/{module_filename(module)}` · anchor `module-{module['id']:02d}`",
+        "",
+        "---",
+        "",
+    ]
+    for surah in module["surahs"]:
+        meta = surah["meta"]
+        sub = f"## Surah {meta['num']}: {meta['name']}"
+        if module.get("part"):
+            sub += f" (Part {module['part']} of {module['total_parts']})"
+        lines.extend([sub, "", f"*PDF pages {meta['pdf_start']}–{meta['pdf_end']}*", ""])
+        for sec in surah["sections"]:
+            lines.append(f"### {sec['heading']}")
+            lines.append("")
+            if sec["citation"]:
+                lines.append(f"*{sec['citation']}*")
+                lines.append("")
+            for p in sec["paragraphs"]:
+                lines.append(p)
+                lines.append("")
+            lines.append("---")
+            lines.append("")
+    return "\n".join(lines)
 
 
 def build_html(title: str, body_sections: list[str], toc: str | None = None) -> str:
@@ -473,7 +535,12 @@ def build_html(title: str, body_sections: list[str], toc: str | None = None) -> 
     line-height: 1.55; color: #1a1a1a; }}
   h1 {{ font-size: 20pt; color: #1a3a5c; border-bottom: 2px solid #1a3a5c;
     padding-bottom: 6px; page-break-before: always; }}
-  h1:first-of-type {{ page-break-before: avoid; }}
+  h1:first-of-type, .module-heading:first-of-type {{ page-break-before: avoid; }}
+  .module-heading {{ font-size: 24pt; color: #1a3a5c; border-bottom: 3px solid #1a3a5c;
+    margin-bottom: 4px; }}
+  .module-subtitle {{ font-size: 14pt; color: #444; margin-bottom: 20px; font-weight: normal; }}
+  .module {{ page-break-before: always; }}
+  .module:first-of-type {{ page-break-before: avoid; }}
   h2 {{ font-size: 13pt; margin-top: 16px; color: #2c5282; }}
   .meta {{ font-size: 10pt; color: #555; margin-bottom: 16px; }}
   .citation {{ font-size: 9pt; color: #777; font-style: italic; margin-bottom: 8px; }}
@@ -514,12 +581,19 @@ def surah_to_html(surah: dict, part_label: str | None = None) -> str:
 
 
 def module_to_html(module: dict) -> str:
-    parts = []
+    mid = module["id"]
+    subtitle = module_title(module, with_module_id=False)
+    parts = [
+        f'<section class="module" id="module-{mid:02d}">',
+        f'<h1 class="module-heading">Module {mid:02d}</h1>',
+        f'<p class="module-subtitle">{html.escape(subtitle)}</p>',
+    ]
     for surah in module["surahs"]:
         label = None
         if module.get("part"):
             label = f"Part {module['part']} of {module['total_parts']}"
         parts.append(surah_to_html(surah, label))
+    parts.append("</section>")
     return "\n".join(parts)
 
 
@@ -557,24 +631,19 @@ def main():
     print("Assigning modules...")
     modules = assign_modules(surahs)
     modules = merge_small_surah_tails(modules)
+    modules = finalize_module_labels(modules)
     modules = renumber_modules(modules)
     print(f"  {len(modules)} modules (target ~{TARGET_MODULE_PAGES} pages each)")
 
     # Remove stale module files from prior runs
-  valid_names = {module_filename(m) for m in modules}
+    valid_names = {module_filename(m) for m in modules}
     for old in MODULES_DIR.glob("*.md"):
         if old.name not in valid_names:
             old.unlink()
 
     for module in modules:
         fn = module_filename(module)
-        md_parts = []
-        for surah in module["surahs"]:
-            label = None
-            if module.get("part"):
-                label = f"Part {module['part']} of {module['total_parts']}"
-            md_parts.append(surah_to_markdown(surah, label))
-        (MODULES_DIR / fn).write_text("\n\n".join(md_parts), encoding="utf-8")
+        (MODULES_DIR / fn).write_text(module_markdown(module), encoding="utf-8")
         module["filename"] = fn
         module["title"] = module_title(module)
 
@@ -585,7 +654,8 @@ def main():
     print("Generating volume PDFs...")
     for vol in volumes:
         toc_items = [
-            f"<li>{html.escape(m['title'])}</li>" for m in vol["modules"]
+            f'<li><a href="#module-{m["id"]:02d}">{html.escape(m["title"])}</a></li>'
+            for m in vol["modules"]
         ]
         toc = f"<ol>{''.join(toc_items)}</ol>"
         body = [module_to_html(m) for m in vol["modules"]]
@@ -602,8 +672,7 @@ def main():
         master_toc.append(f"<li><strong>Volume {vol['id']}</strong><ol>")
         for m in vol["modules"]:
             master_toc.append(
-                f"<li>Module {m['id']}: {html.escape(m['title'])} "
-                f"(~{m['est_pages']} pp.)</li>"
+                f"<li>{html.escape(m['title'])} (~{m['est_pages']} pp.)</li>"
             )
         master_toc.append("</ol></li>")
     master_html = build_html(
@@ -668,7 +737,7 @@ def main():
         )
         for m in vol["modules"]:
             index_lines.append(
-                f"  - Module {m['id']}: {m['title']} "
+                f"  - **Module {m['id']:02d}:** {m['title']} "
                 f"([{m['filename']}](modules/{m['filename']}) · ~{m['est_pages']} pp.)"
             )
         index_lines.append("")

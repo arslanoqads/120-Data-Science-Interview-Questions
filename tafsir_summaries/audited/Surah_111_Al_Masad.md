@@ -9,7 +9,7 @@
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 6568–6573]*
 
-Opening i-jt-iz *j> >: "Verily, I am a wamer (sent) to you all before the coming of a severe torment ."
+Opening i-jt-iz *j> > "Verily, I am a wamer (sent) to you all before the coming of a severe torment ." Then Abu Lahab said, Have you gathered us for this? May you perish! Thus, Allah revealed, y2 ^ iPerish the two hands ofAbu Lahab and perish he!} to the end of the Surah. 1 In another narration it states that he stood up dusting of his hands and said, Perish you for the rest of this day! Have you gathered us for this? Then Allah revealed, y-** dj*^ iPerish the two Iwnds ofAbu Lahab and perish he!} The first part is a supplication against him and the second is information about him. This man Abu Lahab was one of the uncles of the Messenger of Allah sgg. His name was Abdul- TJzza bin Abdul-Muttalib. His surname was Abu TJtaybah and he was only called Abu Lahab because of the brightness of his face. He used to often cause harm to the Messenger of Allah 3g. He hated and scorned him and his religion. Imam
 
 they (the people) said, This is his uncle, Abu Lahab.
 

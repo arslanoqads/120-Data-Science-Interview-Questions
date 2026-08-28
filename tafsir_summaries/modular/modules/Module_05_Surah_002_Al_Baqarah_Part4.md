@@ -1,11 +1,48 @@
-# Surah 2: Al-Baqarah (Part 4 of 4)
+# Module 05
+
+**Surah 2: Al-Baqarah (Part 4 of 4)**
 
 **Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
-**PDF pages:** 95–803
+
+**Locator:** `modular/modules/Module_05_Surah_002_Al_Baqarah_Part4.md` · anchor `module-05`
 
 ---
 
-## The Prohibition of speaking during the Prayer
+## Surah 2: Al-Baqarah (Part 4 of 4)
+
+*PDF pages 95–803*
+
+### the meaning of Allah’s statement:
+
+*[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 663–669]*
+
+-iy \)JS o' i . . .except that you speak an honorable saying.} He said, He says to her Wali, Do not give her away (in marriage) until you inform me first . This statement was narrated by Ibn Abu Hatim. 3 Allah then said: kAac. AAnd do not be determined on the marriage bond until the term prescribed is fulfilled.> meaning, do not make marriage contracts before the 'Iddah finishes. Ibn Abbas, Mujahid, Ash-Shaln, Qatadah, Ar-Rabi bin Anas, Abu Malik, Zayd bin Aslam, Muqatil bin Hayyan, Az-Zuhri, Ata Al-Khurasani, As-Suddi, Ath-Thawri and Ad- Dahhak said that: iuntil the term prescribed is fulfilled.} means, Do not consummate the marriage before the Iddah term finishes. * The scholars agree that marriage contracts during the Iddah are invalid. Allah then said: iUxk -4 u pz& AAnd know that Allah knows what is in your minds, so fear Him.} warning the men against the ideas they conceal in their hearts about women, directing them to think good about them rather 111 Ibn Abi Hatim 2:824. * At-Tabari 5:114. Ibn Abi Hatim 2 :826. [4 * Ibn Abi Hatim 2 :828,829
+
+4~J. jjUli \ j 4a\ 4237 . And ifyou divorce thent before you have touched (had a sexual relation with) them, and you have appointed for them their due (doivry), then pay half of that, unless they (the women) agree to remit it, or he (the husband), in whose hands is the marriage tie, agrees to remit it. And to remit is nearer to At-Taqwa (piety, righteousness). And do not forget liberality between yourselves . Truly, Allah is All-Seer ofwhat you do.} The Wife gets halfofHerMahr ifShe is divorcedbefore the Marriage is consummated This honorable Ayah is not a continuation of the Mut'ah (gift) that was mentioned in the previous Ayah (i.e., divorce before the marriage is consummated). This Ayah (2:237) requires the husband to relinquish half of the appointed Mahr if he divorces his wife before the marriage is consummated. If it was discussing any other type of gift, then it would have been mentioned that way, especially when this Ayah follows the previous Ayah related to this subject. Allah knows best. Giving away half of the bridal-money in this case is the agreed practice according to the scholars. So, the husband pays half of the appointed Mahr if he divorces his wife before consummating the marriage. Allah then said: 4unless they (the women) agree to remit it,} meaning, the wife forfeits the dowry and relieves the husband from further financial responsibility. As-Suddi said that Abu Salih mentioned that Ibn 'Abbas commented on Allah s statement: J%} iunless they (the women) agree to remit it,} Unless the wife forfeits her right. 11 ' Furthermore, Imam Abu 111 Ibn Abi Hatim 2 :839
+
+it was reported that Shurayh, Said bin Musayyib, Ikrimah, Mujahid, Ash-ShaTsi, Al-Hasan, Nafi , Qatadah, Jabir bin Zayd, Ata Al-Khurasani, Ad-Dahhak, Az-Zuhri, Muqatil bin Hayyan, Ibn Sinn, Ar-Rabl' bin Anas and As-Suddi said similarly. Allah then said: fy i...or he (the husband), in whose hands is the marriage tie, agrees to remit it.) Ibn Abu Hatim reported that Amr bin Shu ayb said that his grandfather narrated that the Prophet sg said: siie- *The husband is he wlw has the marriage he."121 Ibn Marduwyah also reported this Hadith, and it is the view chosen by Ibn Jarir. The Hadith states that the husband is the person who really holds the marriage tie in his hand, as it is up to him to go on with the marriage or end it. On the other hand, the Wali of the wife is not allowed to give away any of her rightful dues without her permission, especially the dowry. Allah then stated: 1 -4-i^ )And to remit it is nearer to At-Taqiva (piety, righteousness).) Ibn Jarir said, Some scholars said that this statement is directed atbothmenandwomen. Ibn Abbas stud: iAnd to remit it is nearer to At-Taqwd (piety, righteousness).) indicates that the one who forgives, is nearer to At-Taqwa (piety). A similar statement was made by Ash-Sha*bi and several other scholars. Mujahid, An-Nakha i, Ad-Dahhak, Muqatil bin Hayyan, Ar- 111 Ibn Abi Hatim 2 :840-842 Ibn Abi Hatim 2 :842Jabari 5:162.
+
+Rabl bin Anas and Thawri stated that liberality mentioned in the Ayah refers to the woman giving away her half Mahr, or the man giving away the full Afahr. This is why Allah said here: & ipi 1;} iAnd do not forget liberality between yourselves.} meaning, kindness (or generosity), as Said has stated. 121 Allah said: iTruly, Allah is All- Seer of what you do.} meaning, none of your affairs ever escapes His perfect Watch, and He will reward each according to his deeds. v rn'vA ** mm JJ y*fiy \ J ^Aiijltpi==d jC-AAij ?f|} jSL^sat jJ-U! "*} sf} JaJS Jajialj9 , wa-ii 0jtf==> 4 'jijSo li t3r "jji Tj^S 4238. Guard strictly (five obligatory) As-Salawdt (the prayers) especially the Middle Salah. And stand before Allah with obedience.} 4239. And ifyou fear (an enemy), (perform Salah) on foot or riding. And when you are in safety, then remember Allah (pray) in the manner He has taught you, which you kneio not m At-Tabari 5:165,166.Tabari 5:166.
+
+(before).} Allah commands that the prayer should be performed properly and on time. It is reported in the Two Sahihs that Ibn Mas'Qd said, I asked the Prophet j^, Which deed is the dearest (to Allah)? He replied: *To offer the prayers at theirfixed times. I asked, What is the next (in goodness)? He replied: Mil Jr-J *To participate in Jihad (religions fighting) in Allah s cause.*" I again asked, What is the next (in goodness)? He replied: oiJJ y "To be good and dutiful to your parents ." Abdullah then added, The Prophet ^ told me these words, and had I asked more, the Prophet jfe would have told me more. 111 The Middle Prayer Furthermore, Allah has specifically mentioned the Middle prayer, which is the Asr prayer according to the majority of the scholars among the Companions, as At-Tirmidhi and Al- Baghawi have stated. Al-Qadi Al-Mawardi added that the majority of the scholars of the Tabi'in also held this view. Al- Hafiz Abu TJmar bin Abdul-Barr said that this is also the opinion of the majority of the scholars of the Athar (i.e., the Hadith and the statements of the Salaf). In addition, Abu Muhammad bin Atiyah said that this is the Tafsir (of the Middle prayer) of the majority of scholars. Al-Hafiz Abu Muhammad Abdul-Mu min bin Khalaf Ad-Dumyati stated in his book on the Middle prayer that it is the Asr prayer and mentioned that this is the Tafsir of Umar, Ali, Ibn Mas'ud, Abu Ayyub, Abdullah bin Amr, Samurah bin Jundub, Abu Hurayrah, Abu Said, Hafsah, Umm Habibah, Umm Salamah, Ibn Abbas and A ishah. This is also the Tafsir of TJbaydah, Al-BOri2:12, MusUm 1 :90
+
+sank1mBwr"hJ225 - 252 ) (Part21 MuqSl, Ubayd bin Abu Maiyam, and others. The Proofthat the AsrPrayer is the Middle Prayer Confederates): _ , ,, ,yi^ *i*.>* *> iW"y .Ttev (fc disbelievers} ImsM us from'performing pr^r.the Mr prayer, may AM. fill Iherr hearts and houses with fire " ( He performed the Asr prayer between Maghrib and /sha Muslta and
+
+---
+
+### the battle of AI-Ahzdb, when the Mushnks prevented Mlah s
+
+*[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 669–671]*
+
+Messenger sg and his Companions from performing the A prayer has been narrated by several other Companions We onlv mentioned the narrations that stated that the Middle prayer is the -Asr prayer. Furthermore, wordings for this HadUh from Ibn Mas'ud and Al-Bara bin Azib In addition, Imam Ahmad reported that Samurah bin Jundub said that Allah s Messenger said: iThe Middle prayer is the 'Asr prayer. l5] In another narration, Allah s Messenger$ mentioned: hi Ahmad 1:113. PI Muslim 1 :437 , An-Nasal 6 :303 ' Muslim 1 :437 ,438 I5I Ahmad 5 :22
+
+lafsir Ibn Kathir fc' MdM^LTlnitS fta/lfTfthf ^l.f% another Mn-ation, Allah's Messenger"Ud: ^ prayer" to // is the 'Asr prayerj al^^TCrp M T^"h WaS th'" b* S SS"?=afesSSaS OjJiiJl S^U> Ja^jl iii! The Middle prayer is the 'Asr prayer "(4i MtlLTSs that Ibn MasM " " Allah's V i'Lc The 'Asr prayer is the Middle prayer . tv^eS rm Mu , the '1 statet* tha 'his Hadlth is of a IJasan, Sahih wordings are to Ws * his p^rttr;,ts? s^ "*" M" rp^rttrr ^r^ (^s f the authentic Hachth, Allah's Messenger j# emphasized the aTrLsr^ the^^^"" z ,1J Ahmad 5:8. * Atimad 5 :7 i4 i TuWat Al-Ah.wad.hi 8 :328 Ibn Hibban 3 :12 1 Tu^fatAl-Ahwadhi 8 :329 Muslim 1 :437.
+
+JUf yj UjtSo yjl*}\ o^iLi AIj li "Whoever misses the 'Asr prayer will be like who has lost his family and money ." [1 It is reported in the Sahih that Buraydah bin Al-Husayb said that the Prophet said: On a cloudy day, perform the ( Asr) prayer early, for whoever misses the 'Asr prayer, will have his (good) deeds annulled ."
+
+---
+
+### The Prohibition of speaking during the Prayer
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 671–682]*
 
@@ -33,7 +70,7 @@ Al-Baqarah (225 - 252) (Part-2 ) a village several miles away from Wasit (in Ira
 
 ---
 
-## The Story of the Jews Who sought a King to be
+### The Story of the Jews Who sought a King to be
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 686–703]*
 
@@ -75,7 +112,7 @@ Important Guidelines About the Authenticity of the Reports and Quotations in the
 
 ---
 
-## The Virtue of Disclosing or Concealing Charity 60
+### The Virtue of Disclosing or Concealing Charity 60
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 703–704]*
 
@@ -85,7 +122,7 @@ Witnesses Should Attend the Dictation of Contracts 87
 
 ---
 
-## What is the ‘Mortgaging’ Mentioned in Ayah 284? 93
+### What is the ‘Mortgaging’ Mentioned in Ayah 284? 93
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 704]*
 
@@ -93,7 +130,7 @@ Would the Servants be Accountable for What They Conceal in Their Hearts? 96
 
 ---
 
-## The Tafsir of Surah Al ‘Imran 107
+### The Tafsir of Surah Al ‘Imran 107
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 704]*
 
@@ -101,7 +138,7 @@ The Mutashabihat and Muhkamat Ayat 111 Only Allah Knows the True Ta wil (Interpr
 
 ---
 
-## The Prohibition of Supporting the Disbelievers 141
+### The Prohibition of Supporting the Disbelievers 141
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 704]*
 
@@ -109,7 +146,7 @@ Allah Knows What the Hearts Conceal 143 Allah s Love is Attained by Following th
 
 ---
 
-## The Story of Maryam’s Birth 148
+### The Story of Maryam’s Birth 148
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 704]*
 
@@ -117,7 +154,7 @@ Maryam Grows Up; Her Honor is with Allah 150 The Supplication of Zakariyya, and 
 
 ---
 
-## The Virtue of Maryam Over the Women of Her Time 156
+### The Virtue of Maryam Over the Women of Her Time 156
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 704–705]*
 
@@ -125,7 +162,7 @@ Contents 7 Delivering the Good News to Maryam of Isa s Birth 160 Isa Spoke When 
 
 ---
 
-## The Description of ‘Isa and the Miracles He Performed 163
+### The Description of ‘Isa and the Miracles He Performed 163
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 705]*
 
@@ -133,7 +170,7 @@ The Disciples Give Their Support to Isa 166 The Jews Plot to Kill Isa 168
 
 ---
 
-## The Meaning of Take You’ 169
+### The Meaning of Take You’ 169
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 705–706]*
 
@@ -143,7 +180,7 @@ The Station of Ibrahim 218 Al-Haram, the Sacred Area, is a Safe Area 219 The Nec
 
 ---
 
-## Warning Against Imitating the People of the Scriptures 225
+### Warning Against Imitating the People of the Scriptures 225
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 706]*
 
@@ -151,7 +188,7 @@ Meaning of Taqwa of Allah 227 The Necessity of Holding to the Path ofAllah and t
 
 ---
 
-## The Prohibition of Division 234
+### The Prohibition of Division 234
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 706]*
 
@@ -159,7 +196,7 @@ The Benefits of Unity and the Consequences of Division 235 Virtues of the Ummah 
 
 ---
 
-## The Reason Behind the Battle of Uhud 254
+### The Reason Behind the Battle of Uhud 254
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 706]*
 
@@ -167,7 +204,7 @@ Reminding the Believers of Their Victory at Badr 256 The Support of the Angels 2
 
 ---
 
-## The Prohibition of Obeying the Disbelievers 287
+### The Prohibition of Obeying the Disbelievers 287
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 706–707]*
 
@@ -177,7 +214,7 @@ Contents 2 Among the Qualities of our Prophet Muhammad are Mercy and Kindness 30
 
 ---
 
-## The Battle of Hamra’ Al-Asad 323
+### The Battle of Hamra’ Al-Asad 323
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 707]*
 
@@ -185,7 +222,7 @@ Comforting the Messenger of Allah 328 The Censure of Selfishness, and Warning Ag
 
 ---
 
-## Warning Against Being Deceived by This Life 355
+### Warning Against Being Deceived by This Life 355
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 707]*
 
@@ -193,7 +230,7 @@ The Condition of Some of the People of the Scriptures 357 The Command for Patien
 
 ---
 
-## The Tafsir of Surat An-Nisa
+### The Tafsir of Surat An-Nisa
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 707–708]*
 
@@ -203,7 +240,7 @@ Marrying Only One Wife When One Fears He Might not Do Justice to His Wives 375 G
 
 ---
 
-## The Meaning of Kalalah 395
+### The Meaning of Kalalah 395
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 708]*
 
@@ -211,7 +248,7 @@ The Ruling Concerning Children of the Mother From Other Than the Deceased s Fath
 
 ---
 
-## Warning Against Transgressing the Limits for Inheritance 397
+### Warning Against Transgressing the Limits for Inheritance 397
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 708–709]*
 
@@ -221,7 +258,7 @@ Conten ts The Mother-in-Law and Stepdaughter are Prohibited in Marriage 417 The 
 
 ---
 
-## What Does ‘Great Reward’ Mean? 462
+### What Does ‘Great Reward’ Mean? 462
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 709–711]*
 
@@ -231,7 +268,7 @@ Contents 13 The Encourgment to Participation in Jihad 514 Encouraging Jihad to D
 
 ---
 
-## Warning Against Intentional Murder 547
+### Warning Against Intentional Murder 547
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 711]*
 
@@ -239,7 +276,7 @@ Will the Repentance of those who Commit Intentional Murder be Accepted? 549 Gree
 
 ---
 
-## The Prohibition of Residing Among the Disbelievers While
+### The Prohibition of Residing Among the Disbelievers While
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 711–712]*
 
@@ -249,7 +286,7 @@ The Punishment for Contradicting and Opposing the Messenger and Following a Path
 
 ---
 
-## The Prohibition of Wilayah with the Disbelievers 62
+### The Prohibition of Wilayah with the Disbelievers 62
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 712–720]*
 
@@ -271,7 +308,7 @@ include the part that starts with, By He in Whose Hand... Imam
 
 ---
 
-## the description of Shaytan. In this narration, Abu Hurayrah
+### the description of Shaytan. In this narration, Abu Hurayrah
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 720–726]*
 
@@ -281,7 +318,7 @@ Al-Baqarah (Part-3) me, What did your prisoner do yesterday, O Abu Hurayrah? I s
 
 Al-Baqarah (Part-3) ^ ^ VI '4 v iAlldh! None has the right to be worshipped but He, the Ever Living, the One Who sustains and protects all that exists [2:255); in Al Imran, it is in. 1 h4 v iAlif-Ldm-Mim . Allah! None has the right to be worshipped but He, the Ever Living, the One Who sustains and protects all that exists} [3:1-2], while in Ta-Ha, it is in, & </4 :j$ iAtid (all) faces shall be humbled before (Allah), the Ever Living, the One Who sustains and protects all that exists} [20 : 1 1 |. AyatAl-Kursi has Ten Complete Arabic Sentences Allah s statement, 4S* V] id] '*d &} iAlldh! None has the right to be worshipped but He } mentions that Allah is the One and Only Lord of all creation. Allah s statement, iAl-Hayyul-Qayyum} testifies that Allah is the Ever Living, Who never dies, Who sustains everyone and everything. All creation stands in need of Allah and totally relies on Him, while He is the Most Rich, Who stands in need of nothing created. Similarly, Allah said, i-\ iJojiij fju o' j^j} iAnd among His signs is that the heaven and the earth stand by His command} [30:25]. Allah s statement, iNeither slumber nor sleep overtakes Him} means, no shortcoming, unawareness or ignorance ever
 
-4. Allah s statement, Uj Oy. ,'ji Ji U 4J^ iTo Him belongs whatever is in the heavens and whatever is on the earth} indicates that everyone is a servant for Allah, a part of His kingdom and under His power and authority. Similarly, Allah said, ^ |
+touches Allah. Rather, He is aware of, and controls what every soul earns, has perfect watch over everything, nothing escapes His knowledge, and no secret matter is secret to Him. Among His perfect attributes, is the fact that He is never effected by slumber or sleep. Therefore, Allah s statement, iNeitlier slumber overtakes Him} indicates that no unawareness due to slumber ever overtakes Allah. Allah said afterwards, inor sleep}, which is stronger than slumber. It is recorded in the Sahbf 1 ^ that Abu Musa said, The Messenger of Allah jg delivered a speech regarding four words: J** *y. la - -jH O' Vj jli 'J ~ J 3} J^ J^e-j < Jj jUlJ lAllah does not sleep, and it does not befit His majesty that He sleeps. He lowers the scales and raises them. The deeds of the day are resurrected in front of Him before the deeds of the night, and the deeds of the night before the deeds of the day. His Veil is light, or fire, and if He removes it, the rays from His Face would burn whatever His sight reaches of His creation ." 4. Allah s statement, Uj Oy. ,'ji Ji U 4J^ iTo Him belongs whatever is in the heavens and whatever is on the earth} indicates that everyone is a servant for Allah, a part of His kingdom and under His power and authority. Similarly, Allah said, ^ | " /" i/' * <'" hi Muslim 1 :16 1
 
 Al-Baqarah (Part-3) _ iThere is none in the heavens and the earth but comes unto the Most Gracious (Allah) as a servant. Verily, He knoivs each one of them, and has counted them a full counting. And everyone of them will come to Him alone on the Day of Resurrection (without any helper, or protector or defender)} [19:93-95]. 5. Allah s statement, <(W7jo is he that can intercede with Him except with His permission?} is similar to His statements. cA ft Sit j 4 i'1 there are many angels in the heavens, whose intercession will avail nothing except after Allah has given leave for whom He wills and is pleased with [53:26], and, f < < y ' ^ ty+y Ky\ 4o^' A. "*i }They cannot intercede except for him with whom He is pleased [21:28]. These Ayat assert Allah s greatness, pride, and grace, and that no one dares to intercede with Him on behalf of anyone else, except by His permission. Indeed, the Hadith about the intercession, states that the Prophet% said, :juj ji 4i! iti U ^e-xx o l_f\ "/ will stand under the Throne and fall in prostration, and Allah will alloio me to remain in that position as much as He wills. I will thereafter be told, "Raise your head, speak and you zvill be heard, intercede and your intercession ivill be accepted" . The Prophet then said, "He zvill allozo me a proportion zohom l zvill enter into Paradise."n11 6. Allah s statement, ^ Muslim 1 : 180.
 
@@ -289,7 +326,7 @@ iHe knows what happens to them (His creatures) in this world, and what will happ
 
 ---
 
-## what is behind us, and what is between those two; and your
+### what is behind us, and what is between those two; and your
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 726–767]*
 
@@ -303,7 +340,7 @@ of the Two Sahihs, and they (Al-Bukhari and Muslim) did not record it. In additi
 
 his character, even if he was Persian or Nabatian. 1 11 'Umar s statement that Taghut is Shaytan is very sound, for this meaning includes every type of evil that the ignorant people of Jdhiliyyah (pre Islamic era of ignorace) fell into, such as worshipping idols, referring to them for judgement, and invoking them for victory. Allah s statement, i \X (Cm i 4then he has grasped the most trustworthy handhold that will never break> means, He will have hold of the true religion with the strongest grasp. Allah equated this adherence to the firm handhold that never breaks because it is built solid and because its handle is firmly connected. This is why Allah said here, 4then he has grasped the most trustworthy handhold that will never break. Mujahid said, The most trustworthy handhold is Iman (faith). As-Suddi said that it refers to Islam. [3) Imam
 
-Al-Baqarah (Part-3) 0 ' '5 U^: "'iji;Li c^L>*cfbbfJ\S ii^o 0 i3 4jiif.jcj.*<$ cJlJ j^ajlfl,AjUjjij^\cSjL;4itAjUlil45_^Jk"
+Al-Baqarah (Part-3) 0 ' '5 U^" ^ < >/&& ^_sibij 3\"ii4&fi*"'iji;Li c^L>*cfbbfJ\S ii^o 0 i3 4jiif.jcj.*<$ cJlJ j^ajlfl,AjUjjij^\cSjL;4itAjUlil45_^Jk"J Jf &J. tllJJai'j 4,; I ly^J (j\J-k&> j4j &tsz6 pole in the middle of the garden affixed in the earth and its tip reached the sky. On its tip, there was a handle, and I was told to ascend the pole. I said, I cannot. Then a helper came and raised my robe from behind and said to me, Ascend. I ascended until I grasped the handle and he said to me, Hold on to the handle. I awoke from that dream with the handle in my hand. I went to the Messenger of Allah 2g and told him about the vision and he said. "jy^> ^}> lib <-A#l li>" ".SjL J>- ^jj^ "As for the garden, it represents Islam ; as for the pole, it represents the pillar of Islam; and the handle represents the most trustworthy handhold. You shall remain
 
 j j' Jl oXiiii Si i^i* tj 4^ U&\ ji vjji & l &\ {257. Allah is the Walt (Protector or Guardian) of those who believe. He brings them out from darknesses into light. But as for those xoho disbelieve, their Awliya (supporters and helpers) are Taghiit (false deities and false leaders), they bring them out from light into darknesses. Those are the dwellers of the Fire, and they will abide therein forever. Allah stated that whoever follows what pleases Him, He will guide him to the paths of peace, that is Islam, or Paradise. Verily, Allah delivers His believing servants from the darkness of disbelief, doubt and hesitation, to the light of the plain, clear, explained, easy and unequivocal truth. He also stated that Shaytan is the supporter of the disbelievers who beautifies the paths of ignorance and misguidance that they follow, thus causing them to deviate from the true path into disbelief and wickedness. iThose arc the dwellers of the Fire, and they will abide therein forever This is why Allah mentioned the light in the singular while mentioned the darkness in the plural, because truth is one, while disbelief comes as several types, all of which are false! Similarly, Allah said, Mr- cf fM p. =ail2 (Xi-ij {And verily, this is my straight path, so follow it, and follow not (other) paths, for they will separate you away from His path. This He has ordained for you that you may have Taqwa} [6.153J t ji*. {And originated the darknesses and the lights [6:1], and,
 
@@ -375,7 +412,7 @@ Al-Baqarali (Part-3 ) obedience. We previously explained the Ayah, ithere shall 
 
 ---
 
-## the Day of Resurrection, those who consume Riba will be
+### the Day of Resurrection, those who consume Riba will be
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 767–775]*
 
@@ -389,13 +426,13 @@ V U Jj ilL^; U jS" Leave that which makes you doubt for that which does not make
 
 Al-Raqarah (Part-3) "May Allah curse whoever consumes Riba, whoever pays Riba, the two who are witnesses to it, and the scribe who records it.*"' They say they only have witnesses and a scribe to write the Riba, contract when they want it to appear to be a legitimate agreement, but it is still invalid because the ruling is applied to the agreement itself, not the form that it appears in. Verily, deeds are judged by their intentions. * >< 'y'. <.* <*'\SZ\\ tj )? . will destroy Riba and will give increase for Sadaqdt. And Allah likes not the disbelievers, sinners .} . Truly, those who believe, and do deeds of righteousness, and perform the Saldh and give Zakdh, they will have their reward with their Lord. On them shall be no fear, nor shall they grieve. Allah Does Not Bless Riba Allah states that He destroys Riba, either by removing this money from those who eat it, or by depriving them of the blessing, and thus the benefit of their money. Because of their Riba, Allah will torment them in this life and punish them for it on the Day of Resurrection. Allah said, $^ d&il jj sfA -i iSay: "Not equal are Al-Khabith (evil things) and At-Tayyib (good things), even though the abundance of Al-Khabith may please you"} (5:100) .A cl /Wf-njy iAnd put the wicked (disbelievers and doers of evil deeds) one over another, heap them together and cast them into Hell} |8:37], and, 3:1219.
 
-76 Tafstr Ibn Kathlr Xi ]jij> (jjlj: "{And that which you give in gift (to others), in order that it may increase (your wealth by expecting to get a better one in return) from other people's property, has no increase with Allah} (30:39]. Ibn Jarir said that Allah s statement, 4!S' I lit K"
+76 Tafstr Ibn Kathlr Xi ]jij> (jjlj "{And that which you give in gift (to others), in order that it may increase (your wealth by expecting to get a better one in return) from other people's property, has no increase with Allah} (30:39]. Ibn Jarir said that Allah s statement, 4!S' I lit K" iAllah will destroy Riba} is similar to the statement reported of Abdullah bin MasVid, uRiba will end up with less, even if it was substantial. ' Imam
 
 ip\ 'if# 4-And Allah likes not the disbelievers, sinners indicates that Allah does not like he who has a disbelieving heart, who is a sinner in tongue and action. There is a connection between the beginning of the Ayah on Riba and
 
 ---
 
-## what Allah ended it with. Those who consume Riba are not
+### what Allah ended it with. Those who consume Riba are not
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 775–791]*
 
@@ -413,7 +450,7 @@ Allah further advised His servants, by reminding them that this life will soon e
 
 This is the same narration reported by Ad-Dahhak and Al- Awfi from Ibn Abbas. dl $2 4 t C $ > iS ifit ^a2ij la i^=> ;J J vt v; JJ^iX jl U~".> ji ,' *Jx- <^jj' o'? oji ii* J-iJj V> ' jlilj jiJ (jU ^=OWj <_ Ot : r J-iili ijj eP;l-.l" _)* j~J J (ff i 1 W J'i - 4=-^ j^oJ oi oJS/ ,-; v)^t*'j J-4>" .)$ di !^=. 3 ;jL&5 d 2 vj i u' lit it 'JJ i i>"C j/i o' "it ttf'tr' 1x04 fy*J &* jX}'i / jS$ -i; 4 Ijl+itj -jt & 4$ =CZ \2j& tis-1 "*** jlssutju) iil i_"i-j'j (" =u AOli Ijiijj jlj jL_*i YJ ^ ,W ^ If. . O t/OH zy/iu believe! When you contract a debt far a fixed period, lorile it doion. Let a scribe ivrite it doivn in justice between you. Let not the scribe refuse to ivrite, as Allah has taught him, so let him ivrite. Let him (the debtor) who incurs the liability dictate, and he must have Taqivd of Allah, his Lord, and diminish not anything of what he awes. But if the debtor is ofpoor understanding, or weak, or is unable to dictate for himself, then let his guardian dictate in justice. And get two witnesses out of your own men. And if there are not two men (available), then a man and two women, such as you agree far ivitnesses, so that if one of them (two women) errs, the other can remind her. And the witnesses should not refuse when they are called (far evidence). You should not become weary to write it (your contract), whether it be small or big, far its fixed term, that is more just ivith Allah; more solid as evidence, and more convenient to prevent doubts among yourselves, save when it is a present trade which you carry out on the spot among yourselves, then there is no sin on you if you do not write it down. But take witnesses whenever you make a commercial contract. Let neither scribe nor witness suffer any harm, but if m At-Tabari 6 :40.
 
-* ' Whoever pays money in advance (jbr dates to be delivered later) should pay it Jbr known specified measure and weight (of the dates) for a specified date .
+Al-Baqarah (Part-3 ) you do (such harm), it would be wickedness in you. So have Taqwd of Allah; and Allah teaches you. And Allah is the All- Knower ofeverything.} The Necessity ofWritingTransactions ThatTake Effect Later on This Ayah is the longest in the Glorious Qur an. Imam Abu Ja far bin Jarir recorded that Said bin Al-Musayyib said that he was told that the Ayah most recently revealed from above the Throne - the last Ayah to be revealed in the Qur an - was the Ayah about debts. Allah s statement, iO you who believe! When you contract a debt for a fixed period, write it down directs Allah s believing servants to record their business transactions when their term is delayed, to preserve the terms and timing of these transactions, and the memory of witnesses, as mentioned at the end of the Ayah, -51 0j&& {ft$ ie pf} ithat is more just with Allah; more solid as evidence, and more convenient to prevent doubts among yourselves.} The Two Sahihs recorded that Ibn Abbas said, Allah s Messenger came to Al-Madinah, while the people were in the habit of paying in advance for fruits to be delivered within one or two years. The Messenger of Allah jjg said, Jl Ojjj ^ * * " * ' Whoever pays money in advance (jbr dates to be delivered later) should pay it Jbr known specified measure and weight (of the dates) for a specified date ."121 Allah s statement, At-Tabari 6:41 Fath Al-Bari 4: 105, Muslim 3:1226.
 
 Al-Baqarah (Part-3) ^Whoever kept knowledge to himself will be restrained by a bridle made offire on the Day ofResurrectionV Mujahid and Ata said that if asked to do so, The scribe is required to record. Allah s statement, iS 4 ilet him (the debtor) who incurs the liability dictate, and he must have Taqwa ofAllah, his Lord> indicates that the debtor should dictate to the scribe what he owes, so let him fear Allah, 4And diminish not anything ofwhat he owes,'} meaning, not hide any portion ofwhat he owes. 4But if the debtor is ofpoor understanding} and is not allowed to decide on such matters, because he used to waste money, for instance, 40r weak}, such as being too young or insane, 40r is unable to dictate for himself} because of a disease, or ignorance about such matters, 4then let his guardian dictate in justice.} Witnesses Should Attend the Dictation ofContracts Allah said, 4And get two witnesses out ofyour own men} requiring witnesses to attend the dictation of contracts to m At-Tabarani 5:11.
 
@@ -429,7 +466,7 @@ Al-Baqarah (Part-3 ) jr 1 Y> IS / -f-' *> }, o!j' / i ^ / ^ y .^r A** J| v/. y. 
 
 ---
 
-## What is the 'Mortgaging’ Mentioned in theAyah?
+### What is the 'Mortgaging’ Mentioned in theAyah?
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 791–803]*
 
@@ -445,7 +482,7 @@ o). V C.j e. ' U ^c-j C4^ U \-|J * -j l jj iil - f'j 4&LZ } $Allah burdens not a
 
 Say , 'We hear and toe obey They said, We hear and we obey. Thereafter, this Ayah abrogated the previous Ayah, iThe Messenger believes in what has been sent doivn to him from his Lord , and (so do) the believers. Each one believes in Allah}, until, c licr c^ tjcj vi iii iif i v> iAIIdh burdens not a person beyond his scope. He gets reivard for that (good) which he has earned, and he is punishedfor that (evil) which he has earned.} Therefore, they were pardoned what happens in their hearts, and were held accountable only for their actions. The Group recorded that Abu Hurayrah said that the Messenger of Allah sg said, j\ ^ i: - . l
 
-IfMy servant intmds to commit an evil deed, do not record it as such for him, and if he commits it, write it for him as one evil deed. If he intends to perform a good deed, but did not perform it, then write it for him as one good deed, and ifhe performs it, write it for him as ten good deeds .
+100 Tafoir tbn Kathir The Two Sahihs recorded that Abu Hurayrah said that the Messenger of Allah jg said, lilj liili Ufo&s 'fi jillj lij :i)l Jli' 1 1 t&j^S\j IfLp jLi i U Allah said (to His angels), "IfMy servant intmds to commit an evil deed, do not record it as such for him, and if he commits it, write it for him as one evil deed. If he intends to perform a good deed, but did not perform it, then write it for him as one good deed, and ifhe performs it, write it for him as ten good deeds .""[11 4jl\* " ,>*b^ V }^,jmJ l iXJjj Vj-j ..?4i 1 J L. "-"> yL-JJ V > qj V L Co iSt U U I4J l^wj 1 *> 4jiil 2; g; uu " ^ t_& jjs *; 5 fidiS $ d* tjwiiU \J yli-1 J lit ij IJ 43U0 U 4285. The Messenger believes in what has been sent down to him from his Lord, and (so do) the believers. Each one believes in Allah, His Angels, His Books, and His Messengers. (They say,) "We make no distinction between one another of His Messengers" - and they say, "We hear, and we obey. (We seek) Your forgiveness, our Lord, and to You is the return (of all).") i286. Allah burdens not a person beyond his scope. He gets reward for that (good) which he has earned, and he is punished for that (evil) which he has earned. Our Lord! Punish us not ifweforget or fall into error, our Lord! Lay not on us a burden like that which You did lay on those before us (Jews and Christians); our Lord! Put not on us a burden greater than we have strength to bear. Pardon us and grant us forgiveness. Have mercy on us. You are our Mawld (Patron, Supporter and Protector) and give us victory over the disbelieving people.") m Fath Al-B&ri 13 :473, Muslim 1:117.
 
 Al-Baqarah (Part-3) TheHadiihsontheVirtue ofTheseTwo Ayat,MayAllah BenefitUsbyThem
 

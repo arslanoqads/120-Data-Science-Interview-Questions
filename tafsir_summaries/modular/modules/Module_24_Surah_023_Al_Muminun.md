@@ -1,11 +1,18 @@
-# Surah 23: Al-Muminun
+# Module 24
+
+**Surah 23: Al-Muminun**
 
 **Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
-**PDF pages:** 3793–3886
+
+**Locator:** `modular/modules/Module_24_Surah_023_Al_Muminun.md` · anchor `module-24`
 
 ---
 
-## Which was Revealed inMakkah
+## Surah 23: Al-Muminun
+
+*PDF pages 3793–3886*
+
+### Which was Revealed inMakkah
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3793–3798]*
 
@@ -21,7 +28,7 @@ Silrah 23. Al-Mu'minun (1-11) (Part-18) 633 JL0}> iThese are indeed the heirs. W
 
 ---
 
-## what Allah said: iThese are indeed the heirs.
+### what Allah said: iThese are indeed the heirs.
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3798–3824]*
 
@@ -77,7 +84,7 @@ Al-Mu'minim (51-56) (Part-18) commanded the Messengers by saying >& ll, ji \pij 
 
 ---
 
-## Warning against splitting into different Groups
+### Warning against splitting into different Groups
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3824–3846]*
 
@@ -125,7 +132,7 @@ Al-Mu minun (84-90) (Part-18) So Allah says: iK.i JoVr p; fo iSay: Whose is the 
 
 ---
 
-## the end of the Surah, Allah says:
+### the end of the Surah, Allah says:
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3846–3857]*
 
@@ -153,7 +160,7 @@ iAnd indeed they are liars. [6:27-28] " Ar iAnd yon will see the wrongdoers, whe
 
 ---
 
-## the Day of Resurrection.”11 '
+### the Day of Resurrection.”11 '
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3857–3875]*
 
@@ -189,7 +196,7 @@ Important Guidelines About the Authenticity of the Reports and Quotations in the
 
 ---
 
-## The Tafsir of Surat An-Niir (Chapter - 24) 17
+### The Tafsir of Surat An-Niir (Chapter - 24) 17
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3875]*
 
@@ -197,7 +204,7 @@ The Importance of Siirat An-Nur 18
 
 ---
 
-## The Explanation of the Prescribed Punishment for Zina
+### The Explanation of the Prescribed Punishment for Zina
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3875]*
 
@@ -205,7 +212,7 @@ The Importance of Siirat An-Nur 18
 
 ---
 
-## The Reason why the Ayah of Li'&n was revealed 27
+### The Reason why the Ayah of Li'&n was revealed 27
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3875–3876]*
 
@@ -217,7 +224,7 @@ The Rulings of Hijdb 67 The Etiquette ofWomen walking in the Street 73 The Comma
 
 ---
 
-## The Prohibition of forcing One’s Slave-Girls to commit
+### The Prohibition of forcing One’s Slave-Girls to commit
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3876]*
 
@@ -227,7 +234,7 @@ The Virtues of the Masjids, the Correct Etiquette, and the Virtues ofThose who t
 
 ---
 
-## The Prohibition of going against the Messenger’s
+### The Prohibition of going against the Messenger’s
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3876]*
 
@@ -235,7 +242,7 @@ Commandment 133 Allah knows your Condition 134
 
 ---
 
-## The Tafsir of Surat Al-Furqan (Chapter - 25) 137
+### The Tafsir of Surat Al-Furqan (Chapter - 25) 137
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3876–3877]*
 
@@ -245,7 +252,7 @@ Contents 7 Wrongdoers will wish that They had taken a Path with the Messenger jg
 
 ---
 
-## The Reason why the Qur’an was revealed in Stages,
+### The Reason why the Qur’an was revealed in Stages,
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3877]*
 
@@ -253,7 +260,7 @@ the Refutation of the Disbelievers, and their Evil End 169 Frightening the Idola
 
 ---
 
-## How the Disbelievers mocked the Messenger 175
+### How the Disbelievers mocked the Messenger 175
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3877]*
 
@@ -261,7 +268,7 @@ They took Their Desires as their gods and were more astray than Cattle 176 Evide
 
 ---
 
-## The Attributes of the Servants of the Most Gracious include
+### The Attributes of the Servants of the Most Gracious include
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3877]*
 
@@ -269,7 +276,7 @@ avoiding Shirk, Murder and Zina 199 More Attributes of the Servants of the Most 
 
 ---
 
-## The Tafsir of Surat Ash-Shu'ara' (Chapter - 26) 211
+### The Tafsir of Surat Ash-Shu'ara' (Chapter - 26) 211
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3877]*
 
@@ -277,7 +284,7 @@ The Qur an and the Disbelievers turning away; They could be compelled to believe
 
 ---
 
-## How the Close Friend of Allah, Ibrahim spoke out against
+### How the Close Friend of Allah, Ibrahim spoke out against
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3877–3878]*
 
@@ -287,7 +294,7 @@ Shirk 237 Ibrahim mentions Allah s Kindness towards Him 239 The Prayer of Ibrahi
 
 ---
 
-## The Tafsir of SuratAn-Naml (Chapter - 27) 299
+### The Tafsir of SuratAn-Naml (Chapter - 27) 299
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3878]*
 
@@ -295,7 +302,7 @@ The Qur an is Guidance and Glad Tidings for the Believers, a
 
 ---
 
-## The Story of Musa and the End of Fir‘awn 303
+### The Story of Musa and the End of Fir‘awn 303
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3878]*
 
@@ -303,7 +310,7 @@ Dawud and Sulayman (peace be upon them), the organization of Sulayman s Troops a
 
 ---
 
-## How the Hoopoe came before Sulayman and told Him about
+### How the Hoopoe came before Sulayman and told Him about
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3878]*
 
@@ -311,7 +318,7 @@ Saba 314 Sulayman s Letter to Bilqis 317 Bilqls consults with Her Chiefs 319 The
 
 ---
 
-## How the Throne of Bilqls was brought in an Instant 323
+### How the Throne of Bilqls was brought in an Instant 323
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3878–3879]*
 
@@ -319,7 +326,7 @@ Contettts 9 The Test of Bilqis 327 Verily, it is a Sarh Mumarrad of Qawarir 329 
 
 ---
 
-## The Story of a Mujahid who fought for the sake of Allah 344
+### The Story of a Mujahid who fought for the sake of Allah 344
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3879]*
 
@@ -327,7 +334,7 @@ The Inheritance of the Earth 345 The One Who knows the Unseen is Allah 349 Scept
 
 ---
 
-## The Story of Mfisa and Fir‘awn, and what Allah intended
+### The Story of Mfisa and Fir‘awn, and what Allah intended
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3879]*
 
@@ -335,7 +342,7 @@ for Their Peoples 376 How Musa s Mother was inspired and shown what to do 378 Mu
 
 ---
 
-## How the Secret of this Killing became known 387
+### How the Secret of this Killing became known 387
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3879–3881]*
 
@@ -347,7 +354,7 @@ Contents 11 Allah tests People 464 The Arrogant Claim of the Disbelievers that T
 
 ---
 
-## How the Idolators asked for theTorment to be hastened on 505
+### How the Idolators asked for theTorment to be hastened on 505
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3881]*
 
@@ -355,7 +362,7 @@ Advice to migrate and the Promise of Provision and a Goodly Reward 508 Evidences
 
 ---
 
-## The Tafsir of SuratAr-R&m (Chapter - 30) 517
+### The Tafsir of SuratAr-R&m (Chapter - 30) 517
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3881–3882]*
 
@@ -365,7 +372,7 @@ The Command to uphold the Ties of Kinship and the Prohibition of Riba 55j Creati
 
 ---
 
-## The Tafsir of SurahLuqman (Chapter - 31) 569
+### The Tafsir of SurahLuqman (Chapter - 31) 569
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3882]*
 
@@ -373,7 +380,7 @@ The Doomed are preoccupied with Idle Talk and They turn away from the Ayat of Al
 
 ---
 
-## The Virtues of Surah AlifLam Mim As-Sqjdah 605
+### The Virtues of Surah AlifLam Mim As-Sqjdah 605
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3882–3883]*
 
@@ -383,7 +390,7 @@ Contents 13 The State of the People of Faith and Their Reward 615 The Believer a
 
 ---
 
-## The Tafsir of Surat Al-Ahzab (Chapter - 33) 63
+### The Tafsir of Surat Al-Ahzab (Chapter - 33) 63
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 3883]*
 
@@ -393,7 +400,7 @@ How the Believers were tested, and the Position of the Hypocrites during the Bat
 
 ---
 
-## The Attributes of the Messenger of Allah jg 713A Gift and no (Iddcih) for Women Who are divorced
+### The Attributes of the Messenger of Allah jg 713A Gift and no (Iddcih) for Women Who are divorced
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3884–3886]*
 

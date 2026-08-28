@@ -11,7 +11,7 @@
 
 (Chapter - 108) Whichwas revealed in Al-Madinah and They also say in In the Name ofAllah, the Most Gracious, the Most Merciful. 11 . Verily, We have granted you Al-Kawthar.} 12. Therefore him in prayer to your Lord and sacrifice.} 43. For he who hates you, he will be cut off.}
 
-(i jlxJI ^ ijLf- 4^i! (oUoll ulSjby U ^ ilil 4jl tVerily, it is a river that my Lord, the Mighty and Majestic, has promised me and it has abundant goodness. It is a pond where my Ummah will be brought to on the Day ofJudgement. Its containers are as numerous as the stars in the sky. Then a servant of Allah from among them will be (prevented from it) and I will say:
+Al-Kawthar (1-3) (Part-30) We said, Allah and His Messenger know best. He said, fji V >* j=S j5>- Up Jtj M" : Jj"(i jlxJI ^ ijLf- 4^i! (oUoll ulSjby U ^ ilil 4jl tVerily, it is a river that my Lord, the Mighty and Majestic, has promised me and it has abundant goodness. It is a pond where my Ummah will be brought to on the Day ofJudgement. Its containers are as numerous as the stars in the sky. Then a servant of Allah from among them will be (prevented from it) and I will say: "O Lord! Verily, he is from my Ummah (followers)." Then He (Allah) will say: "Verily, you do not know wluit he introduced (or innovated) after yoM.u ' This is the wording of
 
 I came to a river whose banks had domes of hollowed pearl. I said: O Jibril! What is this?
 

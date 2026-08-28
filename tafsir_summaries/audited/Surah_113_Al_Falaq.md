@@ -13,7 +13,7 @@ Opening iSay: I seek refuge with the Lord ofmankind (114:l)s,1) This Hadith was 
 
 whenever you go to sleep and wheneveryou get i/pj
 
-} So, I recited it until I reached its end. Then the Messenger of Allah || said,
+I replied, *What should I say O Messenger of Allah? He said, **W iSay:
 
 Al-Falaq (1-5) (Part-30) 45. Andfrom the evil of the envier when he envies."4 Ibn Abi Hatim recorded that Jabir said, Al-Falaq is the morning. Al- Awfi reported from Ibn Abbas, Al-Falaq is the morning. The same has been reported from Mujahid, Said bin Jubayr, Abdullah bin Muhammad bin Aqil, Al-Hasan, Qatadah, Muhammad bin Ka*b Al-Qurazi and Ibn Zayd. Malik also reported a similar statement from Zayd bin Aslam. * Al- Qurazi, Ibn Zayd and Ibn Jarir all said, This is like Allah s saying, 4He is the Cleaver of the daybreak.}. (6:96) Allah said, 4From the evil ofwhat He has created,} This means from the evil of all created things. Thabit Al-Bunani and Al-Hasan Al-Basri both said, Hell, Iblis and his progeny, from among that which He (Allah) created. 4Andfrom the evil of the Chdsiq when Waqab,} Mujahid said, Ghasiq is the night, and when it Waqab refers to the setting of the sun. Al-Bukhari mentioned this from him. * Ibn Abi Najih also reported a similar narration from him (Mujahid). The same was said by Ibn Abbas, Muhammad bin Ka*b Al- Qurazi, Ad-Dahhak, Khusayf, Al-Hasan and Qatadah. They said, Verily, it is the night when it advances with its darkness. * Az-Zuhri said, 'H *** AMabari 24:700. At-Tabari 24 :701 At-Tabari 24 :700, 701 * At-Tabari 24:701. *s * FathAl-BOri 8:613. * At-Tabari 12:748, 749.
 

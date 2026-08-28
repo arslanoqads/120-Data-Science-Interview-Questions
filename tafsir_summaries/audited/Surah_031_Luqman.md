@@ -85,6 +85,6 @@ Luqman (34) (Part-21 ) man came to him and said, O Messenger of Allah, what is I
 
 oBring him back to me." They went to bring him back, but they could not find him. He said: ' uThat was fibril who came to teach the people their religion .b 1 It was also recorded by
 
-//Allah wants to take a person's soul in a particular land, He will give him a reason to go there.^ In Al-Mu'jam Al-Kabir, Al-Hafiz Abu Al-Qasim At-Tabarani recorded that Usamah bin Zayd said, The Messenger of Allah said: Ifci Ji
+Luqman (34) (Part-21) be stricken by calamity tomorrow. 4CjyU Jfj o-i* ufjJi no person knows in what land he will die.} means, no person knows where his resting place will be, on the land or in the sea, on a plain or in the mountains. [1 * It says in the Hadith: J^>- JuP Jill a \ j\ lilt "//Allah wants to take a person's soul in a particular land, He will give him a reason to go there.^ In Al-Mu'jam Al-Kabir, Al-Hafiz Abu Al-Qasim At-Tabarani recorded that Usamah bin Zayd said, The Messenger of Allah said: Ifci Ji"- JIp *i~; ill lit ^Allah does not will that a person should die in a certain land but He gives him a reason to go there
 
 ---

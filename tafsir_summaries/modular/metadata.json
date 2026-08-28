@@ -2,14 +2,14 @@
   "source": "Tafsir Ibn Kathir (Abridged), Darussalam English Edition",
   "target_module_pages": 50,
   "words_per_page_estimate": 840,
-  "module_count": 36,
+  "module_count": 38,
   "volume_count": 4,
   "modules": [
     {
       "id": 1,
-      "title": "Surah 1: Al-Fatihah",
+      "title": "Module 01: Surah 1: Al-Fatihah",
       "filename": "Module_01_Surah_001_Al_Fatihah.md",
-      "est_pages": 12,
+      "est_pages": 13,
       "surahs": [
         1
       ],
@@ -17,9 +17,9 @@
     },
     {
       "id": 2,
-      "title": "Surah 2: Al-Baqarah (Part 1 of 4)",
+      "title": "Module 02: Surah 2: Al-Baqarah (Part 1 of 4)",
       "filename": "Module_02_Surah_002_Al_Baqarah_Part1.md",
-      "est_pages": 50,
+      "est_pages": 48,
       "surahs": [
         2
       ],
@@ -27,9 +27,9 @@
     },
     {
       "id": 3,
-      "title": "Surah 2: Al-Baqarah (Part 2 of 4)",
+      "title": "Module 03: Surah 2: Al-Baqarah (Part 2 of 4)",
       "filename": "Module_03_Surah_002_Al_Baqarah_Part2.md",
-      "est_pages": 42,
+      "est_pages": 48,
       "surahs": [
         2
       ],
@@ -37,9 +37,9 @@
     },
     {
       "id": 4,
-      "title": "Surah 2: Al-Baqarah (Part 3 of 4)",
+      "title": "Module 04: Surah 2: Al-Baqarah (Part 3 of 4)",
       "filename": "Module_04_Surah_002_Al_Baqarah_Part3.md",
-      "est_pages": 51,
+      "est_pages": 50,
       "surahs": [
         2
       ],
@@ -47,9 +47,9 @@
     },
     {
       "id": 5,
-      "title": "Surah 2: Al-Baqarah (Part 4 of 4)",
+      "title": "Module 05: Surah 2: Al-Baqarah (Part 4 of 4)",
       "filename": "Module_05_Surah_002_Al_Baqarah_Part4.md",
-      "est_pages": 30,
+      "est_pages": 32,
       "surahs": [
         2
       ],
@@ -57,19 +57,19 @@
     },
     {
       "id": 6,
-      "title": "Surah 3: Al-Imran (Part 1 of 2)",
-      "filename": "Module_06_Surah_003_Al_Imran_Part1.md",
-      "est_pages": 58,
+      "title": "Module 06: Surah 3: Al-Imran",
+      "filename": "Module_06_Surah_003_Al_Imran.md",
+      "est_pages": 61,
       "surahs": [
         3
       ],
-      "part": 1
+      "part": null
     },
     {
       "id": 7,
-      "title": "Surah 4: An-Nisa (Part 1 of 2)",
+      "title": "Module 07: Surah 4: An-Nisa (Part 1 of 2)",
       "filename": "Module_07_Surah_004_An_Nisa_Part1.md",
-      "est_pages": 66,
+      "est_pages": 46,
       "surahs": [
         4
       ],
@@ -77,79 +77,89 @@
     },
     {
       "id": 8,
-      "title": "Surah 5: Al-Maidah (Part 1 of 2)",
-      "filename": "Module_08_Surah_005_Al_Maidah_Part1.md",
-      "est_pages": 52,
+      "title": "Module 08: Surah 4: An-Nisa (Part 2 of 2)",
+      "filename": "Module_08_Surah_004_An_Nisa_Part2.md",
+      "est_pages": 24,
       "surahs": [
-        5
+        4
       ],
-      "part": 1
+      "part": 2
     },
     {
       "id": 9,
-      "title": "Surah 6: Al-Anam (Part 1 of 2)",
-      "filename": "Module_09_Surah_006_Al_Anam_Part1.md",
-      "est_pages": 52,
+      "title": "Module 09: Surah 5: Al-Maidah",
+      "filename": "Module_09_Surah_005_Al_Maidah.md",
+      "est_pages": 54,
       "surahs": [
-        6
+        5
       ],
-      "part": 1
+      "part": null
     },
     {
       "id": 10,
-      "title": "Surah 7: Al-Araf (Part 1 of 2)",
-      "filename": "Module_10_Surah_007_Al_Araf_Part1.md",
-      "est_pages": 55,
+      "title": "Module 10: Surah 6: Al-Anam",
+      "filename": "Module_10_Surah_006_Al_Anam.md",
+      "est_pages": 54,
       "surahs": [
-        7
+        6
       ],
-      "part": 1
+      "part": null
     },
     {
       "id": 11,
-      "title": "Surah 8: Al-Anfal",
-      "filename": "Module_11_Surah_008_Al_Anfal.md",
-      "est_pages": 27,
+      "title": "Module 11: Surah 7: Al-Araf",
+      "filename": "Module_11_Surah_007_Al_Araf.md",
+      "est_pages": 58,
+      "surahs": [
+        7
+      ],
+      "part": null
+    },
+    {
+      "id": 12,
+      "title": "Module 12: Surah 8: Al-Anfal",
+      "filename": "Module_12_Surah_008_Al_Anfal.md",
+      "est_pages": 29,
       "surahs": [
         8
       ],
       "part": null
     },
     {
-      "id": 12,
-      "title": "Surah 9: At-Tawbah",
-      "filename": "Module_12_Surah_009_At_Tawbah.md",
-      "est_pages": 44,
+      "id": 13,
+      "title": "Module 13: Surah 9: At-Tawbah",
+      "filename": "Module_13_Surah_009_At_Tawbah.md",
+      "est_pages": 46,
       "surahs": [
         9
       ],
       "part": null
     },
     {
-      "id": 13,
-      "title": "Surah 10: Yunus",
-      "filename": "Module_13_Surah_010_Yunus.md",
-      "est_pages": 28,
+      "id": 14,
+      "title": "Module 14: Surah 10: Yunus",
+      "filename": "Module_14_Surah_010_Yunus.md",
+      "est_pages": 30,
       "surahs": [
         10
       ],
       "part": null
     },
     {
-      "id": 14,
-      "title": "Surah 11: Hud",
-      "filename": "Module_14_Surah_011_Hud.md",
-      "est_pages": 31,
+      "id": 15,
+      "title": "Module 15: Surah 11: Hud",
+      "filename": "Module_15_Surah_011_Hud.md",
+      "est_pages": 32,
       "surahs": [
         11
       ],
       "part": null
     },
     {
-      "id": 15,
-      "title": "Surah 12: Yusuf, Surah 13: Ar-Rad",
-      "filename": "Module_15_Surahs_012_013.md",
-      "est_pages": 42,
+      "id": 16,
+      "title": "Module 16: Surah 12: Yusuf, Surah 13: Ar-Rad",
+      "filename": "Module_16_Surahs_012_013.md",
+      "est_pages": 43,
       "surahs": [
         12,
         13
@@ -157,9 +167,9 @@
       "part": null
     },
     {
-      "id": 16,
-      "title": "Surah 14: Ibrahim, Surah 15: Al-Hijr",
-      "filename": "Module_16_Surahs_014_015.md",
+      "id": 17,
+      "title": "Module 17: Surah 14: Ibrahim, Surah 15: Al-Hijr",
+      "filename": "Module_17_Surahs_014_015.md",
       "est_pages": 30,
       "surahs": [
         14,
@@ -168,9 +178,9 @@
       "part": null
     },
     {
-      "id": 17,
-      "title": "Surah 16: An-Nahl",
-      "filename": "Module_17_Surah_016_An_Nahl.md",
+      "id": 18,
+      "title": "Module 18: Surah 16: An-Nahl",
+      "filename": "Module_18_Surah_016_An_Nahl.md",
       "est_pages": 32,
       "surahs": [
         16
@@ -178,29 +188,29 @@
       "part": null
     },
     {
-      "id": 18,
-      "title": "Surah 17: Al-Isra",
-      "filename": "Module_18_Surah_017_Al_Isra.md",
-      "est_pages": 44,
+      "id": 19,
+      "title": "Module 19: Surah 17: Al-Isra",
+      "filename": "Module_19_Surah_017_Al_Isra.md",
+      "est_pages": 46,
       "surahs": [
         17
       ],
       "part": null
     },
     {
-      "id": 19,
-      "title": "Surah 18: Al-Kahf",
-      "filename": "Module_19_Surah_018_Al_Kahf.md",
-      "est_pages": 26,
+      "id": 20,
+      "title": "Module 20: Surah 18: Al-Kahf",
+      "filename": "Module_20_Surah_018_Al_Kahf.md",
+      "est_pages": 28,
       "surahs": [
         18
       ],
       "part": null
     },
     {
-      "id": 20,
-      "title": "Surah 19: Maryam",
-      "filename": "Module_20_Surah_019_Maryam.md",
+      "id": 21,
+      "title": "Module 21: Surah 19: Maryam",
+      "filename": "Module_21_Surah_019_Maryam.md",
       "est_pages": 25,
       "surahs": [
         19
@@ -208,32 +218,41 @@
       "part": null
     },
     {
-      "id": 21,
-      "title": "Surah 20: Ta-Ha, Surah 21: Al-Anbiya",
-      "filename": "Module_21_Surahs_020_021.md",
-      "est_pages": 49,
-      "surahs": [
-        20,
-        21
-      ],
-      "part": null
-    },
-    {
       "id": 22,
-      "title": "Surah 22: Al-Hajj, Surah 23: Al-Muminun",
-      "filename": "Module_22_Surahs_022_023.md",
-      "est_pages": 47,
+      "title": "Module 22: Surah 20: Ta-Ha",
+      "filename": "Module_22_Surah_020_Ta_Ha.md",
+      "est_pages": 28,
       "surahs": [
-        22,
-        23
+        20
       ],
       "part": null
     },
     {
       "id": 23,
-      "title": "Surah 24: An-Nur, Surah 25: Al-Furqan",
-      "filename": "Module_23_Surahs_024_025.md",
-      "est_pages": 45,
+      "title": "Module 23: Surah 21: Al-Anbiya, Surah 22: Al-Hajj",
+      "filename": "Module_23_Surahs_021_022.md",
+      "est_pages": 48,
+      "surahs": [
+        21,
+        22
+      ],
+      "part": null
+    },
+    {
+      "id": 24,
+      "title": "Module 24: Surah 23: Al-Muminun",
+      "filename": "Module_24_Surah_023_Al_Muminun.md",
+      "est_pages": 23,
+      "surahs": [
+        23
+      ],
+      "part": null
+    },
+    {
+      "id": 25,
+      "title": "Module 25: Surah 24: An-Nur, Surah 25: Al-Furqan",
+      "filename": "Module_25_Surahs_024_025.md",
+      "est_pages": 47,
       "surahs": [
         24,
         25
@@ -241,9 +260,9 @@
       "part": null
     },
     {
-      "id": 24,
-      "title": "Surah 26: Ash-Shuara, Surah 27: An-Naml",
-      "filename": "Module_24_Surahs_026_027.md",
+      "id": 26,
+      "title": "Module 26: Surah 26: Ash-Shuara, Surah 27: An-Naml",
+      "filename": "Module_26_Surahs_026_027.md",
       "est_pages": 40,
       "surahs": [
         26,
@@ -252,10 +271,10 @@
       "part": null
     },
     {
-      "id": 25,
-      "title": "Surah 28: Al-Qasas, Surah 29: Al-Ankabut, Surah 30: Ar-Rum",
-      "filename": "Module_25_Surahs_028_029_030.md",
-      "est_pages": 44,
+      "id": 27,
+      "title": "Module 27: Surah 28: Al-Qasas, Surah 29: Al-Ankabut, Surah 30: Ar-Rum",
+      "filename": "Module_27_Surahs_028_029_030.md",
+      "est_pages": 47,
       "surahs": [
         28,
         29,
@@ -264,10 +283,10 @@
       "part": null
     },
     {
-      "id": 26,
-      "title": "Surah 31: Luqman, Surah 32: As-Sajdah, Surah 33: Al-Ahzab",
-      "filename": "Module_26_Surahs_031_032_033.md",
-      "est_pages": 41,
+      "id": 28,
+      "title": "Module 28: Surah 31: Luqman, Surah 32: As-Sajdah, Surah 33: Al-Ahzab",
+      "filename": "Module_28_Surahs_031_032_033.md",
+      "est_pages": 43,
       "surahs": [
         31,
         32,
@@ -276,10 +295,10 @@
       "part": null
     },
     {
-      "id": 27,
-      "title": "Surah 34: Saba, Surah 35: Fatir, Surah 36: Ya-Sin",
-      "filename": "Module_27_Surahs_034_035_036.md",
-      "est_pages": 39,
+      "id": 29,
+      "title": "Module 29: Surah 34: Saba, Surah 35: Fatir, Surah 36: Ya-Sin",
+      "filename": "Module_29_Surahs_034_035_036.md",
+      "est_pages": 42,
       "surahs": [
         34,
         35,
@@ -288,114 +307,114 @@
       "part": null
     },
     {
-      "id": 28,
-      "title": "Surah 37: As-Saffat, Surah 38: Sad, Surah 39: Az-Zumar",
-      "filename": "Module_28_Surahs_037_038_039.md",
-      "est_pages": 50,
+      "id": 30,
+      "title": "Module 30: Surah 37: As-Saffat, Surah 38: Sad",
+      "filename": "Module_30_Surahs_037_038.md",
+      "est_pages": 32,
       "surahs": [
         37,
-        38,
-        39
-      ],
-      "part": null
-    },
-    {
-      "id": 29,
-      "title": "Surah 40: Ghafir, Surah 41: Fussilat, Surah 42: Ash-Shura",
-      "filename": "Module_29_Surahs_040_041_042.md",
-      "est_pages": 41,
-      "surahs": [
-        40,
-        41,
-        42
-      ],
-      "part": null
-    },
-    {
-      "id": 30,
-      "title": "Surah 43: Az-Zukhruf, Surah 44: Ad-Dukhan, Surah 45: Al-Jathiyah, Surah 46: Al-Ahqaf, Surah 47: Muhammad",
-      "filename": "Module_30_Surahs_043_044_045_046_047.md",
-      "est_pages": 41,
-      "surahs": [
-        43,
-        44,
-        45,
-        46,
-        47
+        38
       ],
       "part": null
     },
     {
       "id": 31,
-      "title": "Surah 48: Al-Fath, Surah 49: Al-Hujurat, Surah 50: Qaf, Surah 51: Adh-Dhariyat, Surah 52: At-Tur, Surah 53: An-Najm",
-      "filename": "Module_31_Surahs_048_049_050_051_052_053.md",
-      "est_pages": 49,
+      "title": "Module 31: Surah 39: Az-Zumar, Surah 40: Ghafir, Surah 41: Fussilat",
+      "filename": "Module_31_Surahs_039_040_041.md",
+      "est_pages": 50,
       "surahs": [
-        48,
-        49,
-        50,
-        51,
-        52,
-        53
+        39,
+        40,
+        41
       ],
       "part": null
     },
     {
       "id": 32,
-      "title": "Surah 54: Al-Qamar, Surah 55: Ar-Rahman, Surah 56: Al-Waqiah, Surah 57: Al-Hadid, Surah 58: Al-Mujadila",
-      "filename": "Module_32_Surahs_054_055_056_057_058.md",
-      "est_pages": 46,
+      "title": "Module 32: Surah 42: Ash-Shura, Surah 43: Az-Zukhruf, Surah 44: Ad-Dukhan, Surah 45: Al-Jathiyah, Surah 46: Al-Ahqaf",
+      "filename": "Module_32_Surahs_042_043_044_045_046.md",
+      "est_pages": 48,
       "surahs": [
-        54,
-        55,
-        56,
-        57,
-        58
+        42,
+        43,
+        44,
+        45,
+        46
       ],
       "part": null
     },
     {
       "id": 33,
-      "title": "Surah 59: Al-Hashr, Surah 60: Al-Mumtahina, Surah 61: As-Saff, Surah 62: Al-Jumuah, Surah 63: Al-Munafiqun, Surah 64: At-Taghabun, Surah 65: At-Talaq, Surah 66: At-Tahrim, Surah 67: Al-Mulk",
-      "filename": "Module_33_Surahs_059_060_061_062_063_064_065_066_067.md",
+      "title": "Module 33: Surah 47: Muhammad, Surah 48: Al-Fath, Surah 49: Al-Hujurat, Surah 50: Qaf, Surah 51: Adh-Dhariyat, Surah 52: At-Tur",
+      "filename": "Module_33_Surahs_047_048_049_050_051_052.md",
+      "est_pages": 50,
+      "surahs": [
+        47,
+        48,
+        49,
+        50,
+        51,
+        52
+      ],
+      "part": null
+    },
+    {
+      "id": 34,
+      "title": "Module 34: Surah 53: An-Najm, Surah 54: Al-Qamar, Surah 55: Ar-Rahman, Surah 56: Al-Waqiah, Surah 57: Al-Hadid",
+      "filename": "Module_34_Surahs_053_054_055_056_057.md",
+      "est_pages": 48,
+      "surahs": [
+        53,
+        54,
+        55,
+        56,
+        57
+      ],
+      "part": null
+    },
+    {
+      "id": 35,
+      "title": "Module 35: Surah 58: Al-Mujadila, Surah 59: Al-Hashr, Surah 60: Al-Mumtahina, Surah 61: As-Saff, Surah 62: Al-Jumuah, Surah 63: Al-Munafiqun, Surah 64: At-Taghabun, Surah 65: At-Talaq",
+      "filename": "Module_35_Surahs_058_059_060_061_062_063_064_065.md",
       "est_pages": 49,
       "surahs": [
+        58,
         59,
         60,
         61,
         62,
         63,
         64,
-        65,
-        66,
-        67
+        65
       ],
       "part": null
     },
     {
-      "id": 34,
-      "title": "Surah 68: Al-Qalam, Surah 69: Al-Haqqah, Surah 70: Al-Maarij, Surah 71: Nuh, Surah 72: Al-Jinn, Surah 73: Al-Muzzammil, Surah 74: Al-Muddaththir, Surah 75: Al-Qiyamah, Surah 76: Al-Insan",
-      "filename": "Module_34_Surahs_068_069_070_071_072_073_074_075_076.md",
-      "est_pages": 50,
+      "id": 36,
+      "title": "Module 36: Surah 66: At-Tahrim, Surah 67: Al-Mulk, Surah 68: Al-Qalam, Surah 69: Al-Haqqah, Surah 70: Al-Maarij, Surah 71: Nuh, Surah 72: Al-Jinn, Surah 73: Al-Muzzammil",
+      "filename": "Module_36_Surahs_066_067_068_069_070_071_072_073.md",
+      "est_pages": 46,
       "surahs": [
+        66,
+        67,
         68,
         69,
         70,
         71,
         72,
-        73,
-        74,
-        75,
-        76
+        73
       ],
       "part": null
     },
     {
-      "id": 35,
-      "title": "Surah 77: Al-Mursalat, Surah 78: An-Naba, Surah 79: An-Naziat, Surah 80: Abasa, Surah 81: At-Takwir, Surah 82: Al-Infitar, Surah 83: Al-Mutaffifin, Surah 84: Al-Inshiqaq, Surah 85: Al-Buruj, Surah 86: At-Tariq, Surah 87: Al-Ala, Surah 88: Al-Ghashiyah, Surah 89: Al-Fajr, Surah 90: Al-Balad, Surah 91: Ash-Shams",
-      "filename": "Module_35_Surahs_077_078_079_080_081_082_083_084_085_086_087_088_089_090_091.md",
-      "est_pages": 49,
+      "id": 37,
+      "title": "Module 37: Surah 74: Al-Muddaththir, Surah 75: Al-Qiyamah, Surah 76: Al-Insan, Surah 77: Al-Mursalat, Surah 78: An-Naba, Surah 79: An-Naziat, Surah 80: Abasa, Surah 81: At-Takwir, Surah 82: Al-Infitar, Surah 83: Al-Mutaffifin, Surah 84: Al-Inshiqaq, Surah 85: Al-Buruj",
+      "filename": "Module_37_Surahs_074_075_076_077_078_079_080_081_082_083_084_085.md",
+      "est_pages": 50,
       "surahs": [
+        74,
+        75,
+        76,
         77,
         78,
         79,
@@ -404,22 +423,22 @@
         82,
         83,
         84,
-        85,
+        85
+      ],
+      "part": null
+    },
+    {
+      "id": 38,
+      "title": "Module 38: Surah 86: At-Tariq, Surah 87: Al-Ala, Surah 88: Al-Ghashiyah, Surah 89: Al-Fajr, Surah 90: Al-Balad, Surah 91: Ash-Shams, Surah 92: Al-Layl, Surah 93: Ad-Duha, Surah 94: Ash-Sharh, Surah 95: At-Tin, Surah 96: Al-Alaq, Surah 97: Al-Qadr, Surah 98: Al-Bayyinah, Surah 99: Az-Zalzalah, Surah 100: Al-Adiyat, Surah 101: Al-Qariah, Surah 102: At-Takathur, Surah 103: Al-Asr, Surah 104: Al-Humazah, Surah 105: Al-Fil, Surah 106: Quraysh, Surah 107: Al-Maun, Surah 108: Al-Kawthar, Surah 109: Al-Kafirun, Surah 110: An-Nasr, Surah 111: Al-Masad, Surah 112: Al-Ikhlas, Surah 113: Al-Falaq, Surah 114: An-Nas",
+      "filename": "Module_38_Surahs_086_087_088_089_090_091_092_093_094_095_096_097_098_099_100_101_102_103_104_105_106_107_108_109_110_111_112_113_114.md",
+      "est_pages": 48,
+      "surahs": [
         86,
         87,
         88,
         89,
         90,
-        91
-      ],
-      "part": null
-    },
-    {
-      "id": 36,
-      "title": "Surah 92: Al-Layl, Surah 93: Ad-Duha, Surah 94: Ash-Sharh, Surah 95: At-Tin, Surah 96: Al-Alaq, Surah 97: Al-Qadr, Surah 98: Al-Bayyinah, Surah 99: Az-Zalzalah, Surah 100: Al-Adiyat, Surah 101: Al-Qariah, Surah 102: At-Takathur, Surah 103: Al-Asr, Surah 104: Al-Humazah, Surah 105: Al-Fil, Surah 106: Quraysh, Surah 107: Al-Maun, Surah 108: Al-Kawthar, Surah 109: Al-Kafirun, Surah 110: An-Nasr, Surah 111: Al-Masad, Surah 112: Al-Ikhlas, Surah 113: Al-Falaq, Surah 114: An-Nas",
-      "filename": "Module_36_Surahs_092_093_094_095_096_097_098_099_100_101_102_103_104_105_106_107_108_109_110_111_112_113_114.md",
-      "est_pages": 30,
-      "surahs": [
+        91,
         92,
         93,
         94,
@@ -459,14 +478,14 @@
         6,
         7,
         8,
-        9
+        9,
+        10
       ],
       "pdf": "volumes/Volume_01.pdf"
     },
     {
       "id": 2,
       "module_ids": [
-        10,
         11,
         12,
         13,
@@ -474,37 +493,39 @@
         15,
         16,
         17,
-        18
+        18,
+        19,
+        20
       ],
       "pdf": "volumes/Volume_02.pdf"
     },
     {
       "id": 3,
       "module_ids": [
-        19,
-        20,
         21,
         22,
         23,
         24,
         25,
         26,
-        27
+        27,
+        28,
+        29
       ],
       "pdf": "volumes/Volume_03.pdf"
     },
     {
       "id": 4,
       "module_ids": [
-        28,
-        29,
         30,
         31,
         32,
         33,
         34,
         35,
-        36
+        36,
+        37,
+        38
       ],
       "pdf": "volumes/Volume_04.pdf"
     }

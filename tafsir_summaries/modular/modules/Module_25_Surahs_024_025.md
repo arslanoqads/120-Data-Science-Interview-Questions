@@ -1,11 +1,18 @@
-# Surah 24: An-Nur
+# Module 25
+
+**Surah 24: An-Nur, Surah 25: Al-Furqan**
 
 **Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
-**PDF pages:** 3887–4004
+
+**Locator:** `modular/modules/Module_25_Surahs_024_025.md` · anchor `module-25`
 
 ---
 
-## Opening
+## Surah 24: An-Nur
+
+*PDF pages 3887–4004*
+
+### Opening
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3887–3937]*
 
@@ -17,11 +24,11 @@ punishment is one hundred stripes, as stated in this Ayah. In addition to this h
 
 20 Tafslr Ibn Kathir understood. The Messenger of Allah ^ carried out the punishment of stoning and after him we did so, but I am afraid that as time goes by, some will say that they did not find the Ayah of stoning in the Book of Allah, and they will go astray because they abandoned one of the obligations revealed by Allah. Stoning is something that is prescribed in the Book of Allah for the person - man or woman - who commits illegal sex, if he or she is married, if decisive evidence is produced, or if pregnancy results from that, or if they confess to it. 111 It was also recorded in the Two Sahlhs in the lengthy Hadxth of Malik, from which we have quoted briefly only the portion that is relevant to the current discussion. Do not feel pity for Them when carrying out the Prescribed Punishment 4? m j w &> 4Let not pity withhold you in their case, in a punishment prescribed by Allah,} Meaning, with a ruling prescribed by Allah. So the meaning of the Ayah is: Do not feel too sorry for them where the laws of Allah are established. This does not mean that we should not naturally feel pity when carrying out the punishment. What is prohibited here is the kind of pity that may make the judge ignore the punishment altogether. This is what is not permitted for the judge. Mujahid said, 4^ Hi j ii'jw ij} iLet not pity withhold you in their case, in a punishment prescribed by Allah,} If the matter is taken to the ruling authority, the punishment has to be carried out and cannot be stopped. This was also narrated from Said bin Jubayr and Ata bin Abi Rabah.'3 * It was recorded in a Hadith: 111 Muuiatta 2 :823 ' Path Al-B&ri 13:148, Muslim 3:1317. 131 Al-Baghawi 3:321.
 
-Compromise with the matter of prescribed punishment mutually sorting it out among yourselves, for once a matter where the prescribed punishment is required reaches me, 1 am obliged to carry it owf. Allah s saying: iifyou believe in Allah and the Last Day.} means, then do that, carry out the punishments on those who commit illegal sex, and strike them hard without causing any wound, so that he and others like him will be deterred by the terror of that. In Al-Musnad, it was recorded that one of the Companions said, O Messenger of Allah, when I slaughter a sheep I feel pity for it. He said, l iuiJ ilJj'
+"Compromise with the matter of prescribed punishment mutually sorting it out among yourselves, for once a matter where the prescribed punishment is required reaches me, 1 am obliged to carry it owf. Allah s saying: iifyou believe in Allah and the Last Day.} means, then do that, carry out the punishments on those who commit illegal sex, and strike them hard without causing any wound, so that he and others like him will be deterred by the terror of that. In Al-Musnad, it was recorded that one of the Companions said, O Messenger of Allah, when I slaughter a sheep I feel pity for it. He said, l iuiJ ilJj' "Yom be rewardedfor that.^ Cany out the Prescribed Punishment in Public iAnd let a party of the believers witness their punishment.} This is more humiliating for the people who are guilty of illegal sex, if they are flogged in front of the people. This is because it is more effective as a deterrent and it conveys the sense of scandal and rebuke. Al-Hasan Al-Basri said, iAnd let a party of the believers witness their punishment.} Publicly. S& ^ } oi v 3 j i# -V) gc v Jf} i3 . The Zani marries not but a Zaniyah or a Mushrikah ; and the Zaniyah, none marries her except a Zani or a Mushrik. Abu D&wud 4 :540. Ahmad 5 :34. The wording varies slightly.
 
 Such a thing isforbidden to the believers . Here Allah tells us that the Zani (male who is guilty of illegal sex) does not have intercourse except with a Zaniyah (female who is guilty of illegal sex) or a Mushrikah (female idolator), meaning that no one would go along with him in this action except a sinful woman who is also guilty of Zina, or a Mushrikah who does not think it is unlawful. By the same token, V iand the Zaniyah, none marries her except a Zani> a sinful man who is guilty of fornication, ior a Mushrik} (a man) who does not think it is unlawful. Je Jij'i ff-j} {Such a thing isforbidden to the believers.} meaning, indulging in this, or marrying prostitutes, or marrying chaste women to immoral men. Qatadah and Muqatil bin Hayyan said: Allah forbade the believers from marrying prostitutes. 11 * This Ayah is like the Ayah (about marrying slave-girls): {they should be chaste, not committing illegal sex, nor taking boyfriends.} [4:25) And His saying: Vj ji. {desiring chastity not committing illegal sexual intercourse, nor taking them as girlfriends [5:5]. Imam
 
-A Zani who has been flogged should not marry anyone except someone who is like him. A similar report was recorded by Abu Dawud in his Sunan. * A A A Jjjuji-Lljl pjl . And those who accuse chaste women, and produce notfour witnesses, flog them with eighty stripes, and reject their testimonyforever. They indeed are the rebellious.} 45. Except those wfw repent thereafter and do righteous deeds; (for such) verily, Allah is Oft-Forgiving, Most Merciful.} The Prescribed Punishment for slandering Chaste Women This Ayah states the prescribed punishment for making false accusations against chaste women, i.e., those who are free, adult and chaste. If the person who is falsely accused is a mam, the same punishment of flogging also applies. If the accuser produces evidence that what he is saying is true, then the punishment does not apply. Allah said: // i t I
+So he asked the Messenger of Allah jgjg for permission, or he mentioned the matter to him. The Messenger of Allah recited to him: M v XM 35 'C& vj& v 477te Zani marries not but a Zdniyah or a Mushrikah; and the Zaniyah, none marries her except Zani or a Mushrik. Such a thing is forbidden to the believers.} [24:3] Ibn Abi Hatim recorded that Abu Hurayrah ag said, "A Zani who has been flogged should not marry anyone except someone who is like him. A similar report was recorded by Abu Dawud in his Sunan. * A A A Jjjuji-Lljl pjl . And those who accuse chaste women, and produce notfour witnesses, flog them with eighty stripes, and reject their testimonyforever. They indeed are the rebellious.} 45. Except those wfw repent thereafter and do righteous deeds; (for such) verily, Allah is Oft-Forgiving, Most Merciful.} The Prescribed Punishment for slandering Chaste Women This Ayah states the prescribed punishment for making false accusations against chaste women, i.e., those who are free, adult and chaste. If the person who is falsely accused is a mam, the same punishment of flogging also applies. If the accuser produces evidence that what he is saying is true, then the punishment does not apply. Allah said: // i t I "" ' ty //*/ <" * Jp'-'A ^ i" 4and produce not four witnesses, flog them with eighty stripes, 1 Abu Dawud 2 :543.
 
 and reject their testimony forever. They indeed are the rebellions. If the accuser cannot prove that what he is saying is true, then three rulings apply to him: (firstly) that he should be flogged with eighty stripes, (secondly) that his testimony should be rejected forever, and (thirdly) that he should be labelled as a rebellious who is not of good character, whether in the sight of Allah or of mankind. Explaining the Repentance of the One Who makes a False Accusation Then Allah says: 1 JJ**- Jli'i Jou [jt jj&\ "jl^ iExcept those who repent thereafter and do righteous deeds; (for such) verily, Allah is Oft-Forgiving, Most Merciful. This exception refers to the second and third rulings mentioned above. The flogging has been carried out regardless of whether he repents or persists, and after that there is no further punishment, as is agreed among the scholars. If he repents, then his testimony may be accepted, and he is no longer to be regarded as a rebellious. This was the view of Said bin Al-Musayyib - the leader of the Tabi'in^ - and also a group among the Salaf.,2) Ash-Shalsi and Ad-Dahhak said, His testimony cannot be accepted even if he does repent, unless he himself admits that he said something false, in which case his testimony may be accepted. ' And Allah knows best. /ij ijj pf'fr' V) Jz fj fff) OyjM offfr J ijjlj ^ iff o) ff jA iSlj 3 A.C/iL\j f se 4 if& f !$y if /C^y if Ji 46. And for those wlw accuse their wives, but have no (1 * Referring to the generation after the Companions. [21 At-Jabari 19:105. At-Tabari 19:103, 108.
 
@@ -31,7 +38,7 @@ Allah says: i&X 4But she shall avert the punishment} meaning, the prescribed pun
 
 The Reasonwhy theAyah ofLVanwas revealed Imam
 
-//she gives birth to a red-haired child (with skinny thighs) and thin legs, then he is Hilal's child, but if she gives birth to a curly-haired child with thick legs and plump buttocks, then tins is what she is accused of.
+An-Nilr (6 - 10) (Part-18 to be flogged for it. So he testified for the fifth time that the curse of Allah would be upon him if he was telling a lie. Then it was said to his wife, Testify four times by Allah that he is telling a lie. And when his wife reached the fifth testimony, she was told, Have Taqwa of Allah, for the punishment of this world is easier than the punishment of the Hereafter, and this will mean that the punishment will be inevitable for you. She hesitated for a while, and was about to admit her guilt, then she said: By Allah, I will not expose my people to shame, and she swore the fifth oath that the wrath of Allah would be upon her ifhe was telling the truth. Then the Messenger of Allah separated them, and decreed that her child should not be attributed to any father, nor should the child be accused, and whoever accused her or her child, they would be subject to punishment. He also decreed that [Hilal] was not obliged to house her or feed her, because they had not been separated by divorce, nor had he died and left her a widow. He said, caj olij ^jjj ytj iJLif "//she gives birth to a red-haired child (with skinny thighs) and thin legs, then he is Hilal's child, but if she gives birth to a curly-haired child with thick legs and plump buttocks, then tins is what she is accused of." She subsequently gave birth to a child who was curly-haired with thick legs and plump buttocks, and the Messenger of Allah said, "5tiwj jis3 iujS/i oWere it not far the oath that she swore, I would deal with her.t Ikrimah said, The child grew up to become the governor of Egypt, and he was given his mother s name and was not attributed to any father.
 
 nWait until she gives birth, and if she gives birth to a child whose eyes look as if they are ringed with kohl and who has plump buttocks and thick legs, then he is the child ofShank bin Sahmd She gave birth to a child who matched this description, and the Prophet 5g said, jj iiid ^ u "Were it notfor the Book ofAllah, I would deal with her. This version was recorded only by
 
@@ -93,9 +100,9 @@ An-Niir (27 - 29) (Part-18) means, if you are turned away at the door, before or
 
 iThere is no sin on you that you enter houses uninhabited, (when) you have any interest in them .$ This was also narrated from Ikrimah111 and Al-Hasan Al- Basri. C $ .fif*^ >' *" 430. Tell the believing men to lower their gaze, and protect their private parts . That is purerfor them . Verily, Allah is All- Aware ofwhat they do.$> TheCommand to lower the Gaze This is a command from Allah to His believing servants, to lower their gaze from looking at things that have been prohibited for them. They should look only at what is permissible for them to look at, and lower their gaze from forbidden things. If it so happens that a person s gaze unintentionally falls upon something forbidden, he should quickly look away.
 
-\ \yB&} Ij. jjf j i v- -APj li[j k ' Guarantee me six things and I will guarantee you Paradise: when any one of you speaks, he should not lie; if he is entrusted with something, he should not betray that trust; ifhe makes a promise, he slwuld not break it; loiuer your gaze; restrain your hands; and protect your private parts .
+" Jc- ik-ij JUL ^Wlj Sjj .LiSj i j-ijl slower your gaze, return the greeting of Saldm, enjoin what is good andforbid what is evilV 1 Abu Al-Qasim Al-Baghawi recorded that Abu Umamah said, I heard the Messenger of Allah jg say: lip "fi Zjli- lij I^JUSI" \ \yB&} Ij. jjf j i v- -APj li[j k ' Guarantee me six things and I will guarantee you Paradise: when any one of you speaks, he should not lie; if he is entrusted with something, he should not betray that trust; ifhe makes a promise, he slwuld not break it; loiuer your gaze; restrain your hands; and protect your private parts .") Since looking provokes the heart to evil, Allah commanded (the believers) to protect their private parts just as he commanded them to protect their gaze which can lead to that. So he said: iTell the believing men to lower their gaze, and protect their private parts.} Sometimes protecting the private parts may involve keeping them from committing Zina, as Allah says: iAnd those wlto guard their chastity} [23:5]. Sometimes it may involve not looking at certain things, as in the Hadith in Musnad Ahmad and the Sunan: ajJL-yj t* j\ Si Ay "Guard your private parts except from your wife and those whom your right hands possess . Al-Bari 5 : 134 [2) Tarikh Al-Khatlb 7:392, At-Tabarani in Al-Mu jam Al-Kabir 8:314, Ibn Hibban in Al-Majruhm 2 :204. Ahmad 5:3, Abu Dawud 4:304, At-Tirmidhi 8:53, An-Nasal in Al- Kubra 5 :313, Ibn Majah 1 :618
 
-J k jSiVl tijj ijLiJl uU-Ul & j j k y-&'j JJji The son ofAdam has his share of Zina decreed for him, and Ite will commit that which has been decreed. The Zina of the eyes is looking; the Zina of the tongue is speaking; the Zina of the ears is listening; the Zina of the hands is striking; and the Zina of the feet is walking. The soul wishes and desires, and the private parts confirm or deny that .
+iiU'i iThat is purer for them .} means, it is purer for their hearts and better for their commitment to religion, as it was said: Whoever protects his gaze, Allah will illuminate his understanding, or his heart. ill iVerily, Allah is All-Aware of ivhat they do.} This is like the Ayah : 4 Cj yz} iAllah knows the fraud of the eyes and all that the breasts conceal.} [40 :19] In the Sahih it is recorded that Abu Hurayrah, may Allah be pleased with him, said that the Messenger of Allah said: ujj ijBtji jyzit i Jus byJ ty\ k $ Jj. _J" J k jSiVl tijj ijLiJl uU-Ul & j j k y-&'j JJji The son ofAdam has his share of Zina decreed for him, and Ite will commit that which has been decreed. The Zina of the eyes is looking; the Zina of the tongue is speaking; the Zina of the ears is listening; the Zina of the hands is striking; and the Zina of the feet is walking. The soul wishes and desires, and the private parts confirm or deny that ." It was recorded by
 
 * isg c pi ^ v; 5^" & ! i djjHri'$ LI!Ljr ji' Ijjyj lrgi> 431. And tell the believing women to lower their gaze, and protect their private parts and not to show off their adornment except that which is apparent, and to draw their veils all over their Juyiib and not to reveal their adornment except to their husbands, or their fathers, or their husband s fathers, or their sons, or their husband's sons, or their brothers or their brother's sons, or their sister's sons, or their women, or their right hand possessions, or the Tdbi'Tn among men who do not have desire, or children who are not aware of the nakedness of women. And let them not stamp their feet so as to reveal what they hide of their adornment. And all of you beg Allah to forgive you all, 0 believers, that you may be successful.> The Rulings ofHijab This is a command from Allah to the believing women, and jealousy on His part over the wives of His believing servants. It is also to distinguish the believing women from the women of the Jdhiliyyah and the deeds of the pagan women. The reason for the revelation of this Ayah was mentioned by Muqatil bin Hayyan, when he said: We heard - and Allah knows best - that Jabir bin Abdullah Al-Ansari narrated that Asma bint Murshidah was in a house of hers in Bani Harithah, and the women started coming in to her without lower garments so that the anklets on their feet could be seen, along with their chests and forelocks. Asma said: *How ugly this is! Then Allah revealed: 4f jA It 4And tell the believing women to lower their gaze ...y^ And Allah says: 4And tell the believing women to lower their gaze} I 1 * This is a Mursal narration recorded by Ibn Abi Hatim , no. 14389.
 
@@ -105,7 +112,7 @@ iand to draw their veils all over their Juyub} means that they should wear the o
 
 ---
 
-## what is known among the people as a veil.
+### what is known among the people as a veil.
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3937–3948]*
 
@@ -131,7 +138,7 @@ bin Zayd bin Aslam and his father and Muqatil bin Hayyan. It was also the opinio
 
 ---
 
-## The Prohibition of forcing One’s Slave-Girls to commit
+### The Prohibition of forcing One’s Slave-Girls to commit
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3948–3957]*
 
@@ -155,7 +162,7 @@ Ati-Niir (36 - 38) (Part-18) Too e Igjf jlljj pAJj_> "* / / y, *V** .'// ^ t-jyS
 
 ---
 
-## The Virtues of the Masjids, the Correct Etiquette, and
+### The Virtues of the Masjids, the Correct Etiquette, and
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3957–3976]*
 
@@ -163,7 +170,7 @@ the Virtues ofThosewho take care ofthem Having likened the heart of the believer
 
 remembered, Allah will buildfor him a house in Paradise .s' 1
 
-W The following is recorded in the Sunan: .yuii ffii jJjljkj Ji *Those who walk to the Masjids when it is dark, give them the glad tidings ofcomplete Light on the Day ofResurrection When entering the Masjid, it is recommended to enter with one s right foot, and to say the supplication recorded in Sahih Al-Bukhari, where it is narrated from Abdullah bin Amr that the Messenger of Allah jg used to say, when he entered the Masjid: ollij . ) l ja ipjjijl AilkLUj .b
+O Allah, send blessings on him, O Allah, have mercy on him.
 
 A iM x 1/om shouldface (Him only) in each and every Masjid, and invoke Him only making your religion sincere to Him [7:29]. 4* iAnd the Masjids arefor Allah> [72:18]. iin them His Name is remembered.} Ibn Abbas said, This means that His Book is recited therein. 1 4iJU>'5ib jiilL /! 4Therein glorify Him in the mornings and in the evenings.} li & H ^ v 4Men whom neither trade nor business diverts from the remembrance ofAllah} This is like the Ayat 0M>* Si* <$ } 40 you who believe! Let not your properties or your children divert youfrom the remembrance ofAllSh.} [63:9J l)jij jJi! JS IjilS fiiijl Aj! sjM. 'iSiy 'H !>*'* Cti! 40 i/oh who believe! When the call is proclaimed for the Salah on Friday, hasten earnestly to the remembrance of Allah and leave offbusiness [62:9] Allah says that this world and its adornments, attractions and marketplaces should not distract them from remembering their Lord Who created them and sustains them, those who know that what is with Him is better for them than what they themselves possess, because what they have is transient but that which is with Allah is eternal. Allah says: "#! Jb& Vj '(M, [11 At-Tabari 19:191.
 
@@ -191,7 +198,7 @@ An-Nur (46 - 52) (Part-18) judge between them, to! a party of them refuses and t
 
 ---
 
-## what is meant by the phrase
+### what is meant by the phrase
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3976–3993]*
 
@@ -211,11 +218,11 @@ no Tafslr Ibn Kathir be pleased with him, used to say; The bonds of Islam are La
 
 and Sebta which adjoins the Atlantic Ocean. Towards the east, the conquests extended as far as China. Kisra was killed, his kingdom was utterly destroyed and the cities of Iraq, Khurasan and Al-Ahwaz were conquered. The
 
-Al-Bara bin Azib said, This Ayah was revealed when we were in a state of extreme fear. 121 This Ayah is like the Ayah: r> ' .>< . v Jr* H } iAttd remember when you werefew and were reckoned weak in the land} Until His statement: iso that you might be gratefulj* [8:26]. 4^u 1 1Ck=^} ias He granted succession to those before them,} This is like the Ayah where Allah tells us that Musa said to his people: ^ J j$2j Cr*} i It may be that your Lord will destroy your enetny and make you successors on the earth ...
+116 Tafslr Ibn Kathir to Al-Madinah. When they came to Al-Madinah, then Allah instructed them to fight. In Al-Madinah they were afraid and they carried their weapons morning and evening. This is how they remained for as long as Allah willed... Then Allah revealed this Ayah. He caused His Prophet to prevail over the Arabian Peninsula, and then they felt safe and put down their weapons. Then Allah took His Prophet jg and they remained safe throughout the time of Abu Bakr, Umar and Uthman, until what happened happened, and fear again prevailed over them, so they instituted a police force and guards. They changed, so their situation changed. One of the Salaf said, The Khilafah of Abu Bakr and Umar was true and adhered to the Book of Allah. Then he recited this Ayah." Al-Bara bin Azib said, This Ayah was revealed when we were in a state of extreme fear. 121 This Ayah is like the Ayah: r> ' .>< . v Jr* H } iAttd remember when you werefew and were reckoned weak in the land} Until His statement: iso that you might be gratefulj* [8:26]. 4^u 1 1Ck=^} ias He granted succession to those before them,} This is like the Ayah where Allah tells us that Musa said to his people: ^ J j$2j Cr*} i It may be that your Lord will destroy your enetny and make you successors on the earth ..."} [7:129] And Allah says: / ." 4d;Si\
 
 Do you know Al-Hirah? He said, I do not know it, but I have heard of it. The Messenger ofAllah jg said: jtj* cr. j'
 
-until the command of Allah comes to pass and they are like that ,
+punish them This was also recorded in the Two Sahihs. jU lijijti iX _=> iBut whoever disbelieved after this, they are the rebellious means, whoever then stops obeying Me after that, has stopped obeying the command of his Lord, and that is a great sin. The Companions - may Allah be pleased with them - were the most committed of people after the Prophet jg to the commands of Allah and the most obedient to Allah. Their victories were in accordance with their level of commitment. They caused the Word of Allah to prevail in the east and the west, and Allah supported them so much that they governed all the people and all the lands. When the people subsequently fell short in their commitment to some of the commandments, their strength and victory fell short accordingly, but it is confirmed through more than one route in the Two Sahihs that the Messenger of Allah^ said: Wfje iThere will remain a group of my Ummah adhering to the truth, and those whoforsake them or oppose them will not harm them until the Day ofResurrection . b|3) According to another report: jU} jit J>-" until the command of Allah comes to pass and they are like that ,"'4 ' According to another report: "... until they fight the DajjSlM51 5:242. Fath Al-B&ri 10:412, Muslim 1 :58. 1 :137. '4| Muslim 3:1523. 437.
 
 120 Tafstr Ibti Kathtr According to another report: " ^S. J "J J^.1 "... until Isa bin Maryam comes down and they are prevailing .s All of these reports are Sahih, and there is no contradiction between them. V && \J4j $( ijCj \jj;} Jjjj %\ j&fc UyVf 4 156. And perform the Salah, and give the Zakah and obey the Messenger that you may receive mercy.} 157. Consider not that the disbelievers can escape in the land. Their abode shall be the Fire - and worst indeed is that destination.} The Command to pray, give the Zakah and obey the Messengersi; the inabilityofthe Disbelieversto escape, and the ultimate Destiny Allah commands His believing servants to establish prayer, which means worshipping Allah Alone with no partner or associate; to pay the Zakah, which is an act of kindness towards His poor and weak creatures; and by doing so to obey the Messenger of Allah jg, i.e., to do as he commands them and to avoid what he forbids them-, so that Allah will have mercy on them for that. No doubt, whoever does that, Allah will have mercy on him, as Allah says in another Ayah: iAlIdh will have His mercy on them} [9:71] iU^'i} iConsider not} means, do not think, O Muhammad', that: ^U$} ithe disbelievers} meaning, those who opposed and denied you, Fath Al-Bari 13:306.
 
@@ -231,7 +238,7 @@ iin such a way as not to show their adornment. SaTd bin Jubayr said, They should
 
 ---
 
-## What is referred to here is the fact that they used to feel too
+### What is referred to here is the fact that they used to feel too
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 3993–4001]*
 
@@ -253,17 +260,17 @@ An-Nur (63) (Part-18) Muhammad $g and sneak out of the Masjid. It was not proper
 
 ---
 
-## The Prohibition of going against the Messenger’s
+### The Prohibition of going against the Messenger’s
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4001–4003]*
 
-Whoever does a deed that is not in accordance with this matter ofours will have it rejected .
+Commandment iAnd let those beware who oppose the Messenger's commandment^ This means going against the commandment of the Prophet jg, which is his way, methodology and Sunnah. All words and deeds will be measured against his words and deeds; those that are in accordance with his words and deeds will be accepted, and whatever does not match up will be rejected, no matter who the person is who said and did them. It was recorded in the Two Sahihs and elsewhere that the Messenger of Allah jg said: A* lA y** Jt* j "Whoever does a deed that is not in accordance with this matter ofours will have it rejected ." 2 meaning, let those beware who go against the Shan'ah of the Messenger sg, in secret and in the open, jLi' >' > tv trM> o'r ilest some Fitnah should befall them}, i.e., lest some disbelief or hypocrisy or innovation enter their hearts. Ad-DurrAl-Manthur6 :23 1 Al-Bari4 :416 , Muslim 3 :1343
 
 iAnd put your trust until His saying; in the All-Mighty, the Most Merciful,} 4Verily, He, only He, is the All-Hearer, the AU-Knoiver [26:217-220]. IjjJi 'll Vj yl.Ji Oi *it 4 ,>* Vj 4 Vj u ^_j )ji -> *ri 4;|:oJw# 4 ^ 'J3% 4Neither you do any deed nor recite any portion of the Qur'an, nor you do any deed but We are Witness thereofwhen you are doing it. And nothing is hidden from your Lord; (even) the weight of a speck of dust on the earth or in the heaven . Not
 
 ---
 
-## what is less than that or what is greater than that but is in a
+### what is less than that or what is greater than that but is in a
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4003–4004]*
 
@@ -271,15 +278,11 @@ Clear Record .} [10:61] 4o3" ^ -A} 41s then He Who takes charge of every person 
 
 ---
 
+## Surah 25: Al-Furqan
 
-# Surah 25: Al-Furqan
+*PDF pages 4005–4077*
 
-**Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
-**PDF pages:** 4005–4077
-
----
-
-## The Tafsirof SuratAl-Furqan
+### The Tafsirof SuratAl-Furqan
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4005–4021]*
 
@@ -317,7 +320,7 @@ Al-Furqan (15 - 19) (Part-18) would surely have known it. You know what is in my
 
 ---
 
-## the Day of Resurrection, Allah says:
+### the Day of Resurrection, Allah says:
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4021–4043]*
 
@@ -363,7 +366,7 @@ the Day of Judgement. 0^ A iSf' l i 0* bLiJ jI = it} l|j3XA> 14& eSJi 4' vi 4j.c
 
 ---
 
-## How the Disbelieversmocked the Messengeri
+### How the Disbelieversmocked the Messengeri
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4043–4067]*
 
@@ -385,7 +388,7 @@ Al-Furqdn (51 - 54) (Part-19) 453. And it is He Who has let free the two seas, t
 
 184 Tafslr Ibn Kathlr -A Prophet would be sent to his own people, but I have been sent to all ofmankind."(11 Allah says: 4*a Ug&K %) obey not the disbelievers, but strive hard against them with it> meaning, with the Qur an. This was the view of Ibn Abbas.! 4 i^=> ^ iwith the utmost endeavour.) This is like the Ayah, 'fe=*JJ 40 Prophet! Strive hard against the disbelievers and the hypocrites,) (9:73) 4.And it is He Who has let free the two seas, this is palatable and sweet, and that is salty and bitter;) means. He has created the two kinds of water, sweet and salty. The sweet water is like that in rivers, springs and wells, which is fresh, sweet, palatable water. This was the view of Ibn Jurayj and of Ibn Jarir, and this is the meaning without a doubt, for nowhere in creation is there a sea which is fresh and sweet. Allah has told us about reality so that His servants may realize His blessings to them and give thanks to Him. The sweet water is that which flows amidst people. Allah has portioned it out among His creatures according to their needs; rivers and springs in every land, according to what they need for themselves and their lands. ip m Muslim 1 :370, FathAl-Bari 1 :634. At-Tabari 19:281.
 
-/ts water is pure and its dead are lawful .
+185Surah 25, Al-Furqan (51 - 54) (Part-19) 4and that is salty and bitter;} meaning that it is salty, bitter and not easy to swallow. This is like the seas that are known in the east and the west, the Atlantic Ocean and the Straits that lead to it, the Red Sea, the Arabian Sea, the Persian Gulf, the China Sea, the Indian Ocean, the Mediterranean Sea, the Black Sea and so on, all the seas that are stable and do not flow, but they swell and surge in the winter and when the winds are strong, and they have tides that ebb and flow. At the beginning ofeach month the tides ebb and flood, and when the month starts to wane they retreat until they go back to where they started. When the crescent of the following month appears, the tide begins to ebb again until the fourteenth of the month, then it decreases. Allah, may He be glorified, the One Whose power is absolute, has set these laws in motion, so all of these seas are stationary, and He has made their water salty lest the air turn putrid because of them and the whole earth turn rotten as a result, and lest the earth spoil because of the animals dying on it. Because its water is salty, its air is healthy and its dead are good (to eat), hence when the Messenger of Allah j|| was asked whether sea water can be used for Wudu , he said: "/ts water is pure and its dead are lawful ." This was recorded by Malik, Ash-Shafil and Ahmad, and by the scholars of Sunan with a good [Jayyid] chain of narration. iand He has set a barrier and a complete partition between them.} meaning, between the sweet water and the saltwater. 4a barrier} means a partition, which is dry land. *** Al-Muwattd 1:22, Musnad Ash-Shafi i 1:23, Ahmad 2:361, Abu Dawud 1 :64, TuhfatAl-Ahwadhi 1 :224, An-Nasat 1 :50, Ibn Majah
 
 187Siirah 25. Al-Furqan (55 - 60) (Part-19) ibJ,o iand has appointed for him kindred by blood, and kindred by marriage.} in the beginning, he is someone s child, then he gets married and becomes a son-in-law, then he himself has sons-in-law and other relatives through marriage. All of this comes from a despised liquid, Allah says: 4& &} 4And your Lord is Ever All-Powerful to do what He wills.} ip & 'io V t* j* jjamj} A-Zig pf===tLi-*i L js mj! , . **''>>' *?* " if <' Vs. 't' *ti </=*> -JsL ctri ^ S' aL- ^ Li Uj jjJb o^. jnP J^S *>/>*/ 455. And they worship besides Allah, that which can neither profit them nor harm them ; and the disbeliever is ever a helper against his Lord.} 456. And Vie have sent you only as a bearer ofgood news and a wamer.} 457. Say: "No reward do I ask of you for this, save that whosoever wills may take a path to his Lord."} 458. And put your trust in the Ever Living One Wfw dies not, and glorify His praises, and sufficient is He as the All-Knower of the sins ofHis servants,} 459. Wlw created the heavens and the earth and all that is between them in six Days. Then He rose over (Istawa) the Throne. The Most Gracious! Ask Him, as He is the All- Knower.} 460. And when it is said to them: "Prostrate yourselves to Ar- Rahmdn!" They say: "And what is Ar-Rahman? Shall we fall down in prostration to that which you command us?" And it increases in them only aversion.}
 
@@ -411,7 +414,7 @@ Al-Furcjdn (68 - 71) (Part-19) 468. And those who invoke not any other god along
 
 ---
 
-## The Attributes of the Servants of the Most Gracious
+### The Attributes of the Servants of the Most Gracious
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4067–4076]*
 
@@ -421,11 +424,11 @@ include avoiding Shirk, Murder and Zina Imam
 
 Al-Furcjdn (68 - 72 ) (Part-19) 4Except those who repent and believe, and do righteous deeds;) means, those who do these evil deeds will be punished in the manner described, 406 & 4Except those who repent), that is; those who repent in this world to Alliah from all of those deeds, for then Allah will accept their repentance. This is evidence that the repentance of the mur- derer is acceptable, and there is no contradiction between this and the Ayah in Surat An-Nisa 4And whoever kills a believer intentionally) (4:93), because even though this was revealed in Al-Madlnah, the meaning is general, and it could be interpreted to refer to one who does not repent, because this Ayah states that forgiveness is only for those who repent. Moreover Allah says: OJJ 4r4 J ^ " ' iVerily, Allah forgives not that partners should be set up with Him, but Heforgives except that to whom He wills) (4:48). And in the authentic Sunnah, it is reported from the Messenger of Allah Hg that the repentance of a murderer is acceptable, as was stated in the story of the person who killed one hundred men and then repented, and Allah accepted his repentance, and other Hadiths . [1 3 ^Zu&) 4for those, Allah will change their sins into good deeds, and Allah is Oft-Forgiving, Most Mercifiil.) Imam
 
-*r ^ J& JiJ j)i ilili klljj^ j{ U13! V suil: "/ know the last person who will be brought forth from Hell, and the last person who will enter Paradise. A man will be brought and it will be said, Take away his major sins and ask him about his minor sins."
+*r ^ J& JiJ j)i ilili klljj^ j{ U13! V suil: "He will say, Yes, and he will not be able to deny anything."
 
 tEven your betrayals and immoral actions ." The man went away saying La ilaha iUollah and AUahu Akbar Allah tells us how His mercy extends to all His creatrues, and that whoever among them repents to Him, He will accept his repentance for any sin, great or small. Allah says: 4And whosoever repents and does righteous good deeds; then indeed he has repented to Allah Mataba.} meaning, Allah will accept his repentance. This is like the Ayat YSZi ,"/ ^ Jit . ' 4ji\ v"J /C-JU jtiJaJ jl '*> 0*Jr iAnd whoever does evil or wrongs himself but afterwards seeks Allah's forgiveness, he will find Allah Oft-Forgiving, Most Merciful^ (4:110). z y 3 iKnow they not that Allah accepts repentance from His servants?...} (9:104). 4Say: "O My servants who have transgressed against themselves! Despair not of the mercy ofAllah."} (39:53) - for those who repent to Him. 'i) dz&j iv iv' 'ijj - $' V Cj C-i cL>$yi oji'j .i" > 472. And those who do not bear witness to falsehood, and if they pass by some evil play or evil talk, they pass by it with Ibn Abi Hatim and Ad-DurrAl-Manthur 6 :281 . This narration is not authentic. There is a similar, but shorter narration from Anas, recorded byAbu Yala, Al-Bazzar, and At-Tabarani.
 
-We said, Of course, O Messenger of Allah. The Messenger ofAllah said:
+204 Tafslr Ibn Kathtr dignity.. And those who, when they are reminded of the Ayat of their Lord, fall not deafand blind thereat.> 174. And those who say: Our Lord! Bestow on us from our wives and our offspring the comfort of our eyes, and make us leaders of those who have Taqwa More Attributes ofthe Servants ofthe Most Gracious These are further attributes of the servants of the Most Gracious. They do not bear witness to falsehood, including lies, immorality, disbelief, foul speech and false words. Amr bin Qays said, this refers to gatherings of sexual immorality. It was said that the Ayah, A& v> AAnd those who do not bear witness tofalsehood refers to giving false testimony, which means lying deliberately to someone else. It was recorded in the Two SahXhs that Abu Bakrah said, The Messenger of Allah^ said three times: Shall I not tell you of the greatest ofmajor sins?" We said, Of course, O Messenger of Allah. The Messenger ofAllah said: "Associating others in worship with Allah and disobeying one's parents . He was lying down, then he sat up and added: < t}jij Vi Bewarefalse speech, and bearing witness tofalsehoodj and he kept repeating it until we thought, would that he would stop. From the context it seems that what is meant by those who do not bear witness to falsehood is those who do not attend it or Fath Al-Bari 5 :309 , Muslim 1 :91 .
 
 are not present when it happens. Allah says: !vP !v<& iand if they pass by some evil play or evil talk, they pass by it with dignity.)> They do not attend where falsehood occurs, and if it so happens that they pass by it, they do not let it contaminate them in the slightest. Allah says: ip) ithey pass by it with dignity.) 'ij. (i) $And those who, when they are reminded of the Ayat of their Lord, fall not deafand blind thereat.) This is also a characteristic of the believers, fa a: sg fijs & X lit p) iThose who, when Allah is mentioned, feel a fear in their hearts and when His Ayat are recited unto them, they increase theirfaith; and they put their trust in their Lord.) (8:2) Unlike the disbelievers. When they hear the Words of Allah, they are not affected by them or moved to change their ways. They persist in their disbelief, wrongdoing, ignorance and misguidance, as Allah says: \pc ki 28jW 4As &^ t $L 4 'S 4And whenever there comes down a Surah, some of them say Which ofyou has had his faith increased by it?" As for those who believe, it has increased theirfaith, and they rejoice. But as for those in whose hearts is a disease, it will add doubt to their doubt) (9:124-125). [ .js $) 4fall not deaf and blind thereat.) means, unlike the disbelievers
 
@@ -437,7 +440,7 @@ Our Lord! Bestow on usfrom our wives and our offspring the comfort ofour eyes . 
 
 ---
 
-## Warning to the People ofMafeWah
+### Warning to the People ofMafeWah
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4076–4077]*
 

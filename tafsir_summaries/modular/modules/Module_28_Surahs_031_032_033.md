@@ -1,11 +1,18 @@
-# Surah 31: Luqman
+# Module 28
+
+**Surah 31: Luqman, Surah 32: As-Sajdah, Surah 33: Al-Ahzab**
 
 **Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
-**PDF pages:** 4435–4469
+
+**Locator:** `modular/modules/Module_28_Surahs_031_032_033.md` · anchor `module-28`
 
 ---
 
-## Opening
+## Surah 31: Luqman
+
+*PDF pages 4435–4469*
+
+### Opening
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4435]*
 
@@ -13,7 +20,7 @@ Opening The Tafsir ofSurahLuqman (Chapter - 31)
 
 ---
 
-## Which was revealed in Makkah
+### Which was revealed in Makkah
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4435–4449]*
 
@@ -47,7 +54,7 @@ Luqman (16 - 19) (Part-21) Even if this tiny thing were to be hidden inside a so
 
 ---
 
-## what is evil, will inevitably encounter harm and annoyance
+### what is evil, will inevitably encounter harm and annoyance
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4449–4469]*
 
@@ -85,19 +92,15 @@ Luqman (34) (Part-21 ) man came to him and said, O Messenger of Allah, what is I
 
 oBring him back to me." They went to bring him back, but they could not find him. He said: ' uThat was fibril who came to teach the people their religion .b 1 It was also recorded by
 
-//Allah wants to take a person's soul in a particular land, He will give him a reason to go there.^ In Al-Mu'jam Al-Kabir, Al-Hafiz Abu Al-Qasim At-Tabarani recorded that Usamah bin Zayd said, The Messenger of Allah said: Ifci Ji
+Luqman (34) (Part-21) be stricken by calamity tomorrow. 4CjyU Jfj o-i* ufjJi no person knows in what land he will die.} means, no person knows where his resting place will be, on the land or in the sea, on a plain or in the mountains. [1 * It says in the Hadith: J^>- JuP Jill a \ j\ lilt "//Allah wants to take a person's soul in a particular land, He will give him a reason to go there.^ In Al-Mu'jam Al-Kabir, Al-Hafiz Abu Al-Qasim At-Tabarani recorded that Usamah bin Zayd said, The Messenger of Allah said: Ifci Ji"- JIp *i~; ill lit ^Allah does not will that a person should die in a certain land but He gives him a reason to go there
 
 ---
 
+## Surah 32: As-Sajdah
 
-# Surah 32: As-Sajdah
+*PDF pages 4470–4494*
 
-**Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
-**PDF pages:** 4470–4494
-
----
-
-## Opening
+### Opening
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4470–4483]*
 
@@ -121,13 +124,13 @@ The State ofthe People ofFaith and Their Reward Allah states: (1\) iOnly those b
 
 616 TafsTr Ibn Kathir means, they do both obligatory and supererogatory acts of worship. Their leader in this world and the Hereafter is the Messenger of Allah jg. Imam
 
-Restrain this.* I said, O Messenger of Allah, will we be accountable for whatwe say? He said, iU :Ji* jt - 'rrtfrj^ jilJi j It ciui u ^
+As-Saidah (15 -17) (Part-21) and its pinnacle is Jihadfor the sake ofAllah. Then he said: iui^ h'J.\ " iShall I not tell you thefactor on which all of that depends?" I said, Of course, O Messenger of Allah. He took hold of his tongue and said, JJQp ,1iS "Restrain this.* I said, O Messenger of Allah, will we be accountable for whatwe say? He said, iU :Ji* jt - 'rrtfrj^ jilJi j It ciui u ^ " > s # .1 ./>*" y>~ "M"]/ your mother be bereft ofyou, O Mu'adh! Will the people be thrown into Hell - (or he said) on their faces - except because ofwhat their tongues say? It was also recorded by
 
 Then he recorded that Abu Hurayrah, may Allah be pleased with him, said that the Messenger of Allah said: ill Jli" Vj^ hl\ Nj "_~b JjIp says: "J have prepared for My right- eous servants what no eye has seen, no ear has heard, and it has never crossed the mind of man Abu Hurayrah said: Recite, ifyou wish: 4yd 'C* oifd 4No verson knows
 
 ---
 
-## what is kept hidden for them ofdelights ofeyes.
+### what is kept hidden for them ofdelights ofeyes.
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4483–4494]*
 
@@ -139,7 +142,7 @@ V u iJip ; yj i2c V t( V p: SJi jij; v; Tj oif ij .oi:^ oWhoever enters Paradise
 
 As-Sajdah (18 - 22) (Part-21 ) and houses and lofty apartments. /N\4^A 4 entertainment means, something to welcome and honor a guest. ill; <(/br ivfiat they used to do. And as for those who rebel,} means, those who disobeyed Allah, their dwelling place will be the Fire, and every time they want to escape from it, they will be thrown back in, as Allah says: iEvery time they seek to get away therefrom, from anguish, they will be driven back therein} (22:22). Al-Fudayl bin lyad said: By Allah, their hands will be tied, their feet will be chained, the flames will lift them up and the angels will strike them. ii .4.^ ^ iand it will be said to them : "Taste you the torment of the Fire which you used to deny."}" means, this will be said to them by way of rebuke and chastisement. ytiJi sj" vuji << 4And verily, We will make them taste of the near lighter torment prior to the greater torment,} Ibn Abbas said, The near torment means diseases and problems in this world, and the things that happen to its people as a test from Allah to His servants so that they will repent to Him. ' Something similar was also narrated from Ubayy bin KaTa, Abu Al-'Aliyah, Al-Hasan, Ibrahim An-Nakhal, Ad-Dahhak, Alqamah, Atiyah, Mujahid, Qatadah, Abd Al- Karim Al-Jazari and Khusayf. ' [11 At-Tabari 20:189.Tabari 20 : 189 , 190
 
-On the night of Isra', I saw Musa bin Imran, a tall, brown- skinned man with curly hair, looking like the men of Shanii'ah; and I saw 'Isa, a man ofmedium stature and ruddy white skin, and with lank hair. And I saw Malik the Keeper of Hell, and the Dajjal .
+As-Sajdah (23 - 25) (Part-21 ) narrated that Abu Al- Aliyah Ar-Riyahi said, The cousin of your Prophet, meaning Ibn Abbas, told me that the Messenger of Allah igs said: Jlij ljuo- {ji hL. J! IrrZ "JL?.jJI3 jllJl OjU- l&U "On the night of Isra', I saw Musa bin Imran, a tall, brown- skinned man with curly hair, looking like the men of Shanii'ah; and I saw 'Isa, a man ofmedium stature and ruddy white skin, and with lank hair. And I saw Malik the Keeper of Hell, and the Dajjal ." Among the signs which Allah showed him were: oi hs, 4 o^-3 <$So, be not you in doubt of meeting him .} i.e., he saw Musa and met with him on the Night of Isra . 4*&*o} iAnd We made it} means, *theBookwhichWe gave to him, 4a guide to the Children of Israel.} This is similar to what Allah says in Surat Al-Isra 4f'f/'^~=,j jJi ot x0, ts j 4And We gave Musa the Scripture and made it a guidance for the Children of Israel (saying) Take none other than Me as Trustee."} (17:2) lijji \y\ = Cj li^l 4And We made from among than, leaders, giving guidance under Our command, when they were patient and used to believe with certainty in OurAyat.} means, because they were patient in adhering to the commands of Allah and avoiding what He prohibited, and they m At-Jabari 20:194.
 
 believed in His Messengers and followed what they brought, there were among them leaders who guided others to the truth by the command of Allah, calling for goodness, enjoining what is right and forbidding what is wrong. Then when they changed [the Words of Allah], twisting and distorting them, they lost that position and their hearts became hard. They change the words from their places, so they do no righteous deeds and have no correct beliefs. Allah says: iAnd We madefrom among them (Children of Israel), leaders, giving guidance under Our command, when they were patient> Qatadah and Sufyan said: When they patiently shunned the temptations of this world. This was also the view of Al-Hasan bin Salih. Sufyan said, This is how these people were. A man cannot be an example to be followed unless he shuns the temptation of this world. Allah says: ? ft&m ^Ar\ iAnd indeed We gave the Children of Israel the Scripture, and the understanding of the Scripture and its laws, and the prophethood; and provided them with good things, and preferred them above the nations. And We gave them clear proofs in matters.> (45:16-17). And He says here: llj jyj ft iVerily, your Lord will judge between them on the Day of Resurrection, concerning that wherein they used to differ. meaning, with regard to beliefs and actions. 4 ft^r-- &Jr~l & Oi V, =& ft ft ft; ft * ji S0 (Sf ftf $3 iftk ftSZ~jUi i26. Is it not a guidance for them: how many generations We have destroyed before them in whose dwellings they do walk about? Verily, therein indeed are signs. Would they not then
 
@@ -153,15 +156,11 @@ As-Sajdah (28 - 30) (Part-21 ) over those who disbelieved (2 :89) ilfyou askfor 
 
 ---
 
+## Surah 33: Al-Ahzab
 
-# Surah 33: Al-Ahzab
+*PDF pages 4495–4646*
 
-**Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
-**PDF pages:** 4495–4646
-
----
-
-## Opening
+### Opening
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4495–4515]*
 
@@ -175,7 +174,7 @@ inor has He made your adopted sons your real sons.} This was revealed concerning
 
 iAllah has not madefor any man two hearts inside his body What does this mean? He said that the Messenger of Allah jg stood up one day to pray, and he trembled. The hypocrites who were praying with him said, *Do you not see that he has two hearts, one heart with you and another with them? Then Allah revealed the words: 4 ^ J '*>? iAllah has not made for any man two hearts inside his body.) *'' This was also narrated by At-Tirmidhi, who said, It is a Hasan Hadith . It was also narrated by Ibn Jarir and Ibn Abi Hatim from the Hadith of Zuhayr. 131 AnAdopted Childshouldbenamed afterHisRealFather If; Jii! fk iCall them (adopted sons) by their fathers, that is more just with Allah> This is a command which abrogates the state of affairs that existed at the beginning of Islam, when it was permitted to call adopted sons after the man who adopted them. Then Allah commanded that they should be given back the names of their real fathers, and states that this was more fair and just. Al- Bukhari (may Allah have mercy on him) narrated that Abdullah bin Umar said: Zayd bin Harithah, may Allah be pleased with him, the freed servant of the Messenger of Allah 5 . was always called Zayd bin Muhammad, until (the words of the) Qur an were revealed: & ifU iCall them (adopted sons) by (the names of) their fathers, that is more just with Allah. Ahmad 1 :267. Tuhfat Al-Ahwadhi 9 :58 ^ Ahmad, no. 2410 and At-Tabari 20:204. Most of the scholars of Hadith consider the chain ofnarrators for this text to be defective.Al-Bari 8:377.
 
-0 my sons, do not stone the Jamarah until the sun has risen .*' 11 This was during the Farewell Pilgrimage in 10 AH. iCall them by their fathers .> This is concerning Zayd bin Harithah, may Allah be pleased with him. He was killed in 8 AH at the battle of Mu tah. In Sahih Muslim it is reported that Anas bin Malik, may Allah be pleased with him, said: The Messenger of Allah said:
+Sarah 33 . Al-Ahzab (4 - 5) (Part-21 As for calling a person son as an expression of honor and endearment, this is not what is forbidden in this Ayah, as is indicated by the report recorded by Imam Ahmad and the Sunan compilers - apart from At-Tirmidhi - from Ibn Abbas, may Allah be pleased with him, who said: We young boys of Banu Abd Al-Muttalib came to the Messenger of Allah sg at the Jamarat, he slapped us on the thigh and said, "0 my sons, do not stone the Jamarah until the sun has risen .*' 11 This was during the Farewell Pilgrimage in 10 AH. iCall them by their fathers .> This is concerning Zayd bin Harithah, may Allah be pleased with him. He was killed in 8 AH at the battle of Mu tah. In Sahih Muslim it is reported that Anas bin Malik, may Allah be pleased with him, said: The Messenger of Allah said: "0 my son.* ' It was also reported by Abu Dawud and At- Tirmidhi.13 iBut ifyou know not their father's then they are your brothers in the religion and Mawalikum (yourfreed servants). Here Allah commands that adopted sons should be given back their fathers names, if they are known; if they are not known, then they should be called brothers in faith or freed servants, to compensate for not knowing what their real lineage is. When the Messenger of Allah^ left Makkah after performing his Umrat Al-Qada , 141 the daughter of Hamzah, may Allah 1:234, Abu Dawud 2:480, An-NasAl 5:271, Ibn MSjah * Muslim 3 :1693 131 Abu Dawud 5 :247 , TuhfatAl-Ahwadhi 8 :120 141 This was the Umrah performed by the Prophet gg in the year following Al-Hudaybiyah (6 H) when he had been prevented from performing Umrah as he had intended
 
 iyour brothers in faith and yourfreed servants. Then Allah says: i.h Li ^And there is no sin on you concerning that in which you made a mistake,} meaning, if you call one of them after someone who is not in fact his father, by mistake, after hying your best to find out his parentage, then Allah will not attach any sin to this mistake. This is like the Ayah in which Allah commands His servants to say: < iOur Lord! Punish us not if we forget or fall into error} (2:286). It was reported in Sahih
 
@@ -197,21 +196,23 @@ Al-Ahzab (9 - 10) (Part-21 When the Messenger of Allah jg heard that they had se
 
 i's&S 4-JSK u>/ien f/ie eyes grew wild and the hearts reached to the throats,} means, from intense fear and terror. & 'oM> iand you were harboring doubts about Allah.} Ibn Jarir said: Some of those who were with the Messenger of Allah jg, had doubts and thought that the outcome would be against the believers, and that Allah would allow that to happen. Muhammad bin Ishaq said concerning the Ayah & ojiSj 4,JSif 2$$^%} iwhen the eyes grew wild and the hearts reached to the throats, and you were harboring doubts about Allah.} The believers had all kinds of doubts, and hypocrisy emerged to such an extent that Mu'attib bin Qushayr, the brother of Banu Amr bin Awf said: Muhammad was promising us that we would win the treasure of Chosroes and Caesar, but one ofus cannot even go and relieve himself. Al-Hasan said concerning the Ayah iand you were harboring doubts about Allah.} There were different kinds of thoughts; the hypocrites thought that Muhammad jg and his Companions would be eliminated, while the believers were certain that what Allah and His Messenger jg promised was true, and that He would cause the religion to prevail even if the idolators hated it. ,2, Ibn Abi Hatim recorded that Abu Said, may Allah be pleased with him, said: On the day of Al-Khandaq, we said: O Messenger of Allah, is there anything we should say, for our hearts have reached our throats? He said: 111 Ibn Hisham 1:522. Al-Tabari 20:221.
 
-Yes, say: O Allah, cover our weak points and calm ourfears . Then [Allah] struck the faces of the enemy with the wind, and defeated them with the wind. This was also recorded by Imam Ahmad bin Hanbal from Abu Amir Al- Aqadi. [11 ill. There, the believers were tried and shaken with a mighty shaking.} ill. And when the hypocrites and those in whose hearts is a disease said: Allah and His Messenger promised us nothing but delusion!
+"Yes, say: O Allah, cover our weak points and calm ourfears . Then [Allah] struck the faces of the enemy with the wind, and defeated them with the wind. This was also recorded by Imam Ahmad bin Hanbal from Abu Amir Al- Aqadi. [11 ill. There, the believers were tried and shaken with a mighty shaking.} ill. And when the hypocrites and those in whose hearts is a disease said: Allah and His Messenger promised us nothing but delusion!"} il3. And when a party of them said: O people of Yathrib! There is no postition far you. Therefore go back!" And a band of them ask far permission of the Prophet saying : Truly, our homes lie open." And they lay not open. They but wished to fee.}
 
 ---
 
-## How the Believers were tested, and the Position ofthe
+### How the Believers were tested, and the Position ofthe
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4515–4544]*
 
 Hypocrites during the Battle ofAl-Khandaq Allah tells us what happened when the Confederates surrounded Al-Madinah and the Muslims were besieged and found themselves in straitened circumstances, with the Messenger of Allah in their midst. They were tried and tested, and were shaken with a mighty shaking. At this time hypocrisy emerged, and those in whose hearts was a disease spoke about what they really felt. / li " ! ti ..y Af , 'of&i& &} iAnd when the hypocrites and those in whose hearts is a disease said: "Allah and His Messenger promised us nothing but delusion!"} Their hypocrisy became apparent, while the one in whose heart was doubt became weak, and he expressed the ideas that were in his heart because of the weakness of his faith 3 :3
 
-/ was shown in a dream the place to which you will migrate, a land between two lava fields. At first I thought it was Hajar, but it turned out to be YathribJ111 According to another narration:
+O people ofYathrib meaning Al-Madlnah, as it was reported in the ahih: ty i
 
 Al-Ahzab (14 -17) (Part-21 ) by others. Ibn Ishaq mentioned that the one who said this was Aws bin Qayzi. 111 They were using as an excuse to go back to their houses the claim that they were lying open and had nothing to protect them from the enemy, so they were afraid for their homes. But Allah said: iAnd they lay not open meaning, it is not as they claim. iThey but wished to flee.$ means, they wanted to run away from the battlefield. ip iu\$ AiJj b> 1 jii UjLLi! oU-J j i' oig &Vf 5 JJ Oi i 'if 'i o* J" 5 ^' i >^*" -*j-i> uj Xi 6; if Wf. 5j b: jc Is? i < . ft# 3i -if os 4 lW 424. And if the enemy had enteredfrom all sides, and they had been exhorted to Al-Fitnah, they would surely have committed it and would have hesitated thereupon but little> 425. And indeed they had already made a covenant zoith Allah m At-Jabari 20 :225
 
 not to him their backs, and a covenant with Allah must be answeredfor.} 416. Say: "Flight will not avail you if you flee from death or killing and then you will enjoy no more than a little while!"} il7. Say: "Wfw is he who can protect you from Allah if He intends to harm you, or intends mercy on you?" And they will not find, besides Allah, for themselves any protector or any helper.} Allah tells us about those who said: ' > > 1 js o' ojyif i Truly, our homes lie open." And they lay not open. They but wished to flee.} If the enemy had entered upon them from every side of Al- Madlnah and from every direction, then demanded that they become disbelievers, they would have promptly done so. They would not have adhered to their faith or remained steadfast in it if they were faced with the slightest fear. This is how it was interpreted by Qatadah, Abdur-Rahman bin Zayd and Ibn Jarir. This is a condemnation of them in the clearest terms. Then Allah reminds them of the promise they had made to Him before this fear struck them, that they would not turn their backs or flee from the battlefield. i' '<&} iand a covenant with Allah must be answeredfor.} means, Allah will inevitably ask them about that covenant. Then Allah tells them that fleeing from battle will not delay their appointed demise or make their lives any longer; on the contrary, it may be the cause of their being taken sooner, and in a sudden manner. Allah says: iand then you will enjoy no more than a little while!} meaning, after you run away and flee from battle. m At-Tabari 20 :227
+
+AI-Ahzab (18 - 19) (Part-21 ) iSay: "Short is the enjoyment of this world. The Hereafter is betterfor him who have Taqwa"} (4:77). Then Allah says: 0A , fi V> ^ $ iyt* .)1 dj "i' ^ cfjjf 'i dr 4Say : Who is he who can protect you from Allah if He intends to harm you, or intends mercy on you?" And they will not find, besides Allah, for themselves any protector or any helper.} meaning, they have no one else except Allah to respond to their cries. VJ (j-tjT OjStj *Jj pi ; ill iu> oi^> Ijji 41S. Allah already knows those among you who keep back (men) from fighting (in Allah s cause), and those who say to their brethren, Come here towards us," while they come not to the battle except a little,} 419. Being miserly towards you. Then when fear comes, you will see them looking to you, their eyes revolving like one over whom hovers death; but when the fear departs, they will smite you with sharp tongues, miserly towards good. Such have not believed. Therefore, Allah makes their deeds fruitless and that is ever easyfor Allah.} Allah tells us that His knowledge encompasses those who sought to tell others not to go out and who said to their brethren, meaning their companions, friend and acquaintances, ih 4Come here towards us,} meaning, come to where we are in the shade and enjoying fruits. But in spite of that. 1 Ji VI 3$ '4\ %}
 
 J zZjj" j JJ ijJJi 4\>&' '-*-*-4 p vi^i is (^j iy^=* jL> 0 420. They think that the Confederates have not yet withdrawn; and if the Confederates should come , they would wish they were in the deserts among the bedouins, seeking news about you; and if they were to be among you, they would not fight but little.) This is another aspect of their abhorrent attribute of cowardice and fear: iifr. p&& Sfi^z) iThey think that the Confederates have not yet withdrawn; and that they are still close by and will return. o* j j} 1fkn vb-3-"^^ df}) 4and if the Confederates should come, they would wish they were in the deserts among the bedouins, seeking news about you;) means, if the Confederates should come back, they hope that they will not be present with you in Al-Madlnah, but that they will be in the desert, asking about news of you and what happened to you with your enemy. iU^ u p iand if they were to be among you, they would not fight but little.) means, If they are among you, they will not fight alongside you very much, because they are so cowardly and weak, and have so little faith, but Allah knows best about them. $% 'M pJ5 af tJS&A te.&\ U& 4P& % & Siij ui tjtf Cj CS 421 . Indeed in the Messenger ofAllah you have a good example to follow for him who hopes in Allah and the Last Day, and remembers Allah much.)
 
@@ -245,7 +246,7 @@ So her necklaces, earrings and neck, and all of that can be seen. This is Tabarr
 
 ---
 
-## reason for revelation or there was also another reason, which
+### reason for revelation or there was also another reason, which
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4544–4549]*
 
@@ -261,7 +262,7 @@ $\^S & l\} iVerily, Allah is Ever Most Courteous, Well-Acquainted with all thing
 
 ---
 
-## The Reason for Revelation
+### The Reason for Revelation
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4549–4556]*
 
@@ -269,19 +270,19 @@ iPpb l[} iVerily, the Muslims: men and women, the believers: men and women... in
 
 iO Maryam! "Uqnuti to your Lord and prostrate, and bow with Ar-RakVin (those who bow)."} (3:43) A boor iAnd stand before Allah QanitTn} (2:238). So, beyond Islam there is a higher level to be reached, which is /man, and Qunut stems from them both. ithe men and women who are truthful, This refers to their speech, for truthfulness is a praiseworthy attribute. Some of the Companions, may Allah be pleased with them, were never known to have lied even once, neither during JahUiyyah nor in Islam. Truthfulness is a sign of faith, just as lying is a sign of hypocrisy. Whoever is truthful will be saved: j^!p i&ii J! * dp *'J\ J! JjLUi jjd^" Jiji 'Jj jUi op (jj+j "_4sui j^pii Jij; ^ iiixf xp J>- jxUi ijxiji j "C& 4 xpC& C,&\ 4,iSS You have to be truthful, for truthfulness leads to righteousness and righteousness leads to Paradise. And beware of lying, for lying leads to immorality and immorality leads to Hell. A man will keep telling the truth and striving to do so until he will be recorded with Allah as a truthful. And a man will keep telling lies and will persist in doing so until he will be recorded with Allah as a /iar."|11 And there are many Hadtths on this topic. ithe men and the women who are patient,} This is the attribute of those who are steadfast, which is patience in the face of adversity and knowing that what is decreed will inevitably come to pass. So, they face it with patience and steadfastness. Patience is the most difficult when disaster first strikes, then after that it becomes easier, and til Muslim 4:2013.
 
-ithe men and the women who fast,} According to a Hadith narrated by Ibn M&jah: jjJl i\Sj ^j^al\j: "0 young men! Whoever among you can afford to get married, let him do so, for it is most effective in lowering the gaze and protecting the chastity. And whoever cannot get married, then let him fast, for it will be a protection for him. It is quite apt that next should be mentioned: cji!LeX\j} ithe men and the women who guard their chastity} i.e., they protect their private parts from forbidden and sinful things, except for that which is permitted. Allah says: & $& C i &\"
+ithe men and the women who fast,} According to a Hadith narrated by Ibn M&jah: jjJl i\Sj ^j^al\j "Fasting is the Zakah of the body . In other words, it purifies it and cleanses it of things that are bad in both physical and Shar i terms. Said bin Jubayr said: Whoever fasts Ramadan and three days of each month, is included in the Ayah, ithe men and the women who fast,} Fasting is also one of the greatest means of overcoming one's desires, as the Messenger of Allah jg said: jJjLU 5"OI !v- j a} 31 "0 young men! Whoever among you can afford to get married, let him do so, for it is most effective in lowering the gaze and protecting the chastity. And whoever cannot get married, then let him fast, for it will be a protection for him. It is quite apt that next should be mentioned: cji!LeX\j} ithe men and the women who guard their chastity} i.e., they protect their private parts from forbidden and sinful things, except for that which is permitted. Allah says: & $& C i &\ " ^ "4Si 0 iAnd those who guard their chastity. Except from their wives I 1 '
 
 "0 Allah, forgive those who shaved their hair. They said, And those who shortened. *And those who shortened ." This was recorded by Imam
 
 ---
 
-## The Reason for Revelation
+### The Reason for Revelation
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4556–4595]*
 
-Al-Ahzab (36) (Part-22 See whether there is anybody missing .: "So they looked for him, and found him beside seven of the enemy whom he had killed before he was himself killed. They said, O Messenger of Allah, here he is, beside seven of the enemy whom he had killed before he was himself killed. The Messenger of Allah |gg came and stood beside him and said, bij iJLft iOjJulj He killed seven before he was himself killed. He belongs to me and I belong to him. He said this two or three times, then the Messenger ofAllah carried him in his arms and held him while his grave was dug, then he placed him in his grave. It was not mentioned that he washed him, may Allah be pleased with him. Thabit, may Allah be pleased with him, said: There was no widow among the Ansar who was more sought after for marriage than that girl. Ishaq bin Abdullah bin Abi Talhah asked Thabit, Do you know how the Messenger of Allah prayed for that girl? He told him: He said, ijs LJp ^Li"
+Al-Ahzab (36) (Part-22 See whether there is anybody missing .: "They said, *We have lost so-and-so, and so-and-so. He jgg said, J OjJjiij Ja See if there is anybody missing ."
 
-Al-Ahzab (37) (Part-22) This is like the Ayah: ( jS iiSi of o6 4A: "d lei those who oppose the Messenger's commandment, beware, lest some Fitnah should befall them or a painful torment be inflicted on them^ (24:63). {/ / /*/ / * ,4 // .* // // < < fJtti j 4iil ifiTlf- lie, > 4ji^ |*jwi c5aU Jyu i 5;s a tez j 5 ift J5ar.4? & \5 fft 'jj tj {f?~ Jp ^ if >*? 437. And (remember) when you said to him on whom Allah has bestowed grace and you have done a favor :"
+Al-Ahzab (37) (Part-22) This is like the Ayah: ( jS iiSi of o6 4A"d lei those who oppose the Messenger's commandment, beware, lest some Fitnah should befall them or a painful torment be inflicted on them^ (24:63). {/ / /*/ / * ,4 // .* // // < < fJtti j 4iil ifiTlf- lie, > 4ji^ |*jwi c5aU Jyu i 5;s a tez j 5 ift J5ar.4? & \5 fft 'jj tj {f?~ Jp ^ if >*? 437. And (remember) when you said to him on whom Allah has bestowed grace and you have done a favor : "Keep your wife to yourself, and have Taqwa of Allah." But you did hide in yourself that which Alliih will make manifest, you did fear the people whereas Allah had a better right that you should fear Him. So, when Zayd had completed his aim with her, We gave her to you in marriage, so that there may be no difficulty to the believers in respect of the wives of their adopted sons when the latter have no desire to keep them. And AllSh's command must befulfilled> Allah s rebuke to His Messenger and the Story of Zayd and Zaynab Allah tells what His Prophet said to his freed slave Zayd bin Harithah, may Allah be pleased with him, who was the one on whom Allah had bestowed grace, i.e., through Islam and following the Messenger jj . ii-S iand you have done a favor [to himft means, by freeing him from slaveiy. And he was a great leader, held in high esteem and beloved by the Prophet 3g&. He was known as the beloved, and his son Usamah was known as the beloved son of the beloved. A ishah, may Allah be pleased with her, said: The Messenger of Allah 2)g never sent him on a campaign but he appointed him as its commander, and if he had lived after him he would have appointed him as his Khalifah. This was recorded by
 
 be pleased with him, said: When Zaynab s 'Iddah finished, may Allah be pleased with her, the Messenger of Allah ;g said to Zayd bin Harithah, Go to her and tell her about me (that I want to marry her). So, he went to her and found her kneading dough. He (Zayd) said, When I saw her I felt such respect for her that I could not even look at her and tell her what the Messenger of Allah Sg had said, so I turned my back to her and stepped aside, and said, O Zaynab! Rejoice, for the Messenger of Allah sg has sent me to propose marriage to you on his behalf. She said, 1 will not do anything until I pray to my Lord, may He be glorified. So she went to the place where she usually prayed. Then Qur an was revealed and the Messenger of Allah sg came and entered without permission. We were there when she entered upon the Messenger of Allah Sg, and for the wedding feast we offered bread and meat. Then the people left, and some men stayed behind conversing in the house after they had eaten. The Messenger of Allah jg went out and I followed him. He Sg started to go around all the apartments of his wives, greeting them, and they said, O Messenger of Allah, how did you find your (new) wife? I do not know whether I or someone else told him that those people had left, so he went and entered the house, and I went to enter after him, but he drew the curtain between himself and I. The ruling of Hijab was revealed and he exhorted the people as Allah had exhorted them: ip^ Ji% 1} iEnter not the Prophet's houses, unless permission is given to you}. This was also recorded by
 
@@ -313,7 +314,7 @@ Al-Ahzab (45 - 48) (Part-22) and believers in the truth and martyrs and righteou
 
 716 Tafstr Ibn Kathir iand as a lamp spreading light. means, the Message that you bring is as clear as the sun shining brightly, and no one can deny it except those who are stubborn. 'Z&i {And obey not the disbelievers and the hypocrites, and harm them not means, do not obey them and do not pay attention to what they say. iand harm them not.} means, overlook and ignore them, for their matter rests entirely with Allah and He is sufficient for them (to deal with them). Allah says: 4' && ftS iAnd put your trust in Allah, and sufficient is Allah as a Trustee.} 3 j5 " 33 \*H} Hr- Cr*t>*~* *-* o? 449. O you who believe! When you marry believing women, and then divorce them before you have sexual intercourse with them, no 'Iddah have you to count in respect of them. So, give them a present, and set them free in a handsome manner.} A Gilt and no [Iddah] for Women Who are divorced before Consummation ofthe Marriage This Ayah contains many rulings, including the use of the word Nikah for the marriage contract alone. There is no other Ayah in the Qur an that is clearer than this on this point. It also indicates that it is permissible to divorce a woman before consummating the marriage with her. ibelieving women} this refers to what is usually the case, although there is no difference between a believing (Muslim) woman and a woman of the People of the Book in this regard.
 
-It was also reported that Ibn Abbas, may Allah be pleased with him, said: Allah said, iWhen you marry believing women, and then divorce them.} Do you not see that divorce comes after marriage? A Hadlth to the same effect was recorded from Amr bin Shu'ayb from his father from his grandfather, who said: The Messenger of Allah^ said: Jul; h ft jyi,
+according to scholarly consensus. Ibn Abbas, may Allah be pleased with him, Said bin Al-Musayyib, Al-Hasan Al-Basri, Ali bin Al-Husayn Zayn-ul- Abidin and a group of the Salaf took this Ayah as evidence that divorce cannot occur unless it has been preceded by marriage, because Allah says. hP' lil< iWhen you marry believing women, and then divorce them The marriage contract here is followed by divorce, which indicates that the divorce cannot be valid if it comes first.111 Ibn Abi Hatim recorded that Ibn Abbas, may Allah be pleased with him, said, If someone were to say, every woman I mariy will ipso facto be divorced, this does not mean anything, because Allah says: ti! \cX ouH iO you who believe! When you marry believing women, and then divorce them....}." It was also reported that Ibn Abbas, may Allah be pleased with him, said: Allah said, iWhen you marry believing women, and then divorce them.} Do you not see that divorce comes after marriage? A Hadlth to the same effect was recorded from Amr bin Shu'ayb from his father from his grandfather, who said: The Messenger of Allah^ said: Jul; h ft jyi, "There is no divorce for the son ofAdam with regard to that which he does not possess This was recorded by
 
 hut bestow on them gift, the rich according to his means, and the poor according to his means, a gift of reasonable amount is a duty on the doers ofgood.> (2:236) In Sahih
 
@@ -341,7 +342,7 @@ Important Guidelines About the Authenticity of the Reports and Quotations in the
 
 ---
 
-## The Tafsir of Surat Al-Ahzab 17
+### The Tafsir of Surat Al-Ahzab 17
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4595]*
 
@@ -349,7 +350,7 @@ The Prophet sSg has the Choice of either accepting or rejecting Women who offer 
 
 ---
 
-## The Virtue of saying Salah upon the Prophet jg 35
+### The Virtue of saying Salah upon the Prophet jg 35
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4595–4596]*
 
@@ -361,7 +362,7 @@ The Disbelievers Denial of Life after Death, and the Refutation of Their View 65
 
 ---
 
-## How the Disbelievers asked when the Resurrection
+### How the Disbelievers asked when the Resurrection
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4596]*
 
@@ -369,7 +370,7 @@ would happen, and the Response to Them 94
 
 ---
 
-## How the Disbelievers have agreed in this World to deny
+### How the Disbelievers have agreed in this World to deny
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4596]*
 
@@ -377,7 +378,7 @@ the Truth, and how They will dispute with One Another on
 
 ---
 
-## the Day of Resurrection 96
+### the Day of Resurrection 96
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4596]*
 
@@ -385,7 +386,7 @@ How Those Who lived a Life of Luxury disbelieved in the Messengers and were misl
 
 ---
 
-## The Tafsir of S&rah Fatir 119
+### The Tafsir of S&rah Fatir 119
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4596–4597]*
 
@@ -395,7 +396,7 @@ Contents 7 Mankind is in need of Allah, and each Person will carry His own Burde
 
 ---
 
-## The Virtues of the Scholars 150
+### The Virtues of the Scholars 150
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4597]*
 
@@ -403,7 +404,7 @@ ThePunishment ofthe Disbelieverand Their condition in Hell 153 The Helplessness 
 
 ---
 
-## The Virtues of Surah Yd Sin 167
+### The Virtues of Surah Yd Sin 167
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4597]*
 
@@ -411,7 +412,7 @@ The Messenger jg was sent as a Warner 168 The State ofThose decreed to be among 
 
 ---
 
-## The Story of the Dwellers of the Town and Their Messengers,
+### The Story of the Dwellers of the Town and Their Messengers,
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4597–4598]*
 
@@ -421,7 +422,7 @@ Consolation for the Mercy to the Worlds 22 The Denial of Life after Death, and t
 
 ---
 
-## The Virtues of Surat As-Saffat 231
+### The Virtues of Surat As-Saffat 231
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4598]*
 
@@ -429,7 +430,7 @@ The One True God is Allah 233 The Adornment and Protection of Heaven is from All
 
 ---
 
-## The Day of Recompense 240
+### The Day of Recompense 240
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4598]*
 
@@ -437,7 +438,7 @@ The arguing of the Idolators on the Day of Resurrection 243 The Punishment of th
 
 ---
 
-## The Story of Ibrahim and His People 265
+### The Story of Ibrahim and His People 265
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4598]*
 
@@ -445,7 +446,7 @@ Ibrahim s Emigration, the Test of the Sacrifice of Ismail, and how Allah blessed
 
 ---
 
-## The Tafsir of Surah Sad 305
+### The Tafsir of Surah Sad 305
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4598–4599]*
 
@@ -455,7 +456,7 @@ Contents 9 Dawud, peace be upon him 317
 
 ---
 
-## The Story of the Two Litigants 32
+### The Story of the Two Litigants 32
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4599]*
 
@@ -463,7 +464,7 @@ The Sctfdah in Surah Sad 322 Advice to Rulers and Leaders 324 The Wisdom behind 
 
 ---
 
-## How Allah tested Sulayman thenmadeThings easy forHim 33
+### How Allah tested Sulayman thenmadeThings easy forHim 33
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4599]*
 
@@ -471,7 +472,7 @@ Ayyub 335 The Chosen and the Best among the Prophets 340 The Final Return of the
 
 ---
 
-## The Virtues of Surat Az-Zumar 355
+### The Virtues of Surat Az-Zumar 355
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4599]*
 
@@ -479,7 +480,7 @@ The Order for Tawhid and the Refutation of Shirk 356 Evidence of the Power and O
 
 ---
 
-## The Description of the Qur’an 378
+### The Description of the Qur’an 378
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4599–4600]*
 
@@ -489,7 +490,7 @@ The Final Destination of the Disbelievers 382 The Parable of Shirk 384 The fact 
 
 ---
 
-## How the Disbelievers will be driven to Hell 426
+### How the Disbelievers will be driven to Hell 426
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4600]*
 
@@ -497,7 +498,7 @@ The Believers will be taken to Paradise 429 The Width of the Gates of Paradise 4
 
 ---
 
-## The Virtues of the Surahs that begin with Ha Mim 439
+### The Virtues of the Surahs that begin with Ha Mim 439
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4600–4601]*
 
@@ -507,7 +508,7 @@ Contents 11 Indication that the Messenger and the Believers will prevail just as
 
 ---
 
-## The Prohibition of Shirk, the Order for Tawhid, and
+### The Prohibition of Shirk, the Order for Tawhid, and
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4601]*
 
@@ -517,7 +518,7 @@ How the disbelievers advised One Another not to listen to the Qur'an, and the Re
 
 ---
 
-## The Virtue of calling Others to Allah 541
+### The Virtue of calling Others to Allah 541
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4601]*
 
@@ -525,7 +526,7 @@ Wisdom in Da'wah etc. 543 From among the Signs ofAllah 545 The Punishment of the
 
 ---
 
-## The Tafsir of SuratAsh-Shura 56
+### The Tafsir of SuratAsh-Shura 56
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4601–4602]*
 
@@ -535,7 +536,7 @@ The Revelation and Allah s Might 562
 
 ---
 
-## The Reason why Provision is not Increased 590
+### The Reason why Provision is not Increased 590
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4602]*
 
@@ -543,7 +544,7 @@ Among the Signs of Allah is the Creation of the Heavens and the Earth 592 The Ca
 
 ---
 
-## The Tafsir of Surat Az-Zukhruf 615
+### The Tafsir of Surat Az-Zukhruf 615
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4602]*
 
@@ -553,7 +554,7 @@ How the People ofMakkah turned away from the Messenger and opposed Him, and His 
 
 ---
 
-## Encouragement to adhere to the Qur’an 639
+### Encouragement to adhere to the Qur’an 639
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4602–4603]*
 
@@ -563,7 +564,7 @@ Contents 23 The Contempt of the Quraysh for the son of Maryam, and His true Stat
 
 ---
 
-## The Tafsir of SuratAd-Dukhan 669
+### The Tafsir of SuratAd-Dukhan 669
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 4603]*
 
@@ -573,7 +574,7 @@ The Story of Musa and Fir'awn, and how the Children of Israel were saved 680 The
 
 ---
 
-## the Day of Resurrection 691
+### the Day of Resurrection 691
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4603–4606]*
 
@@ -585,7 +586,7 @@ but they report from companions of the Prophet j , while often they themselves a
 
 ---
 
-## The Tafsir of SuratAl-Ahzab
+### The Tafsir of SuratAl-Ahzab
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4606–4631]*
 
@@ -629,13 +630,13 @@ the servants of Allah will be entitled, and I hope that I will be the one. Whoev
 
 Takbvrs, then to conclude by saying Salam silently. * An- Nasal also recorded this from Abu Umamah, who said, This is from the Sunnah, and he mentioned it.|2) According to the cos rect view, such a statement reported from a Companion carries the ruling of Marfa It is recommended to conclude supplications with Salah upon the Prophet jg.
 
-JJu N *Jlj l jilt- V _* iJijU 1oljl U fclljl: "0 Allah, guide me along with those whom You have guided, grant me health along with those to whom You have granted health, be an ally to me along with those to whom You are an ally, and bless me far that which You have bestowed. Protect me from the evil You have decreed, far verily You decree and none can decree over You. Verily, he whom You show allegiance to is never abased and he whom You take as an enemy is never honored and mighty, O our Lord, blessed and Exalted are Yoh."
+JJu N *Jlj l jilt- V _* iJijU 1oljl U fclljl" "cJu5j l2j dijlJ tcJSU ""0 Allah, guide me along with those whom You have guided, grant me health along with those to whom You have granted health, be an ally to me along with those to whom You are an ally, and bless me far that which You have bestowed. Protect me from the evil You have decreed, far verily You decree and none can decree over You. Verily, he whom You show allegiance to is never abased and he whom You take as an enemy is never honored and mighty, O our Lord, blessed and Exalted are Yoh."" In his Sunan,
 
-C. Verily, those who annoy Allah and His Messenger, Allah has cursed them in this world and in the Hereafter, and has preparedfor them a humiliating torment.} 458. And those who annoy believing men and women undeservedly, they bear the crime ofslander and plain sin.} WhoeverannoysAllahandHisMessenger iscursed in this World and the Hereafter Here, Allah warns and threatens those who annoy Him by going against His commands and doing that which He has forbidden, and who persist in doing so, and those who annoy His Messenger ^ by accusing him of having faults or shortcomings - Allah forbid. Ikrimah said that the Ayah iVerily, those who annoy Allah and His Messenger,} was revealed concerning those who make pictures or images. In The Two Sahihs, it is reported that Abu Hurayrah said: The Messenger of Allah 3g said: *ltfj& Jil j&\ ub Ll, J,\ :fej> %l j>;
+The son of Adam annoys Me by inveighing against time, but I am time, for l cause the alternation of night and day.
 
 ---
 
-## The meaning of this Hadith is that in the Jahiliyyah they used
+### The meaning of this Hadith is that in the Jahiliyyah they used
 
 *[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 4631–4646]*
 
@@ -665,7 +666,7 @@ Al-Ahzdb (70 - 73) (Part-22)471. He will direct you to do righteous good deeds a
 
 HowMan bore theAmanah Al- Awfi reported that Ibn Abbas said, Al-Amdnah means obedience. This was offered to them before it was offered to Adam, and they could not bear it. Then Allah said to Adam: 1 have offered the Amanah to the heavens and the earth and the mountains, and they could not bear it. Will you take it on? He said, O Lord, what does it involve? He said, If you do good, you will be rewarded, and ifyou do evil, you will be punished. So Adam took the Amanah and bore it, and this is what is referred to in the Ayah 4x4^- Al iBut man bore it. Verily, he was unjust and ignorant.} ll] Ali bin Abi Talhah reported that Ibn Abbas said, Al-Amdnah means Al-Fara id (the obligatory duties). Allah offered them to the heavens and the earth and the mountains, (on the grounds that) if they fulfilled them, He would reward them; and if they failed, He would punish them. But they did not want to do that, and theywere afraid of it, not because their intentionwas sinful, but because oftheir respect for the religion ofAllah, in case they could not fulfill the obligations involved. Then Allah offered it to Adam, and he accepted it with all that it entailed. This is what is referred to in the Ayah: iBut man bore it. Verily, he was unjust and ignorant.} meaning, he underestimated the command of Allah. This was also the view of Mujahid, Said bin Jubayr, Ad- Dahhak, Al-Hasan Al-Basri and others that Al-Amdnah means Al-Fara id.. * Others said that it meant obedience. Al-A*mash narrated from Abu Ad-Duha from Masrttq that Ubayy bin Ka*b said: Part of Al-Amdnah means that woman was entrusted with her own chastity. ' Qatadah said: Al-Amdnah means religion, obligatoiy duties and prescribed punishments. Tabari 20:338. |2> At-Tabari 20:337.Tabari 20:337. At-Tabari 20:338. At-Tabari 20:339.
 
-A man may sleep and Al-Amanah will be taken from his heart, leaving nothing but a trace like a blister left by a coal if you were to roll it over your leg - you will see it protruding but there is nothing inside.
+Malik narrated that Zayd bin Aslam said: Al-Amanah means three things: prayer, fasting and performing Ghusl to cleanse oneself from sexual impurity. There is no contradiction between all of these views; they are all in agreement and all refer to responsibility and the acceptance of commands and prohibitions with their attendant conditions, which is that the one who fulfills this responsibility, will be rewarded; while the one who neglects it, will be punished. Man accepted this despite the fact that he is weak, ignorant and unjust - except for those whom Allah helps, and Allah is the One Whose help we seek. One of the reports which deal with Al-Amanah is the Hadlth recorded by Imam Ahmad from Hudhayfah, may Allah be pleased with him, who said: The Messenger of Allah jg told us two Hadiths, one of which I have seen and the other 1 am still waiting to see. He told us that Al-Amanah is deeply rooted in the heart of man, then the Qur an was revealed and they know it from the Qur an and from the Sunnah. Then he told us that Al-Amanah will be taken away. He said, J^Jl }\ J4 \k )\ tJi jf l uVl tp ji^JI "A man may sleep and Al-Amanah will be taken from his heart, leaving nothing but a trace like a blister left by a coal if you were to roll it over your leg - you will see it protruding but there is nothing inside. " Then he tooka pebble and rolled itover his leg, then he said: jtwj 3-? j Uj !3l1p 1j U dli i iThen the people will start buying and selling, and hardly anyone will be paying attention to Al-Amanah, until it will be said that among the tribe of so-and-so there is a trustworthy man, and it will said of a man, how strong he is, how nice and how wise,' and there is not even a mustard seed offaith in his heart. No doubt, there came upon me a time when I did not mind dealing (bargaining) with anyone of you, for if he was a Muslim, his Islam would compel him to pay me what is due to
 
 and who obey Him. 4And Allah is Ever Oft-Forgiving, Most Merciful. This is end of the Tafsir of Surat Al-Ahzab. Allah s is the praise and thanks.
 
