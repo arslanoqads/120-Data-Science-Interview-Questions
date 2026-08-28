@@ -112,5 +112,5 @@
   "111": {"name": "Al-Masad", "start": 6568, "end": 6573, "volumes": [10]},
   "112": {"name": "Al-Ikhlas", "start": 6574, "end": 6583, "volumes": [10]},
   "113": {"name": "Al-Falaq", "start": 6584, "end": 6592, "volumes": [10]},
-  "114": {"name": "An-Nas", "start": 6593, "end": 6610, "volumes": [10]}
+  "114": {"name": "An-Nas", "start": 6593, "end": 6603, "volumes": [10]}
 }
