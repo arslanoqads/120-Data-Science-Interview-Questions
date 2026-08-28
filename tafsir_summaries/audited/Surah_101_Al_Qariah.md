@@ -1,0 +1,22 @@
+# Surah 101: Al-Qariah
+
+**Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
+**PDF pages:** 6516–6520
+
+---
+
+## The Tafsirof SuratAl-Qdri‘ah
+
+*[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 6516–6520]*
+
+(Chapter - 101) Whichwas revealed in Makkah In the Name ofAllah, the Most Gracious, the Most Merciful. sjj& .^os^i w a**-* a-hjV *> uij 'i.yj/- *; * it j 4 \> ,Li \* :iA . *>< J _H . Al-Qari'ah .) 42. I'VJiflf is Al-Qari'ah?) 43. And w/wf "7i// make you know what Al-Qari'ah is?) 44. .7 is " Day whereon mankind will be like tnoths scattered abou.'.) 45. And the mountains will be like wool, carded.) 46. Then asfor him whose Balance will be heavy,) 47. He will live a pleasant life.) i8. But as for him whose Balance will be light,) 49. His mother will be Hawiyah.) 410. And what will make you know ivhat it is?) ill. A fire Hamiyah!) Al-Qari'ah is one of the names of the Day of Judgement, like Al-Haqqah, At-Tammah, As-Sakhkhah, Al-Ghashiyah and other names. Then Allah intensifies concern and fright for it by saying, 4\pifjU)l U Ujf 4And what will make you blow what Al-Qari'ah is?)
+
+Al-Odri'ah (1-11) (Part-30) Then He explains this by saying, K v ji J.&t tjz $} ilt is a Day whereon mankind will be like moths scattered about.} meaning, in their scattering, their dividing, their coming and their going, all due to being bewildered at what is happening to them, they will be like scattered moths. This is like Allah s statement, (*r ifthey were locusts spread abroad.} (54:7) Allah said, JI ji^Jf l&fr iAnd the mountains will be like wool, carded.} meaning, they will become like carded wool that has began to wear out (fade away) and be tom apart. Mujahid, Ikrimah, Said bin Jubayr, Al-Hasan, Qatadah, Ata Al-Khurasani, Ad- Dahhak and As-Suddi have all said, ilike wool ( Ihn).} Woolen. Then Allah informs about the results received by those who performed the deeds, and the honor and disgrace they will experience based upon their deeds. He says. ii iThen as for him whose Balance will be heavy.} meaning, his good deeds are more than his bad deeds. 4 t 4 J**} iHe will live a pleasant life.} meaning, in Paradise. Qj} iBut as for him whose Balance will be light.} meaning, his bad deeds are more than his good deeds. Then Allah says, m At-Jabari 24:574.
+
+572 Tafstr Ibn Kathir iHis mother will be Hawiyah.} It has been said that this means he will be falling and tumbling headfirst into the fire of Hell, and the expression Tiis mother has been used to refer to his brain (as it is the mother of his head). A statement similar to this has been reported from Ibn Abbas, Ikrimah, Abu Salih and Qatadah. 111 Qatadah said, He will fall into the Hellfire on his head. 121 Abu Salih made a similar statement when he said, They will fall into the Fire on their heads. 131 It has also been said that it means his mother that he will return to and end up with in the Hereafter will be Hawiyah, which is one of the names of the Hellfire. Ibn Jarir said, Al- Hawiyah is only called his mother because he will have no other abode except for it. 141 Ibn Zayd said, Al-Hawiyah is the Fire, and it will be his mother and his abode to which he will return, and where he will be settled. Then he recited the Ayah, iTheir abode will be the Fire.} (3:151) ,5! Ibn Abi Hatim said that it has been narrated from Qatadah that he said, It is the Fire, and it is their abode. 161 Thus, Allah says in explaining the meaning ofAl-Hawiyah, b %} iAnd what will make you know what it is?}. Allah s statement Ux fc} ^A fire Hamiyah!}Jabari 24:575, 576, and Al-Qurtubi 20:167. At-Tabari 24:576.Tabari 24:575. At-Tabari 24:575. ,S1 At-Tabari 24:576.Tabari 24:575.
+
+meaning, extreme heat. It is a heat that is accompanied by a strong flame and fire. It is narrated from Abu Hurayrah that the Prophet gg said, 'r"- / *ojMy f3' "77ie fire of the Children of Adam that you all kindle is one part of the seventy parts of the fire ofHell . They (the Companions) said, O Messenger of Allah! Isn t it sufficient? He replied, "l: , > X " / yr JJLai D n/f is more than it by sixty-nine timesJ This has been recorded by
+
+in the winter isfrom its cold, and the most severe heat that you experience in the summer isfrom its heatJ ll] In the Two Sahths it is recorded that he said, ;Jui oli b3y% 'M "When the heat becomes intense pray the prayer when it cools down, for indeed the intense heat isfrom the breath ofHell
+
+---
