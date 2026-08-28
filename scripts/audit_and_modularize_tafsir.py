@@ -560,6 +560,12 @@ def main():
     modules = renumber_modules(modules)
     print(f"  {len(modules)} modules (target ~{TARGET_MODULE_PAGES} pages each)")
 
+    # Remove stale module files from prior runs
+  valid_names = {module_filename(m) for m in modules}
+    for old in MODULES_DIR.glob("*.md"):
+        if old.name not in valid_names:
+            old.unlink()
+
     for module in modules:
         fn = module_filename(module)
         md_parts = []
