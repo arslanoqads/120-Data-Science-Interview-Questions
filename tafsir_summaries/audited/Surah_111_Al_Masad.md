@@ -1,0 +1,22 @@
+# Surah 111: Al-Masad
+
+**Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
+**PDF pages:** 6568–6573
+
+---
+
+## Opening
+
+*[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 6568–6573]*
+
+Opening i-jt-iz *j> >: "Verily, I am a wamer (sent) to you all before the coming of a severe torment ."
+
+they (the people) said, This is his uncle, Abu Lahab.
+
+The DestinyofUmm Jamil, the Wife ofAbu Lahab iAnd his wife too, who carries wood.} His wife was among the leading women of the Quraysh and she was known as Umm Jamil. Her name was Arwah bint Harb bin Umayyah and she was the sister of Abu Sufyan. She was supportive of her husband in his disbelief, rejection and obstinacy. Therefore, she will be helping to administer his punishment in the fire of Hell on the Day ofJudgement. Thus, Allah says, iWho carries wood. In her neck is a twisted rope ofMasad.} meaning, she will carry the firewood and throw it upon her husband to increase that which he is in (of torment), and she will be ready and prepared to do so. fe- 4$ iln her neck is a twisted rope ofMasad.} Mujahid and TJrwah both said, From the palm fiber of the Fire. 111 Al- Awfi narrated from Ibn Abbas, Atiyah Al-Jadali, Ad- Dahhak and Ibn Zayd that she used to place thorns in the path of the Messenger of Allah Al-Jawhari said, uAl-Masad refers to fibers, it is also a rope made from fibers or palm leaves. It is also made from the skins of camels or their furs. It is said (in Arabic) Masadtul-Habla and Amsaduhu Masadan, when you tightly fasten its twine. Mujahid said, 3-?- iZ-fc iln her neck is a twisted rope ofMasad.} This means a collar of iron. Don t you see that the Arabs call a pulley cable a Masad? 111 Ad-DurrAl-Mcmthur8:667. At-Tabari 24 :681
+
+A Story ofAbu Lahab's Wife harming the Messenger of Allah sg Ibn Abi Hatim said that his father and Abu Zur'ah both said that Abdullah bin Az-Zubayr Al-Humaydi told them that Sufyan informed them that Al-Walld bin Kathir related from Ibn Tadrus who reported that Asma bint Abi Bakr said, When J) tu APerish the two hands ofAbu Lahab and perish he)!$ was revealed, the one-eyed Umm Jamil bint Harb came out wailing, and she had a stone in her hand. She was saying, He criticizes our father, and his religion is our scorn, and his command is to disobey us. The Messenger of Allah jg was sitting in the Masjid (of the Ka bah and Abu Bakr was with him. When Abu Bakr saw her he said, O Messenger of Allah! She is coming and I fear that she will see you. The Messenger of Allah replied, V> l) 1*!" " Verily, she will not see ?nej Then he recited some of the Qur an as a protection for himself. This is as Allah says. && h 1$ v0 iAnd when you recite the Qur'an, We put between you and those who believe not in the Hereafter, an invisible veil (17 :45) So she advanced until she was standing in front of Abu Bakr and she did not see the Messenger of Allah jg. She then said, O Abu Bakr! Verily, I have been informed that your friend is making defamatory poetry about me. Abu Bakr replied, Nay! By the Lord of this House (the Ka'bah) he is not defaming you. So she turned away saying, Indeed the Quraysh know that I am the daughter of their leader. Al-Walid or another person said in a different version of this HadSth, So Umm Jamil stumbled over her waist gown while she was making circuits (Tawaf) around the House (the Ka bah) and she said, Cursed be the reviler. Then Umm
+
+Hakim bint Abdul-Muttalib said, 1 am a chaste woman so I will not speak abusively and I am refined so I do not know. Both of us are children of the same uncle. And after all the Quraysh know best. !
+
+---

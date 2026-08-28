@@ -1,0 +1,46 @@
+# Surah 84: Al-Inshiqaq
+
+**Source:** Tafsir Ibn Kathir (Abridged), Darussalam English Edition
+**PDF pages:** 6359–6368
+
+---
+
+## Opening
+
+*[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF p. 6359]*
+
+Opening The Tafslr of SuratAl-Inshiqaq (Chapter - 84)
+
+---
+
+## Which was revealed in Makkah
+
+*[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 6359–6361]*
+
+The Prostration ofRecitation in SuratAl-Inshiqaq It is reported from Abu Salamah that while leading them in prayer, Abu Hurayrah recited, iWhen the heaven is split asunder.} and he prostrated during its recitation. Then when he completed the prayer, he informed them that the Messenger of Allah prostrated during its recitation. This was recorded by
+
+jpfc*! -ft %) J 41 . When die heaven is split asunder,} 42. And listens to and obeys its Lord - and it must do so.} 43. And when the earth is stretchedforth,. And has cast out all that was in it and became empty.> 45. And listens to and obeys its Lord - and it must do so.} 46. O man! Verily, you are returning towards your Lord with your deeds and actions, a sure returning, and you will meet.} 47. Then as for him who will be given his Record in his right hand,} 48. He surely will receive an easy reckoning,} 49. And will return to hisfamily Masrur (in joy)!} 410. But whosoever is given his Record behind his back,} 411. He will invoke destruction,} 412. And he sltall enter a blazing Fire, and made to taste its burning.} 423. Verily, he was among his people in joy!} 414. Verily, he thought that he would never return!} 415. Yes! Verily, his Lord has been ever beholding him!} Splittingthe Heavens asunderand stretchingthe Barth forth on the Day ofResurrection Allah says, 4When the heaven is split asunder,} This refers to the Day of Judgement. ity.m 4And listens to and obeys its Lord} meaning, it listens to its Lord and obeys His command to split apart. This will occur on the Day ofJudgement. 4<?nd it must do so.} meaning, it is right for it to obey the command of its Lord, because it is great and cannot be rejected,
+
+Al-Inshiqdq (1-15) (Part-30) nor overcome. Rather it overpowers everything and everything is submissive to it. Then Allah says, J&i %} 4And when the earth is stretched forth, meaning, when the earth is expanded, spread out and extended. Then He says, % ft c 4And has cast out all that was in it and became empty.} meaning, it throws out the dead inside of it, and it empties itself of them. This was said by Mujahid, Said, and Qatadah. 4And listens to and obeys its Lord, and it must do so.}
+
+---
+
+## The explanation of this is the same as what has preceded.
+
+*[Tafsir Ibn Kathir (Abridged), Darussalam English Edition, PDF pp. 6361–6368]*
+
+The Recompense for Deeds is True Allah says, man! Verily, you are returning towards your Lord with your deeds and actions, a sure rehtming,} meaning, Verily you are hastening to your Lord and working deeds. iand you will meet.} Then you will meet that which you did of good or evil. A proof for this is what
+
+There are some people who refer the pronoun back to the statement your Lord. Thus, they hold the Ayah to mean, and you will meet your Lord. This means that He will reward you for your work, and pay you for your efforts. Therefore, both of these two views are connected. Al- Awfi recorded from Ibn Abbas that he said explaining, 40 matt! Verily, you are returning towards your Lord with your deeds and actions, a sure returning,} Whatever deed you do, you will meet Allah with it, whether it is good or bad. ThePresentationandtheDiscussionthatwilltakeplace during the Reckoning Then Allah says, 4 Sfei " ijj-i , y '.L..4; \C& ' Cr $Then as for him who will be given his Record in his right hand, he surely, will receive an easy reckoning,} (84:7-8) meaning, easy without any difficulty. This means that he will not be investigated for all the minute details of his deeds. For verily, whoever is reckoned like that, he will certainly be destroyed. Imam
+
+Al-Inshiqaq (1-15) (Part-30) That is not during to the Reckoning, rather it is referring to the presentation. Whoever is interrogated during the Reckoning on the Dai/ ofJudgement, then he will be punished This Hadith has also been recorded by Al-Bukhari, Muslim, At-Tirmidhi, An-Nasal and Ibn JarirJ2 ' In reference to Allah s statement, 4 .4 i ^j} iAnd will return to his family Masriir!} This means that he will return to his family in Paradise. This was said by Qatadah and Ad-Dahhak. They also said, Masriir means happy and delighted by what Allah has given him. [3 ' Allah said; ,'v.oik ;lu li} j4 ftf} iBut zohosoever is given his Record behind his back,} meaning, he will be given his Book in his left hand, behind his back, while his hand is bent behind him. iHe will invoke destruction,} meaning, loss and destruction. 4And he shall enter a blazing Fire, and made to taste its burning. Verily, he was among his people in joy!} meaning, happy. He did not think about the consequences, nor feared what (future) was in front of him. His light happiness will be followed by long grief. iVerily, he thought that he would never return!} meaning, he used to believe that he would not return to Allah, nor would Allah bring him back (to life) after his death. This was said by Ibn Abbas, Qatadah and others.141 Allah then says, ^ Ahmad 6 :47 Fath Al-Bari 8 :566, Muslim 4 :2204, Tuhfat Al-Ahwadhi 9 :256, An- Nasal in Al-Kubra 6:510, and At-Tabari 24 :315. At-Tabari 24:315. At-Tabari 24:317.
+
+419Surali 84. Al-Inshiqdq (16-25) (Part-30 425. Save those who believe and do righteous good deeds, for them is a reward that will never come to an end.} Swearingby the Various Stages ofMan'sJourney It has been reported from Ali, Ibn Abbas, Ubadah bin As- Samit, Abu Hurayrah, Shaddad bin Aws, Ibn Umar, Muhammad bin Ali bin Al-Husayn, Makhul, Bakr bin Abdullah Al-Muzani, Bukayr bin Al-Ashaj, Malik, Ibn Abi Dhib, and Abdul- Aziz bin Abi Salamah Al-Majishun, they all said, Ash-Shafaq is the redness (in the sky). Abdur-Razzaq recorded from Abu Hurayrah that he said, Ash-Shafaq is the whiteness. So Ash-Shafaq is the redness of the horizon, either before sunset, as Mujahid said or after sunset, as is well known with the scholars of the Arabic Language. Al-Khalil bin
+
+iand what it Wasaqa} means What it gathers. 111 Qatadah said, The stars and animals it gathers. 121 Ikrimah said, $And by the night and what it Wasaqa,} What it drives into due to its darkness, because when it is nighttime everything goes to its home. 131 Concerning Allah s statement, iAtid by the moon when it Ittasaqa .} Ibn Abbas said, When it comes together and becomes complete. 141 Al-Hasan said, When it comes together and becomes full. 151 Qatadah said, When it completes its cycle. 161 These statements refer to its light when it is completed and becomes full, as the idea was initiated with The night and what it gathers." Allah said, iYou shall certainly travelfrom stage to stage.}
+
+Al-Inshiqaq (16-25) (Part-30 iFrom stage to stage.$ Stage after stage. 111 Weaned after he was breast feeding, and an old man after he was a young man. Al- Hasan Al-Basri said, iFrom stage to stage.} Stage after stage.121 Ease after difficulty, difficulty after ease, wealth after poverty, poverty after wealth, health after sickness, and sickness after health. The Disapproval of Their Lack of Faith, giving Them Tidings ofthe Torment, and that the Ultimate Pleasure will be for the Believers Allah said, iWhat is the matter with them, that they believe not? And when the Qur'an is recited to them, they fall not prostrate.} meaning, what prevents them from believing in Allah, His Messenger^ and the Last Day, and what is wrong with them that when Allah s Ayat and His Words are recited to them they do not prostrate due to awe, respect and reverence? Concerning Allah s statement, it iNay, those who disbelieve deny.} meaning, from their mannerism is rejection, obstinacy, and opposition to the truth. P %)> iAnd Allah knows best what they gather,} Mujahid and Qatadah both said, What they conceal in their chests. 131 4So, announce to them a painful torment.} meaning, inform them, O Muhammad, that Allah has prepared for them a painful torment. Then Allah says, At-Tabari 24:323. At-Tabari 24:323. At-Tabari 24:327.
+
+4Saye those who believe and do righteous good deeds, This is a clear exception meaning, but those who believe. This refers to those who believe in their hearts. Then the statement, and do righteous good deeds, is referring to that which they do with their limbs. 4for them is a reward^ meaning, in the abode ofthe Hereafter. ithat will never come to an end.} Ibn Abbas said, Without being decreased. Mujahid and Ad-Dahhak both said, Without measure. 2 The result of their statements is that it (the reward) is without end. This is as Allah says, iA gift without an end.} (11:108) As-Suddi said, Some of them have said that this means without end and without decrease.
+
+---
