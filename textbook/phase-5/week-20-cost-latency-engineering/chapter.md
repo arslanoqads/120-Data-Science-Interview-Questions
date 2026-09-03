@@ -1,15 +1,29 @@
 # Chapter 20 — Cost and latency engineering
 
 > **Phase 5 — Production, Cost, and Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-5/week-20-cost-latency-engineering/`  
 > **Syllabus Build:** You already have a **containerized, OIDC-gated, tenant-isolated LLM service** (Weeks 18–19). This week you **stop sending every request to the frontier model**. (1) **Route before you generate.** Rules first (&lt;1 ms): path, tier, `task_type`, tools, length. Uncertain traffic → embedding (~5 ms) or a trained classifier (50–100 ms). Never put an LLM-as-router on the hot path unless you measured that it still saves money. (2) **Calibrate a cascade, do not guess a percentage.** Plot quality vs % strong-model calls on *your* golden set. The RouteLLM public headline is **~95% of GPT-4 quality at ~14% GPT-4 calls on MT Bench** (matrix factorization + LLM-judge augmentation). Your production mix will differ; the *shape* of the curve is the deliverable. (3) **Cache in two layers.** Exact-match (hash) for deterministic FAQ; semantic (embedding + threshold) for paraphrases — **tenant in the key**, **off for agentic multi-turn**. Provider **prompt caching** for long static prefixes (system + tools + corpus). (4) **Structure prompts for prefix hits.** Static first, user query last. Monitor `cache_read` vs `cache_write`. Compression and Batch APIs are for the paths that cannot be prefix-cached or are offline. (5) **Attribute every dollar.** Gateway tags: tenant, feature, model, prompt version, router decision, cache class. Cost per **successful task**, not only cost per call. Hard budgets per tenant (Week 19 virtual keys).
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 20 is the **which model, cache, and dollar** week of Phase 5. Week 19 shipped **who may call the gateway** and **where tenant data may live**. The typical remaining failure is economic: every authenticated request still hits the frontier model, semantic cache is off or global, and Finance sees one provider invoice.
+Before this week you should already have from Week 19:
+
+- **OIDC human login:** Authorization Code + PKCE against an IdP (or CIAM broker); validate ID tokens (`iss` / `aud` / `exp` / JWKS); BFF session preferred — not a shared `ADMIN_API_KEY` or client-side provider key as “login.”  
+- **SAML for legacy enterprise SSO:** Entity ID, ACS URL, signing cert, SP- and IdP-initiated documented; broker as SP if the app is OIDC-native.  
+- **Machines vs humans:** vaulted provider keys; per-tenant virtual keys (models, RPM, budget, `tenant_id`); workload identity for pods/CI; OBO / token exchange for agent tool hops — not a god-mode SA into CRM.  
+- **Data residency as a router constraint:** `residency_region` on tenant config; prompts, embeddings, indexes, logs, and tool hops must not silently leave the pinned region.  
+- **Multi-tenant RBAC / isolation:** hard cross-tenant wall + in-tenant roles at the PEP (API, not UI-only); `tenant_id` on every store — including cache keys and traces.
+
+You do **not** need model routing, RouteLLM-style cascading, calibrated semantic caches, prompt-prefix discipline, or a tenant × feature × model cost cube yet as *finished* products — that is what this week ships. You **do** need the Week 19 OIDC-gated, tenant-isolated gateway with virtual-key budgets; without them, a “global” semantic cache or untagged spend dashboard recreates the isolation and chargeback failures you just closed.
+
+---
+
+## What this week builds
+
+Week 19 shipped **who may call the gateway** and **where tenant data may live**. Week 20 is the **which model, cache, and dollar** week of Phase 5. The typical remaining failure is economic: every authenticated request still hits the frontier model, semantic cache is off or global, and Finance sees one provider invoice.
 
 This week answers five questions that unit economics, support-bot SLOs, and FDE interview whiteboards all treat as the minimum bar for an engineer who can land a production LLM product at scale:
 
@@ -19,7 +33,7 @@ This week answers five questions that unit economics, support-bot SLOs, and FDE 
 4. **If we generate, can we reuse prefix compute or shorten/batch work?** (prompt cache, compression, batching)  
 5. **Who spent the money?** (tenant × feature × model attribution dashboards)
 
-**Do not start Week 21 (legacy / messy integration) from this chapter** — this week ships **model routing**, **RouteLLM-style cascading**, **semantic caching**, **prompt cache + compression + batching**, and **cost-attribution dashboards**. Week 19 already isolated tenants and virtual keys; honor tenant/region in the router and keep caches tenant-keyed. HPA on gateway concurrency (Week 18) is a *capacity* lever, not a substitute for routing provider dollars. Eval flywheels (Weeks 16–17) appear here only as a dashboard dimension. Idempotency appears only as “don’t cache mutating tool results”; dual-write / ETL is Week 21.
+**Do not start Week 21 (legacy / messy integration — SQL, tolerant ETL, partial failure, idempotency) from this chapter** — this week ships **model routing**, **RouteLLM-style cascading**, **semantic caching**, **prompt cache + compression + batching**, and **cost-attribution dashboards**. Week 19 already isolated tenants and virtual keys; honor tenant/region in the router and keep caches tenant-keyed. HPA on gateway concurrency (Week 18) is a *capacity* lever, not a substitute for routing provider dollars. Eval flywheels (Weeks 16–17) appear here only as a dashboard dimension. Idempotency appears only as “don’t cache mutating tool results”; dual-write / ETL is Week 21.
 
 **Design: router + cache in front of the LLM**
 
@@ -444,10 +458,19 @@ Use this as the chapter’s capstone sequence; every concept above maps here.
 
 When those seven steps are true, Week 20 is done in the syllabus sense: Deployment Copilot no longer sends every authenticated request to the frontier, and Finance can name which tenant and feature spent yesterday’s dollars.
 
+Where research leaves open questions (LiteLLM Auto Router field names, OpenAI GPT-5.6+ `prompt_cache_retention` / breakpoint API names, live list prices and cache write/read multipliers), they are marked `[NEEDS MORE RESEARCH]` or flagged as verify-live rather than filled with invented defaults.
+
+---
+
+## Looking ahead
+
+Week 21 is **legacy and messy integration**. After this week’s router, caches, and cost cube, the typical remaining failure is the customer’s estate: a 400-table OLTP with opaque status codes, a SharePoint dump that violates the contract, a CRM that 503s on Friday deploys, and an agent that retries `create_ticket` three times. Next week you **point the same service at the customer’s actual data and APIs**: **messy SQL** behind a semantic layer / vetted tools (not the raw ERD); **tolerant ETL** (bronze land, contracts, quarantine/DLQ, upserts on business keys); **partial-failure design** (timeouts, bulkheads, circuit breakers, labeled degrade); **idempotency** for agent side effects (Stripe-style keys, unknown-outcome reconcile). Do **not** start Week 21 by dropping this week’s tenant-keyed caches, residency pins, or hard budgets — honor tenant/RLS inside SQL tools and do not cache mutating tool results. Capstone integration deepens in Week 22.
+
 ---
 
 ## Compilation notes
 
 - All concept sections above are grounded in `research/phase-5/week-20-cost-latency-engineering/` (`00`–`05`, README).  
 - `[NEEDS MORE RESEARCH]` appears where research itself flags evolving vendor surfaces: LiteLLM Auto Router field names, and OpenAI GPT-5.6+ `prompt_cache_retention` / breakpoint API names before a live lecture. Live list prices and Anthropic/OpenAI cache write/read multipliers must be re-fetched before quoting customers (research treats them as patterns, not fixed quotes).  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.
+- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.  
+- Editorial pass: Prerequisites Recap bridges Week 19 (OIDC/SAML, API keys/federation, residency, multi-tenant RBAC); Looking ahead bridges Week 21 (messy SQL, tolerant ETL, partial failure, idempotency); no new technical claims beyond research.

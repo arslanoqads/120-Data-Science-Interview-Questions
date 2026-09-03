@@ -1,8 +1,18 @@
 # Week 20 Textbook Chapter — Cost and latency engineering
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-5/week-20-cost-latency-engineering/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 19: OIDC/SAML, API keys/federation, residency, multi-tenant RBAC)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 21 (legacy/messy integration: SQL, tolerant ETL, partial failure, idempotency)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 
