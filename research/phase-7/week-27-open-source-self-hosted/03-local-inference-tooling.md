@@ -109,4 +109,4 @@ https://docs.nvidia.com/nim/index.html
 - https://huggingface.co/docs/text-generation-inference/index  
 - https://huyenchip.com/2024/07/25/genai-platform.html  
 - ../../phase-5/week-20-cost-latency-engineering/01-model-routing.md  
-- ../../phase-5/week-18-deployment-patterns/README.md  
+- ../../phase-5/week-18-deployment-infra/README.md  
