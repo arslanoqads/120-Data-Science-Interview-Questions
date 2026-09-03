@@ -1,8 +1,19 @@
 # Week 28 Textbook Chapter — Multimodal AI as product I/O
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-7/week-28-multimodal/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 27: OSS/self-hosted models, quantization, Ollama/vLLM, air-gap; self-hosted Week 20 router leg + comparison memo)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 29 (Phase 7 elective — AI safety / adversarial testing: red-team schedule, bias, moderation, PII/exfil, safety review one-pager)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
+- [x] Phase 7 noted as supplementary electives (does not replace Weeks 1–24)
 
 ## Concepts covered
 

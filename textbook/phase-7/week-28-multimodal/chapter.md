@@ -1,13 +1,28 @@
 # Chapter 28 — Multimodal AI as product I/O
 
 > **Phase 7 — Supplementary Electives**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-7/week-28-multimodal/`  
 > **Syllabus Build:** Add **one real multimodal capability** to an existing stack (Phase 2 RAG chatbot or Phase 3 agent). Keep it small: **one working end-to-end multimodal path** you can demo — not a full “multimodal platform.” Pick **one** of: (1) **Screenshot / error-image path** — upload → vision extract → RAG/tools reason → show image → fields → passages → answer trail; or (2) **Voice-input path** — audio → STT → same text agent/RAG → optional TTS. Document a short design note: modality contract (MIME/size/storage), context assembly (how media enters the Week 25 packer; what is *not* re-sent), and an eval slice of 5–10 golden multimodal cases.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
+
+Before this week you should already have from Week 27 (Phase 7 elective — open-source and self-hosted models):
+
+- **Open-source model landscape** — Llama / Qwen / Gemma shortlist with task eval + license.  
+- **Quantization basics** — INT4 / AWQ / GPTQ / GGUF sizing so hardware quotes match reality.  
+- **Local inference tooling** — Ollama for spike; graduate to vLLM (or NIM) when concurrency and SLOs matter.  
+- **Self-hosted vs API + air-gap** — self-hosted as **one** Week 20 router leg; comparison memo (latency / quality / cost); weight import, offline eval, and `failover=none` when the customer cannot use a hosted API.
+
+You do **not** need a screenshot → vision → RAG path, voice STT pipeline, or requirement-vs-gimmick design note yet as *finished* products — that is what this week ships. You **do** need Week 25’s context packer (images and transcripts are high-cost context), Week 5 prompt discipline around media, and an existing Phase 2 RAG or Phase 3 agent stack to attach **one** multimodal ingress. Week 27’s serving location and comparison memo stay available: air-gap STT via Whisper.cpp and on-prem VLMs are tool-mediated options when vendor vision is unavailable — but **where weights run** and **when non-text I/O is a real requirement** are separate levers.
+
+---
+
+## What this week builds
+
+Week 27 shipped a **self-hosted router leg** and **comparison memo** (latency / quality / cost — not a vague “we support open source” checkbox). Week 28 continues **Phase 7 — Supplementary Electives** — these weeks do **not** replace Weeks 1–24. Suggested slot in research: alongside **Week 14** (prove range of system capabilities / I/O), or append after the Week 24 capstone; **this course appends them** after Week 24 / Week 25 / Week 26 / Week 27. It complements **Week 5** (how you instruct around media) and **Week 25** (images and transcripts are high-cost context).
 
 Week 28 treats **multimodal AI** as product **I/O engineering**, not as “the model can see and hear so we should show that in a demo.” A modality is useful when the user’s ground truth lives outside plain text: a screenshot of a failing UI, a PDF page, a spoken request while driving, a product photo, a waveform of a support call.
 
@@ -21,9 +36,25 @@ Chip Huyen’s *Multimodality and Large Multimodal Models* frames the field: mod
 | **TTS** | Text → speech | OpenAI speech; ElevenLabs |
 | **Native multimodal chat** | Multiple content parts in one turn | Messages / Responses / Gemini `contents` with mixed parts |
 
-This elective is **supplementary** — it does not replace Weeks 1–24. Suggested slot: alongside **Week 14** (prove range of system capabilities / I/O), or append after the Week 24 capstone. It complements **Week 5** (how you instruct around media) and **Week 25** (images and transcripts are high-cost context).
+This week answers four coupled questions that FDE reviews and interview deep-dives treat as the minimum bar once Week 25 packing and (optionally) a Week 27 local route already exist:
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) gaining **one** honest multimodal ingress on top of the existing RAG / agent stack.
+1. **Understand vs generate** — default ops/support to understanding; generation is a different surface.  
+2. **STT / TTS pipelines** — Capture → STT → Reason → optional TTS with separate SLOs.  
+3. **Mixed context** — content blocks in one conversation; extract → compact under Week 25 budget.  
+4. **Requirement vs gimmick** — ablation + golden cases before roadmaping modalities.
+
+**Do not** drop Week 27’s local route or comparison table — serving location stays; this week adds modality I/O. Do **not** drop Week 25’s packer — media taxes the same attention budget. Do **not** ship five half-wired modality demos or treat generation as proof of multimodality. Do **not** start Week 29 (adversarial / safety review) from this chapter — stay on one honest E2E multimodal path.
+
+The **build** adds **one** real multimodal capability to an existing stack — screenshot/error-image **or** voice-input — plus a short design note (modality contract, Week 25 context assembly, 5–10 golden multimodal cases). Interview artifact = that **one E2E path** with traces and goldens, not an omni agent.
+
+| This week | Not this week |
+|-----------|----------------|
+| One E2E multimodal path (screenshot **or** voice) | Full multimodal platform / five toggles |
+| Understand-first; STT→text stack; content blocks | Generation as “we are multimodal” proof |
+| Modality contract + Week 25 extract→compact | Drop Week 27 self-hosted router leg |
+| Requirement vs gimmick rubric + kill criterion | Scheduled red-team / safety one-pager (Week 29) |
+
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) gaining **one** honest multimodal ingress on top of the existing RAG / agent stack — after Week 27’s serving comparison is already written.
 
 **Default path (synthesis):**
 
@@ -31,7 +62,8 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 2. If voice: treat STT/TTS as **pipelines with SLOs**, not “add a mic button.”  
 3. Mix modalities in **one conversation** with explicit content blocks and a Week 25 budget.  
 4. Apply the **requirement vs gimmick** rubric before roadmaping.  
-5. Ship the **single E2E path** + golden cases; cross-check Week 14 “prove range” without inventing a second product.
+5. Ship the **single E2E path** + golden cases; cross-check Week 14 “prove range” without inventing a second product.  
+6. Keep Week 27’s local/air-gap options available for Whisper.cpp or on-prem VLM legs when vendor APIs are off-limits — without conflating serving choice with modality choice.
 
 ---
 
@@ -324,10 +356,19 @@ When those steps are true, Week 28 is done in the syllabus sense: one honest E2E
 
 ---
 
+## Looking ahead
+
+Week 29 continues **Phase 7 — Supplementary Electives** with **AI safety, ethics, and adversarial testing**. After this week’s one E2E multimodal path (modality contract, Week 25 context assembly, 5–10 golden multimodal cases — not five half-wired demos), the next elective turns safety from a feature claim into a **discipline**: scheduled red-team / adversarial runs, bias and fairness slices, content moderation architecture, PII and tool-exfil controls beyond prompt injection, and a one-page safety review that survives fintech/healthcare-style questionnaires. The build is (1) a **formal adversarial test suite** with CI nightly / weekly deep cadence and explicit pass/fail per category, and (2) a **Safety & Responsible AI** one-pager (scope, data classes, threat model, controls, residual risk, escalation owners, evidence links). Do **not** start Week 29 by dropping this week’s multimodal path or goldens — screenshots and audio expand the attack and PII surface the suite must cover. Week 27’s self-hosted route and Week 25’s packer stay available; the deep work shifts from “when is non-text I/O real?” to “who owns the red-team schedule, and where is residual risk written down?”
+
+---
+
 ## Compilation notes
 
 - All concept sections above are grounded in `research/phase-7/week-28-multimodal/` (`00`–`04` + README; `99` for source index).  
 - No section required `[NEEDS MORE RESEARCH]` for the four syllabus concepts covered in research files `01`–`04`.  
 - Research **Open Questions** (native audio retiring pipelines; vision faithfulness eval without human raters; OCR vs VLM for dense UI; generated assets in RAG indexes; GDPR raw audio vs transcripts; ablation ownership; accessibility pricing; C2PA/provenance; omni contractual staging) remain open in the corpus and are **not** answered here.  
 - Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.  
-- Elective placement and “does not replace Weeks 1–24” follow research `00` / README.
+- Elective placement and “does not replace Weeks 1–24” follow research `00` / README.  
+- Build is one E2E multimodal path + design note only (not a full multimodal platform), per syllabus.  
+- Editorial pass: Prerequisites Recap bridges Week 27 (OSS/self-hosted — Llama/Qwen/Gemma, quantization, Ollama/vLLM, air-gap; Week 20 router leg + comparison memo); Looking ahead bridges Week 29 (AI safety / adversarial testing — red-team schedule, bias, moderation, PII/exfil, safety review one-pager); Phase 7 framed as supplementary electives; no new technical claims beyond research.  
+- Week 29 safety / adversarial depth is explicitly deferred — ship the one multimodal path here; scheduled red-team and the safety one-pager come next.
