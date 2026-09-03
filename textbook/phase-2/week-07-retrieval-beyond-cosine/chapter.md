@@ -1,23 +1,44 @@
 # Chapter 7 — Retrieval beyond cosine
 
 > **Phase 2 — RAG Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-2/week-07-retrieval-beyond-cosine/`  
 > **Syllabus Build:** Ship **hybrid retrieval** for the FastAPI RAG chatbot—dense ANN (bi-encoder embeddings) **and** BM25 (or equivalent sparse) over the same `chunk_id`s, fused with **RRF** (`k=60` unless evals say otherwise)—and **instrument candidate logging** on every query. Do not stop at cosine-only `top_k`.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
+
+Before this week you should already have from Week 6:
+
+- An ingestion pipeline with **≥2 chunking strategies** (**recursive** + **semantic**), sized to the embedder—not a single global character cut.  
+- **Metadata** on every chunk (`chunk_id`, `doc_id`, tenant/ACL, `content_type`, `splitter_id`, version/ingest stamps) so filters and cite/replay work.  
+- Structure-aware handling of **messy real docs** (Markdown headers, code symbols, tables) so prose splitters do not mid-row or mid-function cut.  
+- Stable **`chunk_id`s** shared across whatever indexes you add this week—hybrid fusion joins on the same IDs Week 6 produced.
+
+You do **not** need hybrid dense+BM25, RRF, lexical-precision eval slices, or store bake-offs yet. That is what this week teaches.
+
+---
+
+## What this week builds
 
 Week 6 decided *what* is stored. Week 7 decides *which stored units are even eligible* for generation and, next week, for reranking. Cosine or inner-product over a single dense embedding is one retriever, not a retrieval *system*. Production IR treats candidate generation as **multi-channel**: cheap high-recall first stages that must put the right chunk into a shortlist of tens to low hundreds.
 
-Chip Huyen’s public platform post frames retrieval as a menu, not a religion: **term-based** (keyword / BM25 / inverted index—fast, cheap, strong baseline), **embedding-based** (more expensive, improvable with better models and indexes), and **hybrid** as the production combination. She describes two composition patterns: **sequential** (cheap retriever then more precise ranking—classical retrieve-then-rerank) and **ensemble** (multiple retrievers in parallel, then combine rankings). Week 7 owns the ensemble + first-stage half; Week 8 owns the expensive pairwise rerank.
+Chip Huyen’s public platform post frames retrieval as a menu: **term-based** (keyword / BM25 / inverted index), **embedding-based**, and **hybrid** as the production combination. Two composition patterns: **sequential** (cheap retriever then more precise ranking) and **ensemble** (multiple retrievers in parallel, then combine). Week 7 owns the ensemble + first-stage half; Week 8 owns the expensive pairwise rerank.
 
-Sentence-Transformers’ retrieve & re-rank guide is the shared vocabulary: stage-1 can be **lexical** (Elasticsearch-class BM25) **or** a **bi-encoder**; stage-2 is a **cross-encoder** that scores `(query, document)` jointly. Lexical search misses synonyms; semantic search can miss exactness—that contrast *is* the Week 7 problem, not a footnote.
+Sentence-Transformers’ retrieve & re-rank guide is the shared vocabulary: stage-1 can be **lexical** (BM25) **or** a **bi-encoder**; stage-2 is a **cross-encoder** that scores `(query, document)` jointly. Lexical search misses synonyms; semantic search can miss exactness—that contrast *is* the Week 7 problem.
 
-The five ideas below are one system: **bi-encoders** make ANN retrieval possible; **hybrid** runs dense and BM25 in parallel; **RRF** merges ranked lists when scores are incommensurable; **lexical-precision failures** (SKUs, names, error codes, versions) force an eval slice that FAQs alone cannot see; **store selection** follows filters, hybrid primitives, and ops—not HNSW microbenchmarks. Candidate logging binds them: if you only log the final `top_k` sent to the LLM, you cannot tell whether gold never entered either leg, fusion dropped it, truncation cut it, or generation ignored a present chunk (Week 9).
+The five ideas below are one system:
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) retrieving product runbooks with the same `chunk_id`s Week 6 produced—not cosine-only `similarity_search(k=5)`.
+- **Bi-encoder vs cross-encoder** — ANN retrieval is possible because docs embed once; CE is Week 8 precision.  
+- **Hybrid search (dense + BM25)** — paraphrase *and* exact tokens over the same `chunk_id`s.  
+- **Reciprocal Rank Fusion (RRF)** — merge ranked lists when score scales do not match (`k=60` default).  
+- **Lexical precision failures** — SKUs, names, error codes, versions need an eval slice FAQs cannot see.  
+- **Vector database selection** — filters, hybrid primitives, and ops—not HNSW microbenchmarks.
+
+Candidate logging binds them: if you only log the final `top_k` sent to the LLM, you cannot tell whether gold never entered either leg, fusion dropped it, truncation cut it, or generation ignored a present chunk (Week 9).
+
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: **Deployment Copilot**) retrieving product runbooks with the same `chunk_id`s Week 6 produced—not cosine-only `similarity_search(k=5)`.
 
 **Default path (synthesis):** index each chunk twice (dense vector + inverted/sparse lexical field, same `chunk_id`) → retrieve independently (e.g. 50–100 per leg) → fuse with RRF (`k=60`) → log both lists and fusion params → keep metadata filters (tenant, version, product) as **hard** constraints → escalate fusion (`alpha`, relative-score, learned sparse) only after labeled slices exist. Cross-encoder rerank is **Week 8**—this week owns recall of the candidate set.
 
@@ -336,21 +357,6 @@ When those steps are true, Week 7 is done in the syllabus sense: Deployment Copi
 
 ---
 
-## Boundaries with adjacent weeks
+## Looking ahead
 
-| Week | This week does | This week does not |
-|------|----------------|-------------------|
-| 6 | Consume stable `chunk_id` + metadata | Re-chunk to “fix retrieval” without evidence |
-| 7 | Hybrid + RRF + logs; store choice criteria | Claim cosine-only is done |
-| 8 | Expose a candidate list API of size ~50–100 | Ship cross-encoder as the *only* retriever |
-| 9 | Provide logs that distinguish miss-at-retrieve vs miss-at-generate | Full failure taxonomy write-up |
-| 10 | Provide slice recall numbers | Full metric framework |
-
----
-
-## Compilation notes
-
-- All concept sections above are grounded in `research/phase-2/week-07-retrieval-beyond-cosine/` (`00`–`05` plus README).  
-- One `[NEEDS MORE RESEARCH]` marker appears under RRF failure modes: research notes near-duplicate dominance under RRF as an open concern but does not prescribe a syllabus-standard dedupe policy.  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.  
-- Chip Huyen material is from public blog posts only (`genai-platform`, `ai-engineering-pitfalls`), matching the research corpus constraint.
+Week 8 covers **reranking and query understanding**: take the Week 7 hybrid candidate API (**top 50–100**), **rerank** with a cross-encoder (or vendor equivalent) down to **top 5–10** for generation, add **exactly one** query transform (**HyDE**, multi-query expansion, or **decomposition**) on a routed slice, and **measure the delta** against this week’s baseline—quality and latency. Keep dual-leg and fusion logs; append `rerank.*` rather than overwriting stage-1 candidates. Do not skip this week’s recall work for “a reranker will fix cosine-only `top_k`.”

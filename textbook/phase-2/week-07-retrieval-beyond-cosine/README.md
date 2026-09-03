@@ -1,8 +1,18 @@
 # Week 7 Textbook Chapter — Retrieval beyond cosine
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-2/week-07-retrieval-beyond-cosine/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 6 recursive+semantic chunking, metadata, messy docs, stable `chunk_id`s)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 8  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 
@@ -11,10 +21,6 @@
 - [x] Reciprocal Rank Fusion (RRF)
 - [x] Lexical precision failures (why pure cosine fails)
 - [x] Vector database selection (pgvector vs dedicated vs hybrid-native)
-
-## Structure check
-
-Each concept includes Fundamentals, The Alternatives, Failure Modes, Average vs. Strong Engineer, Worked Example, and Apply It.
 
 ## Syllabus build
 
