@@ -1,23 +1,37 @@
 # Chapter 16 — Error analysis & the data flywheel
 
 > **Phase 4 — Evals and Observability**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-4/week-16-error-analysis-flywheel/`  
 > **Syllabus Build:** Do **not** skip to LLM-as-judge dashboards. You already have **structured traces** from Week 15. This week you **read them**. (1) **Error-analysis pass.** Sample ~100 diverse traces (or synthetic-through-prod if cold start). Personally open-code **≥30**, preferably **20–50 in ~30 minutes** after every significant prompt/model/feature change. One **benevolent dictator** (domain expert) owns pass/fail + free-text notes. (2) **Custom taxonomy.** Axial-code notes into **5–10** binary, named, one-sentence categories grounded in *this* app (`missing_device_lookup`, not `hallucination`). Split surface-similar failures with different root causes. (3) **Frequency.** Relabel the sample with boolean flags; compute **failure rate per category**; prioritize **rate × impact**. Fix prompt/tool bugs **before** building judges. (4) **Synthetic edges.** If production undersamples a known combo, generate **dimension tuples → natural-language queries**, run them through the **live stack**, open-code the traces. Do **not** use synthetic completions as gold. (5) **Flywheel.** Promote labeled failures into a **regression eval set**; run on change (CI) and on a **production sample** (Nova Escola ~2% daily). New incidents become new rows. Week 17 is when you **calibrate** residual LLM judges.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 16 is the **discovery and prioritization** week of Phase 4. Week 15 **instrumented** both agentic systems and defined **split scores**. This week does **not** add a third agent and does **not** require a calibrated LLM judge. It answers three questions Hamel Husain and Shreya Shankar treat as the start of product evals:
+Before this week you should already have from Week 15:
+
+- **Structured traces** on both agentic systems (Week 11 loop agent + Week 14 write agent) on one primary tracer (LangSmith **or** Langfuse **or** OpenAI traces). Tool calls are structured fields (`name`, `arguments`, …), not parsed chat text; session / thread / `taskId` IDs join multi-turn and cross-peer runs.  
+- A **split scorecard**, never one “quality” number: `task_success` (outcome / read-back), `tool_name`, `tool_args`, `policy_order`, `within_step_budget`, cost/turns — plus **tool-call correctness** checks (Hamel’s four: name, arguments, result, resulting state) and authorization/preconditions.  
+- **Trajectory vs outcome** graded side by side on the same write task: a trial can pass outcome and fail trajectory (refund without verify — unsafe), or pass trajectory and fail outcome (right tools; DB never updated).  
+- The **four failure-pattern fixtures** (C1–C4: loops, premature stop, missing tool, dropped early constraint) as regression cases, with at least one real failing prod/dev trace promoted into a dataset.  
+- Benchmark **literacy** (τ-bench / WebArena / AgentBench) without treating a public leaderboard as the ship gate — the private suite remains the product truth.
+
+You do **not** need a calibrated LLM-as-judge, an observability-platform bake-off, or production quality dashboards yet. That is what Week 17 teaches. This week **mines** the traces you already have.
+
+---
+
+## What this week builds
+
+Week 15 **instrumented** both agents, defined **split scores**, contrasted **trajectory vs outcome**, and named **failure patterns**. Week 16 opens **Phase 4 — Evals and Observability** as the **discovery and prioritization** week. This week does **not** add a third agent and does **not** require a calibrated LLM judge. It answers three questions Hamel Husain and Shreya Shankar treat as the start of product evals:
 
 1. **What actually fails** for *this* product on *this* data? (error-analysis pass)  
 2. **What do we call those failures** so another human (or a later judge) can apply the same labels? (custom taxonomy)  
 3. **Which failures dominate**, by **frequency** and impact, so we know what to fix vs measure vs ignore? (quantify)
 
-Error analysis is borrowed from qualitative research and classic ML debugging: **open coding** (free-text notes on traces) then **axial coding** (group notes into a failure taxonomy) then **count**. It decides **which evals to write**. Platforms nudge generic “helpfulness / hallucination / toxicity” scores; those rarely match user pain.
+Error analysis is borrowed from qualitative research and classic ML debugging: **open coding** (free-text notes on traces) then **axial coding** (group notes into a failure taxonomy) then **count**. It decides **which evals to write**. Platforms nudge generic “helpfulness / hallucination / toxicity” scores; those rarely match user pain. Week 15’s C1–C4 fixtures and split scores are **starting labels and slices**, not a finished product taxonomy — open coding will rename and split them when traces demand it.
 
-**Do not start Week 17 (LLM-as-judge / observability platforms) from this chapter** — this week **mines traces** into a **custom failure taxonomy**, **quantifies frequency**, **bootstraps edges with synthetic inputs**, and **closes the production → labels → eval set → regression** flywheel. Judge *calibration*, code-vs-model evals, and tracing product choices are next week.
+**Do not start Week 17 (LLM-as-judge / calibration / observability platforms / production dashboards) from this chapter** — this week **mines traces** into a **custom failure taxonomy**, **quantifies frequency**, **bootstraps edges with synthetic inputs**, and **closes the production → labels → eval set → regression** flywheel. Judge *calibration*, code-vs-model evals, tracing product choices, and production dashboards are next week.
 
 **What you ship this week**
 
@@ -39,6 +53,8 @@ Week 15 traces ──► sample (~100 diverse / stratified)
     labeled failures ──► eval set ──► CI + sampled prod (flywheel)
 ```
 
+Interview artifact = **taxonomy table with rates** + one prompt fix that killed a high-rate category + one failure reserved for a judge + how production sampling refills the set.
+
 Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume Deployment Copilot’s Week 15 traces (loop agent + write agent) being mined for the first taxonomy and regression set.
 
 ---
@@ -46,7 +62,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 ### Error-analysis-first workflow (read 20–50 outputs before metrics)
 
 * **Fundamentals:**  
-  **Error-analysis-first** means you **manually read real application traces** (or outputs) and write **free-text notes** about what went wrong **before** you invent automated metrics, buy a generic judge pack, or write a rubric in a vacuum.
+  **Error-analysis-first** means you **manually read real application traces** (or outputs) and write **free-text notes** about what went wrong **before** you invent automated metrics, buy a generic judge pack, or write a rubric in a vacuum. Week 15 already gave you those traces and a first vocabulary (split scores, trajectory vs outcome disagreement, C1–C4 fixtures). This week you **read** them the way product teams do — free-text first — instead of skipping to a judge dashboard.
 
   Hamel Husain and Shreya Shankar treat this as the highest-ROI activity in **product** evals (as opposed to **model benchmarks** like MMLU). Product evals measure whether *your* stack—model, prompt, retrieval, tools, application code—does what users and the business need. Error analysis decides **which** of those evals to write, grounded in failure modes unique to the app.
 
@@ -105,12 +121,12 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
   **Strong:** 20–50 outputs after every significant change; ≥30 human open-coded before agent assist; ~100 diverse working pool; benevolent dictator owns pass/fail + critique; custom viewer or ruthless spreadsheet (all context one screen, hotkeys); PMs + engineers at the outset then lean dictator; binary + notes; fix prompt/tool bugs **before** evaluators; sell leadership top failure modes and rates—not “we adopted evals”; running log of error → learning → fix → impact. Hamel: evaluation is **part of development**, like debugging—not a separate line item. Do not outsource core analysis; exceptions are mechanical checks after a rubric exists, translation, or hiring SMEs into the process (AnkiHub: 4th-year med students for medical RAG).
 
 * **Worked Example:**  
-  Deployment Copilot has Week 15 traces on the loop agent and write agent. After a prompt change that “improved helpfulness,” you spend 30 minutes on 40 stratified traces (multi-turn sessions, high cost, retries, low split scores). Free-text notes: “said it would verify identity but called `commit_refund` first”; “markdown bullets in SMS channel”; “promised to look up runbook, never called retrieve.” ChatGPT on the same transcripts says the assistant was fine. Only the notes reveal policy-order and channel-format failures. You do **not** open a judge dashboard yet—you open-code ≥30 yourself, then schedule axial coding.
+  Deployment Copilot has Week 15 traces on the loop agent and write agent. After a prompt change that “improved helpfulness,” you spend 30 minutes on 40 stratified traces (multi-turn sessions, high cost, retries, low split scores, known C1–C4 fixtures). Free-text notes: “said it would verify identity but called `commit_refund` first” (trajectory fail / outcome may still pass); “markdown bullets in SMS channel”; “promised to look up runbook, never called retrieve.” ChatGPT on the same transcripts says the assistant was fine. Only the notes reveal policy-order and channel-format failures. You do **not** open a judge dashboard yet—you open-code ≥30 yourself, then schedule axial coding.
 
   Langfuse Dad Tech Support parallel: 505 traces / 478 sessions; ~100 stratified sample; a 12-turn session where the system prompt said “Never say that you cannot look things up online” while the bot said “I can’t look up printer manuals” twice—**only visible by reading**.
 
 * **Apply It:**  
-  1. From Week 15 traces, build a ~100 diverse/stratified sample (tags, latency/cost tails, multi-turn, low scores). Confirm annotation unit (session last-turn vs GENERATION).  
+  1. From Week 15 traces, build a ~100 diverse/stratified sample (tags, latency/cost tails, multi-turn, low split scores, trajectory/outcome disagreements, C1–C4 fixtures). Confirm annotation unit (session last-turn vs GENERATION).  
   2. Pick one benevolent dictator; configure `open_coding` (text) + `pass_fail` (binary)—not Likert.  
   3. Personally open-code ≥30 traces with free-text notes; prefer first-failure notes.  
   4. After the next significant prompt/model/feature change, spend ~30 minutes on 20–50 fresh outputs.  
@@ -427,7 +443,13 @@ Use this as the chapter’s capstone sequence; every concept above maps here.
 5. **Flywheel:** Promote labeled failures into a regression eval set; CI assertions + sampled production; new incidents become new rows.  
 6. **Interview artifact:** Taxonomy table with rates + one prompt fix that killed a high-rate category + one failure reserved for a judge + how production sampling refills the set.
 
-When those steps are true, Week 16 is done in the syllabus sense: traces have been mined into a countable taxonomy, high-rate bugs are fixed or queued, edges are stressable with synthetic inputs, and Week 17 has labels to calibrate residual judges.
+When those steps are true, Week 16 is done in the syllabus sense: Week 15 traces have been mined into a countable taxonomy, high-rate bugs are fixed or queued, edges are stressable with synthetic inputs, and Week 17 has labels to calibrate residual judges.
+
+---
+
+## Looking ahead
+
+Week 17 is the **automation and instrumentation** half of Phase 4: design **binary LLM-as-judge** prompts (Pass/Fail + critique) for residual judgment-heavy taxonomy categories; **calibrate** them against the expert labels you collected this week with **TPR/TNR** gates on held-out splits; prefer **code evals** for objective failures in CI and reserve model judges for the rest; instrument hierarchical tracing (Langfuse and/or Phoenix) so generations carry tokens/cost and retrieved context; ship **production dashboards** for cost, latency, errors, 1–3 calibrated quality timeseries, and drift — with sampled online judges and alerts that open traces. Do **not** start Week 17 by inventing new failure modes from a vendor catalog — use this week’s taxonomy and labels. The flywheel does not stop: disagreements and low scores feed annotation queues back into the set.
 
 ---
 
@@ -436,4 +458,4 @@ When those steps are true, Week 16 is done in the syllabus sense: traces have be
 - All concept sections above are grounded in `research/phase-4/week-16-error-analysis-flywheel/` (`00`–`04`, README).  
 - No section required `[NEEDS MORE RESEARCH]` for the five syllabus concepts; research Open Questions (agent-assisted bias bounds, optimal mature vs greenfield cadence, taxonomy versioning for comparable dashboards, optimal production sample rate beyond Nova Escola’s published ~2%, multi-tenant golden-set leakage, synthetic realism metrics for medicine/law, hierarchical vs flat taxonomies at 10+ modes) remain open and were **not** resolved with invented answers.  
 - Outside URLs from research are cited inline; operational detail was inlined from the notes.  
-- Week 17 LLM-as-judge calibration and observability-platform bake-offs are explicitly deferred.
+- Week 17 LLM-as-judge calibration, observability-platform bake-offs, and production dashboards are explicitly deferred.

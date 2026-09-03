@@ -1,8 +1,18 @@
 # Week 16 Textbook Chapter — Error analysis & the data flywheel
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-4/week-16-error-analysis-flywheel/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 15: structured agent traces, split scores, trajectory vs outcome, C1–C4 failure patterns)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 17 (LLM-as-judge, calibration / TPR/TNR, observability platforms, production dashboards)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 
