@@ -1,26 +1,52 @@
 # Chapter 2 — APIs, Async, and Testing Discipline
 
 > **Phase 0 — Engineering Foundations**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-0/week-02-apis-async-testing/`  
 > **Syllabus Build:** Rebuild the chatbot backend as a FastAPI service with a documented OpenAPI schema, async LLM calls, and a pytest suite that mocks the model provider (no live API keys in unit/CI tests).
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
+
+Before this week you should already have from Week 1:
+
+- An installable **src-layout** package for the flagship service (working title: **Deployment Copilot**), not a notebook or flat script pile.  
+- A **dependency lockfile**, virtual-environment workflow, and **CI** that runs lint (Ruff) + type-check (mypy) on every push.  
+- A **pytest skeleton** that imports the installed package.  
+- **Structured logging** (module loggers, not print debugging) ready to carry request-scoped fields into HTTP routes.
+
+You do **not** need FastAPI, OpenAPI, or provider mocking yet. That is what this week teaches.
+
+---
+
+## What this week builds
 
 Week 1 left you with an installable package. Week 2 turns that package into an **HTTP surface** other systems—and interviewers—can call. Hiring screens for AI Engineer and Forward Deployed Engineer roles often open `/docs`, send a bad body, expect a clean `422`, then ask why the chat route is `async def` and how CI stays green without an `OPENAI_API_KEY`.
 
-The six ideas below are one delivery loop: REST design sets the public contract; FastAPI and Pydantic implement it with typed validation and auto-OpenAPI; async/await keeps I/O-bound LLM waits concurrent without blocking the event loop; the test pyramid decides how many unit vs integration vs end-to-end checks you write; mocking replaces the provider so CI is fast, deterministic, and secret-free; contract testing keeps consumer expectations aligned with the OpenAPI (or Pact) artifact as the API evolves.
+The six ideas below are one delivery loop:
 
-Skip any one and trust collapses: polished Swagger with blocking `requests` inside `async def` still melts under load; a green mock suite with no contract gate still breaks clients on a field rename. Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) being exposed as an HTTP API for the first time.
+- **REST design** sets the public contract.  
+- **FastAPI and Pydantic** implement it with typed validation and auto-OpenAPI.  
+- **async/await** keeps I/O-bound LLM waits concurrent without blocking the event loop.  
+- **The test pyramid** decides how many unit vs integration vs end-to-end checks you write.  
+- **Mocking** replaces the provider so CI is fast, deterministic, and secret-free.  
+- **Contract testing** keeps consumer expectations aligned with the OpenAPI (or Pact) artifact as the API evolves.
+
+Skip any one and trust collapses: polished Swagger with blocking `requests` inside `async def` still melts under load; a green mock suite with no contract gate still breaks clients on a field rename. Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: **Deployment Copilot**) being exposed as an HTTP API for the first time.
 
 ---
 
 ### REST API design principles
 
 * **Fundamentals:**  
-  **REST** is an architectural *style* for networked APIs: resources identified by URIs, manipulated with uniform HTTP methods, stateless requests, and cacheable responses where that makes sense. In product practice over HTTPS that means **nouns in paths** (`/users/{id}`, `/jobs/{id}`), not verbs (`/getUser`); **methods that carry intent** (GET retrieve, POST create or trigger, PUT replace, PATCH partial update, DELETE remove); **status codes as part of the contract** (`200`/`201`/`204` for success shapes, `4xx` for client fault, `5xx` for server fault); JSON as the default representation documented in OpenAPI; and **statelessness**—each request carries auth and context so the server does not rely on sticky conversational memory in HTTP itself.
+  **REST** is an architectural *style* for networked APIs: resources identified by URIs, manipulated with uniform HTTP methods, stateless requests, and cacheable responses where that makes sense. In product practice over HTTPS that means:
+
+  - **Nouns in paths** (`/users/{id}`, `/jobs/{id}`), not verbs (`/getUser`).  
+  - **Methods that carry intent** (GET retrieve, POST create or trigger, PUT replace, PATCH partial update, DELETE remove).  
+  - **Status codes as part of the contract** (`200`/`201`/`204` for success shapes, `4xx` for client fault, `5xx` for server fault).  
+  - JSON as the default representation, documented in OpenAPI.  
+  - **Statelessness**—each request carries auth and context so the server does not rely on sticky conversational memory in HTTP itself.
 
   Industry guidelines (Microsoft REST / Azure data-plane style) treat the API as a **stable contract over the domain**, not a mirror of database tables or internal class names. Goals include developer-friendly HTTP/JSON, SDK-friendly shapes, fault-tolerant clients via retries and idempotency, and versionability so customer workloads do not break silently.
 
@@ -249,7 +275,7 @@ Skip any one and trust collapses: polished Swagger with blocking `requests` insi
 ### Unit vs integration vs end-to-end tests
 
 * **Fundamentals:**  
-  The **practical test pyramid** (Mike Cohn’s idea; Ham Vocke’s articulation on martinfowler.com is the version teams cite) says: write tests at **different granularities**, and the higher you go, the **fewer** tests you should have—because cost, speed, and flakiness rise with the stack.
+  The **practical test pyramid** (Mike Cohn’s idea; Ham Vocke’s articulation on martinfowler.com is the version teams cite) says: write tests at **different granularities**. The higher you go, the **fewer** tests you should have—because cost, speed, and flakiness rise with the stack.
 
   | Layer | What it proves | Typical traits |
   |-------|----------------|----------------|
@@ -259,7 +285,7 @@ Skip any one and trust collapses: polished Swagger with blocking `requests` insi
 
   The pyramid is a **rule of thumb**, not dogma—but most struggling teams have the shape inverted. **Solitary** units replace neighbors with mocks (pinpoint failures; risk of mock theater). **Sociable** units keep real collaborators and mock only at boundaries (more realism; wider blast radius). For LLM apps: pure functions (chunking, prompt assembly, citation parsing) → solitary units; FastAPI route + validation + fake LLM → narrow integration.
 
-  **Contract tests** sit beside the pyramid as a way to replace many cross-service E2E checks (see the next-but-one section). **LLM evals** are not a fourth pyramid layer—they cut across: deterministic parsers on fixture text behave like units; RAG metrics on a fixed corpus with a stubbed LLM behave like integration; live-model quality judges belong in scheduled/E2E-cost territory; OpenAPI schema conformance is contract/schema work, not a quality eval. Keep quality evals on a separate pipeline with budgets and golden sets—do not dump them into the unit job.
+  **Contract tests** sit beside the pyramid as a way to replace many cross-service E2E checks (see the contract-testing section). **LLM evals** are not a fourth pyramid layer—they cut across layers: deterministic parsers on fixture text behave like units; RAG metrics on a fixed corpus with a stubbed LLM behave like integration; live-model quality judges belong in scheduled/E2E-cost territory; OpenAPI schema conformance is contract/schema work, not a quality eval. Keep quality evals on a separate pipeline with budgets and golden sets—do not dump them into the unit job.
 
   The **ice-cream cone** anti-pattern inverts the pyramid: many slow UI/E2E tests, few units. CI takes hours; flakes dominate; failures do not localize. Fix by pushing logic tests downward, keeping a thin E2E smoke, and adding contracts at service boundaries.
 
@@ -478,8 +504,6 @@ When those six steps are true, Week 2 is done in the syllabus sense: Deployment 
 
 ---
 
-## Compilation notes
+## Looking ahead
 
-- All concept sections above are grounded in `research/phase-0/week-02-apis-async-testing/` (`00`–`06` and the week README).  
-- No section required `[NEEDS MORE RESEARCH]` for the six syllabus concepts.  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.
+Week 3 takes this FastAPI service and makes it **shippable and discussable**: Git discipline (trunk-based flow, reviewable history), a **multi-stage Dockerfile**, a **compose** local stack, and a one-page living **system design** doc for interview walkthroughs. Keep the OpenAPI contract, async LLM port, and secret-free mocked tests—you will containerize and explain them, not replace them.
