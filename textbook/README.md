@@ -46,5 +46,6 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 21 | COMPLETE | [phase-5/week-21-legacy-messy-integration/](phase-5/week-21-legacy-messy-integration/) |
 | 22 | COMPLETE | [phase-6/week-22-capstone-integration/](phase-6/week-22-capstone-integration/) |
 | 23 | COMPLETE | [phase-6/week-23-system-design-interview/](phase-6/week-23-system-design-interview/) |
-| 24 | NOT STARTED | — |
-| 25–29 | NOT STARTED | — |
+| 24 | COMPLETE | [phase-6/week-24-portfolio-positioning/](phase-6/week-24-portfolio-positioning/) |
+| 25 | NOT STARTED | — |
+| 26–29 | NOT STARTED | — |
