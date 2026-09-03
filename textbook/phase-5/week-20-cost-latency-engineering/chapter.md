@@ -21,7 +21,7 @@ This week answers five questions that unit economics, support-bot SLOs, and FDE 
 
 **Do not start Week 21 (legacy / messy integration) from this chapter** — this week ships **model routing**, **RouteLLM-style cascading**, **semantic caching**, **prompt cache + compression + batching**, and **cost-attribution dashboards**. Week 19 already isolated tenants and virtual keys; honor tenant/region in the router and keep caches tenant-keyed. HPA on gateway concurrency (Week 18) is a *capacity* lever, not a substitute for routing provider dollars. Eval flywheels (Weeks 16–17) appear here only as a dashboard dimension. Idempotency appears only as “don’t cache mutating tool results”; dual-write / ETL is Week 21.
 
-### Design: router + cache in front of the LLM
+**Design: router + cache in front of the LLM**
 
 Router latencies below are for the **decision**, not LLM time-to-first-token:
 
@@ -45,7 +45,7 @@ LiteLLM’s **Router** is mostly **load-balancing and failover** across deployme
 
 **RouteLLM operating point you must be able to cite:** Ong et al. (2024), GPT-4 Turbo vs Mixtral 8x7B. On **MT Bench**, matrix factorization trained on Chatbot Arena **plus LLM-judge augmentation** reached **95% of GPT-4’s score with 14% of calls to GPT-4** (~85% cost reduction vs all-GPT-4; ~75% cheaper than a random router at the same quality point). Without augmentation, MF still hit 95% at **~26%** GPT-4 calls. On **MMLU** / **GSM8K**, cost cuts at 95% quality were smaller (~45% / ~35% vs all-GPT-4 in the LMSYS blog). Domain shift is the lesson: Arena-trained routers need **in-domain augmentation**. FDE translation: **design for ~10–20% frontier traffic** *if* you plot the curve on *your* traces. Do not put “15%” in an SLA.
 
-### Cost-per-request before / after (spreadsheet shape)
+**Cost-per-request before / after (spreadsheet shape)**
 
 Prices move; use this as an **index**, then plug live list prices. Illustrative 2024-era **per-request** averages for a 2k-in / 400-out support turn (not a quote):
 
