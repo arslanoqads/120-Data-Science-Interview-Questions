@@ -1,19 +1,38 @@
 # Chapter 1 — Python for Production, Not for Notebooks
 
 > **Phase 0 — Engineering Foundations**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-0/week-01-python-production/`  
 > **Syllabus Build:** Refactor an existing RAG chatbot backend into a proper package with a pytest skeleton and CI that runs lint + type-check on every push.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
+
+This is the first chapter. There is no prior week to review. Enter with:
+
+- Working **Python** fluency (scripts, functions, packages at a data-science or automation level).  
+- An existing **RAG chatbot backend** (or equivalent) you can refactor—the syllabus spine is one flagship system, not greenfield toys.  
+- Comfort reading terminal commands and Git basics (branch, commit, push). Deeper Git and containers arrive in Week 3.
+
+You do **not** need production packaging, mypy, or CI experience yet. That is what this week teaches.
+
+---
+
+## What this week builds
 
 Hiring screens for AI Engineer and Forward Deployed Engineer roles usually check software-engineering discipline before they look at RAG architecture or agent cleverness. Notebook-shaped Python—global state, untyped dictionaries, `print` debugging, unpinned dependencies—fails take-homes even when the author understands language models.
 
-Week 1 turns an existing chatbot backend into something a reviewer can clone, install, type-check, lint, and test without tribal knowledge. The six ideas below are one system: types make contracts checkable; layout makes tests exercise the installed artifact; dependency locks and virtual environments make installs reproducible; testable functions make logic regressable; logging makes production behavior filterable; CI makes all of that enforceable.
+Week 1 turns an existing chatbot backend into something a reviewer can clone, install, type-check, lint, and test without tribal knowledge. The ideas below form one system:
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) being packaged for the first time.
+- **Types** make contracts checkable.  
+- **Layout** makes tests exercise the installed artifact.  
+- **Dependency locks** and **virtual environments** make installs reproducible.  
+- **Testable functions** make logic regressable.  
+- **Logging** makes production behavior filterable.  
+- **CI** makes all of that enforceable.
+
+Read the concepts in order. Each **Worked Example** and **Apply It** assumes the same flagship service (working title: **Deployment Copilot**) being packaged for the first time.
 
 ---
 
@@ -397,8 +416,6 @@ When those seven steps are true, Week 1 is done in the syllabus sense: the flags
 
 ---
 
-## Compilation notes
+## Looking ahead
 
-- All concept sections above are grounded in `research/phase-0/week-01-python-production/`.  
-- No section required `[NEEDS MORE RESEARCH]` for the six syllabus concepts plus the CI build gate covered in research file `07`.  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.
+Week 2 takes this package and exposes it as a **FastAPI** HTTP service: REST design, Pydantic validation, OpenAPI docs, async LLM calls, and a test suite that **mocks** the model provider so CI never needs live API keys. Keep the `src/` layout, lockfile, mypy gate, and logging habits—you will extend them, not replace them.
