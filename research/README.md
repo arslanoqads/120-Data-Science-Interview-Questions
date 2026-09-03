@@ -38,7 +38,7 @@ Each concept includes:
 | Week | File | Focus |
 |------|------|--------|
 | 4 | [week-04-multi-provider-llm/](phase-1/week-04-multi-provider-llm/) | **Research corpus** — multi-provider APIs, structured outputs, tokens, prompt caching, provider-agnostic client |
-| 5 | [week-05-prompt-engineering.md](phase-1/week-05-prompt-engineering.md) | Versioned prompts, templates, few-shot, personas, injection |
+| 5 | [week-05-prompt-engineering/](phase-1/week-05-prompt-engineering/) | **Research corpus** — versioned prompts, templates, few-shot/cache, personas, injection |
 
 ### Phase 2 — RAG Systems (Weeks 6–10)
 
