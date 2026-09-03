@@ -34,5 +34,7 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 9 | COMPLETE | [phase-2/week-09-rag-failure-taxonomy/](phase-2/week-09-rag-failure-taxonomy/) |
 | 10 | COMPLETE | [phase-2/week-10-rag-evaluation/](phase-2/week-10-rag-evaluation/) |
 | 11 | COMPLETE | [phase-3/week-11-agent-fundamentals/](phase-3/week-11-agent-fundamentals/) |
-| 12 | NOT STARTED | — |
-| 13–29 | NOT STARTED | — |
+| 12 | COMPLETE | [phase-3/week-12-mcp/](phase-3/week-12-mcp/) |
+| 13 | COMPLETE | [phase-3/week-13-orchestration-multi-agent/](phase-3/week-13-orchestration-multi-agent/) |
+| 14 | NOT STARTED | — |
+| 15–29 | NOT STARTED | — |
