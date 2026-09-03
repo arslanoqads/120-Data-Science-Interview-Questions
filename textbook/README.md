@@ -44,7 +44,7 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | Week | Compile | Edit | Chapter |
 |------|---------|------|---------|
 | 1 | COMPLETE | COMPLETE | [phase-0/week-01-python-production/](phase-0/week-01-python-production/) |
-| 2 | COMPLETE | NOT STARTED | [phase-0/week-02-apis-async-testing/](phase-0/week-02-apis-async-testing/) |
+| 2 | COMPLETE | COMPLETE | [phase-0/week-02-apis-async-testing/](phase-0/week-02-apis-async-testing/) |
 | 3 | COMPLETE | NOT STARTED | [phase-0/week-03-git-containers-system-design/](phase-0/week-03-git-containers-system-design/) |
 | 4 | COMPLETE | NOT STARTED | [phase-1/week-04-multi-provider-llm/](phase-1/week-04-multi-provider-llm/) |
 | 5 | COMPLETE | NOT STARTED | [phase-1/week-05-prompt-engineering/](phase-1/week-05-prompt-engineering/) |
