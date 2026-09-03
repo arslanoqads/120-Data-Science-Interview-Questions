@@ -1,176 +1,312 @@
 # Week 13 — Orchestration frameworks and multi-agent design
 
 > Phase 3 — Agentic Systems  
-> Raw research notes (not textbook prose). Legal sources only.
+> Raw research notes (not textbook prose). Legal sources only; no pirated books.
 
 ---
 
 ## Concept: Graph-based stateful orchestration (LangGraph-style vs simple chains)
 
 ### Fundamentals
-A **chain** is a mostly linear pipeline (prompt → model → parse). A **graph orchestrator** (LangGraph and peers) models the agent as nodes (steps) and edges (transitions), with an explicit **shared state** object updated each step. Cycles enable plan→act→observe loops; conditional edges encode branching (retry, escalate, finish). Checkpoints snapshot state at super-step boundaries so runs can pause, resume, and time-travel debug.
+LangGraph models agent workflows as **graphs**:
+
+1. **State** — shared snapshot (TypedDict / Pydantic) with **reducers** defining how concurrent updates merge.
+2. **Nodes** — functions that read state, do work (LLM, tools, code), return updates.
+3. **Edges** — fixed or **conditional** transitions choosing the next node(s).
+
+Execution proceeds in Pregel-like **super-steps**: scheduled nodes run (possibly in parallel), updates merge, then the next step schedules. The run ends when nothing remains to execute ([Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api)). Compile with `.compile(...)` to validate structure and attach checkpointers / interrupts.
+
+LangGraph / Anthropic both distinguish:
+
+- **Workflows** — predetermined code paths (prompt chaining, routing, parallelization, orchestrator–worker, evaluator–optimizer).
+- **Agents** — the model dynamically chooses tools / next steps inside a loop ([Workflows and agents](https://docs.langchain.com/oss/python/langgraph/workflows-agents); [Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)).
+
+A **simple chain** (LCEL pipe, linear `A → B → C`) is a DAG without cycles: great for fixed pipelines (retrieve → generate → format). A **stateful graph** adds cycles (agent ↔ tools), branching, fan-out/`Send`, shared memory, interrupts, and resumable persistence — i.e. production agent harness features. `Command` from nodes can `update` state, `goto` nodes, target parent graphs from subgraphs, or `resume` after interrupts.
 
 ### Alternatives & Tradeoffs
-| Approach | Pros | Cons |
-|----------|------|------|
-| Simple chain / LCEL | Easy to read; low overhead | Weak for retries, HITL, multi-actor |
-| Implicit `while` agent loop | Fast to prototype | Opaque control flow; hard to persist mid-loop |
-| Explicit graph (LangGraph) | Debuggable, interruptible, testable nodes | Framework lock-in; learning curve |
-| Workflow engines (Temporal, Prefect) | Strong durability for business workflows | Heavier; LLM-specific patterns less native |
+| Style | Best for | Weakness |
+|-------|----------|----------|
+| Linear chain / LCEL | Deterministic ETL-ish LLM pipelines | No native loops, HITL pause, time-travel |
+| Single ReAct `while` loop (Week 11) | Few tools, short tasks | Weak branching, persistence, multi-actor |
+| LangGraph StateGraph | Cyclic agents, HITL, multi-agent, deployable runs | Learning curve; recursion limits |
+| AutoGen event/runtime | Distributed pub-sub agents | Different mental model; ops complexity |
+| CrewAI crews/processes | Fast role-based prototypes | Weaker production persistence/HITL story — use cautiously |
+| Workflow engines (Temporal, Prefect) | Multi-day business durability | Heavier; LLM-specific patterns less native |
 
-Tradeoff: graphs add structure that interviewers and FDEs can draw on a whiteboard; over-graphing a Q&A bot wastes complexity budget.
+Anthropic warns frameworks obscure prompts/tool IO — start with API loops; add graphs when measured value requires them ([Building effective agents](https://www.anthropic.com/engineering/building-effective-agents)).
 
 ### Necessity
-Naive loops collapse under tool failures, partial writes, and process restarts. Without explicit state + edges, you cannot prove which node failed or resume after human approval. Production agent incidents often look like “it just hung” because control flow lived only in prompt text.
+Naive chains cannot express “call tools until done,” approval gates, or crash recovery mid-task. Without shared state + reducers, parallel nodes clobber each other’s writes. Without recursion limits, cyclic graphs loop forever. Production incidents often look like “it just hung” because control flow lived only in prompt text.
 
 ### Industry Practice
-- **Common:** LangChain agent executor / raw tool loop in one FastAPI handler.
-- **Senior:** typed state schema; named nodes; conditional edges for confidence/escalation; compile with checkpointer; metrics per node; subgraphs for specialized skills.
+- **Common:** LCEL demo chain labeled “agent”; recursion limit unset.
+- **Senior:** choose workflow vs agent deliberately; typed state + reducers; set recursion limits; stream for UX; compile once, invoke with `thread_id`; LangSmith / equivalent traces per node; subgraphs for specialized skills.
 
 ### Concrete Scenario
-LangGraph persistence / checkpointers overview: https://docs.langchain.com/oss/python/langgraph/persistence  
-Checkpointers enable HITL and fault tolerance: https://docs.langchain.com/oss/python/langgraph/checkpointers  
-YouTube: LangChain “LangGraph” official deep-dives — https://www.youtube.com/results?search_query=langgraph+orchestration+langchain
+Harrison Chase (LangChain) at AI Engineer — “3 ingredients for building reliable enterprise agents” — argues enterprise agents succeed by combining high-value longer-running work, a middle ground of autonomy + deterministic workflows via LangGraph, and observability/evals, with reversible actions and human correction: https://ai.engineer/talks/3-ingredients-for-building-reliable-enterprise-agents  
+
+Official “Workflows and agents” walkthrough (chaining → routing → parallelization → orchestrator–worker → evaluator–optimizer → agent loops): https://docs.langchain.com/oss/python/langgraph/workflows-agents  
+Graph API (state/nodes/edges/super-steps/`Command`): https://docs.langchain.com/oss/python/langgraph/graph-api
 
 ### Open Questions
-- Will MCP + host runtimes reduce need for app-level graphs, or will graphs wrap MCP tools?
+- When does `create_agent` hide too much graph structure for FDE debugging?
+- Will MCP + host runtimes shrink app-level graphs, or will graphs wrap MCP tools?
 - Graph DSL vs code-defined graphs for enterprise change control?
 
 ### Sources
+- https://docs.langchain.com/oss/python/langgraph/workflows-agents
+- https://docs.langchain.com/oss/python/langgraph/graph-api
+- https://docs.langchain.com/oss/python/langgraph/overview
 - https://docs.langchain.com/oss/python/langgraph/persistence
-- https://docs.langchain.com/oss/python/langgraph/checkpointers
-- https://mastra.ai/articles/langgraph
+- https://www.anthropic.com/engineering/building-effective-agents
+- https://ai.engineer/talks/3-ingredients-for-building-reliable-enterprise-agents
 
 ---
 
 ## Concept: Single agent with many tools vs multiple specialized agents
 
 ### Fundamentals
-**Single agent + many tools**: one policy/prompt selects among a large tool catalog. **Multi-agent**: specialized agents (research, SQL, ticket writer) with narrower prompts/tools, coordinated by a supervisor or handoffs. Specialization reduces tool-confusion; coordination adds latency and failure modes at handoff boundaries.
+**Single agent + many tools:** one model, one system prompt, large tool list (or deferred tool-search). Simple topology; selection pressure is high (Week 11).
+
+**Multiple specialized agents:** each agent has a narrow prompt + tool subset (billing, retrieval, coder). A **supervisor / router / handoff** chooses who acts. LangGraph supports this via subgraphs, supervisor patterns, or tools-that-invoke-subagents ([Subgraphs](https://docs.langchain.com/oss/python/langgraph/use-subgraphs), [Migrate from langgraph-supervisor](https://docs.langchain.com/oss/python/migrate/langgraph-supervisor)). Current LangChain guidance prefers **subagents as tools** on a main `create_agent` over the older `langgraph-supervisor` package; use custom `StateGraph` when you need static subgraph discovery, per-tier checkpoints, or shared state keys.
+
+**Anthropic production lesson:** Research uses an **orchestrator–worker** design (lead agent + parallel specialized subagents). Token use ran ~**15×** a chat interaction; multi-agent wins when breadth/parallel exploration beats a single context, but **detailed task briefs** are mandatory — vague “research X” caused duplicate searches and gaps ([How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)). Follow-up: multi-agent helps for **context pollution**, **parallelizable work**, and **specialization**; otherwise coordination cost dominates ([When to use multi-agent systems](https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them)). Decompose by **context boundaries**, not arbitrary “researcher vs writer” labels.
+
+**CrewAI (use cautiously):** `Crew` = agents + tasks + process (`sequential` / hierarchical manager). Convenient role/backstory/goal metaphors; treat as a **prototyping layer** — verify persistence, evals, and side-effect controls yourself before enterprise writes ([Crews](https://docs.crewai.com/en/concepts/crews)).
+
+**A2A** is a different axis: interoperability between opaque agents across vendors/frameworks, complementary to MCP tools ([A2A Protocol](https://a2a-protocol.org/latest/)).
 
 ### Alternatives & Tradeoffs
-| Design | When it wins | Failure mode |
-|--------|--------------|--------------|
-| Single agent | <10–15 clearly distinct tools | Tool mis-selection as catalog grows |
-| Supervisor + specialists | Clear domains (billing vs docs) | Supervisor loops; context loss |
-| Peer swarm | Parallel exploration | Cost explosion; hard evals |
-| Dynamic single agent (middleware swaps tools/prompt) | Staged workflows without full multi-agent | Middleware complexity |
+| Design | Pros | Cons |
+|--------|------|------|
+| Monolith agent | Easy to ship; one memory | Tool confusion; giant context; hard permissions |
+| Supervisor → workers | Clear roles; parallel workers | Extra LLM hops; cost multiplier; supervisor SPOF |
+| Peer handoffs | Natural “transfer to sales” UX | Context engineering; ping-pong loops |
+| Subagents-as-tools | Simple API; isolates worker context | Less shared conversational state unless designed |
+| Middleware “one agent, many configs” | Simpler than multi-graph | Still one model identity |
+| CrewAI sequential/hierarchical crew | Fast demos; role clarity | Ops/HITL/idempotency not solved for you |
 
-LangChain handoff docs recommend single agent + middleware for most cases; multi-agent subgraphs when specialists are themselves complex graphs.
+Tradeoff: multi-agent is **context and permission partitioning**, not automatic intelligence. Wrong partition → handoff thrash and duplicated work.
 
 ### Necessity
-Dumping 40 near-duplicate enterprise tools into one agent → wrong CRM update tool, infinite clarify loops, and unsafe side effects. Multi-agent without shared contracts → duplicated work and contradictory actions.
+Dozens of overlapping tools on one agent degrade tool choice and raise accidental high-privilege calls. Domains with different policies (PII vs public search) need separate agents/servers. Premature multi-agent adds latency, token burn, and “who owns the user reply?” ambiguity.
 
 ### Industry Practice
-- **Common:** one mega-agent; tools named vaguely (`search`, `query`).
-- **Senior:** tool taxonomy + disambiguation descriptions; split agents at trust/permission boundaries; shared trace IDs; evals for routing accuracy separately from task success.
+- **Common:** “multi-agent” slide deck; actually one agent; or CrewAI demo with no evals.
+- **Senior:** start single-agent; split when evals show systematic tool confusion, context pollution, or blast-radius differences; wrap workers as tools first; escalate to subgraphs for bespoke graphs; measure handoff rate, loopbacks, and $/task vs single-agent baseline (Anthropic’s 15× research cost is a warning, not a goal).
 
 ### Concrete Scenario
-Handoffs architecture (single vs multi-agent): https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs
+Anthropic Research: lead agent plans, spawns 3–5 parallel subagents with explicit objectives/tools/boundaries, synthesizes compressed summaries — parallelization cut complex research wall-clock by up to ~90% in their write-up: https://www.anthropic.com/engineering/multi-agent-research-system  
+When *not* to multi-agent: https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them  
+LangChain: `create_agent` + tool-wrapped subagents: https://docs.langchain.com/oss/python/migrate/langgraph-supervisor
 
 ### Open Questions
-- Optimal tool-count thresholds before specialization (empirical, model-dependent)?
-- Does stronger tool-calling in frontier models shrink the multi-agent premium?
+- Is “agents as tools” strictly preferable to peer handoffs for enterprise support bots?
+- How should cost be attributed across supervisor + workers for customer billing?
+- Can verification-only subagents pay for themselves on every write path?
 
 ### Sources
-- https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs
-- https://docs.langchain.com/oss/python/langgraph/
+- https://www.anthropic.com/engineering/multi-agent-research-system
+- https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them
+- https://www.anthropic.com/engineering/building-effective-agents
+- https://docs.langchain.com/oss/python/migrate/langgraph-supervisor
+- https://docs.langchain.com/oss/python/langgraph/use-subgraphs
+- https://docs.crewai.com/en/concepts/crews
+- https://a2a-protocol.org/latest/
 
 ---
 
 ## Concept: Agent handoff patterns
 
 ### Fundamentals
-A **handoff** transfers control (and usually conversation state) from one agent/configuration to another—via a tool that updates `active_agent` / `current_step`, or via graph `Command` routing to another node. Critical detail: LLM message histories expect tool calls paired with tool results; broken handoffs corrupt the dialogue schema and cause cryptic model errors.
+**Handoff** (term popularized by OpenAI Swarm): transfer control via a **special tool call** (e.g. `transfer_to_refund_agent`) that updates routing state and/or navigates to another agent. The receiving agent adopts a new persona/tools; the user often continues in the same chat thread.
+
+**LangChain handoffs** ([Handoffs](https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs)):
+
+- Tools update a state variable (`current_step` / `active_agent`); the system reads it to change behavior.
+- Use when: sequential constraints, multi-stage conversational flows, direct user interaction across stages (e.g. warranty ID before refund).
+- Two implementations:
+  1. **Single agent + middleware** — one agent; middleware swaps system prompt/tools per step (recommended default).
+  2. **Multiple agent subgraphs** — distinct nodes; handoff tools return `Command(goto=..., graph=Command.PARENT, update=...)`.
+- Critical context rule for subgraph handoffs: include the **AIMessage with the tool call** + a matching **ToolMessage** so history stays valid; prefer summarizing, not dumping full subagent internals.
+
+**OpenAI Agents SDK:** handoffs are first-class — represented as tools (`transfer_to_<name>`); optional `input_type` for metadata (reason, priority); `input_filter` to reshape history the next agent sees; `on_handoff` callbacks ([Handoffs](https://openai.github.io/openai-agents-python/handoffs/)).
+
+**Microsoft AutoGen:** handoffs as event-driven pub-sub — triage/refund/sales/human agents; **delegate tools** publish `UserTask` to another topic instead of continuing generation in the same agent; Swarm team selects the next speaker from the latest `HandoffMessage` while sharing message context ([AutoGen handoffs](https://microsoft.github.io/autogen/stable/user-guide/core-user-guide/design-patterns/handoffs.html), [Swarm](https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/swarm.html)).
+
+Anthropic Research handoffs use **compressed summaries**, never full subagent transcripts, to keep the lead’s context for planning/synthesis ([Multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)).
 
 ### Alternatives & Tradeoffs
-- **State-variable handoff** (same agent, new prompt/tools): simpler continuity.
-- **Subgraph / distinct agent nodes**: stronger isolation; must manage parent/child commands and history validity.
-- **A2A / network protocols**: cross-framework delegation (Week 14); more integration surface.
-Tradeoff: invisible handoffs (prompt-only “you are now X”) vs explicit tools that auditors can see in traces.
+| Pattern | UX | Engineering cost |
+|---------|----|------------------|
+| Middleware step machine | Smooth single persona morph | Careful step design |
+| Peer agent transfer | Explicit “I’m transferring you” | Message pairing; active_agent routing |
+| Supervisor always in the middle | Central policy | Extra latency every turn |
+| Agents-as-tools (no conversation transfer) | Clean isolation | Weaker shared chat continuity |
+| Human handoff | Trust | Staffing, SLA, pause persistence |
+| Full-history dump | Max context | Token burn; confusion; leakage |
+
+Tradeoff: handoff tools that also perform side effects (create ticket + transfer) blur semantics — keep pure routing tools separate from write tools.
 
 ### Necessity
-Without disciplined handoffs, multi-agent demos work once and fail when the second agent lacks prior tool results or user constraints (ACLs, ticket IDs). FDE customer workflows (triage → act) demand auditable transfers.
+Without disciplined handoffs, multi-agent systems either never transfer (wrong specialist answers) or transfer without valid tool-result pairing (API/history corruption). Unbounded peer transfers create agent ping-pong. FDE customer workflows (triage → act) demand auditable transfers.
 
 ### Industry Practice
-- **Common:** concatenate transcripts into a new system prompt and “hope.”
-- **Senior:** handoff tools with schemas; persist `active_agent` in checkpointer; validate message pairing; test handoff edge cases in trajectory evals.
+- **Common:** prompt “if needed, call transfer_*” with no state machine; infinite loops.
+- **Senior:** explicit `active_agent` + end conditions (final AIMessage without tool calls → END); middleware for most cases; subgraphs only for bespoke workers; log every transfer; cap transfers per session; human agent as a first-class sink (AutoGen pattern); filter tool internals on handoff; trajectory evals for handoff edges.
 
 ### Concrete Scenario
-LangChain multi-agent handoffs guide: https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs
+LangChain sales ↔ support handoff with `Command.PARENT` and routing on `active_agent`: https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs  
+OpenAI Agents SDK handoff customization (`input_type`, filters, recommended prompt prefix): https://openai.github.io/openai-agents-python/handoffs/  
+AutoGen Core handoffs (triage/refund/sales/human, Swarm-inspired): https://microsoft.github.io/autogen/stable/user-guide/core-user-guide/design-patterns/handoffs.html
 
 ### Open Questions
-- Standard handoff envelope across MCP / A2A / LangGraph?
-- How to hand off *partial* credentials without over-privilege?
+- Should handoff be visible to users always, or silent specialist swap?
+- How do A2A task delegation semantics map onto in-process LangGraph handoffs?
+- Standard handoff envelope across MCP / A2A / framework SDKs?
 
 ### Sources
 - https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs
+- https://openai.github.io/openai-agents-python/handoffs/
+- https://microsoft.github.io/autogen/stable/user-guide/core-user-guide/design-patterns/handoffs.html
+- https://microsoft.github.io/autogen/stable/user-guide/agentchat-user-guide/swarm.html
+- https://www.anthropic.com/engineering/multi-agent-research-system
+- https://a2a-protocol.org/latest/
 
 ---
 
 ## Concept: Persistence and resumable state
 
 ### Fundamentals
-**Checkpointers** persist thread-scoped graph state after super-steps (conversation continuity, resume after crash/interrupt). **Stores** hold cross-thread long-term memory (preferences, facts). Together they separate “this run’s progress” from “durable knowledge.” Pending writes at task level support partial recovery when one parallel node fails.
+LangGraph persistence ([Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)):
+
+| System | Persists | Scope | Use |
+|--------|----------|-------|-----|
+| **Checkpointer** | Graph state snapshots (checkpoints) | Single **thread** (`thread_id`) | Conversation continuity, HITL, time travel, fault tolerance |
+| **Store** | App-defined key-value | Cross-thread | User preferences, facts, shared knowledge |
+
+Compile: `builder.compile(checkpointer=..., store=...)`. Invoke with `{"configurable": {"thread_id": "..."}}`. Same `thread_id` resumes; new id starts empty. Checkpoints are written at **super-step** boundaries; per-task writes enable pending-write recovery when a sibling node in the same step fails ([Checkpointers](https://docs.langchain.com/oss/python/langgraph/checkpointers)).
+
+Production notes from docs:
+
+- `InMemorySaver` / `MemorySaver` **lost on process restart** — use `PostgresSaver` / `SqliteSaver` for durability.
+- Checkpoints can **grow unboundedly** — prune/retain.
+- Postgres `thread_id` length limits (<255 chars).
+- Subgraphs may have separate checkpoint namespaces — parent may not see child updates; use Store or shared channels carefully.
+- Agent Server can manage persistence for you.
+
+Resumability enables: multi-day conversations, crash recovery mid-graph, and HITL waits without holding a hot worker.
 
 ### Alternatives & Tradeoffs
-| Store | Use | Tradeoff |
-|-------|-----|----------|
-| In-memory checkpointer | Dev only | Lost on restart |
-| Postgres/SQLite checkpointer | Prod threads | Ops + migration |
-| External workflow engine | Multi-day jobs | Dual orchestration brains |
-| Only chat history in Redis | Simple bots | Weak for HITL mid-tool |
+| Approach | Pros | Cons |
+|----------|------|------|
+| No persistence | Simple scripts | No resume/HITL/time travel |
+| In-memory checkpointer | Fast local | Dies with process |
+| Postgres checkpointer | Multi-instance workers | Ops + retention policy |
+| External session DB only | Familiar | Reimplement graph cursor semantics |
+| Provider conversation state | Less infra | Vendor lock; weaker custom graph control |
+| Temporal/Prefect for durability | Battle-tested long jobs | Dual orchestration brains |
+
+Tradeoff: durable checkpoints are required for serious HITL; they are **not** a full audit log of who approved what (application must add that).
 
 ### Necessity
-Cloud Run instance death mid-tool-call without checkpoint → duplicate side effects or abandoned customer tickets. Interview signal: can you resume an interrupted approval flow?
+Cloud instance death mid-tool-call without checkpoint → duplicate side effects or abandoned customer tickets. Without stores, every thread re-learns preferences. Interview signal: can you resume an interrupted approval flow after a deploy?
 
 ### Industry Practice
-- **Common:** session dict in process memory.
-- **Senior:** thread_id per user/session; durable checkpointer; idempotent tools on resume; time-travel for debugging bad trajectories.
+- **Common:** MemorySaver in notebooks; surprise empty state in prod.
+- **Senior:** Postgres-backed checkpointer behind a pool; stable `thread_id` strategy (user×session); TTL/prune job; separate Store for long-term memory; serialize concurrent invokes per `thread_id`; test resume after kill -9; document subgraph checkpoint namespaces.
 
 ### Concrete Scenario
-https://docs.langchain.com/oss/python/langgraph/persistence  
-https://docs.langchain.com/oss/python/langgraph/checkpointers
+Official persistence quickstart + checkpointer vs store + production troubleshooting (MemorySaver loss, unbounded checkpoints, thread_id length): https://docs.langchain.com/oss/python/langgraph/persistence  
+Checkpointers conceptual guide (HITL, time travel, fault tolerance, super-step snapshots): https://docs.langchain.com/oss/python/langgraph/checkpointers  
+Interrupts: pause persists via checkpointer; resume with same `thread_id` + `Command(resume=...)`: https://docs.langchain.com/oss/python/langgraph/interrupts
 
 ### Open Questions
-- Checkpoint PII retention vs GDPR deletion workflows?
+- What retention/PII policy applies to full graph checkpoints in regulated industries?
+- How to migrate checkpoint schemas when node names/state keys change?
 - How fine-grained should super-steps be for cost vs resume fidelity?
 
 ### Sources
 - https://docs.langchain.com/oss/python/langgraph/persistence
 - https://docs.langchain.com/oss/python/langgraph/checkpointers
+- https://docs.langchain.com/oss/python/langgraph/interrupts
+- https://docs.langchain.com/oss/python/langgraph/use-subgraphs
 
 ---
 
 ## Concept: Human-in-the-loop checkpoints
 
 ### Fundamentals
-**HITL** pauses the graph before high-stakes actions (send email, modify prod record, spend money), surfaces state to a human, then resumes with approval/edits. Requires persistence: the person inspects a checkpoint and the graph continues from that exact point. Interrupts are first-class in LangGraph, not a hacky `input()`.
+**Human-in-the-loop (HITL)** pauses automated execution for approval, edits, or extra input — critical when models can take irreversible actions.
+
+LangGraph **interrupts** ([Interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts); [LangChain blog](https://www.langchain.com/blog/making-it-easier-to-build-human-in-the-loop-agents-with-interrupt)):
+
+- Call `interrupt(payload)` inside a node (JSON-serializable payload surfaced to caller).
+- Requires a **checkpointer** + `thread_id`.
+- Graph saves state and waits **indefinitely** (no compute burn while waiting).
+- Resume: re-invoke with **same** `thread_id` and `Command(resume=value)`; that value becomes the return of `interrupt()`.
+- **Node restarts from the beginning** on resume → keep code **before** `interrupt` side-effect-free / idempotent.
+- Patterns: approve/reject critical actions; review/edit LLM or tool args; validate human input; multiple interrupts with paired IDs.
+- Prefer dynamic `interrupt()` over only static `interrupt_before`/`interrupt_after` when logic is conditional — and never put irreversible side effects before the pause if using `interrupt_after` semantics.
+
+AutoGen handoffs include a **Human Agent** topic for escalations AI agents cannot handle ([AutoGen handoffs](https://microsoft.github.io/autogen/stable/user-guide/core-user-guide/design-patterns/handoffs.html)). MCP **elicitation** (Week 12) is complementary when a *tool server* needs human input, not the graph.
+
+Harrison Chase’s AI Engineer talk frames reversible actions + human correction as ingredients of reliable enterprise agents: https://ai.engineer/talks/3-ingredients-for-building-reliable-enterprise-agents
 
 ### Alternatives & Tradeoffs
-- **Always-on HITL**: safest; kills latency/UX for low-risk tasks.
-- **Risk-based interrupts** (confidence, dollar amount, irreversible tools): balanced.
-- **Post-hoc review only**: faster; too late for irreversible actions.
-- **Policy engine / static allowlists**: predictable; less flexible than human judgment.
-Tradeoff: interrupt too often → rubber-stamping; too rare → production incidents.
+| Mechanism | Fit | Caveat |
+|-----------|-----|--------|
+| LangGraph `interrupt()` | Graph-native pause/resume | Needs durable checkpointer; node replay semantics |
+| Static breakpoints at compile | Simple always-pause nodes | Less flexible than conditional interrupt |
+| Approve inside tool `run()` | Works with SDK tool runners | Easy to forget persistence across restarts |
+| Out-of-band ticket / Slack queue | Familiar ops | Must wire resume idempotently |
+| Always-on human | Safest | Not scalable |
+| Prompt-only `confirm=True` | Cheap | Model may ignore |
+
+Tradeoff: too many interrupts destroy automation ROI (rubber-stamping); too few create blast-radius incidents.
 
 ### Necessity
-Syllabus build: add HITL for one high-stakes action. Without it, agent demos that “file tickets” are unsafe for FDE customer environments and fail security review.
+Money movement, customer emails, prod DB writes, and regulated advice without HITL fail security review and FDE customer trust. HITL without persistence forces the HTTP request to stay open — unusable for async human SLAs (approve hours later).
 
 ### Industry Practice
-- **Common:** `confirm=True` boolean in prompt (model may ignore).
-- **Senior:** hard interrupt before side-effecting tools; UI shows tool args; approve/edit/reject paths; audit log of human decisions; evals that attempt to bypass confirmation.
+- **Common:** `input()` in a CLI demo called “HITL”; or prompt-based confirmation.
+- **Senior:** risk-based interrupts (dollar thresholds, irreversible tool classes); durable checkpointer; UI shows interrupt payload + tool args; approve/edit/reject paths; timeouts/escalation if no human responds; audit who approved; idempotent nodes; test kill-and-resume; combine with tool allowlists; trajectory evals that attempt to bypass confirmation.
 
 ### Concrete Scenario
-LangGraph checkpointers cite HITL as a primary reason persistence exists: https://docs.langchain.com/oss/python/langgraph/checkpointers  
-Practitioner HITL walkthrough: https://oleg-dubetcky.medium.com/building-smarter-agents-a-human-in-the-loop-guide-to-langgraph-dfe1673d8b7b  
-YouTube: LangChain HITL / interrupts sessions — https://www.youtube.com/results?search_query=langgraph+human+in+the+loop
+LangGraph interrupts guide — `interrupt("Do you approve this action?")`, detect via stream `interrupted` / `interrupts`, resume with `Command(resume=True)` on the same thread: https://docs.langchain.com/oss/python/langgraph/interrupts  
+LangChain announcement of `interrupt` DX for production HITL: https://www.langchain.com/blog/making-it-easier-to-build-human-in-the-loop-agents-with-interrupt  
+AI Engineer Europe multi-agent + MCP workshop (orchestration + tools surface): https://www.youtube.com/watch?v=mYSRn6PC1mc
 
 ### Open Questions
-- Can LLM-as-judge replace some HITL without recreating rubber-stamp risk?
-- Async HITL (email/Slack approve hours later) as default enterprise pattern?
+- Should approval UIs be host-native (Agent Server) or customer IAM ticketing?
+- How to prevent rubber-stamp fatigue when interrupt volume is high?
+- Can LLM-as-judge replace *some* HITL without recreating rubber-stamp risk?
 
 ### Sources
-- https://docs.langchain.com/oss/python/langgraph/checkpointers
+- https://docs.langchain.com/oss/python/langgraph/interrupts
 - https://docs.langchain.com/oss/python/langgraph/persistence
-- https://oleg-dubetcky.medium.com/building-smarter-agents-a-human-in-the-loop-guide-to-langgraph-dfe1673d8b7b
+- https://docs.langchain.com/oss/python/langgraph/checkpointers
+- https://www.langchain.com/blog/making-it-easier-to-build-human-in-the-loop-agents-with-interrupt
+- https://microsoft.github.io/autogen/stable/user-guide/core-user-guide/design-patterns/handoffs.html
+- https://ai.engineer/talks/3-ingredients-for-building-reliable-enterprise-agents
+- https://www.youtube.com/watch?v=mYSRn6PC1mc
+- https://www.youtube.com/@aidotengineer
+
+---
+
+## Week 13 cross-cutting sources
+
+- LangGraph workflows & agents: https://docs.langchain.com/oss/python/langgraph/workflows-agents  
+- LangGraph graph API: https://docs.langchain.com/oss/python/langgraph/graph-api  
+- LangGraph persistence: https://docs.langchain.com/oss/python/langgraph/persistence  
+- LangGraph checkpointers: https://docs.langchain.com/oss/python/langgraph/checkpointers  
+- LangGraph interrupts (HITL): https://docs.langchain.com/oss/python/langgraph/interrupts  
+- LangChain multi-agent handoffs: https://docs.langchain.com/oss/python/langchain/multi-agent/handoffs  
+- OpenAI Agents SDK handoffs: https://openai.github.io/openai-agents-python/handoffs/  
+- Microsoft AutoGen handoffs: https://microsoft.github.io/autogen/stable/user-guide/core-user-guide/design-patterns/handoffs.html  
+- Anthropic building effective agents: https://www.anthropic.com/engineering/building-effective-agents  
+- Anthropic multi-agent research system: https://www.anthropic.com/engineering/multi-agent-research-system  
+- Anthropic when to use multi-agent: https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them  
+- CrewAI crews (cautious): https://docs.crewai.com/en/concepts/crews  
+- AI Engineer — Chase enterprise agents talk: https://ai.engineer/talks/3-ingredients-for-building-reliable-enterprise-agents  
+- YouTube AI Engineer channel: https://www.youtube.com/@aidotengineer  

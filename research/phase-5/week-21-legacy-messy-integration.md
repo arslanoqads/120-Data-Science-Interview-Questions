@@ -27,7 +27,9 @@ LLM integration patterns that work on messy SQL:
 4. **Hybrid tools** — prefer vetted parameterized tools (`get_invoice(id)`) over open-ended SQL for high-risk domains.
 5. **Schema grounding** — dump filtered `information_schema` + sample rows (redacted) into context; version the schema snapshot.
 
-Do **not** paste entire schemas into prompts — token cost, confusion, and leakage.
+Do **not** paste entire schemas into prompts — token cost, confusion, and leakage. Google’s SRE book on data processing pipelines emphasizes that real pipelines accumulate operational complexity (schema evolution, consistency, reprocessing) far beyond “SELECT * and ship” ([Data processing pipelines](https://sre.google/sre-book/data-processing-pipelines/)).
+
+Enterprise Integration Patterns remind us systems rarely speak one schema — a **Canonical Data Model** / translator sits between messy producers and consumers ([Canonical Data Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html)). Agents inherit the same need: translate before reason.
 
 ### Alternatives & Tradeoffs
 | Approach | Accuracy | Safety | Effort |
@@ -39,11 +41,11 @@ Do **not** paste entire schemas into prompts — token cost, confusion, and leak
 | Fine-tuned schema linker | Strong | Still needs RLS | ML cost |
 
 ### Necessity
-Pointing an agent at raw prod DB without RLS → data breach or accidental `UPDATE`. Ignoring soft deletes → “customers that don’t exist” in answers. Ignoring dual currency/timezone → wrong financial summaries and lost trust.
+Pointing an agent at raw prod DB without RLS → data breach or accidental `UPDATE`. Ignoring soft deletes → “customers that don’t exist” in answers. Ignoring dual currency/timezone → wrong financial summaries and lost trust. FDE pilots die when the first SQL hallucination touches a write-capable role.
 
 ### Industry Practice
-**Common:** dump schema into system prompt; hope.  
-**Strong:** curated semantic layer; approved join graph; eval set of natural-language→SQL with execution accuracy; shadow mode (generate SQL, don’t run); human approve for write paths; column-level masking for PII; tenant predicates injected by middleware not by the model.
+**Common:** dump schema into system prompt; hope; shared DBA login.  
+**Strong:** curated semantic layer; approved join graph; eval set of natural-language→SQL with execution accuracy; shadow mode (generate SQL, don’t run); human approve for write paths; column-level masking for PII; tenant predicates injected by middleware not by the model; schema snapshot versioning.
 
 ### Concrete Scenario
 Strange Loop / industry talks on “legacy data” and production systems (conference archive):  
@@ -51,6 +53,9 @@ https://www.youtube.com/@StrangeLoopConf
 
 Google SRE book — data processing pipelines (complexity of real pipelines, consistency challenges):  
 https://sre.google/sre-book/data-processing-pipelines/
+
+EIP Canonical Data Model (translate messy enterprise schemas before consumers — including agents):  
+https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html
 
 Example of enterprise AI needing isolation over tenant data stores (pool vs silo) — schema mess compounds multi-tenancy:  
 https://aws.amazon.com/blogs/machine-learning/shared-infrastructure-isolated-tenants-pool-model-multi-tenancy-with-amazon-bedrock-agentcore/
@@ -63,8 +68,10 @@ https://aws.amazon.com/blogs/machine-learning/shared-infrastructure-isolated-ten
 ### Sources
 - https://sre.google/sre-book/data-processing-pipelines/
 - https://sre.google/workbook/data-processing/
+- https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html
 - https://www.youtube.com/@StrangeLoopConf
 - https://docs.getdbt.com/docs/build/models (semantic modeling adjacent — public docs)
+- https://aws.amazon.com/blogs/machine-learning/shared-infrastructure-isolated-tenants-pool-model-multi-tenancy-with-amazon-bedrock-agentcore/
 
 ---
 
@@ -94,30 +101,41 @@ For LLM corpora: extraction (PDF/HTML) fails often — keep parent document ID, 
 Google SRE workbook emphasizes **idempotent mutations** and **two-phase mutations** for pipelines so reprocessing doesn’t corrupt stores, and canaries don’t write bad data unchecked:  
 https://sre.google/workbook/data-processing/
 
+**Cloud-native DLQ patterns:** GCP Dataflow / Beam `BigQueryIO` surfaces failed inserts via `WriteResult` (`getFailedStorageApiInserts` / `FailedRows`); route those rows to a dead-letter table or queue ([Write from Dataflow to BigQuery](https://docs.cloud.google.com/dataflow/docs/guides/write-to-bigquery); [BigQueryIO patterns](https://beam.apache.org/documentation/patterns/bigqueryio/)). Pub/Sub → BigQuery templates expose `outputDeadletterTable` for transform/UDF failures ([Pub/Sub to BigQuery template](https://docs.cloud.google.com/dataflow/docs/guides/templates/provided/pubsub-subscription-to-bigquery)). Incompatible schema evolution needs façade views / staging tables ([Upgrade a streaming pipeline](https://cloud.google.com/dataflow/docs/guides/upgrade-guide)).
+
 ### Alternatives & Tradeoffs
 | Strategy | Pros | Cons |
 |----------|------|------|
 | Fail-fast entire job | Simple | One bad row blocks business |
-| Per-row quarantine | Resilient | Operational load to fix DLQ |
-| Schema-on-read | Flexible | Garbage reaches consumers |
+| Per-row quarantine + DLQ | Resilient | Operational load to fix DLQ |
+| Schema-on-read | Flexible | Garbage reaches consumers / RAG |
 | Contract tests with producers | Prevents issues | Needs org power |
 | LLM to “fix” rows | Tempting | Quietly invents fields — dangerous |
 
 Use LLMs for **suggestions** on messy mappings in staging; do not silently auto-write production mappings without tests.
 
 ### Necessity
-Brittle ETL that aborts on first bad row creates perpetual firefighting and empty RAG indexes. Silent coercion (`parseInt` failures → 0) creates wrong AI answers that look authoritative. Without raw landing, you cannot replay after fixing parsers.
+Brittle ETL that aborts on first bad row creates perpetual firefighting and empty RAG indexes. Silent coercion (`parseInt` failures → 0) creates wrong AI answers that look authoritative. Without raw landing, you cannot replay after fixing parsers. Without DLQ, poison pills halt streaming forever.
 
 ### Industry Practice
 **Common:** cron script + `ON ERROR FAIL`.  
-**Strong:** medallion architecture; contract monitoring; canary on pipeline code; idempotent upserts; data SLOs (freshness, completeness); quarantine dashboards; schema registry for events; PII detection on ingest before vectors.
+**Strong:** medallion architecture; contract monitoring; canary on pipeline code; idempotent upserts; data SLOs (freshness, completeness); quarantine dashboards; schema registry for events; PII detection on ingest before vectors; replay runbooks.
 
 ### Concrete Scenario
+GCP Dataflow — capture Storage Write API / streaming insert failures into a dead-letter path instead of failing the job:  
+https://docs.cloud.google.com/dataflow/docs/guides/write-to-bigquery  
+
+Apache Beam BigQueryIO dead-letter pattern:  
+https://beam.apache.org/documentation/patterns/bigqueryio/  
+
 SRE Workbook — Improve and Optimize Data Processing Pipelines (canarying pipelines, idempotent & two-phase mutations):  
 https://sre.google/workbook/data-processing/
 
 SRE Book — Managing Data Processing Pipelines:  
 https://sre.google/sre-book/data-processing-pipelines/
+
+Strange Loop channel (legacy / pipeline reliability talks):  
+https://www.youtube.com/@StrangeLoopConf
 
 ### Open Questions
 - How much “LLM data cleaning” is acceptable before audit/compliance says no?
@@ -125,9 +143,14 @@ https://sre.google/sre-book/data-processing-pipelines/
 - Who owns quarantine SLAs — data eng or the FDE embedding the corpus?
 
 ### Sources
+- https://docs.cloud.google.com/dataflow/docs/guides/write-to-bigquery
+- https://beam.apache.org/documentation/patterns/bigqueryio/
+- https://docs.cloud.google.com/dataflow/docs/guides/templates/provided/pubsub-subscription-to-bigquery
+- https://cloud.google.com/dataflow/docs/guides/upgrade-guide
 - https://sre.google/workbook/data-processing/
 - https://sre.google/sre-book/data-processing-pipelines/
 - https://sre.google/sre-book/distributed-periodic-scheduling/
+- https://www.youtube.com/@StrangeLoopConf
 
 ---
 
@@ -147,12 +170,13 @@ Your AI feature depends on **their** CRM, ERP, ticketing, SharePoint, email, and
 1. **Timeouts everywhere** — connect + read deadlines; no infinite waits on tool calls.
 2. **Bulkheads** — isolate thread/connection pools per dependency so one stuck CRM doesn’t block the LLM provider client.
 3. **Circuit breakers** — stop calling a sick dependency; fail fast; probe half-open.
-4. **Graceful degradation** — answer from RAG cache with caveat; skip enrichment; queue for later; switch to human handoff.
-5. **Retries with exponential backoff + jitter** — only on idempotent/safe calls (SRE best practice):  
-   https://sre.google/sre-book/service-best-practices/
+4. **Graceful degradation** — answer from RAG cache with caveat; skip enrichment; queue for later; switch to human handoff. Google Search SRE serves degraded results under overload rather than dying ([Service best practices](https://sre.google/sre-book/service-best-practices/)).
+5. **Retries with exponential backoff + jitter** — only on idempotent/safe calls; unbounded retries cause cascading failure ([Addressing cascading failures](https://sre.google/sre-book/addressing-cascading-failures/); [Service best practices](https://sre.google/sre-book/service-best-practices/)).
 6. **Deadline propagation** — agent run has a total budget; tool calls inherit remaining time.
 7. **Status surfaces** — tell the user/agent *which* dependency failed (`CRM_TIMEOUT`), don’t swallow into generic “something went wrong.”
-8. **Async for slow paths** — accept job, process when customer system recovers; webhook/resume.
+8. **Async for slow paths** — accept job, process when customer system recovers; webhook/resume (pairs with Week 13 checkpointers).
+
+**Circuit breakers** — EIP conversation patterns document how retries without breakers amplify load ([Request-Response with Retry](https://www.enterpriseintegrationpatterns.com/patterns/conversation/RequestResponseRetry.html)); EIP’s AWS loan-broker series shows EventBridge circuit-breaker style implementations ([EIP CDK loan broker](https://www.enterpriseintegrationpatterns.com/ramblings/loanbroker_cdk.html)).
 
 Google SRE overload chapter: shed load, degrade answers, avoid retry storms:  
 https://sre.google/sre-book/handling-overload/
@@ -176,9 +200,13 @@ A single hung customer API without timeouts pins all workers → full platform o
 **Strong:** per-dependency SLOs; chaos tests (latency injection); explicit tool error types in the agent observation channel; runbooks; fallback model provider; “degraded mode” product copy; queue depth alerts when customer system is down.
 
 ### Concrete Scenario
-SRE Book — Handling Overload; Service Best Practices (retries, degradation):  
+SRE Book — Handling Overload; Addressing Cascading Failures; Service Best Practices (retries, degradation):  
 https://sre.google/sre-book/handling-overload/  
+https://sre.google/sre-book/addressing-cascading-failures/  
 https://sre.google/sre-book/service-best-practices/
+
+EIP — Request-Response with Retry (max retries, exponential backoff, circuit breakers):  
+https://www.enterpriseintegrationpatterns.com/patterns/conversation/RequestResponseRetry.html
 
 KubeCon talks on resilience / chaos (CNCF):  
 https://www.youtube.com/@cncf
@@ -190,8 +218,11 @@ https://www.youtube.com/@cncf
 
 ### Sources
 - https://sre.google/sre-book/handling-overload/
+- https://sre.google/sre-book/addressing-cascading-failures/
 - https://sre.google/sre-book/service-best-practices/
 - https://sre.google/sre-book/distributed-periodic-scheduling/
+- https://www.enterpriseintegrationpatterns.com/patterns/conversation/RequestResponseRetry.html
+- https://www.enterpriseintegrationpatterns.com/ramblings/loanbroker_cdk.html
 - https://www.youtube.com/@cncf
 
 ---
@@ -211,13 +242,17 @@ Core pattern (industry-standard, e.g. Stripe-style):
 6. TTL the key ≥ 2× max client retry window (Stripe documents 24h retention for keys):  
    https://docs.stripe.com/api/idempotent_requests
 
+**AWS Agentic AI Lens / Durable Execution** stress the failure mode most teams hit: non-deterministic keys (UUID minted *inside* the retry) defeat idempotency. Derive keys from operation inputs — e.g. hash `(workflow_id, task_type, request_body)` — and use DynamoDB conditional writes so concurrent retries cannot both commit ([AGENTREL06-BP04](https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentrel06-bp04.html); [Idempotency and retries](https://docs.aws.amazon.com/durable-execution/patterns/best-practices/idempotency/)).
+
 Agent-specific rules:
 
 - Mint keys at **plan time** before the first tool call.
 - Derive deterministic keys from `(tenant, agent_run_id, step_id, action_type, business_object_id)` when possible.
+- Propagate keys through multi-step orchestrations and into external APIs that accept them.
 - On **timeout with unknown outcome**: do **not** free the key and blindly retry — **reconcile** (status lookup) or surface `STATE_UNKNOWN` to the agent/human.
 - Use leases for `in_progress` claims so dead workers don’t block forever.
 - Separate read tools (naturally idempotent) from write tools (`no_auto_retry` unless keyed).
+- Mark tool schemas so models **reuse** keys rather than inventing new ones each thought step.
 
 SRE book on cron: non-idempotent jobs (payroll, newsletter) must avoid double launch; prefer skip over duplicate when unsure:  
 https://sre.google/sre-book/distributed-periodic-scheduling/
@@ -242,14 +277,20 @@ Without keys: duplicate refunds, double shipments, spammed customers — classic
 **Strong:** tool registry marks side-effecting tools; mandatory idempotency key arg; broker wraps third parties that lack keys; reconciliation tools; DLQ for failed agent writes; audit log of key → side effect; tests that kill workers mid-flight and assert single execution.
 
 ### Concrete Scenario
-Stripe Idempotent Requests (canonical API design reference):  
+Stripe Idempotent Requests (canonical API design reference — key reuse returns stored result):  
 https://docs.stripe.com/api/idempotent_requests  
+
+AWS Well-Architected Agentic AI Lens — implement idempotent task execution (deterministic keys, pre-check, propagate):  
+https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentrel06-bp04.html  
 
 SRE — cron / non-idempotent launches:  
 https://sre.google/sre-book/distributed-periodic-scheduling/
 
 SRE Workbook — idempotent and two-phase mutations:  
 https://sre.google/workbook/data-processing/
+
+Educational talk on idempotent data pipelines (YouTube):  
+https://www.youtube.com/watch?v=GcU2vxYrA3g
 
 AWS multi-tenant agent OBO patterns still need idempotent tool backends underneath identity:  
 https://aws.amazon.com/blogs/machine-learning/implement-on-behalf-of-token-exchange-for-multi-tenant-agents-with-amazon-bedrock-agentcore-gateway/
@@ -261,10 +302,13 @@ https://aws.amazon.com/blogs/machine-learning/implement-on-behalf-of-token-excha
 
 ### Sources
 - https://docs.stripe.com/api/idempotent_requests
+- https://docs.aws.amazon.com/wellarchitected/latest/agentic-ai-lens/agentrel06-bp04.html
+- https://docs.aws.amazon.com/durable-execution/patterns/best-practices/idempotency/
 - https://sre.google/sre-book/distributed-periodic-scheduling/
 - https://sre.google/workbook/data-processing/
 - https://sre.google/sre-book/automation-at-google/
 - https://aws.amazon.com/blogs/machine-learning/implement-on-behalf-of-token-exchange-for-multi-tenant-agents-with-amazon-bedrock-agentcore-gateway/
+- https://www.youtube.com/watch?v=GcU2vxYrA3g
 
 ---
 
