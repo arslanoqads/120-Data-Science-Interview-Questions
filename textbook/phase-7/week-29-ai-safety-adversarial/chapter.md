@@ -1,13 +1,28 @@
 # Chapter 29 — AI Safety, Ethics, and Adversarial Testing
 
 > **Phase 7 — Supplementary Electives**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-7/week-29-ai-safety-adversarial/`  
 > **Syllabus Build:** (1) A **formal adversarial test suite** for the flagship system — malicious and edge-case inputs; **scheduled** runs (CI nightly / weekly deep); explicit **pass/fail criteria** per category (jailbreak, PII leak, tool misuse, bias slices, moderation false-negative traps). (2) A **one-page “Safety & Responsible AI”** doc modeled on fintech / healthcare security reviews: system scope, data classes, threat model, controls, residual risk, escalation owners, evidence links (eval reports, red-team logs). Do not skip this week for “we already refuse bad prompts.”
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
+
+Before this week you should already have from Week 28 (Phase 7 elective — multimodal AI as product I/O):
+
+- **Image understanding vs generation** — understand-first for ops/support; generation is a different surface.  
+- **Audio processing pipeline (STT, TTS)** — Capture → STT → Reason → optional TTS with separate SLOs.  
+- **Multimodal input in a single conversation** — content blocks; extract → compact under the Week 25 packer.  
+- **Genuine requirement vs demo gimmick** — rubric + kill criterion; **one** E2E multimodal path (screenshot/error-image **or** voice), not five half-wired demos.
+
+You do **not** need a scheduled red-team suite, fairness-slice dashboard, moderation decision matrix, or Safety & Responsible AI one-pager yet as *finished* products — that is what this week ships. You **do** need Week 5 injection discipline (necessary but not sufficient), Week 14 tool side effects, Week 15 eval harness fluency, and Week 19 identity / tenancy / audit logs — the enterprise trust surface this elective extends. Week 28’s multimodal path stays available: screenshots and audio expand the attack and PII surface the suite must cover — but **when non-text I/O is real** and **who owns the red-team schedule** are separate levers.
+
+---
+
+## What this week builds
+
+Week 28 shipped **one** honest E2E multimodal path (modality contract, Week 25 context assembly, 5–10 golden multimodal cases — not five half-wired demos). Week 29 closes **Phase 7 — Supplementary Electives** — these weeks do **not** replace Weeks 1–24. Suggested slot in research: after **Week 19** (Auth / identity) so students already know identity, tenancy, and audit logs; alternatively append after the Week 24 capstone; **this course appends them** after Week 24 / Week 25 / Week 26 / Week 27 / Week 28. It sits on the **enterprise trust surface** — security + ethics + evidence — not model-lab alignment theory. Cross-links: **Week 5** (prompt injection is necessary but not sufficient), **Week 14** (exfiltration and agency live in tool paths), **Week 15** (adversarial suite is an eval harness with a security posture), **Week 19** (safety docs + identity = regulated-industry trust surface).
 
 Week 29 turns safety from a **feature claim** (“we have a guardrail”) into a **discipline**: scheduled adversarial testing, measurable fairness checks, deliberate moderation architecture, privacy patterns beyond prompt injection, and documentation that survives a regulated-industry security review.
 
@@ -21,15 +36,32 @@ The syllabus why-line is FDE-shaped. Buyers in fintech, healthcare, and governme
 | Privacy / agency | Security & privacy beyond injection | Beyond injection: PII leak, tool exfil, excessive agency? |
 | Audit artifact | Documenting a safety review | Would a bank/hospital security questionnaire accept our one-pager? |
 
-This elective is **supplementary** — it does not replace Weeks 1–24. Suggested slot: after **Week 19** (Auth / identity) so students already know identity, tenancy, and audit logs; alternatively append after the Week 24 capstone. It sits on the **enterprise trust surface** — security + ethics + evidence — not model-lab alignment theory. Cross-links: **Week 5** (prompt injection is necessary but not sufficient), **Week 14** (exfiltration and agency live in tool paths), **Week 15** (adversarial suite is an eval harness with a security posture), **Week 19** (safety docs + identity = regulated-industry trust surface).
-
 Anchors from research: OWASP GenAI LLM Top 10; NIST AI RMF (Govern / Map / Measure / Manage) and Generative AI Profile (NIST AI 600-1); Anthropic red-teaming + Constitutional AI; OpenAI / Azure / Perspective moderation; Garak and Promptfoo for operational suites.
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) gaining a **scheduled** adversarial process and a review-grade one-pager — not a one-off guardrail demo.
+This week answers five coupled questions that FDE reviews and interview deep-dives treat as the minimum bar once Week 19 trust surface and (optionally) Week 28 multimodal ingress already exist:
+
+1. **Scheduled adversarial testing** — owned suite, cadence, pass/fail per category.  
+2. **Bias / fairness evaluation** — slice metrics, not vibe checks.  
+3. **Content moderation architecture** — buy vs hybrid with evidence on a golden set.  
+4. **Privacy beyond injection** — PII leak, tool exfil, excessive agency (LLM02 / LLM03).  
+5. **Safety review one-pager** — NIST-shaped sections, residual risk, evidence links.
+
+**Do not** drop Week 28’s multimodal path or goldens — media expands the attack and PII surface. Do **not** drop Week 19 auth / tenancy / audit — safety docs cross-link that surface. Do **not** skip this week for “we already refuse bad prompts.” Do **not** treat a one-off guardrail demo as the enterprise trust artifact.
+
+The **build** is (1) a **formal adversarial test suite** with CI nightly / weekly deep cadence and explicit pass/fail per category, and (2) a **Safety & Responsible AI** one-pager (scope, data classes, threat model, controls, residual risk, escalation owners, evidence links). Interview artifact = **scheduled suite evidence + review-grade one-pager**, not a screenshot of a polite refusal.
+
+| This week | Not this week |
+|-----------|----------------|
+| Scheduled suite + per-category pass/fail | Ad-hoc jailbreak spreadsheet / one-off pen-test |
+| Fairness slices + moderation decision matrix | “We call Moderation API” theater |
+| Privacy beyond injection (LLM02 / LLM03) | Prompt-only “don’t leak PII” |
+| Suite + Safety & Responsible AI one-pager | Provider trust-center paste as the whole story |
+
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) gaining a **scheduled** adversarial process and a review-grade one-pager — after Week 28’s multimodal path is already honest.
 
 **Default path (synthesis):**
 
-1. Inventory threats with OWASP LLM Top 10 + your product threat model (tools, RAG, auth).  
+1. Inventory threats with OWASP LLM Top 10 + your product threat model (tools, RAG, auth — and Week 28 media ingress if present).  
 2. Stand up **scheduled** red-team / adversarial runs (Promptfoo CI gate + Garak broad scan).  
 3. Add **fairness slices** and moderation thresholds with golden sets — measure, don’t assert.  
 4. Close privacy gaps: PII in outputs, tool-arg exfiltration, excessive agency (Week 14 side effects).  
@@ -389,9 +421,8 @@ When those steps are true, Week 29 is done in the syllabus sense: safety is a **
 
 ---
 
-## Compilation notes
+## Looking ahead
 
-- All concept sections above are grounded in `research/phase-7/week-29-ai-safety-adversarial/` (`00`–`05`, README).  
-- No section required `[NEEDS MORE RESEARCH]` for the five syllabus concepts covered in research files `01`–`05`.  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.  
-- Research open questions (CI vs quarterly human budget; proxy ethics; EU AI Act density; tool-arg signing; etc.) remain open and were not answered inventively here.
+**Phase 7 — Supplementary Electives** ends here. Weeks 25–29 did not replace Weeks 1–24; they deepened the flagship with context engineering, a fine-tuning go/no-go, a self-hosted router leg, one honest multimodal path, and — this week — a **scheduled adversarial suite** plus a **Safety & Responsible AI** one-pager on the enterprise trust surface beside Week 19 auth.
+
+There is no Week 30 in this course. The next step is **application**, not another elective: take the flagship system (working title: Deployment Copilot) and the safety artifacts — suite evidence with owners, cadence, and pass/fail; residual-risk honesty on the one-pager — into role applications with the Week 24 dual-track packaging (resume, portfolio under five minutes, Applied vs FDE talk tracks). Keep the suite on a schedule and the one-pager versioned as the system changes; refuse “the model is aligned so we’re fine” in interviews the same way this chapter refuses it for RFPs.
