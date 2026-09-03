@@ -1,15 +1,28 @@
 # Chapter 11 — Agent fundamentals
 
 > **Phase 3 — Agentic Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-3/week-11-agent-fundamentals/`  
 > **Syllabus Build:** Ship a **single-agent tool loop** (not MCP, not multi-agent): (1) define **three client tools** with strict JSON Schema — `docs_search`, `structured_query`, and calendar **read/write split** (`calendar_list_events` / `calendar_create_event`); (2) implement a **bounded loop** — OpenAI Responses `function_call` ↔ `function_call_output` **or** Anthropic Messages `tool_use` ↔ `tool_result` (one primary provider, the other as a mapping table); (3) enforce **pairing** (every `call_id` / `tool_use_id` gets a result immediately after), **iteration cap**, **per-tool timeout**, and a typed **stop reason** (`end_turn` | `max_iterations` | `max_tokens` | `tool_budget` | `policy_deny` | `user_cancel`); (4) convert tool exceptions into **error observations** (never crash mid-`tool_use`); classify retryable (429/5xx inside the executor, capped) vs model-visible (`is_error` / error string); (5) log a **turn trace**: model stop reason, tool name(s), latency, error class, remaining budget. Interview artifact = trace of a multi-step task with a **named stop reason**.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 11 is the **loop contract** week of Phase 3. Weeks 4–5 taught how to call models with tools as a *single round trip*. This week makes that round trip **repeat until done**, under budgets, with typed observations and typed stops. MCP (Week 12) is how tools are *discovered and transported*. Graphs, multi-agent, and HITL (Week 13) are how loops *branch and persist*. Side-effect safety (Week 14) assumes you already know when a tool ran and whether it will run again. Evaluation (Week 15) scores **trajectories** — which do not exist if the loop is a hidden `while True`.
+Before this week you should already have from Week 10:
+
+- A **pinned golden set** (queries + gold `chunk_id`s / `expected_facts` + unanswerable slice) joined to `corpus_hash` + `pipeline_version` on the Weeks 6–9 stack.  
+- A **RAGAS-style harness** (or LangSmith / Azure / NeMo / MLflow — one primary) that scores **retrieval** (P@k, R@k, MRR, NDCG) separately from **generation** (faithfulness, answer relevancy, context precision) and records a numbered before/after table.  
+- The **component vs E2E** habit: IR metrics own recall/rank; judges own grounding; E2E correctness does not substitute for either.  
+- Deployment Copilot’s runbook/FAQ corpus still measurable — the same docs surface this week becomes a natural `docs_search` tool.
+
+You do **not** need a bounded multi-turn tool loop, typed stop reasons, or MCP servers yet. That is what this week (and Week 12) teach.
+
+---
+
+## What this week builds
+
+Week 10 **measured** RAG (RAGAS harness, golden set, component vs E2E). Week 11 opens **Phase 3 — Agentic Systems** with the **loop contract**: make the single-round-trip tool call from Weeks 4–5 **repeat until done**, under budgets, with typed observations and typed stops. MCP (Week 12) is how tools are *discovered and transported*. Graphs, multi-agent, and HITL (Week 13) are how loops *branch and persist*. Side-effect safety (Week 14) assumes you already know when a tool ran and whether it will run again. Evaluation (Week 15) scores **trajectories** — which do not exist if the loop is a hidden `while True`. Keep Week 10’s eval discipline; traces you log this week are what Phase 3 later scores.
 
 **What an agent is this week (vendor, not slogan):** a multi-turn conversation in which the model may request tools, *your application* executes them, results are fed back, and the model continues until it produces a final answer **or a guardrail stops it**.
 
@@ -558,3 +571,9 @@ Use this as the chapter’s capstone sequence; every concept above maps here.
 7. **Interview artifact:** multi-step PTO/docs → tickets → calendar proposal trajectory with a **named stop reason**.
 
 When those steps are true, Week 11 is done in the syllabus sense: Deployment Copilot has a **loop contract**, not a framework logo — and Week 12 MCP is the same schema surface over a different transport, not magic tools.
+
+---
+
+## Looking ahead
+
+Week 12 is **MCP**: wrap **one** Week 11 capability (recommended: `docs_search`) as an MCP **server**, then connect **clients/hosts** (Claude Desktop via `claude_desktop_config.json`, Claude Code via `claude mcp add` / `.mcp.json` — stdio first). The loop contract from this week does not go away; MCP standardizes discovery and transport so the same tool schema attaches without rewriting envelopes per product. Do not dump the whole triad as forty tools — one server, two host configs, one successful tool call is the artifact.
