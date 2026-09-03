@@ -170,7 +170,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
   Provider mapping cheat sheet:
 
   | Concern | OpenAI | Anthropic |
-  |---------||--------|-----------|
+  |---------|--------|-----------|
   | Schema field | `parameters` | `input_schema` |
   | Args on the wire | JSON **string** | JSON **object** |
   | Call id | `call_id` | `tool_use.id` |
