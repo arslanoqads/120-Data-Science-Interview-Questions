@@ -82,7 +82,7 @@ Each concept includes:
 |------|------|--------|
 | 22 | [week-22-capstone-integration/](phase-6/week-22-capstone-integration/) | **Research corpus** — integration polish, eval-driven fixes, demo narrative |
 | 23 | [week-23-system-design-interview/](phase-6/week-23-system-design-interview/) | **Research corpus** — system design, prompt debug, FDE cases, STAR write-ups |
-| 24 | [week-24-portfolio-positioning.md](phase-6/week-24-portfolio-positioning.md) | Resume language, portfolio, dual-track positioning |
+| 24 | [week-24-portfolio-positioning/](phase-6/week-24-portfolio-positioning/) | **Research corpus** — resume language, portfolio, dual-track positioning |
 
 ## Syllabus map (primary content shopping)
 
