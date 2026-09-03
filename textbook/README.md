@@ -70,5 +70,5 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 25 | COMPLETE | COMPLETE | [phase-7/week-25-context-engineering/](phase-7/week-25-context-engineering/) |
 | 26 | COMPLETE | COMPLETE | [phase-7/week-26-fine-tuning/](phase-7/week-26-fine-tuning/) |
 | 27 | COMPLETE | COMPLETE | [phase-7/week-27-open-source-self-hosted/](phase-7/week-27-open-source-self-hosted/) |
-| 28 | COMPLETE | NOT STARTED | [phase-7/week-28-multimodal/](phase-7/week-28-multimodal/) |
+| 28 | COMPLETE | COMPLETE | [phase-7/week-28-multimodal/](phase-7/week-28-multimodal/) |
 | 29 | COMPLETE | NOT STARTED | [phase-7/week-29-ai-safety-adversarial/](phase-7/week-29-ai-safety-adversarial/) |
