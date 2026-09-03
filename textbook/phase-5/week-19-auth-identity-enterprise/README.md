@@ -1,8 +1,18 @@
 # Week 19 Textbook Chapter — Auth, identity, and enterprise AI constraints
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-5/week-19-auth-identity-enterprise/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 18: containers, K8s fluency, CI/CD stages, Terraform)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 20 (cost/latency: routing, cascading, semantic cache, cost dashboards)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 

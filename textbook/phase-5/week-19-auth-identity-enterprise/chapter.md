@@ -1,15 +1,28 @@
 # Chapter 19 — Auth, identity, and enterprise AI constraints
 
 > **Phase 5 — Production, Cost, and Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-5/week-19-auth-identity-enterprise/`  
 > **Syllabus Build:** You already have a **containerized, staged LLM service** (Week 18). This week you **stop treating a secret env var as “login.”** (1) **Human login is OIDC.** Browser/SPA/native uses **Authorization Code + PKCE** against an IdP (Auth0/Okta/Entra or customer IdP via enterprise connection). Validate ID tokens (`iss`, `aud`, `exp`, signature via JWKS). Map claims to an app user. **Do not** ship the product with a shared OpenAI/Anthropic key in the client or a single `ADMIN_API_KEY` as the only gate. (2) **Machines are not humans.** Provider keys live in a secret store. Workloads use **service accounts / workload identity**. Customer-facing APIs use **scoped keys or OAuth client credentials**, not the provider key. Agents that call downstream SaaS use **token exchange / OBO**, not a god-mode SA. (3) **Enterprise SSO includes SAML.** Document Entity ID, ACS URL, signing cert, SP- and IdP-initiated. Broker (CIAM) is acceptable; refusing SAML is not. (4) **Residency is a router constraint.** Tenant config pins region; prompts, embeddings, indexes, logs, and tool hops must not silently leave. Disclose provider training/retention. (5) **Isolation is enforced in every store.** `tenant_id` on DB rows, object prefixes, vector filters, cache keys, and traces. In-tenant RBAC (admin / analyst / viewer / approver) at the **API**, not only the UI.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 19 is the **who and where** week of Phase 5. Week 18 shipped a **digest-promoted container**. That image still typically starts with `OPENAI_API_KEY=` in a secret store. That key is a **provider credential for the platform**, not a **user session**. Confusing the two is how demos become security questionnaires that fail.
+Before this week you should already have from Week 18:
+
+- **Production containerization:** multi-stage, non-root image; config via env; secrets from a store; `/healthz` (liveness) and `/ready` (vector DB + LLM provider reachable); no frontier weights or API keys baked into layers.  
+- **Kubernetes fluency:** a Deployment + ClusterIP Service + HPA you can walk through; failed rollout / ReplicaSet history; one non-CPU HPA metric when the API is provider-bound.  
+- **Staged CI/CD:** CI builds **one digest**; promote `dev` → `staging` → `prod`; staging golden-set smoke; prod rolling **or** canary with abort; rehearsed rollback to a previous digest/revision.  
+- **Basic Terraform:** VPC/cluster-or-Cloud-Run, IAM skeleton for the workload, remote state with locking, separate state for `staging` vs `prod`; plan on PR; apply from protected main.
+
+You do **not** need OIDC login instead of a shared API key, SAML enterprise SSO, workload identity / OBO for machines, residency as a router constraint, or multi-tenant RBAC / isolation yet as *finished* products — that is what this week ships. You **do** need the Week 18 digest-promoted service on a real delivery path; without it, IdP apps per environment, vaulted provider keys, and tenant-keyed stores have nowhere trustworthy to land.
+
+---
+
+## What this week builds
+
+Week 18 **containerized** the service, made **Kubernetes YAML** walkable, staged **CI/CD with digest promotion**, and sketched **Terraform** for the platform. Week 19 is the **who and where** week of Phase 5: that digest-promoted image still typically starts with `OPENAI_API_KEY=` in a secret store. That key is a **provider credential for the platform**, not a **user session**. Confusing the two is how demos become security questionnaires that fail.
 
 This week answers five questions that procurement, IdP onboarding, and multi-tenant AI incidents all treat as the minimum bar for an FDE who can land an enterprise LLM product:
 
@@ -26,7 +39,7 @@ This week answers five questions that procurement, IdP onboarding, and multi-ten
 | Provider key in the browser so “chat works” | Provider key only on the **server / gateway**; browser never sees it |
 | Long-lived personal access token as the agent identity | Short-lived user access token + **RFC 8693 token exchange** for tools (OBO) |
 
-**Do not start Week 20 (cost / latency) from this chapter** — this week ships **OIDC login instead of hardcoded API keys**, **SAML for legacy SSO**, **API keys vs service accounts vs federation**, **data residency**, and **multi-tenant RBAC / isolation**. Cost **isolation** (per-tenant keys/budgets) belongs here as identity of the key; cascading models, semantic cache as **latency**, and compression are Week 20 — the cache **must** still be tenant-keyed here. Entitlement **shape** in JWT/RBAC is this week; messy SQL entitlements in customer DBs are Week 21. K8s/Terraform/canary remain Week 18.
+**Do not start Week 20 (cost / latency — routing, cascading, semantic cache, cost dashboards) from this chapter** — this week ships **OIDC login instead of hardcoded API keys**, **SAML for legacy SSO**, **API keys vs service accounts vs federation**, **data residency**, and **multi-tenant RBAC / isolation**. Cost **isolation** (per-tenant keys/budgets) belongs here as identity of the key; cascading models, semantic cache as **latency**, and compression are Week 20 — the cache **must** still be tenant-keyed here. Entitlement **shape** in JWT/RBAC is this week; messy SQL entitlements in customer DBs are Week 21. K8s/Terraform/canary remain Week 18.
 
 **Human login sequence (BFF / confidential client)**
 
@@ -444,16 +457,23 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 
 ---
 
-## Chapter synthesis
+## Week 19 build checklist (end-to-end)
 
-Week 19 turns a Week 18 container into something an enterprise can **log into**, **federate**, **attribute**, **locate**, and **isolate**:
+Use this as the chapter’s capstone sequence; every concept above maps here.
 
-1. Humans authenticate with **OIDC (code + PKCE)**; validate `iss` / `aud` / `exp` / JWKS; never a hardcoded shared key.  
-2. Enterprises still need **SAML** (ACS, Entity ID, certs, SP- and IdP-initiated) — broker it if the app is OIDC-native.  
-3. Machines use **API keys / virtual keys / workload identity / OBO** — provider keys stay in the vault; agents do not wear a god-mode SA into CRM.  
-4. **Residency** is the whole pipeline (prompt, embed, index, log, tool), enforced in the router and disclosed when it is not.  
-5. **Two-axis RBAC**: hard tenant wall + in-tenant roles at the PEP; missing `tenant_id` on a vector query is SEV-0.
+1. **OIDC human login:** Authorization Code + PKCE against an IdP (or CIAM broker); validate ID tokens (`iss` / `aud` / `exp` / JWKS; reject `alg=none`); BFF session preferred; never a shared `ADMIN_API_KEY` or client-side provider key as “login.”  
+2. **SAML enterprise SSO:** Document Entity ID, ACS URL, signing cert, SP- and IdP-initiated; broker as SP if the app is OIDC-native; separate connections per environment.  
+3. **Machines:** Vaulted provider keys; per-tenant virtual keys (models, RPM, budget, `tenant_id`); workload identity for pods/CI; OBO / RFC 8693 for agent tool hops — not a god-mode SA into CRM.  
+4. **Residency:** `residency_region` on tenant config; enforce in the router across prompt, embed, index, log, and tool; disclose training/retention and DPA exceptions.  
+5. **Two-axis RBAC:** Hard cross-tenant wall + in-tenant roles at the PEP (API, not UI-only); `tenant_id` on every store; automated cross-tenant deny tests for RAG, cache, traces, and tools.  
+6. **Interview artifact:** OIDC login + API call sequence (no hardcoded key) + one-page isolation design (JWT → PEP → stores) + residency surface list.
 
-Interview artifact: **OIDC login + API call sequence** (no hardcoded key) + **one-page isolation design** (JWT → PEP → stores) + **residency surface list**.
+When those steps are true, Week 19 is done in the syllabus sense: the Week 18 digest-promoted service is something an enterprise can **log into**, **federate**, **attribute**, **locate**, and **isolate** — not a demo gated by a shared env var.
 
 Where research leaves open questions (three-party OAuth clients for agents, MCP audience design, logout mid-agent-run, SAML-vs-OIDC RFP trajectory, CMEK vs BYOK questionnaires, ReBAC vs role approvers, pool vs silo scale breakpoints), they are marked `[NEEDS MORE RESEARCH]` in Apply It rather than filled with invented defaults.
+
+---
+
+## Looking ahead
+
+Week 20 is **cost and latency engineering**. After this week’s OIDC gate, virtual keys, and tenant isolation, the typical remaining failure is economic: every authenticated request still hits the frontier model, semantic cache is off or global, and Finance sees one provider invoice. Next week you **stop sending every request to the frontier**: **route** before you generate (rules, embedding, or classifier); **calibrate a cascade** (quality vs % strong-model calls on *your* golden set); **cache** in exact and semantic layers — **tenant in the key**, off for agentic multi-turn; structure prompts for **prefix / prompt cache** hits; **attribute every dollar** on dashboards (tenant × feature × model). Do **not** start Week 20 by dropping this week’s tenant wall or residency pins — honor tenant/region in the router and keep caches tenant-keyed. Messy customer SQL / ETL / idempotent writes deepen in Week 21.
