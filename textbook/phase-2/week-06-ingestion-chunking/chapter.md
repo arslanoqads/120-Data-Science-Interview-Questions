@@ -1,15 +1,28 @@
 # Chapter 6 — Ingestion and Chunking: the RAG Quality Floor
 
 > **Phase 2 — RAG Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-2/week-06-ingestion-chunking/`  
 > **Syllabus Build:** Ship an ingestion pipeline for the FastAPI RAG chatbot with **≥2 chunking strategies** (recursive + semantic), metadata tagging, and messy real documents—not a single global character cut dumped into a vector DB.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Weeks 4–5 gave Deployment Copilot a provider-agnostic client and versioned prompts. Week 6 decides **what vectors exist at all**. Retrieval (Week 7), reranking (Week 8), failure taxonomies (Week 9), and evals (Week 10) all operate on the units produced here. A perfect hybrid retriever over half-sentences and headerless table rows still fails.
+Before this week you should already have from Week 5:
+
+- **Versioned system prompts** in git or a registry, with changelog and canary behind a version ID.  
+- **Typed templates** that separate stable instructions from runtime variables (retrieved chunks and the user question injected as **data**, not instructions).  
+- **Few-shot placement** in the cache-stable prefix from Week 4, so format examples do not bust shared cache.  
+- A short **injection-aware** threat model: retrieved docs and tool outputs are untrusted; allowlists and architectural guardrails beat prompt-only “ignore jailbreaks.”
+
+You do **not** need recursive vs semantic splitters, chunk size/overlap sweeps, per-chunk metadata schemas, or MIME routers for tables/code yet. That is what this week teaches.
+
+---
+
+## What this week builds
+
+Week 5 left you with versioned prompts, typed templates, cache-aware few-shots, and injection guardrails for Deployment Copilot. Week 6 opens **Phase 2** and decides **what vectors exist at all**. Retrieval (Week 7), reranking (Week 8), failure taxonomies (Week 9), and evals (Week 10) all operate on the units produced here. A perfect hybrid retriever over half-sentences and headerless table rows still fails.
 
 Chip Huyen’s public platform writing is explicit: RAG exists because naively stuffing whole documents into context is unbounded; documents must be split into **manageable chunks** sized by embedding/context limits and latency. She does **not** prescribe a magic number—she points practitioners at Pinecone, LangChain, LlamaIndex, and Greg Kamradt. Longer generation windows do not retire this step: *how much context a model can use* ≠ *how efficiently it uses it* (lost-in-the-middle, Liu et al. 2023). Pinecone’s embedding constraints make the same point operationally: overflow is truncated before the vector exists, and a chunk that is not independently meaningful will not surface usefully at query time. The human test (Pinecone and Weaviate, independently): **if a chunk makes sense without surrounding context to a human, it will make sense to the model.**
 
@@ -23,9 +36,18 @@ Kamradt’s “5 Levels of Text Splitting” is the industry shared vocabulary t
 | 4 | Semantic | Embedding-distance topic breaks when markup is weak |
 | 5 | Agentic | Per-doc strategy selection—expensive escalation |
 
-The six ideas below are one pipeline: **choose a splitter that respects structure** → **size to the embedder and query shape** → **label every chunk** → **route special MIME types**. Escalate to semantic, contextual prefixes, or agentic routing **only** when a labeled query set shows boundary failures. Skipping any step shows up as “the vector DB is bad” when the real bug is ingestion. Huyen’s pitfalls post: start too complex—do not abstract away the details you need to debug.
+The six ideas below are one pipeline:
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) ingesting product runbooks, Markdown docs, and a few Python snippets into a FastAPI RAG chatbot—not “just dump PDFs into a vector DB.”
+- **Fixed-size vs recursive** — enforce a size budget while preferring paragraph/sentence boundaries.  
+- **Semantic chunking** — embedding-distance topic breaks when markup is weak.  
+- **Agentic / LLM / contextual / late** — escalate only when evals demand it; keep them as distinct ideas.  
+- **Size and overlap** — sweep embedder-token budgets before changing strategy.  
+- **Metadata per chunk** — cite, filter, ACL, and replay ingest.  
+- **Tables, code, structured content** — MIME routers so prose splitters never mid-row or mid-function cut.
+
+**Choose a splitter that respects structure** → **size to the embedder and query shape** → **label every chunk** → **route special MIME types**. Escalate to semantic, contextual prefixes, or agentic routing **only** when a labeled query set shows boundary failures. Skipping any step shows up as “the vector DB is bad” when the real bug is ingestion. Huyen’s pitfalls post: start too complex—do not abstract away the details you need to debug.
+
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: **Deployment Copilot**) ingesting product runbooks, Markdown docs, and a few Python snippets into a FastAPI RAG chatbot—not “just dump PDFs into a vector DB.” Keep Week 5’s versioned templates and injection model: retrieved chunks still enter tagged context blocks as data.
 
 **Default path (synthesis):** format detect → structure-aware split when possible → else recursive **~512 embedding-tokenizer tokens / ~10–20% overlap** → attach rich metadata (exclude ACL/PII from embed text) → eval sweep `{256, 512, 1024} × {0%, 10%, 20%}` before changing strategy → semantic → LLM contextual → agentic only when evals demand it.
 
@@ -411,10 +433,6 @@ When those steps are true, Week 6 is done in the syllabus sense: Deployment Copi
 
 ---
 
-## Compilation notes
+## Looking ahead
 
-- All concept sections above are grounded in `research/phase-2/week-06-ingestion-chunking/` (`00`–`06`, README synthesis).  
-- Covered syllabus concepts: fixed vs recursive, semantic, agentic/LLM chunking (including contextual retrieval and late chunking), size/overlap, metadata per chunk, tables/code/structured content.  
-- Open questions left open in research (e.g. whether character `length_function` should ever remain a production default; page-level PDF vs recursive on OCR dumps; post-chunking at query time vs pre-chunked indexes; multimodal table-as-image sizing) are not answered here—see research open-question blocks rather than inventing guidance.  
-- No section required `[NEEDS MORE RESEARCH]` for the six syllabus concepts; Chip Huyen material is from public blog posts only, as required by the research corpus.  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.
+Week 7 covers **retrieval beyond cosine**: **hybrid** dense ANN plus **BM25** (or equivalent sparse) over the same `chunk_id`s, fused with **RRF**, plus **candidate logging** on every query—not cosine-only `top_k`. Keep the recursive/semantic paths, metadata filters, and structure-aware chunks—you will decide which stored units are eligible for generation, and you will need logs that show whether gold never entered either leg.
