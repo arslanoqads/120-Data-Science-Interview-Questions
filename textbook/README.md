@@ -58,7 +58,7 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 13 | COMPLETE | COMPLETE | [phase-3/week-13-orchestration-multi-agent/](phase-3/week-13-orchestration-multi-agent/) |
 | 14 | COMPLETE | COMPLETE | [phase-3/week-14-domain-agent-side-effects/](phase-3/week-14-domain-agent-side-effects/) |
 | 15 | COMPLETE | COMPLETE | [phase-3/week-15-agent-evaluation/](phase-3/week-15-agent-evaluation/) |
-| 16 | COMPLETE | NOT STARTED | [phase-4/week-16-error-analysis-flywheel/](phase-4/week-16-error-analysis-flywheel/) |
+| 16 | COMPLETE | COMPLETE | [phase-4/week-16-error-analysis-flywheel/](phase-4/week-16-error-analysis-flywheel/) |
 | 17 | COMPLETE | NOT STARTED | [phase-4/week-17-llm-judge-observability/](phase-4/week-17-llm-judge-observability/) |
 | 18 | COMPLETE | NOT STARTED | [phase-5/week-18-deployment-infra/](phase-5/week-18-deployment-infra/) |
 | 19 | COMPLETE | NOT STARTED | [phase-5/week-19-auth-identity-enterprise/](phase-5/week-19-auth-identity-enterprise/) |
