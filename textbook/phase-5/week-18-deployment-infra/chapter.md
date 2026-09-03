@@ -1,15 +1,29 @@
 # Chapter 18 — Deployment infrastructure
 
 > **Phase 5 — Production, Cost, and Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-5/week-18-deployment-infra/`  
 > **Syllabus Build:** You already have **Week 17 traces, judges, and dashboards**. This week you **put the same service on a real delivery path**. (1) **Containerize for production, not only local Compose.** Multi-stage image; non-root; config via env; secrets from a store; `/healthz` (liveness) and `/ready` (can reach vector DB + LLM provider). Do **not** bake frontier weights or API keys into the image. (2) **Read and explain Kubernetes YAML.** A Deployment + ClusterIP Service + HPA. Explain a failed rollout (`kubectl rollout status` / ReplicaSet history). Propose **one** HPA metric that is not CPU if the API is provider-bound. (3) **Staged pipeline.** CI builds **one digest**; promote `dev` → `staging` → `prod`. Staging runs golden-set smoke (Week 16/17 evals). Prod uses rolling updates **or** a canary with abort on error rate / p95 / eval score. Rehearse rollback. (4) **Basic Terraform.** VPC/cluster-or-Cloud-Run, IAM for the workload (static keys deferred to Week 19), remote state with locking, separate state for `staging` vs `prod`. PR runs `plan`; apply from protected main.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 18 is the **shipping** week of Phase 5. Week 17 **instrumented** traces, judges, and dashboards. This week answers four questions Kubernetes docs, Cloud Run, Terraform, GitHub Actions, and the Google SRE book all treat as the minimum bar for an FDE who can land an LLM service:
+Before this week you should already have from Week 17:
+
+- **Calibrated LLM-as-judge** shadows for residual subjective Week 16 failure modes: binary Pass/Fail + critique; principal domain expert owns the standard; **TPR/TNR** gates on held-out labels.  
+- A clear **code vs model** split: objective failures (JSON, schema, citation IDs, tool names) as **code evals in CI**; LLM judges reserved for judgment-heavy modes and run sparingly in CI or on a **sampled schedule**.  
+- **Hierarchical tracing** (Langfuse **and/or** Phoenix): generations carry `model`, params, tokens, cost; retrieved context on the observation you will judge; tags for `userId` / `sessionId` / `version` / `env`.  
+- **Production dashboards** for volume, errors, p95 latency, cost/day and cost/successful-task, and **1–3 calibrated** quality timeseries; alerts that open **traces**, not bare pages; online judges sampled (~2–10%); guardrails in-request, async evaluators for trends.  
+- From Week 16 (still in force): custom failure taxonomy, expert labels, and the production → labels → eval set → regression **flywheel** — staging golden-set smoke this week reuses that suite.
+
+You do **not** need production multi-stage images with digest promotion, walkable Deployment/Service/HPA YAML, staged `dev` → `staging` → `prod` with rehearsed rollback, or Terraform remote state yet as *finished* products — that is what this week ships. You **do** need the Week 17 instrumented service (judges, traces, dashboards); without them, canary abort on eval score and staging golden-set smoke have nothing trustworthy to gate on.
+
+---
+
+## What this week builds
+
+Week 17 **calibrated judges**, chose **code vs model** evals, and made **Langfuse/Phoenix traces and dashboards** usable as a product. Week 18 opens **Phase 5 — Production, Cost, and Systems** as the **shipping** week: put that **same** instrumented service on a real delivery path. This week answers four questions Kubernetes docs, Cloud Run, Terraform, GitHub Actions, and the Google SRE book all treat as the minimum bar for an FDE who can land an LLM service:
 
 1. **Where does a change prove it is safe before customers see it?** (staging environment)  
 2. **How do you undo a bad ship in minutes, with bits you already built?** (rollback in CI/CD)  
@@ -18,11 +32,11 @@ Week 18 is the **shipping** week of Phase 5. Week 17 **instrumented** traces, ju
 
 A **staging** environment is a **prod-shaped** place that runs the **same container digest** that will go to production—not “whatever we last `docker compose up`’d.” Staging must share the image digest, probe contract (`/healthz`, `/ready`), reachability to some LLM provider + vector/DB (or recorded fakes with contract tests), Week 16/17 golden-set smoke, and IAM-shaped identities. It may fake production PII, full multi-region capacity, rate-limit headroom, and customer tenancy at full scale. **Promotion rule:** CI **builds once**; staging and prod **pull the digest**. Rebuilding for prod is how “rollback” silently ships different Python wheels. Compose remains a **developer** inner loop (Week 3), not staging. Cloud Run maps the same idea to **revisions** and traffic splitting.
 
-**Rollback** is re-deploying a known-good artifact or flipping traffic—not “git revert and hope CI rebuilds the same bits.” Mechanisms include `kubectl rollout undo`, redeploying a previous digest, blue-green / Cloud Run traffic flip to a previous revision, and canary abort (Argo Rollouts / Flagger / Cloud Deploy). **LLM wrinkle:** pods can be Ready while serving a wrong model ID or prompt version; HTTP canaries are necessary but not sufficient—staging golden-set evals belong on the promote button.
+**Rollback** is re-deploying a known-good artifact or flipping traffic—not “git revert and hope CI rebuilds the same bits.” Mechanisms include `kubectl rollout undo`, redeploying a previous digest, blue-green / Cloud Run traffic flip to a previous revision, and canary abort (Argo Rollouts / Flagger / Cloud Deploy). **LLM wrinkle:** pods can be Ready while serving a wrong model ID or prompt version; HTTP canaries are necessary but not sufficient—staging golden-set evals (Week 17 judges and code evals) belong on the promote button.
 
-Without SLIs you cannot write canary abort rules. Google’s SRE book maps onto LLM APIs: graceful degradation (weaker model / cache), load shedding, client exponential backoff with jitter, health checking, staged rollouts. Always-on frontier model with no timeout budget amplifies provider incidents into your SEV. Fail-open vs fail-closed is domain-specific (support-draft → fail-open; financial action agent → fail-closed + human escalation; Week 21 for idempotent side effects).
+Without SLIs you cannot write canary abort rules. Google’s SRE book maps onto LLM APIs: graceful degradation (weaker model / cache), load shedding, client exponential backoff with jitter, health checking, staged rollouts. Always-on frontier model with no timeout budget amplifies provider incidents into your SEV. Fail-open vs fail-closed is domain-specific (support-draft → fail-open; financial action agent → fail-closed + human escalation; Week 21 for idempotent side effects). Week 17 dashboards (error, latency, cost, calibrated quality) are the **abort criteria surface**; this week wires them to promote/abort.
 
-**Do not start Week 19 (auth / identity / enterprise) from this chapter** — this week ships **containerized LLM services**, **Kubernetes fluency (Pod / Service / Deployment / HPA)**, **staged CI/CD with rollback and canary**, and **basic Terraform IaC**. Workload identity, OIDC/SAML, and multi-tenant RBAC are next week. Cost **signals** on canary abort belong here; routing, semantic cache, and compression are Week 20. Idempotency appears only as a rollback/retry warning; messy ETL / dual-write is Week 21.
+**Do not start Week 19 (auth / identity / enterprise — OIDC/SAML, residency, multi-tenant RBAC) from this chapter** — this week ships **containerized LLM services**, **Kubernetes fluency (Pod / Service / Deployment / HPA)**, **staged CI/CD with rollback and canary**, and **basic Terraform IaC**. Workload identity, OIDC/SAML, and multi-tenant RBAC are next week. Cost **signals** on canary abort belong here; routing, semantic cache, and compression are Week 20. Idempotency appears only as a rollback/retry warning; messy ETL / dual-write is Week 21.
 
 **What you ship this week**
 
@@ -117,7 +131,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
   **Strong:** multi-stage; distroless or pinned distro; **non-root** `USER`; SBOM + image scanning in CI; resource **requests/limits** from load tests (HPA needs CPU **requests**); separate images for **worker vs API**; OpenTelemetry baked in; config via ConfigMap/Secret with **checksum-triggered** rollouts; readiness checks **provider + DB**, not only `return {"ok": true}`; `preStop` sleep + graceful shutdown so **in-flight LLM streams** finish (`terminationGracePeriodSeconds` sized to max stream); registry **digest** in the manifest, tag only for humans; Cloud Run: explicit concurrency, min instances for chat, secrets from Secret Manager, startup probe if imports are slow.
 
 * **Worked Example:**  
-  Deployment Copilot leaves Compose-only shipping. CI builds a multi-stage image: builder installs deps with the lockfile; runtime copies the installed package, runs as non-root, and exposes `/healthz` (process alive) and `/ready` (vector DB ping + provider client can open a connection). Secrets come from Secret Manager / K8s Secret at runtime—never `ENV OPENAI_API_KEY=…` in the Dockerfile. The registry receives `registry.example.com/deployment-copilot@sha256:…`; humans may also see a `sha-abc123` tag. Cloud Run path: listen on `0.0.0.0:$PORT`, min instances ≥ 1 for the chat surface, concurrency tuned down for SSE streams. K8s path: same digest in the Deployment Pod template. Agent backlog work moves to a separate worker Deployment consuming a queue so HTTP readiness is not starved.
+  Deployment Copilot leaves Compose-only shipping. CI builds a multi-stage image: builder installs deps with the lockfile; runtime copies the installed package, runs as non-root, and exposes `/healthz` (process alive) and `/ready` (vector DB ping + provider client can open a connection). Secrets come from Secret Manager / K8s Secret at runtime—never `ENV OPENAI_API_KEY=…` in the Dockerfile. The registry receives `registry.example.com/deployment-copilot@sha256:…`; humans may also see a `sha-abc123` tag. Cloud Run path: listen on `0.0.0.0:$PORT`, min instances ≥ 1 for the chat surface, concurrency tuned down for SSE streams. K8s path: same digest in the Deployment Pod template. Agent backlog work moves to a separate worker Deployment consuming a queue so HTTP readiness is not starved. Week 17 OTEL instrumentation stays in the image so staging and prod keep emitting the same traces and scores.
 
 * **Apply It:**  
   1. Write a multi-stage Dockerfile; final stage non-root; no frontier weights or API keys in layers.  
@@ -192,7 +206,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 
 * **Average vs. Strong Engineer:**  
   **Average:** Deployment + ClusterIP + Ingress; HPA `averageUtilization: 70` CPU; `minReplicas: 1`; no PDB; `replicas` also set in Helm.  
-  **Strong:** requests/limits from profiling; watch `container_cpu_cfs_throttled_seconds_total` if limits are tight; PDBs for voluntary evictions; separate HPAs for **API vs workers**; custom metrics: inflight requests, p95, queue depth; **`maxReplicas` capped by provider RPM**; `behavior.scaleDown.stabilizationWindowSeconds` 180–300s; scale-up may want a **short** window if pods start slowly; topology spread across AZs; `preStop` + grace ≥ max generation time; `kubectl describe hpa` / events as the first debug (metrics-server missing, targets unknown); labels that Week 20 cost dashboards will use (`app`, `version`, `env`). Enough analysis data points matter for HPA the same way they matter for canary (do not expect a single 15s CPU scrape to save a 2-minute prompt).
+  **Strong:** requests/limits from profiling; watch `container_cpu_cfs_throttled_seconds_total` if limits are tight; PDBs for voluntary evictions; separate HPAs for **API vs workers**; custom metrics: inflight requests, p95, queue depth; **`maxReplicas` capped by provider RPM**; `behavior.scaleDown.stabilizationWindowSeconds` 180–300s; scale-up may want a **short** window if pods start slowly; topology spread across AZs; `preStop` + grace ≥ max generation time; `kubectl describe hpa` / events as the first debug (metrics-server missing, targets unknown); labels that Week 17 dashboards and Week 20 cost views will use (`app`, `version`, `env`). Enough analysis data points matter for HPA the same way they matter for canary (do not expect a single 15s CPU scrape to save a 2-minute prompt).
 
 * **Worked Example:**  
   You walk an interviewer through Deployment Copilot’s teaching YAML (not a blind cluster apply):
@@ -294,7 +308,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 
   **GitHub environments:** `staging` / `prod` as GitHub **environments** — required reviewers, wait timers, environment secrets, deployment branches. **OIDC** to cloud so CI has no long-lived keys (Week 19 deep-dive; strong practice here).
 
-  **LLM-specific gates:** a Ready pod can still ship a **bad prompt or model ID**. Include eval gates on staging (Week 16/17 golden-set smoke — code evals in CI, judges sampled); shadow / canary eval in prod (sample traces, not 100% GPT-4 judges); cost-per-request abort (Week 20 will dashboard the same labels); streaming-aware SLIs — error rate may stay green until **first token**; abort on TTFT / timeout rate, not only HTTP 500. Google SRE workbook canarying of data pipelines is the same progressive-risk idea as traffic canaries.
+  **LLM-specific gates:** a Ready pod can still ship a **bad prompt or model ID**. Include eval gates on staging (Week 16/17 golden-set smoke — code evals in CI, judges sampled); shadow / canary eval in prod (sample traces, not 100% GPT-4 judges); cost-per-request abort (Week 20 will deepen routing/cache on the same labels); streaming-aware SLIs — error rate may stay green until **first token**; abort on TTFT / timeout rate, not only HTTP 500. Google SRE workbook canarying of data pipelines is the same progressive-risk idea as traffic canaries. The Week 17 dashboard tiles (errors, p95, cost, calibrated quality) are what the canary controller should read.
 
 * **The Alternatives:**  
 
@@ -330,7 +344,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
   **Strong:** OIDC to cloud; environment protection rules on `prod`; canary **5% → 25% → 100%** (or Cloud Deploy percentages) with **automated** metric gates (error, latency, eval, cost); separate pipelines: **infra** (Terraform plan/apply) vs **app** (image + GitOps); progressive delivery (Argo Rollouts / Flagger / Cloud Deploy); post-deploy runbooks; LLM regression suite on staging with production-like prompts; Monzo-style **automated rollback defaults** even when canary is “light”; Adobe-style analysis duration matched to scrape interval and traffic; SRE error budgets decide whether you **slow the pipeline** after a quality burn. Cloud Run teams: traffic tags / revisions instead of Rollouts CRDs — same **percentage + analysis** idea. Digest tags + registry immutability; staging golden-set + contract tests against provider fakes **and** a live smoke.
 
 * **Worked Example:**  
-  Deployment Copilot’s one-page pipeline: CI lint/test/scan → build once → push `deployment-copilot@sha256:…`. Promote that digest to `dev`, then `staging` (GitHub environment with reviewers). Staging runs Week 16/17 golden-set smoke plus a few live traces; only then promote the **same** digest to `prod`. Prod uses Cloud Deploy (or Argo Rollouts) canary 5% → 25% → 100% with automated abort on error rate, p95/TTFT, sampled eval score, and cost-per-request spike. A bad model ID that still returns HTTP 200 fails the eval gate before full traffic. Rollback rehearsal (scheduled): `kubectl rollout undo` **or** flip Cloud Run traffic to the previous revision **or** redeploy the pinned previous digest from the release UI—bits already in the registry, no rebuild.
+  Deployment Copilot’s one-page pipeline: CI lint/test/scan → build once → push `deployment-copilot@sha256:…`. Promote that digest to `dev`, then `staging` (GitHub environment with reviewers). Staging runs Week 16/17 golden-set smoke (code evals plus sampled calibrated judges) plus a few live traces; only then promote the **same** digest to `prod`. Prod uses Cloud Deploy (or Argo Rollouts) canary 5% → 25% → 100% with automated abort on error rate, p95/TTFT, sampled eval score, and cost-per-request spike. A bad model ID that still returns HTTP 200 fails the eval gate before full traffic. Rollback rehearsal (scheduled): `kubectl rollout undo` **or** flip Cloud Run traffic to the previous revision **or** redeploy the pinned previous digest from the release UI—bits already in the registry, no rebuild.
 
 * **Apply It:**  
   1. Build one digest-tagged image in CI; promote `dev` → `staging` → `prod` without rebuild.  
@@ -426,6 +440,12 @@ When those steps are true, Week 18 is done in the syllabus sense: the Week 17–
 
 ---
 
+## Looking ahead
+
+Week 19 is **auth, identity, and enterprise AI constraints**. The containerized, digest-promoted service from this week still typically starts with `OPENAI_API_KEY=` in a secret store — that key is a **provider credential for the platform**, not a **user session**. Next week you stop treating a secret env var as “login”: **OIDC** for human login (Authorization Code + PKCE; validate `iss`/`aud`/`exp`/JWKS); **SAML** for legacy enterprise SSO; machines via scoped API keys, service accounts / workload identity, and OBO — not the provider key in the client; **data residency** as a router constraint across prompt, embed, index, log, and tool; **multi-tenant RBAC / isolation** enforced in every store. Do **not** start Week 19 by throwing away this week’s digests, probes, or staged pipeline — you harden **who** may call the same delivery path and **where** payloads may live. Cost routing and semantic cache deepen in Week 20; this week only needs cost as a canary abort signal.
+
+---
+
 ## Compilation notes
 
 - All concept sections above are grounded in `research/phase-5/week-18-deployment-infra/` (`00`–`04`, README).  
@@ -433,4 +453,5 @@ When those steps are true, Week 18 is done in the syllabus sense: the Week 17–
 - Research Open Questions remain open and were **not** resolved with invented answers: prompt/model config on the same canary vs faster flag pipeline; how prod-like staging LLM spend must be; generative-quality error budgets as ship/no-ship; when Cloud Run revisions suffice vs K8s interview fluency; cost anomalies paging like latency; distroless vs distro for 3am debug; self-hosted GPU vs managed APIs; always-separate worker Deployments; Cloud Run concurrency vs one-generation-per-instance for SSE; LiteLLM gateway as library vs sidecar for key rotation (Week 19); readiness on connection budget / inflight; worker scale-to-zero vs `minReplicas: 1`; Gateway API vs Ingress for canary weights; HPA on p95 death-spiral risk; `maxReplicas` as platform policy (OPA) tied to spend; Terraform vs Helm boundary for model names / HPA thresholds; OpenTofu vs Terraform licensing in 2026; terraforming vector DB indexes vs app migrations; Cloud Run in Terraform vs `gcloud`/skaffold; policy-as-code depth for FDE interviews; whether Workload Identity belongs in this week’s module vs Week 19.  
 - Where research does not prescribe Deployment Copilot–specific defaults for those open questions, treat them as deferred—not as silent product decisions. `[NEEDS MORE RESEARCH]` is not required for any of the four syllabus concepts’ six fields as compiled; open questions are listed rather than filled.  
 - Outside URLs from research are cited by concept in the notes; operational detail was inlined from the notes.  
-- Week 19 auth/identity/enterprise, Week 20 full cost-engineering (routing/cache), and Week 21 idempotent side effects are explicitly deferred.
+- Week 19 auth/identity/enterprise (OIDC/SAML, residency, multi-tenant RBAC), Week 20 full cost-engineering (routing/cache), and Week 21 idempotent side effects are explicitly deferred.  
+- Editorial pass: Prerequisites Recap bridges Week 17 (judges, calibration, Langfuse/Phoenix, dashboards); Looking ahead bridges Week 19; no new technical claims beyond research.

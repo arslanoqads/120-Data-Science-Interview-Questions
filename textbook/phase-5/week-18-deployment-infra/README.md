@@ -1,8 +1,18 @@
 # Week 18 Textbook Chapter — Deployment infrastructure
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-5/week-18-deployment-infra/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 17: LLM-as-judge, calibration, Langfuse/Phoenix, dashboards)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 19 (auth/identity enterprise: OIDC/SAML, residency, multi-tenant RBAC)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 
