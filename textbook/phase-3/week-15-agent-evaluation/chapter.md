@@ -358,7 +358,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
   **Related patterns** (teach, don’t collapse into C1–C4):
 
   | Pattern | Signal | Notes |
-  |---------||--------|-------|
+  |---------|--------|-------|
   | **Eval hacking / loopholes** | Pass graders without real solve | Anthropic: make graders resistant; τ² policy loophole |
   | **Harness/environment flakiness** | Correlated failures across “independent” trials | Shared state, leftover files, CPU; Claude reading prior-trial git history |
   | **Brittle graders** | Valid format / path punished | CORE-Bench float; METR threshold wording |
