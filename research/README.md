@@ -31,7 +31,7 @@ Each concept includes:
 |------|------|--------|
 | 1 | [week-01-python-production/](phase-0/week-01-python-production/) | **Research corpus** — typing, packaging, deps, venv, testable code, logging |
 | 2 | [week-02-apis-async-testing/](phase-0/week-02-apis-async-testing/) | **Research corpus** — REST, FastAPI/Pydantic, async, test pyramid, mocks, contracts |
-| 3 | [week-03-git-containers-system-design.md](phase-0/week-03-git-containers-system-design.md) | Trunk-based, commits, Docker, compose, system design vocab |
+| 3 | [week-03-git-containers-system-design/](phase-0/week-03-git-containers-system-design/) | **Research corpus** — trunk-based, commits, Docker, compose, system design vocab |
 
 ### Phase 1 — LLM Application Engineering Core (Weeks 4–5)
 
