@@ -62,7 +62,7 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 17 | COMPLETE | COMPLETE | [phase-4/week-17-llm-judge-observability/](phase-4/week-17-llm-judge-observability/) |
 | 18 | COMPLETE | COMPLETE | [phase-5/week-18-deployment-infra/](phase-5/week-18-deployment-infra/) |
 | 19 | COMPLETE | COMPLETE | [phase-5/week-19-auth-identity-enterprise/](phase-5/week-19-auth-identity-enterprise/) |
-| 20 | COMPLETE | NOT STARTED | [phase-5/week-20-cost-latency-engineering/](phase-5/week-20-cost-latency-engineering/) |
+| 20 | COMPLETE | COMPLETE | [phase-5/week-20-cost-latency-engineering/](phase-5/week-20-cost-latency-engineering/) |
 | 21 | COMPLETE | NOT STARTED | [phase-5/week-21-legacy-messy-integration/](phase-5/week-21-legacy-messy-integration/) |
 | 22 | COMPLETE | NOT STARTED | [phase-6/week-22-capstone-integration/](phase-6/week-22-capstone-integration/) |
 | 23 | COMPLETE | NOT STARTED | [phase-6/week-23-system-design-interview/](phase-6/week-23-system-design-interview/) |
