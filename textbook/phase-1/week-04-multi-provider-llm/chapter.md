@@ -1,19 +1,38 @@
 # Chapter 4 — Multi-Provider LLM Engineering
 
 > **Phase 1 — LLM Application Engineering Core**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-1/week-04-multi-provider-llm/`  
 > **Syllabus Build:** Ship a provider-agnostic LLM client wrapper that swaps Anthropic, OpenAI, and (via an optional gateway such as LiteLLM) other/local backends behind one interface, with structured-output validation and automatic retries on malformed or semantically invalid results.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Phase 0 proved packaging, HTTP, tests, and shippability. Week 4 opens Phase 1 by making Deployment Copilot talk to real model providers correctly. Hiring screens for AI Engineer and Forward Deployed Engineer roles often ask you to flip a feature flag from OpenAI to Anthropic without rewriting the agent loop—or to explain why a one-character system-prompt edit spiked the bill.
+Before this week you should already have from Week 3 (and Phase 0):
 
-The five ideas below are one pipeline: assemble a cache-stable prompt → count tokens → call with tools and a structured format → stream and aggregate → validate → append tool results → repeat. Skip any step and you get wrong roles, truncated tool JSON, context-window 400s mid-loop, or a cold cache after a “harmless” prefix edit.
+- An installable **src-layout** package for the flagship service (working title: **Deployment Copilot**) exposed as a **FastAPI** HTTP API with OpenAPI docs.  
+- A **pytest** suite that **mocks** the model provider (`LLMClient` Protocol / fakes / dependency overrides) so CI stays green without live API keys.  
+- A **multi-stage Dockerfile** and **compose** local stack (API + data plane) for shippable, reproducible runs.  
+- A living one-page **system design doc** that states p95 / $/query SLOs and CAP/PACELC per operation.
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) growing a thin `LLMClient` port with OpenAI and Anthropic adapters—optionally fronted by LiteLLM for failover—not framework-as-core and not raw SDK calls in every route.
+You do **not** need provider adapters, structured-output enforcement, token budgeting, or prompt caching yet. That is what this week teaches.
+
+---
+
+## What this week builds
+
+Week 3 left you with a containerized FastAPI service, secret-free mocked tests, compose data-plane realism, and a living design doc. Week 4 opens **Phase 1** by making Deployment Copilot talk to real model providers correctly. Hiring screens for AI Engineer and Forward Deployed Engineer roles often ask you to flip a feature flag from OpenAI to Anthropic without rewriting the agent loop—or to explain why a one-character system-prompt edit spiked the bill.
+
+The five ideas below are one call pipeline:
+
+- **API mechanics** (roles, tools, streaming) make OpenAI and Anthropic wire shapes usable behind one loop.  
+- **Structured output enforcement** turns free-form text into typed, validatable objects.  
+- **Token counting and context windows** keep requests under hard caps with an output budget reserved.  
+- **Prompt caching** keeps stable prefixes byte-identical so cost and TTFT stay low.  
+- **A provider-agnostic client** is the port that ships all of the above as swappable adapters.
+
+Skip any step and you get wrong roles, truncated tool JSON, context-window 400s mid-loop, or a cold cache after a “harmless” prefix edit. Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: **Deployment Copilot**) growing a thin `LLMClient` port with OpenAI and Anthropic adapters—optionally fronted by LiteLLM for failover—not framework-as-core and not raw SDK calls in every route. Keep the FastAPI shell, compose stack, mocked unit tests, and design doc; you wire real provider semantics through them.
 
 ---
 
@@ -308,8 +327,6 @@ When those six steps are true, Week 4 is done in the syllabus sense: Deployment 
 
 ---
 
-## Compilation notes
+## Looking ahead
 
-- All concept sections above are grounded in `research/phase-1/week-04-multi-provider-llm/` (`00`–`05`, README, `99-source-map`).  
-- `[NEEDS MORE RESEARCH]` flags appear where research left open questions: durable cross-provider unsupported-schema matrix and constrained-decoding vs extended-thinking conflicts; durable Responses/GPT-5-family framing overhead formula; ZDR / data-residency interaction with extended cache retention; Deployment Copilot–specific local-model adapter semantics beyond LiteLLM’s OpenAI-compatible façade.  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.
+Week 5 treats **prompt engineering as a versioned artifact**: system text moves into reviewable **templates** with changelogs and canary version IDs; **few-shot** examples sit where Week 4’s **cache** layout allows; **personas** stay thin over measurable contracts; and a short technical doc captures the existing **prompt-injection guardrails**. Keep the provider-agnostic client, structured outs, token budgets, and cache-stable prefixes—you will version and defend the text those APIs consume, not replace the wire layer.
