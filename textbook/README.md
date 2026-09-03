@@ -30,5 +30,6 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 5 | COMPLETE | [phase-1/week-05-prompt-engineering/](phase-1/week-05-prompt-engineering/) |
 | 6 | COMPLETE | [phase-2/week-06-ingestion-chunking/](phase-2/week-06-ingestion-chunking/) |
 | 7 | COMPLETE | [phase-2/week-07-retrieval-beyond-cosine/](phase-2/week-07-retrieval-beyond-cosine/) |
-| 8 | NOT STARTED | — |
-| 9–29 | NOT STARTED | — |
+| 8 | COMPLETE | [phase-2/week-08-reranking-query-understanding/](phase-2/week-08-reranking-query-understanding/) |
+| 9 | NOT STARTED | — |
+| 10–29 | NOT STARTED | — |
