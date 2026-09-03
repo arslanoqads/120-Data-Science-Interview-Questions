@@ -1,17 +1,30 @@
 # Chapter 13 — Orchestration frameworks and multi-agent design
 
 > **Phase 3 — Agentic Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-3/week-13-orchestration-multi-agent/`  
 > **Syllabus Build:** Ship a **stateful graph** with a **durable pause** before an irreversible (or expensive) write — not a notebook ReAct loop and not Week 14’s full safety catalog: (1) model the task as a **`StateGraph`** with typed state + reducers, at least one **cycle** (LLM ↔ tools) *or* a deterministic workflow with a **conditional edge** into an approval node; compile once; invoke with `{"configurable": {"thread_id": "…"}}`; (2) put **one high-stakes action** behind HITL (`send_customer_email`, `issue_refund`, or prod calendar write — not a read-only search); the node calls `interrupt(payload)` **before** the side effect with a JSON-serializable payload (question + tool args + blast radius); (3) compile with a **checkpointer** (`InMemorySaver` locally; document that production needs `PostgresSaver` / `SqliteSaver`); same `thread_id` on resume; (4) drive with `stream_events(..., version="v3")` (or `invoke` + `__interrupt__`); detect `stream.interrupted` / `stream.interrupts`; resume with **`Command(resume=…)`** — approve, reject, or edited args; (5) prove **node replay**: code **before** `interrupt` is idempotent (or has no side effects); kill the process while paused; restart; resume the same thread; (6) log thread id, checkpoint id, who/what approved, tool name, before/after args. Interview artifact = **trace of pause → human decision → resume** on a durable thread, plus a **named high-stakes tool that did not run until approved**.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 13 is the **harness** week of Phase 3. Week 11 taught the **loop contract** (plan → act → observe, pairing IDs, stop reasons). Week 12 taught how tools **show up at a host boundary** (MCP). This week does **not** replace either. It is how you **schedule work over time**: shared state, branches, cycles, crash recovery, and a human pause that can last hours without holding a hot worker.
+Before this week you should already have from Week 12:
 
-**Do not start Week 14 (A2A / domain side effects) from this chapter** — this week is graphs, handoffs, persistence, and HITL *inside one process/runtime*. Side-effect safety catalogs and A2A protocol implementation belong next week. MCP elicitation (Week 12) is **complementary**: a *tool server* asking the host for input. Graph `interrupt` is the **orchestrator** asking the **application** to wait. Do not conflate them.
+- An **MCP server / client** story — Host (Desktop or Code) owns a Client that is **1:1** with your Server; `initialize` ↔ capabilities; stdio for local attach.  
+- **Primitives** advertised accurately: at least one **tool** (recommended: Week 11 `docs_search`), optional **resource** / **prompt**; list → call → observation feeds the Week 11 loop.  
+- An **FDE integration surface**: the same capability attaches to **two hosts** (Claude Desktop `claude_desktop_config.json` + Claude Code `claude mcp add` / `.mcp.json`) without rewriting schemas per product.  
+- A documented **trust boundary** (reachable dirs/APIs, secrets in `env`, confirmation for writes) — MCP is the wire; it does not schedule graphs or durable pauses.
+
+You do **not** need a `StateGraph`, checkpointer, `thread_id` resume cursor, or graph `interrupt()` yet. That is what this week teaches (Week 14 adds the full side-effect safety envelope and A2A).
+
+---
+
+## What this week builds
+
+Week 11 shipped the **loop contract**. Week 12 shipped the **connector** (MCP server/client, primitives, FDE host attach). Week 13 is the **harness** week of Phase 3. This week does **not** replace either. It is how you **schedule work over time**: shared state, branches, cycles, crash recovery, and a human pause that can last hours without holding a hot worker.
+
+**Do not start Week 14 (side-effecting domain agent + safety envelope / A2A) from this chapter** — this week is graphs, handoffs, persistence, and HITL *inside one process/runtime*. Idempotency keys, preview/commit splits, audit logs, and A2A protocol implementation belong next week. MCP elicitation (Week 12) is **complementary**: a *tool server* asking the host for input. Graph `interrupt` is the **orchestrator** asking the **application** to wait. Do not conflate them.
 
 LangGraph models the harness as a **graph** ([Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api)):
 
@@ -141,7 +154,7 @@ Official approve/reject example uses the same pattern with `"Transfer $500"` as 
 
 Harrison Chase (LangChain) at AI Engineer frames the economics: raise **value if right** and **P(success)** (deterministic workflow + autonomy via LangGraph; observability/evals), **lower cost if wrong** (reversible actions + human correction / inbox of pending approvals) — [talk page](https://ai.engineer/talks/3-ingredients-for-building-reliable-enterprise-agents), [YouTube](https://www.youtube.com/watch?v=kTnfJszFxCg). This week implements the **cost-if-wrong** lever as a real interrupt, not a slide.
 
-### Default path (synthesis)
+**Default path (synthesis):**
 
 1. Prefer a **single agent + middleware** (or subagents wrapped as **tools**) until evals show context pollution, parallel search, or permission partitions ([When to use multi-agent](https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them)).  
 2. Prefer **LangGraph** when you need cycles, HITL, time travel, or multi-actor routing. Prefer **LCEL / a linear chain** when the path is a fixed DAG with no pause.  
@@ -149,9 +162,9 @@ Harrison Chase (LangChain) at AI Engineer frames the economics: raise **value if
 4. Compile **only the outermost** graph with a checkpointer when nesting `create_agent` subagents so `interrupt` can bubble ([Migrate from langgraph-supervisor](https://docs.langchain.com/oss/python/migrate/langgraph-supervisor)).  
 5. Interview artifact = **trace of pause → human decision → resume** on a durable thread, plus a **named high-stakes tool that did not run until approved**.
 
-Do **not** skip this week for “we’ll add `interrupt_before` later.” You cannot debug Week 14 side effects or Week 15 trajectories if the **cursor** (`thread_id`) and **approval gate** are implicit.
+Do **not** skip this week for “we’ll add `interrupt_before` later.” You cannot debug Week 14 side-effect safety or Week 15 trajectories if the **cursor** (`thread_id`) and **approval gate** are implicit.
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) gaining a **StateGraph** harness and a **HITL gate** before a high-stakes customer-facing write.
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) gaining a **StateGraph** harness and a **HITL gate** before a high-stakes customer-facing write — on tools that may already attach via Week 12 MCP.
 
 ---
 
@@ -615,4 +628,11 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
   5. Prove kill-while-paused → restart → resume; add approve / edit / reject paths and an approval audit log.  
   6. Log the pause → decision → resume trace; that plus the gated tool name is the interview artifact.
 
+When those steps are true, Week 13 is done in the syllabus sense: Deployment Copilot has a **resumable harness** with a real approval gate — not a notebook ReAct loop — and Week 14 can wrap a domain write in a safety envelope on top of this pause/resume cursor.
+
+
 ---
+
+## Looking ahead
+
+Week 14 is a **side-effecting domain agent** with a **safety envelope**: pick one real write (refund, ticket, or calendar create); split lookup / preview / propose / commit; wrapper-owned **idempotency keys**; gate irreversible commits with this week’s `interrupt()` (or a tokenized propose/commit); read back environment state as truth; append-only **audit**. Optional **A2A**: wrap the specialist as a peer Agent Card / Task when the write lives in another process or vendor — MCP remains agent-to-tool; A2A is agent-to-agent. The graph + HITL from this week does not go away; it is the harness those writes pause on. Interview artifact = one successful write + one non-duplicating retry + one rejected gate + an audit line.
