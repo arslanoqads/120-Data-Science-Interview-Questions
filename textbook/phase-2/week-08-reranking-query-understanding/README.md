@@ -1,8 +1,18 @@
 # Week 8 Textbook Chapter — Reranking and query understanding
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-2/week-08-reranking-query-understanding/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 7 hybrid dense+BM25, RRF, candidate logging, vector DB tradeoffs)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 9  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 
@@ -10,10 +20,6 @@
 - [x] Cross-encoder rerankers (Cohere Rerank, BGE-reranker)
 - [x] Lost in the middle (Liu et al.) and why reranking mitigates
 - [x] Query transformation (HyDE, decomposition, expansion — one transform, measured)
-
-## Structure check
-
-Each concept includes Fundamentals, The Alternatives, Failure Modes, Average vs. Strong Engineer, Worked Example, and Apply It.
 
 ## Syllabus build
 

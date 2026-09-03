@@ -1,13 +1,26 @@
 # Chapter 8 — Reranking and query understanding
 
 > **Phase 2 — RAG Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-2/week-08-reranking-query-understanding/`  
 > **Syllabus Build:** On the Week 7 hybrid candidate API, ship **two-stage retrieval**: stage-1 hybrid + RRF (or equivalent) returning **50–100** candidates (`fetch_k`); stage-2 cross-encoder rerank (Cohere **or** self-hosted BGE) keeping **top 5–10** for generation; add **exactly one** query transform (HyDE *or* multi-query expansion *or* decomposition) on a **routed** slice; **measure delta** against the Week 7 baseline (stage-1 recall@k, nDCG/MRR after rerank, answer accuracy / groundedness after packing 5–10, plus p95 latency of retrieve vs rerank vs generate).
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
+
+Before this week you should already have from Week 7:
+
+- **Hybrid retrieval** — dense ANN (bi-encoder embeddings) **and** BM25 (or equivalent sparse) over the same `chunk_id`s, not cosine-only `top_k`.  
+- **RRF fusion** (`k=60` unless evals say otherwise) merging both legs into a candidate set of tens to low hundreds.  
+- **Candidate logging** on every query (`retrieval_id`, per-leg ids/ranks/scores, fusion params, fused list) so stage-1 misses stay attributable.  
+- A store path that supports the hybrid you shipped — **pgvector + app-side fusion**, or a dedicated / hybrid-native engine — with filters and dual-leg logs intact.
+
+You do **not** need cross-encoder rerank, lost-in-the-middle packing discipline, or routed query transforms yet. That is what this week teaches.
+
+---
+
+## What this week builds
 
 Week 7 built a high-recall candidate set (hybrid + RRF, logged). Week 8 is the **precision and query-side** week: which of those candidates occupy the prompt, in what order, and whether the query string itself should be rewritten before retrieval.
 
@@ -21,13 +34,20 @@ The syllabus spine is one production pattern, not three competing architectures:
 
 Sentence-Transformers’ Retrieve & Re-Rank guide is the shared vocabulary: retrieve a large list (e.g. **100** hits) with lexical search or a bi-encoder; those hits may include irrelevant neighbors; a **CrossEncoder** scores each `(query, candidate)` jointly; the user (or the LLM) sees the reordered shortlist. Scoring thousands or millions of pairs would be slow, so the retriever exists to bound the reranker’s work.
 
-Pinecone’s restatement for RAG: maximize retrieval recall by fetching plenty of documents, then maximize *LLM* recall by minimizing how many make it into context. Search engineers used two-stage systems long before RAG because **rerankers are slow and retrievers are fast**. Chip Huyen’s public platform post names the **sequential** pattern: cheap retriever, then a more precise, more expensive ranking step. Her 2023 open-challenges post cites Lost in the Middle: **how much context a model can take ≠ how efficiently it uses that context**.
+Pinecone’s restatement for RAG: maximize retrieval recall by fetching plenty of documents, then maximize *LLM* recall by minimizing how many make it into context. Search engineers used two-stage systems long before RAG because **rerankers are slow and retrievers are fast**. Chip Huyen’s public platform post names the **sequential** pattern: cheap retriever, then a more precise, more expensive ranking step. Her 2023 open-challenges post cites Lost in the Middle: **how much context a model can take ≠ how efficiently it uses that context**. Week 7 owned the **ensemble** first stage; this week owns the sequential second hop.
+
+The four ideas below are one system:
+
+- **Two-stage retrieval** — stage-1 hybrid pool (50–100) → cross-encoder → packed top 5–10.  
+- **Cross-encoder rerankers** — Cohere Rerank (managed) or BGE-reranker (self-host); pick one path, measure.  
+- **Lost in the middle** — fewer, better-ordered docs beat stuffing a long window.  
+- **Query transformation** — exactly one routed transform (HyDE, multi-query, or decomposition), measured on its slice.
 
 Query transforms sit *before* stage-1. They buy **recall** when user wording and document wording live far apart, or when one embedding cannot cover multi-hop intent. They do **not** replace reranking. The teaching rule is **one transform, measured** — not a stack of HyDE + 5 paraphrases + sub-questions on every chat turn.
 
-Do not skip this week for “long-context models can eat top-20 cosine hits.” Liu et al. show more retrieved docs eventually stop helping; Pinecone restates the same as maximize retriever recall then minimize what the LLM sees.
+Do not skip this week for “long-context models can eat top-20 cosine hits.” Liu et al. show more retrieved docs eventually stop helping; Pinecone restates the same as maximize retriever recall then minimize what the LLM sees. Do not overwrite Week 7 candidate logs when rerank lands — Week 9 needs both stages to separate miss-at-retrieve from miss-at-rerank from ignore-at-generate.
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) on product runbooks with Week 7’s hybrid candidate API and logs.
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: **Deployment Copilot**) on product runbooks with Week 7’s hybrid candidate API and logs.
 
 **Default path (synthesis):** keep Week 7 candidate logs; **append** `rerank.ids[]`, `rerank.scores[]`, `rerank.model`, `top_n` → tune `fetch_k` on **stage-1 recall@k** until gold is usually in the 50–100 pool; only then tune the reranker → pack **few** docs; put the highest-rerank hit first (optionally first+last via `LongContextReorder`) → enable one query transform only where eval slices show vocabulary mismatch or multi-hop failure → compare Cohere vs BGE on **your** corpus (BEIR/MTEB are directional).
 
@@ -335,8 +355,6 @@ When those steps are true, Week 8 is done in the syllabus sense: Deployment Copi
 
 ---
 
-## Compilation notes
+## Looking ahead
 
-- All concept sections above are grounded in `research/phase-2/week-08-reranking-query-understanding/` (`00`–`04` + README).  
-- No section required `[NEEDS MORE RESEARCH]` for the four syllabus concepts; open questions left as open questions (post-2024 U-curve flattening, listwise vs pointwise Pareto, HyDE vs fine-tuned rewriter) rather than invented answers.  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes. Chip Huyen citations are public blog only.
+Week 9 covers the **RAG failure taxonomy**: when the answer is wrong, which stage broke — **recall** (evidence never eligible / never in `fetch_k`), **ranking / context-assembly** (gold in the pool but not packed, or buried mid-prompt), or **generation-grounding** (usable context, model still invents or under-extracts). The artifact is a **portfolio debugging log** joined on `retrieval_id` from Weeks 7–8 — taxonomy labels appended, not a new retriever. Keep stage-1 and `rerank.*` / `packed_position` fields intact so fault injection can attribute misses. Do not skip this week’s measured packing for “we’ll just look at end-to-end answer accuracy.”
