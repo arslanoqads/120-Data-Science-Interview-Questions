@@ -44,5 +44,6 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 19 | COMPLETE | [phase-5/week-19-auth-identity-enterprise/](phase-5/week-19-auth-identity-enterprise/) |
 | 20 | COMPLETE | [phase-5/week-20-cost-latency-engineering/](phase-5/week-20-cost-latency-engineering/) |
 | 21 | COMPLETE | [phase-5/week-21-legacy-messy-integration/](phase-5/week-21-legacy-messy-integration/) |
-| 22 | NOT STARTED | — |
-| 23–29 | NOT STARTED | — |
+| 22 | COMPLETE | [phase-6/week-22-capstone-integration/](phase-6/week-22-capstone-integration/) |
+| 23 | NOT STARTED | — |
+| 24–29 | NOT STARTED | — |
