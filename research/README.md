@@ -9,7 +9,7 @@ Raw source material for the 24-week syllabus (TPM → AI Engineer / Forward Depl
 
 ## Layout note
 
-Every week is a **directory** (e.g. `phase-0/week-01-python-production/`) with an overview, one file per concept, and a source map. The sequential deep pass (Weeks 1–24) is complete.
+Every week is a **directory** (e.g. `phase-0/week-01-python-production/`) with an overview, one file per concept, and a source map. Weeks 1–24 deep pass complete; Phase 7 electives (25–29) from supplementary syllabus.
 
 ## Entry format (per concept)
 
@@ -84,6 +84,14 @@ Each concept includes:
 | 23 | [week-23-system-design-interview/](phase-6/week-23-system-design-interview/) | **Research corpus** — system design, prompt debug, FDE cases, STAR write-ups |
 | 24 | [week-24-portfolio-positioning/](phase-6/week-24-portfolio-positioning/) | **Research corpus** — resume language, portfolio, dual-track positioning |
 
+### Phase 7 — Supplementary Electives (Weeks 25–29)
+
+> Electives from gap analysis vs roadmap.sh AI Engineer / AI+DS roadmaps. Not replacements for Weeks 1–24. Can append after capstone or interleave.
+
+| Week | File | Focus |
+|------|------|--------|
+| 25 | [week-25-context-engineering/](phase-7/week-25-context-engineering/) | **Research corpus** — context vs prompt, memory, compaction, isolation, failure modes |
+
 ## Syllabus map (primary content shopping)
 
 Per syllabus source map — use when deepening a week:
@@ -97,3 +105,4 @@ Per syllabus source map — use when deepening a week:
 | 4 | Hamel Husain (hamel.dev); Langfuse / Arize Phoenix docs |
 | 5 | Inference/cost docs; LiteLLM / RouteLLM; observability platforms |
 | 6 | Live AI Engineer / FDE job postings (Palantir, Anthropic, OpenAI, Scale, Databricks) |
+| 7 | Anthropic context/agent docs, LangGraph memory, OWASP LLM |
