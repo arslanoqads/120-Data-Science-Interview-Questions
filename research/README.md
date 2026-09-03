@@ -9,7 +9,7 @@ Raw source material for the 24-week syllabus (TPM → AI Engineer / Forward Depl
 
 ## Layout note
 
-Deep-pass weeks are **directories** (e.g. `phase-0/week-01-python-production/`) with one file per concept plus a source map. Earlier single-file weeks are upgraded to this layout when their deep pass runs.
+Every week is a **directory** (e.g. `phase-0/week-01-python-production/`) with an overview, one file per concept, and a source map. The sequential deep pass (Weeks 1–24) is complete.
 
 ## Entry format (per concept)
 
