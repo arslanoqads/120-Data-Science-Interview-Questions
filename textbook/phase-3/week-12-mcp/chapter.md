@@ -1,17 +1,30 @@
 # Chapter 12 — Model Context Protocol (MCP)
 
 > **Phase 3 — Agentic Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-3/week-12-mcp/`  
 > **Syllabus Build:** Ship a **single MCP server wrapping one capability**, then **prove it attaches to two hosts**: (1) take **one** Week 11 capability (recommended: `docs_search`, or `structured_query`, or calendar list — not all three dumped as 40 tools) and implement it as an MCP **server** with advertised `tools` (optionally a **resource** for schema/docs and a **prompt** for the playbook); (2) transport **stdio** for local Desktop/Code attach (optional second Streamable HTTP listener for remote hosts — do not skip stdio); (3) connect **Claude Desktop** via `claude_desktop_config.json` (`mcpServers` + `command`/`args`, absolute paths); (4) connect **Claude Code** via `claude mcp add` and/or project `.mcp.json` (`type`: `stdio` vs `http`; `--` separator for stdio; workspace trust / project approval); (5) demonstrate host lists the tool → model calls it → observation returns (screenshot or `/mcp` `✔ Connected` plus a successful tool trace); (6) document the **trust boundary**: directories/APIs the process can reach; secrets in `env` not committed; user confirmation for writes. Interview artifact = **one server + two host configs + a successful tool call**, not a slide that says “we use MCP.”
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 12 is the **connector** week of Phase 3. Week 11 taught the **loop contract** (plan → act → observe, pairing IDs, stop reasons). This week does **not** replace that loop. It standardizes how tools and context **show up at the host boundary** so the same capability can attach to Claude Desktop, Claude Code, Cursor, VS Code, ChatGPT, or a custom host without rewriting function schemas per product.
+Before this week you should already have from Week 11:
 
-Anthropic and the MCP site use the same slogan: MCP is a **“USB-C port for AI applications”** — an open standard so hosts can connect to data, tools, and workflows. Official architecture docs are explicit: MCP is the protocol for **context exchange**; hosts still own orchestration, consent, and aggregation. Do **not** start Week 13 (orchestration / multi-agent) from this chapter — MCP is a *distribution and discovery* layer for tools/context, not graphs, HITL persistence, or multi-agent handoffs.
+- A **bounded agent loop** — plan → act → observe with OpenAI `function_call` ↔ `function_call_output` **or** Anthropic `tool_use` ↔ `tool_result`, not a naked `while True`.  
+- **Three client tools** with strict JSON Schema (`docs_search`, `structured_query`, calendar read/write split) and a habit of **selection** without dumping a 40-tool palette.  
+- **Pairing**, **retries**, and typed **stop conditions**: every `call_id` / `tool_use_id` gets a result; tool exceptions become error observations (`is_error`); iteration cap / timeout / `end_turn` (and siblings) are named stop reasons.  
+- A **turn trace** of a multi-step task (tool names, latency, error class, remaining budget, named stop) — the same observation surface MCP results will feed.
+
+You do **not** need an MCP server, host config JSON, or graph/HITL persistence yet. That is what this week (and Week 13) teach.
+
+---
+
+## What this week builds
+
+Week 11 shipped the **loop contract** (pairing IDs, retries, stop reasons, three tools). Week 12 is the **connector** week of Phase 3. This week does **not** replace that loop. It standardizes how tools and context **show up at the host boundary** so the same capability can attach to Claude Desktop, Claude Code, Cursor, VS Code, ChatGPT, or a custom host without rewriting function schemas per product.
+
+Anthropic and the MCP site use the same slogan: MCP is a **“USB-C port for AI applications”** — an open standard so hosts can connect to data, tools, and workflows. Official architecture docs are explicit: MCP is the protocol for **context exchange**; hosts still own orchestration, consent, and aggregation. Do **not** start Week 13 (graph orchestration / multi-agent / handoffs / persistence / HITL checkpoint) from this chapter — MCP is a *distribution and discovery* layer for tools/context, not graphs, durable interrupts, or multi-agent handoffs.
 
 **What you ship this week:** one **MCP server** wrapping **one** capability, plus **two host configs** that actually connect.
 
@@ -137,7 +150,7 @@ Ops: `/mcp` panel, `claude mcp list` health (`✔ Connected`, `! Needs authentic
 4. Write tools (if any) required a **confirmation**.  
 5. You can point a **second** host at the **same** stdio command (or the same HTTP URL) without changing server code.
 
-### Default path (synthesis)
+**Default path (synthesis):**
 
 1. Prefer **official MCP SDKs** (or FastMCP on top of them) over hand-rolled JSON-RPC. Pin a **protocol version** (`2025-11-25` is the spec revision used throughout the research corpus; hosts may also negotiate later revisions such as `2026-07-28`).  
 2. Prefer **stdio** for laptop/IDE attach; **Streamable HTTP + OAuth 2.1** for shared remote servers. Treat HTTP+SSE (`2024-11-05`) as deprecated compatibility.  
@@ -538,3 +551,10 @@ Use this as the chapter’s capstone sequence; every concept above maps here.
 8. **Interview artifact:** one server + two host configs + a successful tool call (screenshot or `/mcp` + trace).
 
 When those steps are true, Week 12 is done in the syllabus sense: Deployment Copilot has a **portable connector**, not an in-process `bind_tools` demo — and Week 13 orchestration starts from a capability that already attaches to real hosts.
+
+
+---
+
+## Looking ahead
+
+Week 13 is **orchestration frameworks and multi-agent design**: model the task as a **stateful graph** (cycles, conditional edges), add **multi-agent handoffs** when one loop is not enough, and make **persistence + HITL checkpoint** real — `interrupt` before a high-stakes write, checkpointer + `thread_id`, resume with `Command(resume=…)`. The MCP connector from this week does not go away; graphs schedule work over time on tools that already attach to hosts. Do not conflate MCP elicitation (server asks the host for input) with graph `interrupt` (orchestrator waits for application-side approval). Interview artifact = pause → human decision → resume on a durable thread.
