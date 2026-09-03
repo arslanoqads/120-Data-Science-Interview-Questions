@@ -39,5 +39,6 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 14 | COMPLETE | [phase-3/week-14-domain-agent-side-effects/](phase-3/week-14-domain-agent-side-effects/) |
 | 15 | COMPLETE | [phase-3/week-15-agent-evaluation/](phase-3/week-15-agent-evaluation/) |
 | 16 | COMPLETE | [phase-4/week-16-error-analysis-flywheel/](phase-4/week-16-error-analysis-flywheel/) |
-| 17 | NOT STARTED | — |
-| 18–29 | NOT STARTED | — |
+| 17 | COMPLETE | [phase-4/week-17-llm-judge-observability/](phase-4/week-17-llm-judge-observability/) |
+| 18 | NOT STARTED | — |
+| 19–29 | NOT STARTED | — |
