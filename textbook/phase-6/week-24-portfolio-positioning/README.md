@@ -1,8 +1,18 @@
 # Week 24 Textbook Chapter — Portfolio positioning
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-6/week-24-portfolio-positioning/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 23: system design interview drills, STAR bank)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 25 (Phase 7 elective — context engineering: memory, compaction, isolation, failure modes; electives append after capstone in this course)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 

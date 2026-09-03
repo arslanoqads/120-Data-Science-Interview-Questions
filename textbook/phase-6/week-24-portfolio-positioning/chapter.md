@@ -1,23 +1,34 @@
 # Chapter 24 — Portfolio positioning
 
 > **Phase 6 — Capstone and Interview Readiness**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-6/week-24-portfolio-positioning/`  
 > **Syllabus Build:** Syllabus treats Week 24 as **packaging meta-work**: you already have a demo (Week 22) and STAR bank (Week 23). This week you make them **hire-readable**. (1) **Mirror one live posting.** Paste OpenAI / Anthropic / Palantir-language verbs into a keyword checklist; rewrite 5–7 bullets with evidence from STAR ([OpenAI FDE SF](https://openai.com/careers/forward-deployed-engineer-%28fde%29-sf-san-francisco/); [Anthropic FDE](https://job-boards.greenhouse.io/anthropic/jobs/5391016008); [Palantir FDSE](https://blog.palantir.com/a-day-in-the-life-of-a-palantir-forward-deployed-software-engineer-45ef2de257b1)). (2) **Ship a &lt;5-minute portfolio page** for the flagship (or harden [qads.us](https://qads.us) project pages): architecture matching code, three metrics, one failure→fix, repro link ([Huyen GenAI platform](https://huyenchip.com/2024/07/25/genai-platform.html); [Hamel evals](https://hamel.dev/blog/posts/evals/); Week 22 narrative). (3) **Write dual talk tracks** for the same repo: Applied (evals/latency/architecture) vs FDE (discovery/constraint/rollout/codify). (4) **Freeze resume header + LinkedIn headline** for the track you apply to this week; keep the other track’s bullets ready as a second tailored PDF.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Weeks 22–23 produced a frozen demo, a failure narrative, and a STAR bank. Week 24 answers: can a screener (ATS + human) and a hiring manager **find that signal in under five minutes** on a resume and a portfolio page?
+Before this week you should already have from Week 23:
 
-Three coupled deliverables:
+- **System design interview drills:** annotated ~10M-doc retrieval whiteboard; timed prompt-debug ladder (reproduce → localize → minimize → one hypothesis → golden lock); one FDE integration unblock case; aloud tradeoff one-liners with latency + $ budgets.  
+- **STAR bank:** 8–10 cards from *your* Weeks 6–22 builds (title / metric / systems / 3 follow-ups), with dual-track endings and quantified results you can defend.
 
-1. **Resume language** — mirror OpenAI / Anthropic / Palantir verbs with evidence.  
-2. **Portfolio &lt;5 minutes** — system + metrics + failure + repro.  
-3. **Dual-track positioning** — Applied AI Engineer vs FDE talk tracks.
+You do **not** need a tailored resume PDF, a hire-readable portfolio/qads.us case page, dual-track one-pager, or keyword checklist marked against a live JD yet as *finished* products — that is what this week ships. You **do** need Week 22’s frozen demo narrative and Week 23’s locked STAR metrics as raw material; without them, resume bullets and portfolio metrics invent numbers you cannot defend.
 
-**Do not invent new RAG/agent theory here** — package Weeks 6–23 evidence into hire-readable surfaces. Capstone freeze (Week 22) and STAR metrics (Week 23) hold; this week only rewrites and surfaces them.
+---
+
+## What this week builds
+
+Week 23 drilled whiteboards, timed prompt-debug, FDE unblock cases, aloud tradeoffs, and a STAR bank. Week 24 is the **hire-readable packaging** week of Phase 6. Weeks 6–23 already shipped the systems and interview drills; this week adds **no new product surface**. Capstone freeze (Week 22) and STAR metrics (Week 23) hold; this week only rewrites and surfaces them.
+
+This week answers three coupled questions that screeners and hiring managers treat as the minimum bar for finding your signal in under five minutes:
+
+1. **Resume language** — mirror OpenAI / Anthropic / Palantir verbs with evidence from STAR.  
+2. **Portfolio &lt;5 minutes** — system + metrics + failure + repro (architecture matching code).  
+3. **Dual-track positioning** — Applied AI Engineer vs FDE talk tracks for the same flagship.
+
+**Do not invent new RAG/agent theory here** — package Weeks 6–23 evidence into hire-readable surfaces. Do **not** start Phase 7 electives from this chapter — this week freezes resume header + LinkedIn headline, hardens the portfolio case, and writes dual talk tracks. Do **not** reopen the Week 22 freeze or invent STAR metrics to “fill bullets.”
 
 **End-to-end packaging path**
 
@@ -51,14 +62,14 @@ tailored PDF + LinkedIn headline + send link
 
 Interview artifact = **tailored resume (1–2 pages)** + **portfolio/qads.us case that survives 5 minutes** + **dual-track one-pager** + **keyword checklist marked against a live JD**.
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) after Week 22–23 freeze — now packaged for resume, portfolio, and dual-track applications. Public-site hardening follows the [qads.us](https://qads.us) case template from research.
-
 | This week | Not this week |
 |-----------|----------------|
 | Resume / portfolio copy | New features or retrieval theory (Weeks 6–10) |
 | qads.us case-page hardening | Capstone scope changes (Week 22 freeze holds) |
 | Dual-track talk tracks | Whiteboard practice (Week 23) — **reuse** STAR |
 | Comp range research for later negotiation | Putting TC numbers on the resume |
+
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) after Week 22–23 freeze — now packaged for resume, portfolio, and dual-track applications. Public-site hardening follows the [qads.us](https://qads.us) case template from research.
 
 ---
 
@@ -435,9 +446,17 @@ When those steps are true, Week 24 is done in the syllabus sense: Week 22–23 e
 
 ---
 
+## Looking ahead
+
+Week 25 opens **Phase 7 — Supplementary Electives** with **context engineering** as an explicit discipline: memory (session vs persistent), compaction, isolation, and failure modes (stale context, poisoning, lost handoffs — plus distraction / confusion / clash). Electives can append after the Week 24 capstone packaging or interleave earlier (for example after Phase 3); **this course appends them** after Week 24. Next week you add a named **context-management layer** to the Phase 3 agentic stack — session memory with a compaction threshold, per-agent isolation namespaces, and a joinable context failure log — without inventing a new model API and without reopening the Week 22 freeze or inventing resume metrics. Resume / portfolio maintenance stays available; the deep work shifts to curating the token set the model sees each turn.
+
+---
+
 ## Compilation notes
 
 - All concept sections above are grounded in `research/phase-6/week-24-portfolio-positioning/` (`00`–`03`, README; source map consulted for URL provenance only).  
 - `[NEEDS MORE RESEARCH]` markers appear where research Open Questions leave a claim ungrounded: Prompt Engineer headline harm in 2026; MCP first-class bullet scope for Anthropic apps; one vs two resumes when dual-applying; Applied/FDE ladder convergence; travel-signal timing; OSS messy-domain as FDE substitute; Anthropic “Applied AI” keyword outside Anthropic; dual-track focus ding vs optionality reward; employer anonymization for day-job FDE stories; chat-UI vs CLI+eval sufficiency; hobby cost dashboards; portfolio-assistant abstain risk; one deep vs three medium cases. Those open questions were **not** resolved with invented answers.  
 - Outside URLs from research are cited inline where the notes already named them; operational detail was inlined from the notes.  
-- Comp figures from Levels.fyi / secondary reports are treated as **directional ranges for negotiation**, never resume content — matching research policy.
+- Comp figures from Levels.fyi / secondary reports are treated as **directional ranges for negotiation**, never resume content — matching research policy.  
+- Editorial pass: Prerequisites Recap bridges Week 23 (system design interview drills, STAR bank); Looking ahead bridges Week 25 / Phase 7 elective (context engineering: memory, compaction, isolation, failure modes; electives append after capstone in this course); no new technical claims beyond research.  
+- Phase 7 elective depth is explicitly deferred — freeze hire-readable packaging here; context-management layer comes next.
