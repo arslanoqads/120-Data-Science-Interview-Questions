@@ -28,5 +28,6 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 3 | COMPLETE | [phase-0/week-03-git-containers-system-design/](phase-0/week-03-git-containers-system-design/) |
 | 4 | COMPLETE | [phase-1/week-04-multi-provider-llm/](phase-1/week-04-multi-provider-llm/) |
 | 5 | COMPLETE | [phase-1/week-05-prompt-engineering/](phase-1/week-05-prompt-engineering/) |
-| 6 | NOT STARTED | — |
-| 7–29 | NOT STARTED | — |
+| 6 | COMPLETE | [phase-2/week-06-ingestion-chunking/](phase-2/week-06-ingestion-chunking/) |
+| 7 | NOT STARTED | — |
+| 8–29 | NOT STARTED | — |
