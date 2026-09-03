@@ -1,8 +1,18 @@
 # Week 15 Textbook Chapter — Agent evaluation
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-3/week-15-agent-evaluation/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 14: side-effecting write agent, idempotency, confirmation/dry-run, audit logs, optional A2A)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 16 (error-analysis flywheel: read outputs, open coding, taxonomy, synthetic edges)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 

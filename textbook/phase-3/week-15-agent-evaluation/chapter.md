@@ -1,17 +1,33 @@
 # Chapter 15 — Agent evaluation
 
 > **Phase 3 — Agentic Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-3/week-15-agent-evaluation/`  
 > **Syllabus Build:** Do **not** ship a third agent. **Instrument and score the two you already have.** (1) Wire traces on the Week 11 loop agent **and** the Week 14 write agent (LangSmith **or** Langfuse **or** OpenAI traces — one primary, map the other). Tool calls must be **structured fields** (`name`, `arguments`, …), not parsed chat text. Session IDs on the conversational agent. (2) Define **split scores**, never one “quality” number: `task_success` (outcome / read-back), `tool_name`, `tool_args`, `policy_order` (e.g. `verify_identity` before `commit_refund`), `within_step_budget`, cost/turns. (3) Add **tool-call correctness** tests: Hamel’s four checks (name, arguments, result, resulting state) plus authorization/preconditions. Use **code graders** for decidable checks; LLM-as-judge only for semantic appropriateness. (4) On the **same** refund (or ticket/calendar) task, show **one strict trajectory assertion** and **one environment outcome assertion** side by side — Anthropic: path can be too rigid; outcome without path misses unsafe intermediates. (5) Codify the **four failure patterns** as regression cases (loop detector, premature-stop outcome fail, missing tool, dropped early constraint). Promote at least one **real** failing prod/dev trace into the dataset. (6) **Literacy assignment (not a product gate):** read τ-bench (state + pass^k), WebArena (functional / backend), AgentBench (cross-env). Do **not** claim you “beat WebArena” as a shipping criterion.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 15 is the **measurement** week of Phase 3. Weeks 11–13 taught the **loop**, **MCP**, and **graphs / HITL**. Week 14 required a **second agent that mutates state**, with idempotency, confirmation, dry-run, and audit. This week does **not** add a third product. It **instruments both agentic systems** you already shipped and grades them the way production teams grade agents: **traces**, **tool-call correctness**, **trajectory vs outcome**, and a **failure-pattern vocabulary**.
+Before this week you should already have from Week 14:
 
-**Do not start Week 16 (error-analysis flywheel) from this chapter** — this week instruments and scores; the flywheel that *mines* those failures into a taxonomy and synthetic data is next week. Do **not** skip this week for “we’ll look at LangSmith later.” Week 16 has nothing to annotate if traces are unstructured.
+- A **second, smaller agentic system** whose success criterion is a **mutated store** (refund row, ticket, calendar event) — not a chatbot that only answers.  
+- **Tool split:** `lookup_*` vs `preview_*` / `propose_*` vs `commit_*` so the model cannot reach the write without preview or a confirmation token.  
+- **Wrapper-owned idempotency keys** (tenant + intent + object id + `taskId` / `thread_id`) — never LLM-generated; timeout + retry does not double-apply.  
+- A **confirmation gate** (Week 13 `interrupt()` or tokenized propose/commit) with blast radius in the payload; reject → zero writes.  
+- **Read-back** of environment state as success truth, plus an **append-only audit** (intent before mutate, result after) correlated with the idempotency key and approval id.  
+- Optional **A2A**: specialist as an Agent Card / Task when the write lives in another process; `taskId` in keys and audit — or a documented same-process handoff.  
+- From earlier Phase 3: Week 11 **loop agent**, Week 12 **MCP**, Week 13 **graph + HITL** — those do not go away; this week instruments them.
+
+You do **not** need a third agent, a calibrated LLM-as-judge dashboard, or a Week 16 open-coding taxonomy yet. That is what this week (and Week 16) teach.
+
+---
+
+## What this week builds
+
+Week 11 shipped the **loop**. Week 12 shipped the **connector** (MCP). Week 13 shipped the **harness** (graphs, handoffs, persistence, HITL). Week 14 shipped a **side-effecting write agent** with idempotency, confirmation, dry-run/preview, and audit — optionally over A2A. Week 15 is the **measurement** week of Phase 3. This week does **not** add a third product. It **instruments both agentic systems** you already shipped and grades them the way production teams grade agents: **traces**, **tool-call correctness**, **trajectory vs outcome**, and a **failure-pattern vocabulary**.
+
+**Do not start Week 16 (error-analysis flywheel — open coding, taxonomy, synthetic edges) from this chapter** — this week instruments and scores; the flywheel that *mines* those failures into a custom taxonomy and synthetic data is next week. Do **not** skip this week for “we’ll look at LangSmith later.” Week 16 has nothing to annotate if traces are unstructured.
 
 Anthropic’s eval vocabulary is the spine ([Demystifying evals for AI agents](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents)):
 
@@ -32,6 +48,8 @@ Langfuse: agent quality is **four dimensions that fail independently** — traje
 
 Hamel Husain & Shreya Shankar: treat the agent as a black box for **end-to-end task success first**; then score **tool choice, parameters, error handling, context retention, efficiency, goal checkpoints**; use **transition failure matrices** (last good state → first failure) ([agentic workflows](https://hamel.dev/blog/posts/evals-faq/how-do-i-evaluate-agentic-workflows.html)).
 
+### Syllabus artifact: instrument and score both agents
+
 **What you ship this week**
 
 ```
@@ -48,7 +66,7 @@ Week 14 agent ──► same tracer (session_id / thread_id / taskId)
          split scorecard (not one accuracy)
 ```
 
-A trial can **pass outcome and fail trajectory** (refund without verify — unsafe). A trial can **pass trajectory and fail outcome** (called the right tools; DB never updated — harness/tool bug). That contrast is the teaching moment.
+A trial can **pass outcome and fail trajectory** (refund without verify — unsafe). A trial can **pass trajectory and fail outcome** (called the right tools; DB never updated — harness/tool bug). That contrast is the teaching moment. Week 14’s read-back and audit are what make the **outcome** half of that contrast trustworthy; A2A `taskId` / graph `thread_id` are how you join traces across peers.
 
 Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume Deployment Copilot’s Week 11 loop agent and Week 14 write agent on the **same** tracer.
 
@@ -500,9 +518,6 @@ When those six steps are true, Week 15 is done in the syllabus sense: both agent
 
 ---
 
-## Compilation notes
+## Looking ahead
 
-- All concept sections above are grounded in `research/phase-3/week-15-agent-evaluation/` (`00`–`04`, README).  
-- `[NEEDS MORE RESEARCH]` markers appear where research Open Questions leave a claim ungrounded (fuzzy arg match / portable trace schema / tool-schema versioning; creative-vs-policy pass criteria / partial-credit weighting / pass^k sample size; loop classifiers / memory evals / handoff-vs-truncation class; τ²-bench telecom pass^1 figures pending PDF re-read).  
-- Outside URLs from research are cited inline; operational detail was inlined from the notes.  
-- No third agent is introduced; Week 16 error-analysis flywheel is explicitly deferred.
+Week 16 opens **Phase 4 — Evals and Observability** with the **error-analysis flywheel**: sample the structured traces you built this week; **read** them (open-code free-text notes on real failures); axial-code into a **custom taxonomy** grounded in *this* app; quantify frequency × impact; bootstrap undersampled edges with **synthetic inputs** run through the live stack; promote labeled failures into a regression eval set (CI + sampled prod). Do **not** jump to calibrated LLM-as-judge dashboards (Week 17) before you know what fails. The split scores, trajectory vs outcome contrast, and C1–C4 fixtures from this week do not go away — they are the raw material the flywheel mines.
