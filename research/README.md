@@ -64,7 +64,7 @@ Each concept includes:
 
 | Week | File | Focus |
 |------|------|--------|
-| 16 | [week-16-error-analysis-flywheel.md](phase-4/week-16-error-analysis-flywheel.md) | Manual error analysis, taxonomies, synthetic data, flywheel |
+| 16 | [week-16-error-analysis-flywheel/](phase-4/week-16-error-analysis-flywheel/) | **Research corpus** — manual error analysis, taxonomies, synthetic data, flywheel |
 | 17 | [week-17-llm-judge-observability.md](phase-4/week-17-llm-judge-observability.md) | LLM-as-judge, calibration, code vs model evals, tracing |
 
 ### Phase 5 — Production, Cost, and Systems (Weeks 18–21)
