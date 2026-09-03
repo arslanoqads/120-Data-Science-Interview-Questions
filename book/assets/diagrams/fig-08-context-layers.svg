@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="620" height="200" viewBox="0 0 620 200" role="img" aria-label="Context assembly layers">
+  <rect width="620" height="200" fill="#ffffff"/>
+  <text x="16" y="26" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a2332">Figure  Context assembly (Week 25)</text>
+  <g font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11">
+    <rect x="40" y="50" width="540" height="28" rx="3" fill="#1a2332"/>
+    <text x="310" y="68" text-anchor="middle" fill="#ffffff" font-weight="700">System / instructions (pinned)</text>
+    <rect x="40" y="82" width="540" height="28" rx="3" fill="#1a6b7a"/>
+    <text x="310" y="100" text-anchor="middle" fill="#ffffff" font-weight="700">Tools / MCP schemas</text>
+    <rect x="40" y="114" width="540" height="28" rx="3" fill="#2d6a4f"/>
+    <text x="310" y="132" text-anchor="middle" fill="#ffffff" font-weight="700">Retrieved docs (RAG)</text>
+    <rect x="40" y="146" width="540" height="28" rx="3" fill="#4a5568"/>
+    <text x="310" y="164" text-anchor="middle" fill="#ffffff" font-weight="700">History + memory (compacted under budget)</text>
+  </g>
+  <text x="16" y="192" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="10" fill="#4a5568">Context engineering curates the full token setnot only the prompt wording.</text>
+</svg>

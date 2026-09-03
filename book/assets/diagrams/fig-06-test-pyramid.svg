@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="220" viewBox="0 0 560 220" role="img" aria-label="Test pyramid">
+  <rect width="560" height="220" fill="#ffffff"/>
+  <text x="16" y="26" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a2332">Figure · Practical test pyramid for LLM services</text>
+  <polygon points="280,45 360,95 200,95" fill="#1a2332"/>
+  <text x="280" y="78" text-anchor="middle" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="11" font-weight="700" fill="#ffffff">E2E / live smoke</text>
+  <polygon points="200,102 360,102 410,150 150,150" fill="#1a6b7a"/>
+  <text x="280" y="132" text-anchor="middle" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#ffffff">Integration (TestClient · contracts)</text>
+  <polygon points="150,157 410,157 470,205 90,205" fill="#c5dde4" stroke="#1a6b7a"/>
+  <text x="280" y="188" text-anchor="middle" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="12" font-weight="700" fill="#1a2332">Unit tests (mocked provider · pure domain)</text>
+</svg>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="160" viewBox="0 0 700 160" role="img" aria-label="RAG pipeline stages">
+  <rect width="700" height="160" fill="#ffffff"/>
+  <text x="16" y="26" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a2332">Figure  RAG production pipeline (Phases 2)</text>
+  <g font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="10" font-weight="600">
+    <rect x="16" y="50" width="100" height="56" rx="4" fill="#e8f1f5" stroke="#1a6b7a"/>
+    <text x="66" y="74" text-anchor="middle" fill="#1a2332">Ingest</text>
+    <text x="66" y="90" text-anchor="middle" fill="#4a5568" font-weight="400">chunk + meta</text>
+    <polygon points="122,78 134,78 134,72 148,84 134,96 134,90 122,90" fill="#1a6b7a"/>
+    <rect x="154" y="50" width="100" height="56" rx="4" fill="#e8f1f5" stroke="#1a6b7a"/>
+    <text x="204" y="74" text-anchor="middle" fill="#1a2332">Retrieve</text>
+    <text x="204" y="90" text-anchor="middle" fill="#4a5568" font-weight="400">hybrid + RRF</text>
+    <polygon points="260,78 272,78 272,72 286,84 272,96 272,90 260,90" fill="#1a6b7a"/>
+    <rect x="292" y="50" width="100" height="56" rx="4" fill="#e8f1f5" stroke="#1a6b7a"/>
+    <text x="342" y="74" text-anchor="middle" fill="#1a2332">Rerank</text>
+    <text x="342" y="90" text-anchor="middle" fill="#4a5568" font-weight="400">top-k for LLM</text>
+    <polygon points="398,78 410,78 410,72 424,84 410,96 410,90 398,90" fill="#1a6b7a"/>
+    <rect x="430" y="50" width="100" height="56" rx="4" fill="#e8f1f5" stroke="#1a6b7a"/>
+    <text x="480" y="74" text-anchor="middle" fill="#1a2332">Generate</text>
+    <text x="480" y="90" text-anchor="middle" fill="#4a5568" font-weight="400">ground + cite</text>
+    <polygon points="536,78 548,78 548,72 562,84 548,96 548,90 536,90" fill="#1a6b7a"/>
+    <rect x="568" y="50" width="110" height="56" rx="4" fill="#1a2332"/>
+    <text x="623" y="74" text-anchor="middle" fill="#ffffff">Evaluate</text>
+    <text x="623" y="90" text-anchor="middle" fill="#c8d6dc" font-weight="400">RAGAS / golden</text>
+  </g>
+  <text x="16" y="140" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="10" fill="#4a5568">Failure taxonomy (Week 9) classifies breaks as recall, ranking, or grounding problems.</text>
+</svg>

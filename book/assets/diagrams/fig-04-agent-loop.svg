@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="320" viewBox="0 0 520 320" role="img" aria-label="Agent loop plan act observe">
+  <rect width="520" height="320" fill="#ffffff"/>
+  <text x="16" y="28" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#1a2332">Figure  Agent loop with guardrails</text>
+  <g font-family="DejaVu Sans, Helvetica, Arial, sans-serif">
+    <circle cx="260" cy="160" r="36" fill="#1a2332"/>
+    <text x="260" y="156" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff">Agent</text>
+    <text x="260" y="172" text-anchor="middle" font-size="9" fill="#c8d6dc">loop</text>
+
+    <rect x="200" y="48" width="120" height="40" rx="4" fill="#e8f1f5" stroke="#1a6b7a"/>
+    <text x="260" y="72" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2332">Plan</text>
+
+    <rect x="360" y="140" width="120" height="40" rx="4" fill="#e8f1f5" stroke="#1a6b7a"/>
+    <text x="420" y="164" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2332">Act (tools)</text>
+
+    <rect x="200" y="232" width="120" height="40" rx="4" fill="#e8f1f5" stroke="#1a6b7a"/>
+    <text x="260" y="256" text-anchor="middle" font-size="12" font-weight="600" fill="#1a2332">Observe</text>
+
+    <rect x="40" y="140" width="120" height="40" rx="4" fill="#fff4e6" stroke="#b45309"/>
+    <text x="100" y="157" text-anchor="middle" font-size="11" font-weight="600" fill="#1a2332">Stop / limit</text>
+    <text x="100" y="172" text-anchor="middle" font-size="9" fill="#4a5568">max steps · budget</text>
+
+    <path d="M260 88 L260 124" stroke="#1a6b7a" stroke-width="2" marker-end="url(#m)"/>
+    <path d="M296 160 L360 160" stroke="#1a6b7a" stroke-width="2"/>
+    <path d="M260 196 L260 232" stroke="#1a6b7a" stroke-width="2"/>
+    <path d="M200 252 L100 252 L100 180" stroke="#1a6b7a" stroke-width="2" fill="none"/>
+    <path d="M160 160 L224 160" stroke="#b45309" stroke-width="2"/>
+  </g>
+  <text x="16" y="304" font-family="DejaVu Sans, Helvetica, Arial, sans-serif" font-size="10" fill="#4a5568">Naive while-True loops collapse without stop conditions, retries, and tool-error handling (Week 11).</text>
+</svg>
