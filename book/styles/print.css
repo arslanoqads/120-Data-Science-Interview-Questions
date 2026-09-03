@@ -1,0 +1,368 @@
+/* Print-ready stylesheet for AI Engineer / FDE Curriculum textbook
+   Target: US Letter, binding-friendly margins, grayscale-safe accents */
+
+@page {
+  size: Letter;
+  margin: 22mm 18mm 24mm 22mm; /* top right bottom left — extra left for binding */
+
+  @top-left {
+    content: string(chapter-title);
+    font-family: "DejaVu Sans", "Liberation Sans", Helvetica, Arial, sans-serif;
+    font-size: 8pt;
+    color: #4a5568;
+  }
+  @top-right {
+    content: "AI Engineer / FDE Curriculum";
+    font-family: "DejaVu Sans", "Liberation Sans", Helvetica, Arial, sans-serif;
+    font-size: 8pt;
+    color: #4a5568;
+  }
+  @bottom-center {
+    content: counter(page);
+    font-family: "DejaVu Sans", "Liberation Sans", Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    color: #1a2332;
+  }
+}
+
+@page :first {
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-center { content: none; }
+}
+
+@page front {
+  @top-left { content: none; }
+  @top-right { content: none; }
+}
+
+:root {
+  --ink: #1a2332;
+  --muted: #4a5568;
+  --rule: #c5dde4;
+  --accent: #1a6b7a;
+  --paper: #ffffff;
+  --shade: #f4f7f8;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-size: 10.5pt;
+}
+
+body {
+  font-family: "DejaVu Serif", "Liberation Serif", "Times New Roman", Times, serif;
+  color: var(--ink);
+  line-height: 1.45;
+  hyphens: auto;
+  text-align: justify;
+}
+
+/* Front matter */
+.front-matter {
+  page: front;
+}
+
+.title-page {
+  page-break-after: always;
+  text-align: center;
+  padding-top: 2.8in;
+}
+
+.title-page h1 {
+  font-family: "DejaVu Sans", "Liberation Sans", Helvetica, Arial, sans-serif;
+  font-size: 28pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.4em;
+  text-align: center;
+  color: var(--ink);
+  string-set: chapter-title "";
+}
+
+.title-page .subtitle {
+  font-family: "DejaVu Sans", "Liberation Sans", Helvetica, Arial, sans-serif;
+  font-size: 13pt;
+  color: var(--muted);
+  margin: 0 0 2em;
+  text-align: center;
+}
+
+.title-page .meta {
+  font-family: "DejaVu Sans", "Liberation Sans", Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.half-title {
+  page-break-after: always;
+  padding-top: 3.2in;
+  text-align: center;
+}
+.half-title h1 {
+  font-family: "DejaVu Sans", Helvetica, Arial, sans-serif;
+  font-size: 18pt;
+  text-align: center;
+}
+
+.copyright-page {
+  page-break-after: always;
+  padding-top: 4in;
+  font-size: 9pt;
+  color: var(--muted);
+  text-align: left;
+  line-height: 1.5;
+}
+
+/* TOC */
+.toc {
+  page-break-after: always;
+}
+.toc h1 {
+  font-family: "DejaVu Sans", Helvetica, Arial, sans-serif;
+  font-size: 18pt;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.3em;
+  text-align: left;
+}
+.toc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.toc li {
+  margin: 0.35em 0;
+  font-family: "DejaVu Sans", Helvetica, Arial, sans-serif;
+  font-size: 10pt;
+  text-align: left;
+}
+.toc .phase {
+  margin-top: 1em;
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 10.5pt;
+}
+.toc .chapter-link {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.toc .dots {
+  flex: 1;
+  border-bottom: 1px dotted var(--rule);
+  margin: 0 0.4em 0.25em;
+}
+
+/* Phase dividers */
+.phase-divider {
+  page-break-before: always;
+  page-break-after: always;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 7in;
+  text-align: center;
+  border-top: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
+  padding: 2em 1em;
+}
+.phase-divider h1 {
+  font-family: "DejaVu Sans", Helvetica, Arial, sans-serif;
+  font-size: 22pt;
+  text-align: center;
+  margin: 0 0 0.4em;
+  border: none;
+}
+.phase-divider p {
+  font-family: "DejaVu Sans", Helvetica, Arial, sans-serif;
+  font-size: 11pt;
+  color: var(--muted);
+  text-align: center;
+  max-width: 28em;
+  margin: 0.4em auto;
+}
+
+/* Chapters */
+.chapter {
+  page-break-before: always;
+}
+.chapter > h1:first-child {
+  string-set: chapter-title content();
+  font-family: "DejaVu Sans", "Liberation Sans", Helvetica, Arial, sans-serif;
+  font-size: 18pt;
+  font-weight: 700;
+  color: var(--ink);
+  border-bottom: 2.5px solid var(--accent);
+  padding-bottom: 0.35em;
+  margin: 0 0 0.8em;
+  text-align: left;
+  line-height: 1.2;
+  hyphens: none;
+}
+
+h2 {
+  font-family: "DejaVu Sans", "Liberation Sans", Helvetica, Arial, sans-serif;
+  font-size: 12.5pt;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 1.4em 0 0.5em;
+  text-align: left;
+  hyphens: none;
+  page-break-after: avoid;
+}
+
+h3 {
+  font-family: "DejaVu Sans", "Liberation Sans", Helvetica, Arial, sans-serif;
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 1.2em 0 0.45em;
+  text-align: left;
+  hyphens: none;
+  page-break-after: avoid;
+}
+
+p {
+  margin: 0 0 0.65em;
+  orphans: 3;
+  widows: 3;
+}
+
+ul, ol {
+  margin: 0 0 0.75em;
+  padding-left: 1.3em;
+  text-align: left;
+}
+li { margin: 0.2em 0; }
+
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+blockquote {
+  margin: 0.8em 0;
+  padding: 0.55em 0.9em;
+  border-left: 3px solid var(--accent);
+  background: var(--shade);
+  font-size: 0.95em;
+  text-align: left;
+}
+blockquote p { margin: 0.25em 0; }
+
+/* Concept field labels as compact callouts */
+li > strong:first-child {
+  color: var(--ink);
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.9em 0 1.1em;
+  font-family: "DejaVu Sans", "Liberation Sans", Helvetica, Arial, sans-serif;
+  font-size: 8.5pt;
+  text-align: left;
+  page-break-inside: avoid;
+  hyphens: none;
+}
+thead th {
+  background: var(--ink);
+  color: #ffffff;
+  font-weight: 700;
+  padding: 0.4em 0.5em;
+  border: 1px solid var(--ink);
+}
+tbody td {
+  padding: 0.35em 0.5em;
+  border: 1px solid var(--rule);
+  vertical-align: top;
+}
+tbody tr:nth-child(even) td {
+  background: var(--shade);
+}
+
+/* Code */
+code {
+  font-family: "DejaVu Sans Mono", "Liberation Mono", Consolas, monospace;
+  font-size: 0.88em;
+  background: var(--shade);
+  padding: 0.05em 0.25em;
+  border-radius: 2px;
+}
+pre {
+  font-family: "DejaVu Sans Mono", "Liberation Mono", Consolas, monospace;
+  font-size: 8pt;
+  line-height: 1.35;
+  background: var(--shade);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  padding: 0.7em 0.8em;
+  margin: 0.8em 0 1em;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  page-break-inside: avoid;
+  text-align: left;
+  hyphens: none;
+}
+pre code {
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* Figures */
+figure {
+  margin: 1.1em 0 1.3em;
+  page-break-inside: avoid;
+  text-align: center;
+}
+figure img, figure svg, .figure-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+figcaption {
+  font-family: "DejaVu Sans", Helvetica, Arial, sans-serif;
+  font-size: 8.5pt;
+  color: var(--muted);
+  margin-top: 0.4em;
+  text-align: center;
+  font-style: italic;
+}
+
+.syllabus-build {
+  background: var(--shade);
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 0.6em 0.8em;
+  margin: 0 0 1em;
+  font-family: "DejaVu Sans", Helvetica, Arial, sans-serif;
+  font-size: 9.5pt;
+  text-align: left;
+}
+.syllabus-build strong {
+  color: var(--accent);
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--rule);
+  margin: 1.2em 0;
+}
+
+a { color: var(--ink); text-decoration: none; }
+
+.back-matter {
+  page-break-before: always;
+}
+.back-matter h1 {
+  font-family: "DejaVu Sans", Helvetica, Arial, sans-serif;
+  font-size: 16pt;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 0.3em;
+}
