@@ -1,8 +1,18 @@
 # Week 13 Textbook Chapter — Orchestration / multi-agent
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-3/week-13-orchestration-multi-agent/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 12: MCP server/client, primitives, FDE integration surface; elicitation ≠ graph `interrupt`)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 14 (side-effecting domain agent + safety envelope; A2A)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 
