@@ -32,5 +32,7 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 7 | COMPLETE | [phase-2/week-07-retrieval-beyond-cosine/](phase-2/week-07-retrieval-beyond-cosine/) |
 | 8 | COMPLETE | [phase-2/week-08-reranking-query-understanding/](phase-2/week-08-reranking-query-understanding/) |
 | 9 | COMPLETE | [phase-2/week-09-rag-failure-taxonomy/](phase-2/week-09-rag-failure-taxonomy/) |
-| 10 | NOT STARTED | — |
-| 11–29 | NOT STARTED | — |
+| 10 | COMPLETE | [phase-2/week-10-rag-evaluation/](phase-2/week-10-rag-evaluation/) |
+| 11 | COMPLETE | [phase-3/week-11-agent-fundamentals/](phase-3/week-11-agent-fundamentals/) |
+| 12 | NOT STARTED | — |
+| 13–29 | NOT STARTED | — |
