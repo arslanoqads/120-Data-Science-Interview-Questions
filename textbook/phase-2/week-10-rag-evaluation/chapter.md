@@ -1,15 +1,28 @@
 # Chapter 10 — RAG evaluation
 
 > **Phase 2 — RAG Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-2/week-10-rag-evaluation/`  
 > **Syllabus Build:** On the **same** Week 7–9 logged stack (do **not** swap retrievers this week): (1) pin a **golden set** (queries + gold `chunk_id`s / `expected_facts` + unanswerable slice) to `corpus_hash` + `pipeline_version`; (2) stand up a **RAGAS-style harness** (or LangSmith / Azure `evaluate()` / NeMo RAG flow / MLflow scorers — one primary, others as mapping tables); (3) score **retrieval** at production packed *k* and at `fetch_k` (Recall@k, P@k, MRR, NDCG); (4) score **generation** (faithfulness / answer relevancy / context precision; plus reference correctness on the golden slice); (5) produce a **before/after table** vs Weeks 7–9 ablations (cosine-only → hybrid → +rerank → taxonomy-informed packing). That table is the interview artifact.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 10 is the **measurement** week of Phase 2 RAG. Weeks 6–8 built chunks, hybrid candidates, and a reranked packed window. Week 9 **named** failures (recall / ranking / generation-grounding; Barnett FP1–7; Jason Liu Q–C–A). This week **quantifies** those names so a change to embeddings, *k*, reranker, or prompt has a before/after that can be repeated in CI and told in an interview.
+Before this week you should already have from Week 9:
+
+- **Three canonical failure modes** — recall / ranking-assembly / generation-grounding — with Barnett FP1–7 as subtypes and the Jason Liu Q–C–A relationship that failed.  
+- A **portfolio debugging log** joined on `retrieval_id` from Weeks 7–8, with taxonomy labels, evidence snapshots, and injection-cell notes so stage-1 miss, packing miss, and generate-ignore stay separable.  
+- A **classification habit**: ask eligibility → packing survival → reader use **in order**; treat “I don’t know” as success on FP1 and a bug when gold existed but was missed.  
+- Fault-injection cells exercised on the same Week 7–8 stack (missing gold; gold below *k*; consolidator drop; noisy packed window; stale version; mid-prompt gold) — labels, not a new retriever.
+
+You do **not** need a pinned golden set, RAGAS/LangSmith harness, or a numbered before/after metric table yet. That is what this week teaches.
+
+---
+
+## What this week builds
+
+Week 9 **named** failures (recall / ranking / generation-grounding; Barnett FP1–7; Jason Liu Q–C–A) and shipped a classified debugging log. Week 10 is the **measurement** week of Phase 2 RAG: **quantify** those names so a change to embeddings, *k*, reranker, or prompt has a before/after that can be repeated in CI and told in an interview. Weeks 6–8 already built chunks, hybrid candidates, and a reranked packed window — do not swap them.
 
 The syllabus spine is a **RAGAS-style harness**, not a new retriever:
 
@@ -471,10 +484,6 @@ When those steps are true, Week 10 is done in the syllabus sense: Weeks 7–9 ch
 
 ---
 
-## Compilation notes
+## Looking ahead
 
-- All concept sections above are grounded in `research/phase-2/week-10-rag-evaluation/` (`00`–`04`, README).  
-- No section required `[NEEDS MORE RESEARCH]` for the four syllabus concepts compiled from research files `01`–`04` plus the RAGAS-style harness / before-after protocol in `00`.  
-- Open questions left in research (golden-set size for gating vs estimating rates; bootstrap CIs vs point estimates; partial multi-chunk gold credit; online vs offline spend mix; judge–human TPR/TNR thresholds for gating; HHEM vs LLM faithfulness in CI; multi-turn golden-set cost; agent multi-retrieve span choice for groundedness; NeMo `cached_outputs` vs dataset targets deprecation) are out of scope for this chapter’s six fields and remain research-side.  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.  
-- Illustrative before/after numbers in the interview table are teaching shapes from research overview — replace with logged numbers; do not cite as published benchmarks.
+Week 11 opens **Phase 3 — Agentic Systems** with **agent fundamentals**: a **bounded tool-using agent loop** (not MCP, not multi-agent) and a small palette of **2–3 tools** (e.g. docs search, structured query, calendar read/write split). The loop contract — pairing tool calls to results, iteration caps, typed stop reasons, error observations — is the artifact. Keep this week’s eval harness and golden-set discipline; Phase 3 later scores **trajectories**, which do not exist if the loop is a hidden `while True`. Deployment Copilot’s runbook corpus from Weeks 6–10 becomes a natural `docs_search` surface when tools arrive.

@@ -1,8 +1,18 @@
 # Week 10 Textbook Chapter — RAG evaluation
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-2/week-10-rag-evaluation/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 9 failure taxonomy + debugging log: recall / ranking / grounding; Barnett FP; Q–C–A; evidence snapshots)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 11  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 
