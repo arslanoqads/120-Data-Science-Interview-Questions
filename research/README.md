@@ -7,6 +7,10 @@ Raw source material for the 24-week syllabus (TPM → AI Engineer / Forward Depl
 - **Allowed:** official documentation, reputable engineering blogs, open conference talks/transcripts, arXiv papers, public YouTube courses/talks.
 - **Not used:** pirate book/PDF sites (pdfcoffee, pdfdrive, libgen, etc.) or unauthorized copyrighted book text.
 
+## Layout note
+
+Deep-pass weeks are **directories** (e.g. `phase-0/week-01-python-production/`) with one file per concept plus a source map. Earlier single-file weeks are upgraded to this layout when their deep pass runs.
+
 ## Entry format (per concept)
 
 Each concept includes:
@@ -25,7 +29,7 @@ Each concept includes:
 
 | Week | File | Focus |
 |------|------|--------|
-| 1 | [week-01-python-production.md](phase-0/week-01-python-production.md) | Typing, packaging, deps, venv, testable code, logging |
+| 1 | [week-01-python-production/](phase-0/week-01-python-production/) | **Research corpus** — typing, packaging, deps, venv, testable code, logging |
 | 2 | [week-02-apis-async-testing.md](phase-0/week-02-apis-async-testing.md) | REST, FastAPI/Pydantic, async, test pyramid, mocks, contracts |
 | 3 | [week-03-git-containers-system-design.md](phase-0/week-03-git-containers-system-design.md) | Trunk-based, commits, Docker, compose, system design vocab |
 
