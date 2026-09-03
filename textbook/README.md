@@ -36,5 +36,6 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 11 | COMPLETE | [phase-3/week-11-agent-fundamentals/](phase-3/week-11-agent-fundamentals/) |
 | 12 | COMPLETE | [phase-3/week-12-mcp/](phase-3/week-12-mcp/) |
 | 13 | COMPLETE | [phase-3/week-13-orchestration-multi-agent/](phase-3/week-13-orchestration-multi-agent/) |
-| 14 | NOT STARTED | — |
-| 15–29 | NOT STARTED | — |
+| 14 | COMPLETE | [phase-3/week-14-domain-agent-side-effects/](phase-3/week-14-domain-agent-side-effects/) |
+| 15 | NOT STARTED | — |
+| 16–29 | NOT STARTED | — |
