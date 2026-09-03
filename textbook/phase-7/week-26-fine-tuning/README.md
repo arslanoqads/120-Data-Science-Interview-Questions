@@ -1,8 +1,19 @@
 # Week 26 Textbook Chapter — Fine-tuning when RAG isn't enough
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-7/week-26-fine-tuning/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 25: context engineering — memory, compaction, isolation, failure log)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 27 (Phase 7 elective — open-source/self-hosted: Llama/Qwen/Gemma, quantization, Ollama/vLLM, air-gap; self-hosted leg on Week 20 router)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
+- [x] Phase 7 noted as supplementary electives (does not replace Weeks 1–24)
 
 ## Concepts covered
 

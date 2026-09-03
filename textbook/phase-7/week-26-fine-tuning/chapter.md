@@ -1,34 +1,66 @@
 # Chapter 26 — Fine-tuning when RAG isn't enough
 
 > **Phase 7 — Supplementary Electives**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-7/week-26-fine-tuning/`  
 > **Syllabus Build:** Write a **decision memo only** — **not** a toy LoRA training run. Argue RAG vs fine-tuning for one concrete product scenario and include: (1) **criteria** — map the product to the Week 26 decision framework (behavior/style/format vs fresh/citeable facts; latency; air-gap; iteration velocity; data availability); (2) **risks** — contamination, catastrophic forgetting, ops burden when base models update, stale knowledge in weights, eval gaps vs Week 10 RAGAS; (3) **kill criteria** — explicit conditions under which you abandon FT (or abandon RAG-only) and switch strategy.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 26 treats **fine-tuning (FT)** as a deliberate escalation after Phase 2 RAG and Week 5 prompting — not as the default “make the model smarter” move. RAG changes **what facts** land in the window at inference. Fine-tuning changes **weights** so the model’s default **behavior**, **format**, **domain phrasing**, or **fixed skill** shifts without stuffing that behavior into every prompt.
+Before this week you should already have from Week 25 (Phase 7 elective — context engineering):
+
+- **Session memory** — persist thread/session state (messages + scratchpad); compact when token count crosses a threshold.  
+- **Compaction** — summarize / trim / clear tool results so the window stays high-signal, not a dump.  
+- **Isolation** — separate context namespaces per agentic system / sub-agent; no accidental shared message lists.  
+- **Context failure log** — stale, poisoning, lost handoffs (+ distraction / confusion / clash / LITM), joinable on `session_id` / `handoff_id`.
+
+You do **not** need a fine-tuning decision memo, PEFT adapter registry, or sealed FT golden/forgetting suite yet as *finished* products — that is what this week ships. You **do** need Phase 2 RAG + Week 10 metrics (to prove plateau), Week 5 prompt discipline, and Week 25’s assembler so residual failures are attributed to **packing/context** vs **behavior/weights** vs **retrieval** before anyone proposes GPU spend. Week 20 cost/latency framing remains the sibling for payback math.
+
+---
+
+## What this week builds
+
+Week 25 shipped a named **context-management layer** (memory, compaction, isolation, failure log) on the Phase 3 stack. Week 26 continues **Phase 7 — Supplementary Electives** — these weeks do **not** replace Weeks 1–24 or Phase 2 RAG. Suggested slot in research: after Week 10 (RAG eval) so you can prove RAG plateaued, and after Week 20 so you can price FT vs prompt length and retrieval latency — or append after the Week 24 capstone; **this course appends them** after Week 24 / Week 25.
+
+Week 26 treats **fine-tuning (FT)** as a deliberate escalation after Phase 2 RAG, Week 5 prompting, and Week 25 context packing — not as the default “make the model smarter” move. RAG and context engineering change **what facts and tokens** land in the window at inference. Fine-tuning changes **weights** so the model’s default **behavior**, **format**, **domain phrasing**, or **fixed skill** shifts without stuffing that behavior into every prompt.
 
 OpenAI’s product guidance and Chip Huyen’s production writing converge: fine-tuning is strongest for **style, format, and instruction-following reliability**; retrieval is stronger for **current or proprietary facts** you must cite or update without a training run (*Building LLM applications for production*; OpenAI fine-tuning guide).
 
 | Lever | What moves | Cadence of change | Typical week |
 |-------|------------|-------------------|--------------|
 | Prompt engineering | Instructions in the request | Git commit | Week 5 |
-| RAG / context packing | Evidence tokens at inference | Index update | Weeks 6–10, 25 |
+| RAG / context packing | Evidence tokens at inference | Index update / assembler | Weeks 6–10, **25** |
 | **Fine-tuning / PEFT** | Adapter or full weights | Training job + eval gate | **Week 26 (this elective)** |
 
-This elective is **supplementary** — it does not replace Weeks 1–24 or Phase 2 RAG. Suggested slot: after Week 10 (RAG eval) so you can prove RAG plateaued, and after Week 20 so you can price FT vs prompt length and retrieval latency — or append after the Week 24 capstone.
+This week answers five coupled questions that FDE reviews and interview deep-dives treat as the minimum bar once prompt + RAG + context packing already exist:
+
+1. **RAG vs FT decision** — classify residual failure before GPU spend.  
+2. **LoRA / QLoRA / PEFT** — small adapters, not full-weight cosplay.  
+3. **Dataset construction** — quality > quantity; contamination controls.  
+4. **Eval vs RAGAS** — Behavior golden + forgetting suite; Grounding stays on RAG.  
+5. **Cost / maintenance** — payback, hosting, rebase when the base model moves.
+
+**Do not** train a toy LoRA this week — ship the **decision memo** (criteria, risks, kill criteria). Do **not** drop Week 25’s assembler, compaction threshold, or failure log — packing and FT answer different residual failures. Do **not** skip Week 10 plateau proof or bake citeable/churning facts into weights. Do **not** start Week 27 (self-hosted OSS serving) from this chapter — stay on the go/no-go for weight updates.
 
 The **build** is a written **decision memo** with criteria, risks, and kill criteria — not a Colab that trains once. Flagship systems often fine-tune *after* RAG and prompts plateau; this week forces the **decision** to be written and defensible before GPU spend.
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) facing a go/no-go on PEFT for one product surface.
+Interview artifact = **decision memo** for one Deployment Copilot surface: criteria mapped to the framework, named risks, explicit kill criteria — PEFT knobs and data/eval plans as placeholders, not a trained adapter.
+
+| This week | Not this week |
+|-----------|----------------|
+| Decision memo (criteria / risks / kill criteria) | Toy LoRA training run |
+| Residual failure taxonomy (behavior vs knowledge vs packing) | Drop Week 25 context layer |
+| PEFT shape + data/eval/cost plan (on paper) | Self-hosted Ollama/vLLM router leg (Week 27) |
+| Hybrid: LoRA for form + RAG for facts when both fail | Replace Phase 2 RAG with weights |
+
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) facing a go/no-go on PEFT for one product surface — after Week 25 context engineering is already in place.
 
 **Default path (synthesis):**
 
-1. Exhaust prompt + RAG (Phase 2) and measure with Week 10 metrics before proposing FT.  
-2. Classify the residual failure: **behavior/format** → FT candidate; **missing/stale facts** → stay on RAG; **both** → hybrid (FT for form, RAG for facts).  
+1. Exhaust prompt + RAG (Phase 2) and Week 25 packing; measure with Week 10 metrics before proposing FT.  
+2. Classify the residual failure: **behavior/format** → FT candidate; **missing/stale facts** → stay on RAG; **packing/context** → fix Week 25 first; **both behavior + knowledge** → hybrid (FT for form, RAG for facts).  
 3. If FT: prefer PEFT (LoRA/QLoRA); budget labeling for quality over volume; freeze a task golden set + forgetting suite.  
 4. Price training + hosting + retrain cadence against Week 20 cost/latency of longer prompts / retrieval.  
 5. Ship the **decision memo** with kill criteria; only then consider a later lab for actual adapters.
@@ -398,10 +430,18 @@ When those steps are true, Week 26 is done in the syllabus sense: fine-tuning is
 
 ---
 
+## Looking ahead
+
+Week 27 continues **Phase 7 — Supplementary Electives** with **open-source and self-hosted models**. After this week’s decision memo (criteria, risks, kill criteria — not a toy LoRA), the next elective treats **open weights + local serving** as a first-class product path: landscape shortlist (**Llama / Qwen / Gemma**), **quantization** reality, **Ollama** vs **vLLM**, self-host vs API tradeoffs, and **air-gap** deployment. The build adds a **self-hosted model as one leg of the Week 20 router** (documented comparison — latency / quality / cost — not a vague “we support open source” checkbox). Do **not** start Week 27 by dropping this week’s memo or baking FT into every on-prem story — PEFT on open weights is optional follow-on once a base OSS model is chosen and served; residency and air-gap often force the serving question *before* adapters. Week 25’s context layer and Week 24 packaging stay available; the deep work shifts from “should weights change?” to “where do weights run?”
+
+---
+
 ## Compilation notes
 
 - All concept sections above are grounded in `research/phase-7/week-26-fine-tuning/` (`00`–`05` + README).  
 - No section required `[NEEDS MORE RESEARCH]` for the five syllabus concepts covered in research files `01`–`05`.  
 - Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.  
 - Elective placement and “does not replace Weeks 1–24” follow research `00` / README.  
-- Build is decision memo only (not a toy LoRA), per syllabus.
+- Build is decision memo only (not a toy LoRA), per syllabus.  
+- Editorial pass: Prerequisites Recap bridges Week 25 (context engineering — memory, compaction, isolation, failure log); Looking ahead bridges Week 27 (open-source/self-hosted — Llama/Qwen/Gemma, quantization, Ollama/vLLM, air-gap; Week 20 router leg); Phase 7 framed as supplementary electives; no new technical claims beyond research.  
+- Week 27 self-host depth is explicitly deferred — ship the FT decision memo here; OSS serving comparison comes next.
