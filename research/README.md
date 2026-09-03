@@ -48,7 +48,7 @@ Each concept includes:
 | 7 | [week-07-retrieval-beyond-cosine/](phase-2/week-07-retrieval-beyond-cosine/) | **Research corpus** — bi/cross-encoders, hybrid, RRF, lexical precision, vector DB tradeoffs |
 | 8 | [week-08-reranking-query-understanding/](phase-2/week-08-reranking-query-understanding/) | **Research corpus** — two-stage retrieval, rerankers, lost-in-middle, HyDE/decomposition |
 | 9 | [week-09-rag-failure-taxonomy/](phase-2/week-09-rag-failure-taxonomy/) | **Research corpus** — recall/rank/ground failures, citations, drift, long-context |
-| 10 | [week-10-rag-evaluation.md](phase-2/week-10-rag-evaluation.md) | Retrieval/generation metrics, golden sets, component vs E2E |
+| 10 | [week-10-rag-evaluation/](phase-2/week-10-rag-evaluation/) | **Research corpus** — retrieval/generation metrics, golden sets, component vs E2E |
 
 ### Phase 3 — Agentic Systems (Weeks 11–15)
 
