@@ -73,7 +73,7 @@ Each concept includes:
 |------|------|--------|
 | 18 | [week-18-deployment-infra/](phase-5/week-18-deployment-infra/) | **Research corpus** — containers, K8s fluency, CI/CD, Terraform |
 | 19 | [week-19-auth-identity-enterprise/](phase-5/week-19-auth-identity-enterprise/) | **Research corpus** — OIDC/SAML, identity patterns, residency, multi-tenant RBAC |
-| 20 | [week-20-cost-latency-engineering.md](phase-5/week-20-cost-latency-engineering.md) | Routing, cascading, semantic cache, compression, cost dashboards |
+| 20 | [week-20-cost-latency-engineering/](phase-5/week-20-cost-latency-engineering/) | **Research corpus** — routing, cascading, semantic cache, compression, cost dashboards |
 | 21 | [week-21-legacy-messy-integration.md](phase-5/week-21-legacy-messy-integration.md) | Messy SQL/ETL, partial failure, idempotent side effects |
 
 ### Phase 6 — Capstone and Interview Readiness (Weeks 22–24)
