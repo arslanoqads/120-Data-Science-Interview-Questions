@@ -1,8 +1,19 @@
 # Week 27 Textbook Chapter — Open-source and self-hosted models
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-7/week-27-open-source-self-hosted/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 26: RAG vs FT decision, LoRA/QLoRA overview, decision memo — not a toy LoRA)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 28 (Phase 7 elective — multimodal AI: vision, STT/TTS, mixed context, real vs gimmick; one E2E multimodal path)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
+- [x] Phase 7 noted as supplementary electives (does not replace Weeks 1–24)
 
 ## Concepts covered
 

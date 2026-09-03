@@ -1,13 +1,27 @@
 # Chapter 27 — Open-source and self-hosted models
 
 > **Phase 7 — Supplementary Electives**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-7/week-27-open-source-self-hosted/`  
 > **Syllabus Build:** Add a **self-hosted model as one leg of the Week 20 router** — do **not** replace the hosted API stack. Document (and later implement in the Week 20 lab) only: (1) **route subset** — rules or classifier send a defined slice of queries (e.g. PII-tagged tenants, “must stay on-prem,” cheap FAQ) to a **local Ollama-served OSS model**; (2) **short comparison** — same golden set for **latency** (TTFT / p95), **quality** (task metric), and **cost** ($/1k calls amortized GPU vs API tokens) vs existing hosted routes; (3) **direct answer** — what if the customer **cannot use a hosted API** (residency, air-gap, procurement)? Show the self-hosted path is a first-class route, not an afterthought.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
+
+Before this week you should already have from Week 26 (Phase 7 elective — fine-tuning when RAG isn't enough):
+
+- **RAG vs FT decision** — residual-failure taxonomy (behavior/format vs fresh/citeable facts vs packing); hybrid when both fail.  
+- **LoRA / QLoRA / PEFT overview** — small adapters, not full-weight cosplay; knobs and base-revision pinning as placeholders.  
+- **Decision memo** — criteria, risks (contamination, forgetting, ops/rebase, stale knowledge in weights, eval gaps vs Week 10 RAGAS), and kill criteria — **not** a toy LoRA training run.
+
+You do **not** need a self-hosted router leg, Ollama/vLLM comparison memo, or air-gap weight-import runbook yet as *finished* products — that is what this week ships. You **do** need Week 20 cost/latency routing as the surface this elective extends, and Week 19 residency language when the driver is compliance. Week 26’s memo stays upstream: PEFT on open weights is optional follow-on once a base OSS model is chosen and served; residency and air-gap often force the serving question *before* adapters.
+
+---
+
+## What this week builds
+
+Week 26 shipped a written **decision memo** (criteria, risks, kill criteria — not a toy LoRA). Week 27 continues **Phase 7 — Supplementary Electives** — these weeks do **not** replace Weeks 1–24. Suggested slot in research: fold into **Week 20** model routing, or stand alone immediately after it; read Week 19 residency first when the driver is compliance — or append after the Week 24 capstone; **this course appends them** after Week 24 / Week 25 / Week 26.
 
 Week 27 treats **open-weight models + self-hosted inference** as a first-class FDE capability — not a hobbyist side quest. An FDE who can only call hosted APIs is stuck when the customer requires **data residency**, **air-gap**, **unit-cost at high QPS**, or **procurement** that forbids third-party LLM SaaS. The syllabus trio — **Ollama**, **vLLM**, **quantization** — is the practical stack: pull a quantized Llama/Qwen/Gemma, serve it locally, then harden serving for production.
 
@@ -17,11 +31,26 @@ Week 27 treats **open-weight models + self-hosted inference** as a first-class F
 | **Open weights + self-host** | Weights location, hardware, quant, serving stack | **Week 27 (this elective)** |
 | PEFT on open weights | Task behavior on *your* GPU | Week 26 |
 
-This elective is **supplementary** — it does not replace Weeks 1–24. Suggested slot: fold into **Week 20** model routing, or stand alone immediately after it. Read Week 19 residency first when the driver is compliance. Week 26 fine-tuning is optional follow-on once the base OSS model is chosen and served.
+This week answers five coupled questions that FDE reviews and interview deep-dives treat as the minimum bar once Week 20 routing and (optionally) a Week 26 FT go/no-go already exist:
 
-The **build** adds a self-hosted leg to the **Week 20 router** and forces a measured latency / quality / cost comparison — not a vague “we support open source” checkbox. Do not implement the router or Ollama integration inside the research corpus; ship the comparison memo that answers “customer can’t use hosted API” with numbers.
+1. **Landscape** — shortlist Llama / Qwen / Gemma with task eval + license.  
+2. **Quantization** — size hardware with INT4/AWQ/GPTQ or GGUF reality.  
+3. **Tooling** — Ollama for spike; graduate to vLLM (or NIM) for SLOs.  
+4. **Self-host vs API** — measured latency / quality / cost on the same golden set.  
+5. **Air-gap** — weight import, offline eval, update windows, failover policy.
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) gaining an on-prem / local OSS route beside existing hosted providers.
+**Do not** replace the hosted API stack — add self-hosted as **one** Week 20 route. Do **not** drop Week 26’s decision memo or bake FT into every on-prem story — PEFT follows serving choice. Do **not** implement the router or Ollama integration inside the research corpus; ship the **comparison memo**. Do **not** start Week 28 (multimodal I/O) from this chapter — stay on where weights run and how you measure the local leg.
+
+The **build** adds a self-hosted leg to the **Week 20 router** and forces a measured latency / quality / cost comparison — not a vague “we support open source” checkbox. Interview artifact = **comparison memo** that answers “customer can’t use hosted API” with numbers: route subset, golden-set deltas, and explicit failover.
+
+| This week | Not this week |
+|-----------|----------------|
+| Self-hosted as one Week 20 router leg | Rip out hosted APIs |
+| Landscape + quant + Ollama→vLLM path | Toy LoRA / adapter training (Week 26 memo holds) |
+| Latency / quality / cost comparison memo | Vague “we support open source” slide |
+| Air-gap import + offline eval (if required) | Multimodal vision/STT/TTS path (Week 28) |
+
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) gaining an on-prem / local OSS route beside existing hosted providers — after Week 26’s FT decision memo is already written.
 
 **Default path (synthesis):**
 
@@ -388,9 +417,19 @@ When those steps are true, Week 27 is done in the syllabus sense: self-host is a
 
 ---
 
+## Looking ahead
+
+Week 28 continues **Phase 7 — Supplementary Electives** with **multimodal AI as product I/O**. After this week’s self-hosted router leg and comparison memo (latency / quality / cost — not a vague “we support open source” checkbox), the next elective treats **vision, STT/TTS, and mixed context** as product surfaces — not demo gimmicks. The build adds **one real multimodal capability** to an existing stack (Phase 2 RAG or Phase 3 agent): **one** E2E path — screenshot/error-image → vision extract → RAG/tools, **or** voice → STT → same text path (optional TTS) — plus a short design note (modality contract, Week 25 context assembly, 5–10 golden multimodal cases). Do **not** start Week 28 by dropping this week’s local route or comparison table — serving location and modality I/O are separate levers. Week 26’s FT memo and Week 25’s context layer stay available; the deep work shifts from “where do weights run?” to “when is non-text I/O a real requirement vs a gimmick?”
+
+---
+
 ## Compilation notes
 
 - All concept sections above are grounded in `research/phase-7/week-27-open-source-self-hosted/` (`00`–`05` + README).  
 - No section required `[NEEDS MORE RESEARCH]` for the five syllabus concepts covered in research files `01`–`05`.  
 - Research **Open Questions** (regional APIs vs true air-gap longevity; OSS rebase cadence vs Week 26 adapters; NIM vs raw vLLM for enterprise FDEs; edge Gemma/Llama vs datacenter vLLM; GPU capacity ownership; MoE vs dense INT4; Apache vs Community License procurement; HF silent revisions; FP4/MXFP vs GPTQ/AWQ; KV-cache quant composition; confidential GPUs replacing air-gap; offline LLM-as-judge VRAM; SBOM/attestation minimums; carbon in TCO; prompt-cache break-evens) remain unresolved in the corpus — not answered here.  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.
+- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.  
+- Elective placement and “does not replace Weeks 1–24” follow research `00` / README.  
+- Build is self-hosted Week 20 router leg + comparison memo only (not a full multi-node fleet), per syllabus.  
+- Editorial pass: Prerequisites Recap bridges Week 26 (RAG vs FT decision, LoRA/QLoRA overview, decision memo — not a toy LoRA); Looking ahead bridges Week 28 (multimodal AI — vision, STT/TTS, mixed context, real vs gimmick; one E2E path); Phase 7 framed as supplementary electives; no new technical claims beyond research.  
+- Week 28 multimodal depth is explicitly deferred — ship the OSS serving comparison here; multimodal I/O comes next.
