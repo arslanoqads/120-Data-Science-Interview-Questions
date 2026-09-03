@@ -1,15 +1,29 @@
 # Chapter 25 — Context Engineering as a discipline
 
 > **Phase 7 — Supplementary Electives**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-7/week-25-context-engineering/`  
 > **Syllabus Build:** Add an explicit **context-management layer** to the Phase 3 agentic stack (do not invent a new model API): (1) **session memory** — persist thread/session state (messages + scratchpad fields); compact (summarize / trim / clear tool results) when token count crosses a configured threshold; (2) **isolation** — separate context namespaces per agentic system (or per sub-agent); no accidental shared message lists across tenants or sibling agents; (3) **failure-mode log** — document incidents the way Week 9 documents RAG failures: stale context, context poisoning, lost context across handoffs (plus distraction / confusion / clash as subtypes); join on `session_id` / `handoff_id`.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 25 makes **context engineering** an explicit curriculum discipline. Flagship agent stacks already do it implicitly: RAG packs evidence, agents accumulate tool results, checkpointers resume threads, memory stores persist preferences. This elective forces those mechanisms into one vocabulary and one build surface. It is **supplementary** — it does not replace Weeks 1–24. Suggested slot: after Phase 3 (Week 15), before or alongside Phase 4 evals — or append after the Week 24 capstone.
+Before this week you should already have from Week 24 (end of the core 24-week plan):
+
+- **Resume language** that mirrors AI Engineer / FDE postings: keyword checklist against a live JD; 5–7 evidence-backed bullets from STAR.  
+- **Portfolio / qads.us case** that survives &lt;5 minutes: architecture matching code, three metrics, one failure→fix, repro link.  
+- **Dual-track positioning:** Applied AI Engineer vs Forward Deployed Engineer talk tracks for the same flagship; frozen resume header + LinkedIn headline for the track you apply to this week.
+
+You do **not** need a named context-management layer, compaction threshold, per-agent isolation namespaces, or joinable context failure log yet as *finished* products — that is what this week ships. You **do** need the Phase 3 agentic stack (sessions, tools, checkpointers, traces from Weeks 11–15) and Week 5 prompt discipline as the surface this elective names and instruments; without them, “context engineering” has nowhere to attach. Week 9’s RAG failure taxonomy and Week 15 agent evals remain the sibling artifacts this week’s failure log pairs with.
+
+---
+
+## What this week builds
+
+Week 24 froze hire-readable packaging at the **end of the core 24-week plan**. Week 25 opens **Phase 7 — Supplementary Electives** — these weeks do **not** replace Weeks 1–24. Suggested slot in research: after Phase 3 (Week 15), before or alongside Phase 4 evals — or append after the Week 24 capstone; **this course appends them** after Week 24.
+
+Week 25 makes **context engineering** an explicit curriculum discipline. Flagship agent stacks already do it implicitly: RAG packs evidence, agents accumulate tool results, checkpointers resume threads, memory stores persist preferences. This elective forces those mechanisms into one vocabulary and one build surface.
 
 **Prompt engineering** (Week 5) is how you write and version *instructions*. **Context engineering** is how you curate *everything* that consumes the model's finite attention budget on each inference turn — system instructions, tool schemas, MCP metadata, retrieved documents, message history, scratchpads, and long-term memories (Anthropic, *Effective context engineering for AI agents*, 2025-09-29). Karpathy (via LangChain): fill the window with **just the right information for the next step**. Anthropic’s guiding principle: the **smallest set of high-signal tokens** that maximizes the likelihood of the desired outcome. Chip Huyen frames the same problem as **context construction** — gathering what a model needs via RAG, tools, or memory.
 
@@ -22,9 +36,15 @@ Why it is distinct from “just longer windows”:
 | **Distraction ceilings** (Breunig; Gemini Pokémon agent anecdote ~100k) | Agents can fail *before* the hard window limit |
 | **Attention is n²** (transformer pairwise) | Every token taxes every other token |
 
-Do not skip this week for “we already have RAG and a system prompt.” Flagship systems do context work **implicitly**; this week makes the discipline **explicit** and measurable.
+This week answers five coupled questions that agent stacks, FDE reviews, and interview deep-dives treat as the minimum bar once RAG and a system prompt already exist:
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) gaining a named context-management layer on top of the Phase 3 agentic stack.
+1. **Context vs prompt** — instructions vs the full token set on each turn.  
+2. **Sources and layers** — inventory and deterministic assembly.  
+3. **Memory** — session/checkpointer vs long-term store.  
+4. **Compaction + isolation + sharing** — budget, namespaces, typed handoffs.  
+5. **Failure modes** — stale, poisoning, lost handoffs (+ distraction / confusion / clash / LITM).
+
+**Do not invent a new model API** — add a named context-management layer on the Phase 3 agentic stack. Do **not** reopen Week 22 freeze or invent resume metrics from Week 24. Do **not** skip this elective for “we already have RAG and a system prompt” — flagship systems do context work **implicitly**; this week makes the discipline **explicit** and measurable. Do **not** start Week 26 (fine-tuning decision memo) from this chapter — stay on packing, memory, isolation, and the failure log.
 
 **Default path (synthesis):**
 
@@ -33,6 +53,17 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 3. Set a **compaction threshold** (token or % of window) and evaluate fidelity before/after on long traces.  
 4. Give each agent its own `thread_id` / memory namespace; pass only **summaries** across boundaries.  
 5. Keep a portfolio **context failure log** paired with Week 9 RAG taxonomy and Week 15 agent evals.
+
+Interview artifact = **session memory with compaction threshold** + **per-agent / per-tenant isolation namespaces** + **joinable context failure log** (`session_id` / `handoff_id`) on the Phase 3 stack.
+
+| This week | Not this week |
+|-----------|----------------|
+| Named context-management layer | New model API or weight updates (Week 26) |
+| Compaction threshold + fidelity eval | Resume / portfolio rewrite (Week 24 freeze holds) |
+| Isolation + typed handoffs | Capstone scope changes (Week 22 freeze holds) |
+| Context failure log (Week 9 sibling) | Fine-tuning decision memo (Week 26) |
+
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) gaining a named context-management layer on top of the Phase 3 agentic stack — after Week 24 packaging is already hire-readable.
 
 ---
 
@@ -589,9 +620,17 @@ When those steps are true, Week 25 is done in the syllabus sense: context is an 
 
 ---
 
+## Looking ahead
+
+Week 26 continues **Phase 7 — Supplementary Electives** with **fine-tuning when RAG isn't enough**. After this week’s context-management layer (session memory, compaction, isolation, failure log), the next elective treats weight updates as a deliberate escalation — not the default “make the model smarter” move. The build is a written **decision memo only** — **not** a toy LoRA training run: map one concrete product scenario to the Week 26 RAG vs FT framework (**criteria**), name **risks** (contamination, catastrophic forgetting, ops/base-model drift, stale knowledge in weights, eval gaps vs Week 10 RAGAS), and write explicit **kill criteria** to abandon FT or abandon RAG-only. Do **not** start Week 26 by dropping this week’s assembler, compaction threshold, or failure log — context packing and FT answer different residual failures. Resume / portfolio maintenance from Week 24 stays available; the deep work shifts from curating the token set to deciding whether weights should change.
+
+---
+
 ## Compilation notes
 
 - All concept sections above are grounded in `research/phase-7/week-25-context-engineering/` (`00`–`07` + README).  
 - No section required `[NEEDS MORE RESEARCH]` for the seven syllabus concepts covered in research files `01`–`07`.  
 - Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.  
-- Elective placement and “does not replace Weeks 1–24” follow research `00` / README.
+- Elective placement and “does not replace Weeks 1–24” follow research `00` / README.  
+- Editorial pass: Prerequisites Recap bridges Week 24 (resume/portfolio dual-track positioning at end of core 24-week plan); Looking ahead bridges Week 26 (fine-tuning decision memo — criteria, risks, kill criteria; not a toy LoRA run); Phase 7 framed as supplementary electives; no new technical claims beyond research.  
+- Week 26 FT depth is explicitly deferred — ship the context-management layer here; decision memo comes next.

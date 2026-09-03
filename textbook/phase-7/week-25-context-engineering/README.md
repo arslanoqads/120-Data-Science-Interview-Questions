@@ -1,8 +1,19 @@
 # Week 25 Textbook Chapter — Context Engineering as a discipline
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-7/week-25-context-engineering/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 24: resume/portfolio dual-track positioning; end of core 24-week plan)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 26 (Phase 7 elective — fine-tuning when RAG isn't enough: decision memo with criteria / risks / kill criteria; not a toy LoRA run)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
+- [x] Phase 7 noted as supplementary electives (does not replace Weeks 1–24)
 
 ## Concepts covered
 
