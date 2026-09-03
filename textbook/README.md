@@ -53,7 +53,7 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 8 | COMPLETE | COMPLETE | [phase-2/week-08-reranking-query-understanding/](phase-2/week-08-reranking-query-understanding/) |
 | 9 | COMPLETE | COMPLETE | [phase-2/week-09-rag-failure-taxonomy/](phase-2/week-09-rag-failure-taxonomy/) |
 | 10 | COMPLETE | COMPLETE | [phase-2/week-10-rag-evaluation/](phase-2/week-10-rag-evaluation/) |
-| 11 | COMPLETE | NOT STARTED | [phase-3/week-11-agent-fundamentals/](phase-3/week-11-agent-fundamentals/) |
+| 11 | COMPLETE | COMPLETE | [phase-3/week-11-agent-fundamentals/](phase-3/week-11-agent-fundamentals/) |
 | 12 | COMPLETE | NOT STARTED | [phase-3/week-12-mcp/](phase-3/week-12-mcp/) |
 | 13 | COMPLETE | NOT STARTED | [phase-3/week-13-orchestration-multi-agent/](phase-3/week-13-orchestration-multi-agent/) |
 | 14 | COMPLETE | NOT STARTED | [phase-3/week-14-domain-agent-side-effects/](phase-3/week-14-domain-agent-side-effects/) |
