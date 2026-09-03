@@ -1,22 +1,37 @@
 # Chapter 17 — LLM-as-judge & observability
 
 > **Phase 4 — Evals and Observability**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-4/week-17-llm-judge-observability/`  
 > **Syllabus Build:** You already have **Week 16 labels and a custom taxonomy**. This week you **automate residual subjective failures** and **make traces usable as a product**. (1) **Design judges, not dashboards of 1–5s.** One **binary** judge per high-impact Week 16 failure mode that needs judgment (`should_have_clarified`, faithfulness given retrieved docs). Pass/Fail + written critique. Principal domain expert owns the standard. (2) **Calibrate against Week 16 labels.** Split labeled examples (Hamel: ~10–20% few-shot train, ~40–45% dev, ~40–45% held-out test; aim 30–50 Pass and Fail in dev and test). Gate on **TPR and TNR**. Do not ship a judge that fails the gate. Recalibrate when the app model, judge model, or product criteria change. (3) **Prefer code evals** for objective failures (JSON, schema, citation IDs ⊆ retrieved IDs, tool name). Reserve LLM judges for the rest. Put several code evals in CI; LLM judges sparingly in CI or on a **sampled schedule**. (4) **Tracing dashboard.** Instrument hierarchical traces (Langfuse **and/or** Phoenix). Generations carry `model`, params, tokens, cost. Attach retrieved context on the observation you will judge. Tag `userId` / `sessionId` / `version` / `env`. (5) **Production monitoring.** Dashboards for volume, errors, p95 latency, cost/day and cost/successful-task, and **1–3 calibrated** quality timeseries. Alerts open **traces**, not just pages. Sample online judges (2–10%). Blocking safety stays **in-request**; async evaluators are for trends and triage.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 17 is the **automation and instrumentation** week of Phase 4. Week 15 **traced** agents. Week 16 **read traces**, built a **custom failure taxonomy**, and produced **expert Pass/Fail + critiques**. This week answers four questions Hamel Husain, Shreya Shankar, Langfuse, Phoenix, and OpenAI all treat as the *second* half of product evals:
+Before this week you should already have from Week 16:
+
+- An **error-analysis-first** habit: sample ~100 diverse/stratified traces; personally open-code **≥30** (20–50 in ~30 minutes after significant prompt/model/feature changes); one **benevolent dictator** (domain expert) owns Pass/Fail + free-text notes.  
+- A **custom failure taxonomy** from open → axial coding: **5–10** binary, named, one-sentence categories grounded in *this* app (`missing_device_lookup`, `should_have_clarified` — not generic `hallucination`). Surface-similar failures with different root causes are split.  
+- **Frequency** quantified: boolean relabel of the sample; **failure rate per category**; prioritize **rate × impact**; prompt/tool bugs fixed **before** building judges.  
+- **Synthetic edges** only as **inputs** through the live stack when production undersamples a known combo — not synthetic gold answers, not synthetic rates as production rates.  
+- A working **data flywheel**: labeled failures promoted into a **regression eval set**; Level-1 assertions and/or monitors on change (CI) plus a **production sample** (Nova Escola ~2% daily as an existence proof); critiques stored on labeled rows for few-shot judge work.  
+- From Week 15 (still in force): structured traces, split scores, trajectory vs outcome, C1–C4 fixtures — Week 16 mined them; this week automates the residual judgment-heavy modes.
+
+You do **not** need a calibrated LLM-as-judge, an observability-platform bake-off, or production quality dashboards yet as *finished* products — that is what this week ships. You **do** need the Week 16 taxonomy and expert labels; without them there is nothing trustworthy to shadow.
+
+---
+
+## What this week builds
+
+Week 15 **instrumented** agents. Week 16 **read traces**, built a **custom failure taxonomy** via open coding, quantified **rate × impact**, and closed the **production → labels → eval set → regression** flywheel. Week 17 is the **automation and instrumentation** half of Phase 4. This week does **not** invent new failure modes from a vendor catalog — it uses Week 16’s taxonomy and labels. It answers four questions Hamel Husain, Shreya Shankar, Langfuse, Phoenix, and OpenAI all treat as the *second* half of product evals:
 
 1. **Can an LLM shadow the Week 16 expert** on residual *subjective* failures? (LLM-as-judge design)  
 2. **How do we know the shadow is trustworthy?** (alignment / calibration: TPR/TNR on held-out labels)  
 3. **When is a `json.loads` enough?** (code-based vs model-based evals)  
 4. **Where do scores, tokens, and latency live so a team can act?** (tracing platforms + production dashboards)
 
-**Do not start Week 18 (deployment / infra) from this chapter** — this week **calibrates LLM judges against Week 16 expert labels**, **chooses code vs model evals**, **instruments tracing (Langfuse / Phoenix)**, and **ships production dashboards** (cost, latency, error, quality, drift). Container/K8s/CI/CD/Terraform is next week.
+**Do not start Week 18 (deployment infrastructure — containers, K8s fluency, CI/CD stages, Terraform) from this chapter** — this week **calibrates LLM judges against Week 16 expert labels**, **chooses code vs model evals**, **instruments tracing (Langfuse / Phoenix)**, and **ships production dashboards** (cost, latency, error, quality, drift). Putting the same service on a real delivery path is next week.
 
 **What you ship this week**
 
@@ -49,9 +64,9 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 ### LLM-as-judge design (critique shadowing)
 
 * **Fundamentals:**  
-  An **LLM-as-judge** (model-based evaluator) is a model prompted to **score or label another system’s outputs** using explicit criteria. It is not a generic “quality” API. Practitioner consensus (Hamel *Using LLM-as-a-Judge*; YouTube Hamel `DZxaPNYi_k0`): treat the judge as a **classifier** of a **named Week 16 failure mode**, not as a 1–5 personality test.
+  An **LLM-as-judge** (model-based evaluator) is a model prompted to **score or label another system’s outputs** using explicit criteria. It is not a generic “quality” API. Practitioner consensus (Hamel *Using LLM-as-a-Judge*; YouTube Hamel `DZxaPNYi_k0`): treat the judge as a **classifier** of a **named Week 16 failure mode**, not as a 1–5 personality test. Week 16 already decided *which* modes need judgment (error analysis → open coding → taxonomy → rate × impact); this section designs the shadow for those residual modes.
 
-  Use it when quality is **subjective or semantic**: tone, persona, “should have asked a clarifying question,” faithfulness *given retrieved context*, pedagogical appropriateness. Do **not** use it as the first metric you invent (Week 16) and do **not** use it for failures a parser can catch.
+  Use it when quality is **subjective or semantic**: tone, persona, “should have asked a clarifying question,” faithfulness *given retrieved context*, pedagogical appropriateness. Do **not** use it as the first metric you invent (that was Week 16’s job) and do **not** use it for failures a parser can catch.
 
   **Human** here = the **principal domain expert** (Hamel: psychologist, lawyer, CS director, lead teacher — or founder in a tiny company). Correlation / agreement is **with that expert’s Pass/Fail**, not with a crowd of random raters and not with ROUGE.
 
@@ -141,7 +156,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 ### Judge alignment / calibration (TPR/TNR vs Week 16 labels)
 
 * **Fundamentals:**  
-  **Alignment** (product sense) = the judge’s labels match the **domain expert’s** labels on **held-out** data. **Calibration** (ops sense) = ongoing checks so that trust remains as data, prompts, models, and **criteria** drift.
+  **Alignment** (product sense) = the judge’s labels match the **domain expert’s** labels on **held-out** data. **Calibration** (ops sense) = ongoing checks so that trust remains as data, prompts, models, and **criteria** drift. The held-out set is the Week 16 gold you already collected (and keep refilling via the flywheel) — not a fresh invented rubric.
 
   This is not “the model outputs a well-calibrated probability 0.73.” You may later use token probs (G-Eval-style); Week 17’s bar is **classifier performance vs humans**. Hamel (YouTube `DZxaPNYi_k0`): if you do not measure the judge against humans, **evals lose trust**.
 
@@ -234,7 +249,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 ### Code-based vs model-based evals
 
 * **Fundamentals:**  
-  Two automated evaluator families (Hamel/Shreya teaching, Langfuse, OpenAI graders) plus humans:
+  Two automated evaluator families (Hamel/Shreya teaching, Langfuse, OpenAI graders) plus humans. Week 16’s taxonomy already split **objective** failures (fix or code) from **judgment-heavy** residuals; this section operationalizes that split into CI vs sampled judges.
 
   | Type | Mechanism | Best for |
   |------|-----------|----------|
@@ -316,7 +331,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 ### Observability platforms (Langfuse, Arize Phoenix)
 
 * **Fundamentals:**  
-  **Observability** for LLM apps = understanding internal behavior from logged outputs (metrics, logs, **traces**). Langfuse FAQ: observability is the broader capability; **tracing** is the technique that records the **flow of a request** and preserves **causal** relationships. For LLM apps, tracing is the most important tool because it captures prompts, responses, tool calls, and their relationships.
+  **Observability** for LLM apps = understanding internal behavior from logged outputs (metrics, logs, **traces**). Langfuse FAQ: observability is the broader capability; **tracing** is the technique that records the **flow of a request** and preserves **causal** relationships. For LLM apps, tracing is the most important tool because it captures prompts, responses, tool calls, and their relationships. Week 15/16 assumed *some* structured traces existed for error analysis; this week turns that into a **product** dashboard the team can act on (and that judges can attach scores to).
 
   **Why LLM-specific platforms exist:** general APM (Datadog-only) has weak prompt/token/eval semantics. OpenTelemetry is generic by design; **OpenInference** adds AI span kinds and attributes on top of valid OTLP.
 
@@ -394,7 +409,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 ### Production monitoring dashboards (cost, latency, errors, quality, drift)
 
 * **Fundamentals:**  
-  Production monitoring for LLM apps sits **on top of traces**. Infra-green (HTTP 200, CPU OK) is **not** product-healthy. Langfuse Academy framing: use traces to monitor; custom dashboards for **cost, latency, volume, quality**; **alerts** when metrics cross thresholds.
+  Production monitoring for LLM apps sits **on top of traces**. Infra-green (HTTP 200, CPU OK) is **not** product-healthy. Langfuse Academy framing: use traces to monitor; custom dashboards for **cost, latency, volume, quality**; **alerts** when metrics cross thresholds. The Week 16 flywheel’s production sample is the inlet; this week’s calibrated scores and dashboards are how the team *sees* and *triages* what that sample finds.
 
   **Signals that belong on the first dashboard:**
 
@@ -503,7 +518,13 @@ Use this as the chapter’s capstone sequence; every concept above maps here.
 5. **Production monitoring:** Cost, latency, errors, 1–3 calibrated quality timeseries, drift; alerts open traces; sample 2–10%; guardrails ≠ monitors.  
 6. **Interview artifact:** One calibrated binary judge with TPR/TNR on held-out Week 16 set + tracing dashboard showing generation tokens/cost + score + one code eval that replaced a would-be judge.
 
-When those steps are true, Week 17 is done in the syllabus sense: residual subjective failures have a trustworthy shadow, objective failures stay cheap in CI, and traces are a product the team can act on — not a vanity UI.
+When those steps are true, Week 17 is done in the syllabus sense: residual subjective failures have a trustworthy shadow, objective failures stay cheap in CI, and traces are a product the team can act on — not a vanity UI. The Week 16 flywheel does not stop: disagreements and low scores keep refilling annotation queues.
+
+---
+
+## Looking ahead
+
+Week 18 opens **Phase 5 — Production Engineering** with **deployment infrastructure**: containerize the service for production (multi-stage builds, non-root, env/secrets, health/ready endpoints); build **Kubernetes fluency** (Pods, Services, Deployments, HPA — including when CPU is the wrong autoscaling signal); take **CI/CD beyond push-to-deploy** (staged `dev` → `staging` → `prod`, golden-set smoke, rehearsed rollback / canary); sketch **Infrastructure as Code with Terraform** (VPC/cluster-or-Cloud-Run, IAM skeleton, remote state with locking, separate state for staging vs prod). Do **not** start Week 18 by throwing away this week’s judges and dashboards — you put the **same** instrumented service on a real delivery path. Week 20 goes deeper on cost routing and semantic cache; this week you only need to **see** spend on generations.
 
 ---
 

@@ -1,8 +1,18 @@
 # Week 17 Textbook Chapter — LLM-as-judge & observability
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-4/week-17-llm-judge-observability/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 16: error-analysis-first, open coding / custom taxonomy, frequency × impact, synthetic edges, flywheel)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 18 (deployment infra: containers, K8s fluency, CI/CD stages, Terraform)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 
