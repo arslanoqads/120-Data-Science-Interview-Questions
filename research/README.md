@@ -55,7 +55,7 @@ Each concept includes:
 | Week | File | Focus |
 |------|------|--------|
 | 11 | [week-11-agent-fundamentals/](phase-3/week-11-agent-fundamentals/) | **Research corpus** — agent loop, tools, selection, retries, stop conditions |
-| 12 | [week-12-mcp.md](phase-3/week-12-mcp.md) | MCP architecture, primitives, FDE integration surface |
+| 12 | [week-12-mcp/](phase-3/week-12-mcp/) | **Research corpus** — MCP architecture, primitives, FDE integration surface |
 | 13 | [week-13-orchestration-multi-agent.md](phase-3/week-13-orchestration-multi-agent.md) | Graphs, multi-agent, handoffs, persistence, HITL |
 | 14 | [week-14-domain-agent-side-effects.md](phase-3/week-14-domain-agent-side-effects.md) | A2A, side-effecting actions, safety controls |
 | 15 | [week-15-agent-evaluation.md](phase-3/week-15-agent-evaluation.md) | Trace eval, trajectory vs outcome, failure patterns |
