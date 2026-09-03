@@ -1,15 +1,28 @@
 # Chapter 9 — RAG failure taxonomy
 
 > **Phase 2 — RAG Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-2/week-09-rag-failure-taxonomy/`  
 > **Syllabus Build:** On the Week 7–8 logged RAG stack, **do not add a new retriever**. Instead: (1) **deliberately break** the pipeline at known loci (missing gold in corpus; gold below `k`; consolidator drop; noisy packed window; stale doc version; gold buried mid-prompt); (2) **classify** each broken run with canonical mode (recall / rank / ground), Barnett FP (1–7), and the Jason Liu Q–C–A relationship that failed; (3) keep a **portfolio debugging log** joined on `retrieval_id` from Weeks 7–8. The log is the artifact — Week 10 turns it into a metric cookbook.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 9 is the **diagnosis** week of Phase 2 RAG. Weeks 6–8 produced chunks, a hybrid candidate set, and a reranked packed window. This week answers: **when the answer is wrong, which stage broke?** The syllabus spine is not a new architecture. It is a **fault-injection + classification** protocol plus a **portfolio debugging log**.
+Before this week you should already have from Week 8:
+
+- **Two-stage retrieval** — stage-1 hybrid + RRF (or equivalent) returning **50–100** candidates (`fetch_k`); stage-2 cross-encoder rerank (Cohere **or** self-hosted BGE) keeping **top 5–10** for generation.  
+- **Exactly one** routed query transform (HyDE *or* multi-query expansion *or* decomposition) on a measured slice — not a stack of transforms on every turn.  
+- **Measured delta** vs the Week 7 / no-rerank baseline: stage-1 recall@k, nDCG/MRR after rerank, answer accuracy / groundedness after packing 5–10, plus p95 latency of retrieve vs rerank vs generate.  
+- Append-only logs on every query: Week 7 candidate fields intact, plus Week 8 `rerank.ids[]` / `rerank.scores[]` / `packed_position` (and related depths) so stage-1 miss, rerank miss, and generate-ignore stay separable.
+
+You do **not** need a fault-injection matrix, Barnett FP labels, or a portfolio debugging taxonomy yet. That is what this week teaches.
+
+---
+
+## What this week builds
+
+Week 8 built a reranked packed window and a measured delta. Week 9 is the **diagnosis** week of Phase 2 RAG: **when the answer is wrong, which stage broke?** The syllabus spine is not a new architecture. It is a **fault-injection + classification** protocol plus a **portfolio debugging log**.
 
 Barnett, Kurniawan, Thudumu, Brannelly, Abdelrazek (*Seven Failure Points When Engineering a Retrieval Augmented Generation System*, arXiv:**2401.05856**, CAIN 2024) give the empirical catalogue. Three case studies (Cognitive Reviewer, AI Tutor, BioASQ: ~4k OA PDFs, 1,000 expert Q/A, GPT-4 + OpenAI Evals, then manual inspection) produced **seven failure points** on the Index/Query graph. Two engineering takeaways:
 
@@ -28,11 +41,18 @@ Jason Liu (*There Are Only 6 RAG Evals*, still public at jxnl.co, 2025-05-19) su
 
 Liu et al. (*Lost in the Middle*, arXiv:**2307.03172**) is the packing failure that sits on the rank/grounding border: gold can be **in the prompt** and still unused. Databricks (Leng et al., arXiv:**2411.03538**) shows long context does not retire RAG; it changes **how much** you retrieve and **how models fail** past an effective window.
 
+The four ideas below are one diagnosis system:
+
+- **Three canonical failure modes** — recall / ranking-assembly / generation-grounding, with Barnett FP1–7 as subtypes.  
+- **Citation and grounding techniques** — entailment vs pointers; evidence snapshots; allowlisted IDs.  
+- **Corpus drift and reindexing** — document / pipeline / policy / fact clocks; blue/green alias gates.  
+- **RAG vs long-context tradeoffs** — including LITM position as an eval slice (injection cell I).
+
 **This week’s artifact is a log, not a dashboard.** Join on `retrieval_id` from Weeks 7–8. Label every broken run. Week 10 turns labels into metric recipes.
 
 Do not start Week 9 by swapping Cohere for BGE. If gold is absent from `fetch_k`, that is recall. If gold is in `fetch_k` but not packed, that is ranking/assembly. If gold is packed and the model invents, that is grounding. Do not skip this week for “we’ll just look at end-to-end answer accuracy.” E2E accuracy **confounds** recall, rank, and grounding.
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) on the Week 7–8 logged stack — hybrid candidates, rerank ids, packed positions — with taxonomy labels **appended**, not overwritten.
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: **Deployment Copilot**) on the Week 7–8 logged stack — hybrid candidates, rerank ids, packed positions — with taxonomy labels **appended**, not overwritten.
 
 **Default path (synthesis):** keep Week 7 candidate logs and Week 8 `rerank.ids[]` / `packed_position` → run a **fault-injection matrix** (one fault per cell) on a pinned golden set → for each failure: first ask “was gold **eligible**?” then “did it **survive packing**?” then “did the reader **use** it?” → treat “I don’t know” as **success** on FP1 (missing content) and **bug** on FP2 (gold existed, missed top-k) → pin evidence snapshots so citations without a stored snapshot are a separate failure (citation drift) even when the answer is right.
 
@@ -450,9 +470,6 @@ When those steps are true, Week 9 is done in the syllabus sense: wrong answers h
 
 ---
 
-## Compilation notes
+## Looking ahead
 
-- All concept sections above are grounded in `research/phase-2/week-09-rag-failure-taxonomy/` (`00`–`04`, README).  
-- No section required `[NEEDS MORE RESEARCH]` for the four syllabus concepts compiled from research files `01`–`04` plus the fault-injection / debugging-log protocol in `00`.  
-- Open questions left in research (agentic multi-hop cascade attribution; FP3 as first-class assembly mode; parametric-prior policy tags; Groundedness Pro vs RAGAS as sole oracle; optimal citation granularity; golden-set refresh cadence) are out of scope for this chapter’s six fields and remain research-side.  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.
+Week 10 covers **RAG evaluation**: turn this week’s classified debugging log into a **RAGAS-style eval harness** on a **pinned golden set** (queries + gold `chunk_id`s / expected facts + unanswerable slice, versioned to corpus and pipeline). Score **component** metrics (retrieval at `fetch_k` and packed *k*; generation faithfulness / relevancy on frozen C) separately from **system E2E** correctness — E2E alone still confounds recall, rank, and grounding. The interview artifact is a numbered before/after table vs Weeks 7–9 ablations, not a vendor-dashboard screenshot. Keep taxonomy labels and evidence snapshots intact so metrics attach to the right stage.
