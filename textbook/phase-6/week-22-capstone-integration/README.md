@@ -1,8 +1,18 @@
 # Week 22 Textbook Chapter — Capstone integration
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-6/week-22-capstone-integration/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 21: messy SQL / semantic layer, tolerant ETL, partial failure, idempotent side effects)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 23 (system design interview: 10M retrieval design, prompt debug, FDE cases, STAR bank)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 

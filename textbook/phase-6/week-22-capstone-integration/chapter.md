@@ -1,23 +1,36 @@
 # Chapter 22 — Capstone integration
 
 > **Phase 6 — Capstone and Interview Readiness**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-6/week-22-capstone-integration/`  
 > **Syllabus Build:** Syllabus says “concepts: none new.” Treat that as **meta-work**: you already have Weeks 6–21 systems. This week you **stop building sideways** and make one vertical slice demo-safe. (1) **Freeze scope in writing.** One primary user job, one corpus + tool set, success metrics, and an explicit non-goals list. Walk Chip Huyen’s GenAI platform stack end-to-end for that slice: model API → guardrails → context (RAG/tools) → cache/route → logging/evals. (2) **Triage eval logs into a bug queue.** Sample 20–50 (then ~100) traces; open-code; axial-code a taxonomy with counts; rank **frequency × severity × leverage**; fix top classes; promote fixed failures into regression evals. (3) **Script a 5-minute walkthrough.** User stakes → requirements freeze → request + offline paths → live success with citations → intentional refusal/tool failure → metrics/tradeoffs → roadmap as non-goals. Record a backup; keep the live path primary. (4) **Ship the polish gates.** Happy path on a clean machine / deploy URL; golden-set command in README; architecture diagram that matches code; one STAR story from a real taxonomy fix.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Weeks 6–21 already shipped ingestion, retrieval, agents, evals, deploy, auth, cost, and messy integration. Week 22 adds **no new subsystem**. Capstone AI products fail less from missing models and more from **unbounded surface area**: extra tools, extra agents, extra UIs, extra corpora that never get hardened.
+Before this week you should already have from Week 21:
 
-Three coupled deliverables:
+- **Messy SQL / semantic layer:** curated views/metrics + approved join graph; text-to-SQL on allowlisted views only; dictionary RAG before generating SQL; parameterized tools (`get_invoice(id)`) for money and PII; tenant/RLS injected by middleware.  
+- **Tolerant ETL:** immutable bronze + checksum; contract validate; quarantine/DLQ for malformed rows; idempotent upsert on business keys; completeness flags, not batch-abort on the first bad cell.  
+- **Partial-failure design:** per-dependency timeouts; bulkhead pools; Fowler circuit breaker; labeled degrade or queue — never blind retry of non-idempotent POSTs.  
+- **Idempotent agent side effects:** keys minted at plan time from `(tenant, run_id, step_id, action, object_id)`; Stripe-style forward to write APIs; on timeout, **look up status** / reconcile — do not free the key.
 
-1. **Scope freeze** — written contract for the demoable product.  
-2. **Eval → fix queue** — taxonomy with counts; top bugs fixed or explicitly deferred.  
-3. **Demo narrative** — claim → architecture → evidence → failure → next bet.
+You do **not** need a written demo contract, a count-ranked eval taxonomy with top-5 fixes, or a rehearsed 5-minute success+failure walkthrough yet as *finished* products — that is what this week ships. You **do** need Week 21’s integration seams (SQL allowlists, quarantine path, breakers, idempotency keys) composed into the frozen slice; without them, a polished demo still flakes on tool timeout, duplicate writes, or a stale ingest.
 
-**Do not start Week 23 (system-design interview drills) from this chapter** — this week **freezes scope**, turns **eval logs into a prioritized bug queue**, and ships a **demo narrative** interviewers trust. New model capabilities are not the goal; integration polish is. STAR case-study packs and resume language belong in Week 24.
+---
+
+## What this week builds
+
+Week 21 pointed Deployment Copilot at the customer’s warehouse, file drops, and SaaS APIs. Week 22 is the **capstone polish** week of Phase 6. Weeks 6–21 already shipped ingestion, retrieval, agents, evals, deploy, auth, cost, and messy integration. Week 22 adds **no new subsystem**. Capstone AI products fail less from missing models and more from **unbounded surface area**: extra tools, extra agents, extra UIs, extra corpora that never get hardened.
+
+This week answers three coupled questions that interview demos and FDE loops treat as the minimum bar for a vertical slice that survives adversarial questions:
+
+1. **What is in (and out of) the demo?** (scope freeze — user job, corpus/tools, success metrics, non-goals)  
+2. **Which failures get fixed before showtime?** (eval-log triage → taxonomy with counts → frequency × severity × leverage)  
+3. **How do you narrate proof under pressure?** (5-min claim → architecture → evidence → failure → next bet)
+
+**Do not start Week 23 (system-design interview — 10M retrieval whiteboard, prompt debug under time pressure, FDE integration cases, STAR bank) from this chapter** — this week ships **scope freeze**, **eval-log → bug queue**, and a **5-minute demo narrative**. New model capabilities are not the goal; integration polish is. Resume / portfolio language belongs in Week 24. Week 21’s SQL allowlists, quarantine path, breakers, and idempotency keys are *composed into* the frozen slice — do not drop them to chase a second agent loop.
 
 **End-to-end polish path**
 
@@ -50,6 +63,14 @@ architecture diagram matching code + metrics line + STAR from one fix
 6. **Control under failure beats peak vibes.** Interviewers trust abstain + tool-error demos more than another model swap.
 
 Interview artifact = **written demo contract** + **taxonomy table with top-5 fixes** + **5-min script (success + failure)** + **metrics line** (quality / p95 / $/1k).
+
+| This week | Not this week |
+|-----------|----------------|
+| Scope freeze + demo contract | New retrieval theory (Weeks 6–8) — still **use** those indexes |
+| Eval-log triage → bug queue | Judge calibration deep-dive (Week 17) — reuse existing judges |
+| 5-min narrative + failure demos | System-design whiteboard packs (Week 23) |
+| Integration polish on Weeks 18–21 seams | Resume / portfolio language (Week 24) |
+| One STAR from a real fix | Full FDE case library / STAR bank (Week 23) |
 
 Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) after Weeks 18–21 — now frozen to one vertical slice, triaged against eval logs, and demo-ready.
 
@@ -365,9 +386,15 @@ When those steps are true, Week 22 is done in the syllabus sense: one vertical s
 
 ---
 
+## Looking ahead
+
+Week 23 is the **system design interview**. After this week’s scope freeze, taxonomy-driven fixes, and 5-minute demo narrative, the typical remaining failure is packaging under interview constraints: a 45-minute whiteboard, a broken prompt under the clock, a customer-blocker scenario, and behavioral drills that survive two follow-up depths. Next week you **rehearse packaging**, not new product surface: **whiteboard a ~10M-doc retrieval design** (pin N, QPS, p95, freshness, ACL, wrong-answer cost; hybrid + ACL pre-filter + abstain + eval gate); **run the prompt-debug ladder live** (reproduce → localize layer → minimize → one hypothesis → golden lock); **rehearse one FDE integration case** (no prod data / SSO blocked / undocumented API — what ships Monday?); **bank STAR stories** from *your* Weeks 6–22 builds and narrate tradeoffs aloud. Do **not** start Week 23 by reopening the freeze or shipping a second agent loop — extract whiteboard, debug, and STAR material from the slice you just hardened. Resume / portfolio language deepens in Week 24.
+
+---
+
 ## Compilation notes
 
 - All concept sections above are grounded in `research/phase-6/week-22-capstone-integration/` (`00`–`03`, README; source map consulted for URL provenance only).  
 - No section required `[NEEDS MORE RESEARCH]` for the three syllabus meta-concepts; research Open Questions (single-tenant vs multi-tenant stub for ACL proof, exact safety/ACL severity weights in a five-minute demo, recorded+live vs live-only default, how to present “fixed 3 of 7 buckets,” when agentic orchestration belongs in the freeze vs roadmap, productization noise for Applied AI vs FDE, absolute vs golden-set-only freeze dates, synthetic expansion safety, before/after vs controlled-failure demo framing, estimate cost-number explicitness, customer-stakeholder fiction in personal demos, eval-first opening risk) remain open and were **not** resolved with invented answers.  
 - Outside URLs from research are cited inline where the notes already named them; operational detail was inlined from the notes.  
-- Week 23 system-design interview drills and Week 24 resume/portfolio language are explicitly deferred.
+- Editorial pass: Prerequisites Recap bridges Week 21 (messy SQL / semantic layer, tolerant ETL, partial failure, idempotent side effects); Looking ahead bridges Week 23 (10M retrieval whiteboard, prompt debug, FDE cases, STAR bank); no new technical claims beyond research.
