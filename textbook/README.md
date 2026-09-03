@@ -40,5 +40,7 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 15 | COMPLETE | [phase-3/week-15-agent-evaluation/](phase-3/week-15-agent-evaluation/) |
 | 16 | COMPLETE | [phase-4/week-16-error-analysis-flywheel/](phase-4/week-16-error-analysis-flywheel/) |
 | 17 | COMPLETE | [phase-4/week-17-llm-judge-observability/](phase-4/week-17-llm-judge-observability/) |
-| 18 | NOT STARTED | — |
-| 19–29 | NOT STARTED | — |
+| 18 | COMPLETE | [phase-5/week-18-deployment-infra/](phase-5/week-18-deployment-infra/) |
+| 19 | COMPLETE | [phase-5/week-19-auth-identity-enterprise/](phase-5/week-19-auth-identity-enterprise/) |
+| 20 | NOT STARTED | — |
+| 21–29 | NOT STARTED | — |
