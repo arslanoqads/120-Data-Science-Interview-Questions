@@ -1,19 +1,38 @@
 # Chapter 3 — Git Discipline, Containers, and System Design Literacy
 
 > **Phase 0 — Engineering Foundations**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-0/week-03-git-containers-system-design/`  
 > **Syllabus Build:** Containerize the FastAPI service with a multi-stage Dockerfile; stand up a compose local stack; write a one-page living system design doc for the chatbot architecture (interview artifact).
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 1 packaged the backend; Week 2 exposed it as a FastAPI service with mocks. Week 3 makes that service **shippable and discussable**. Hiring screens for AI Engineer and Forward Deployed Engineer roles ask how incomplete agent tools land on main without breaking prod, why the image is ~180MB instead of 1.4GB, what compose does *not* prove about Cloud Run concurrency, and what your p95 SLO is when the LLM provider is the bottleneck.
+Before this week you should already have from Week 2:
 
-The five ideas below are one delivery loop: trunk-based development keeps main green and reviewable; semantic commits make history machine-readable for changelogs and STAR archaeology; multi-stage Docker produces a promotable artifact sized for cold starts; compose reproduces Postgres/pgvector quirks locally without burning cloud budget; system design vocabulary turns a one-page doc into something interviewers and customers can probe.
+- A **FastAPI** HTTP service for the flagship package (working title: **Deployment Copilot**) with resourceful REST under a versioned path.  
+- A documented **OpenAPI** schema (`/docs`, truthful `response_model`s) treated as a contract artifact.  
+- **Async** routes that await I/O-bound LLM calls (shared client, no blocking SDK work on the event loop).  
+- A **pytest** suite that **mocks** the model provider (`LLMClient` Protocol / fakes / dependency overrides) so CI stays green without live API keys.
 
-Skip any one and the rest collapses: a beautiful compose stack with week-long feature branches still produces unmergeable agent rewrites; a tiny image with no latency/throughput/SLO language still fails the “why is p95 8s?” question. Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) being containerized and explained for the first time.
+You do **not** need trunk-based Git discipline, multi-stage Docker, compose stacks, or system-design SLOs yet. That is what this week teaches.
+
+---
+
+## What this week builds
+
+Week 2 left you with an HTTP FastAPI service, OpenAPI docs, async LLM I/O, and secret-free mocked tests. Week 3 makes that service **shippable and discussable**. Hiring screens for AI Engineer and Forward Deployed Engineer roles ask how incomplete agent tools land on main without breaking prod, why the image is ~180MB instead of 1.4GB, what compose does *not* prove about Cloud Run concurrency, and what your p95 SLO is when the LLM provider is the bottleneck.
+
+The five ideas below are one delivery loop:
+
+- **Trunk-based development** keeps `main` green and reviewable with short PRs and feature flags.  
+- **Semantic commits** make history machine-readable for changelogs and interview archaeology.  
+- **Multi-stage Docker** produces a promotable artifact sized for cold starts.  
+- **Compose** reproduces Postgres/pgvector quirks locally without burning cloud budget.  
+- **System design vocabulary** turns a one-page doc into something interviewers and customers can probe.
+
+Skip any one and the rest collapses: a beautiful compose stack with week-long feature branches still produces unmergeable agent rewrites; a tiny image with no latency/throughput/SLO language still fails the “why is p95 8s?” question. Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: **Deployment Copilot**) being containerized and explained for the first time—OpenAPI, async LLM port, and mocked tests stay; you package and explain them.
 
 ---
 
@@ -489,12 +508,10 @@ Use this as the chapter’s capstone sequence; every concept above maps here.
 5. **Design doc:** One-page living system design using latency/throughput, scaling, load balancing, caching, CAP/PACELC-per-operation, and cost SLOs.  
 6. **Interview readiness:** Be able to answer why the image is small, what compose does not prove about Cloud Run, and what your p95 and $/query targets are when the LLM is the bottleneck.
 
-When those six steps are true, Week 3 is done in the syllabus sense: the flagship system is a containerized FastAPI service with local data-plane realism and a design document that speaks the same language Week 23 interviews probe. Phase 0 closes; Phase 1+ work can run in containers against real stores and be explained in a living design document.
+When those six steps are true, Week 3 is done in the syllabus sense: Deployment Copilot is a containerized FastAPI service with local data-plane realism and a design document that speaks the same language Week 23 interviews probe. Phase 0 engineering foundations close here; later weeks run in containers against real stores and stay explainable in a living design document.
 
 ---
 
-## Compilation notes
+## Looking ahead
 
-- All concept sections above are grounded in `research/phase-0/week-03-git-containers-system-design/` (`00`–`05`).  
-- No section required `[NEEDS MORE RESEARCH]` for the syllabus Week 3 concepts (TBD vs feature branches, semantic commits, Docker multi-stage / image size, docker-compose, system design vocabulary including latency/throughput, scaling, load balancing, caching, CAP/PACELC at working level).  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.
+Week 4 opens **Multi-provider LLM engineering**: a **provider-agnostic client** that swaps OpenAI, Anthropic, and optional gateway backends behind one interface, plus **structured outputs**, **token counting** / context windows, and **prompt caching**. Keep the containerized FastAPI service, compose data plane, short-lived Git rhythm, and living system design doc—you will call real providers correctly through them, not replace the shippable shell.
