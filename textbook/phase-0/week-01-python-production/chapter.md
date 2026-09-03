@@ -99,7 +99,7 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
 * **The Alternatives:**  
 
   | Pattern | Upside | Downside |
-  |---------||--------|----------|
+  |---------|--------|----------|
   | Flat | REPL-friendly; less ceremony | Tests can false-green; path pollution |
   | Src | Install-faithful tests; cleaner discovery | Requires install before import; slightly more ceremony |
   | Script-only (`uv init --no-package`) | Fine for one-offs | Wrong for a shippable service |

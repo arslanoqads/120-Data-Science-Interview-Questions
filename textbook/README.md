@@ -24,5 +24,6 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | Week | Status | Chapter |
 |------|--------|---------|
 | 1 | COMPLETE | [phase-0/week-01-python-production/](phase-0/week-01-python-production/) |
-| 2 | NOT STARTED | — |
-| 3–29 | NOT STARTED | — |
+| 2 | COMPLETE | [phase-0/week-02-apis-async-testing/](phase-0/week-02-apis-async-testing/) |
+| 3 | NOT STARTED | — |
+| 4–29 | NOT STARTED | — |
