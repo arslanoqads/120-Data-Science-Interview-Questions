@@ -45,7 +45,7 @@ Each concept includes:
 | Week | File | Focus |
 |------|------|--------|
 | 6 | [week-06-ingestion-chunking/](phase-2/week-06-ingestion-chunking/) | **Research corpus** — chunking strategies, overlap, metadata, structured content |
-| 7 | [week-07-retrieval-beyond-cosine.md](phase-2/week-07-retrieval-beyond-cosine.md) | Bi/cross-encoders, hybrid, RRF, vector DB tradeoffs |
+| 7 | [week-07-retrieval-beyond-cosine/](phase-2/week-07-retrieval-beyond-cosine/) | **Research corpus** — bi/cross-encoders, hybrid, RRF, lexical precision, vector DB tradeoffs |
 | 8 | [week-08-reranking-query-understanding.md](phase-2/week-08-reranking-query-understanding.md) | Two-stage retrieval, rerankers, lost-in-middle, HyDE |
 | 9 | [week-09-rag-failure-taxonomy.md](phase-2/week-09-rag-failure-taxonomy.md) | Failure modes, grounding, corpus drift, long-context |
 | 10 | [week-10-rag-evaluation.md](phase-2/week-10-rag-evaluation.md) | Retrieval/generation metrics, golden sets, component vs E2E |
