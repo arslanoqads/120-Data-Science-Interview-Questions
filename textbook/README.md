@@ -47,8 +47,8 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 2 | COMPLETE | COMPLETE | [phase-0/week-02-apis-async-testing/](phase-0/week-02-apis-async-testing/) |
 | 3 | COMPLETE | COMPLETE | [phase-0/week-03-git-containers-system-design/](phase-0/week-03-git-containers-system-design/) |
 | 4 | COMPLETE | COMPLETE | [phase-1/week-04-multi-provider-llm/](phase-1/week-04-multi-provider-llm/) |
-| 5 | COMPLETE | NOT STARTED | [phase-1/week-05-prompt-engineering/](phase-1/week-05-prompt-engineering/) |
-| 6 | COMPLETE | NOT STARTED | [phase-2/week-06-ingestion-chunking/](phase-2/week-06-ingestion-chunking/) |
+| 5 | COMPLETE | COMPLETE | [phase-1/week-05-prompt-engineering/](phase-1/week-05-prompt-engineering/) |
+| 6 | COMPLETE | COMPLETE | [phase-2/week-06-ingestion-chunking/](phase-2/week-06-ingestion-chunking/) |
 | 7 | COMPLETE | NOT STARTED | [phase-2/week-07-retrieval-beyond-cosine/](phase-2/week-07-retrieval-beyond-cosine/) |
 | 8 | COMPLETE | NOT STARTED | [phase-2/week-08-reranking-query-understanding/](phase-2/week-08-reranking-query-understanding/) |
 | 9 | COMPLETE | NOT STARTED | [phase-2/week-09-rag-failure-taxonomy/](phase-2/week-09-rag-failure-taxonomy/) |
