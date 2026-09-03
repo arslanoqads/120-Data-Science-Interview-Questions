@@ -49,5 +49,6 @@ If research lacks grounding for a section: `[NEEDS MORE RESEARCH]`.
 | 24 | COMPLETE | [phase-6/week-24-portfolio-positioning/](phase-6/week-24-portfolio-positioning/) |
 | 25 | COMPLETE | [phase-7/week-25-context-engineering/](phase-7/week-25-context-engineering/) |
 | 26 | COMPLETE | [phase-7/week-26-fine-tuning/](phase-7/week-26-fine-tuning/) |
-| 27 | NOT STARTED | — |
-| 28–29 | NOT STARTED | — |
+| 27 | COMPLETE | [phase-7/week-27-open-source-self-hosted/](phase-7/week-27-open-source-self-hosted/) |
+| 28 | NOT STARTED | — |
+| 29 | NOT STARTED | — |
