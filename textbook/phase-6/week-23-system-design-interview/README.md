@@ -1,8 +1,18 @@
 # Week 23 Textbook Chapter — System design interview
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-6/week-23-system-design-interview/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 22: scope freeze, eval-driven fixes, 5-min demo narrative)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 24 (portfolio positioning: resume language, portfolio under 5 min, dual-track AI Engineer vs FDE)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 

@@ -1,25 +1,37 @@
 # Chapter 23 — System design interview
 
 > **Phase 6 — Capstone and Interview Readiness**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-6/week-23-system-design-interview/`  
 > **Syllabus Build:** Syllabus treats Week 23 as **interview meta-work**: you already shipped Weeks 6–22 systems. This week you **rehearse packaging** under time pressure. (1) **Whiteboard a 10M-doc assistant.** Pin N, QPS, p95, freshness, ACL, wrong-answer cost. Split offline vs online. Force hybrid + ACL pre-filter + incremental deletes + rerank budget + abstain + eval gate ([Huyen GenAI platform](https://huyenchip.com/2024/07/25/genai-platform.html); [Anthropic Contextual Retrieval](https://www.anthropic.com/news/contextual-retrieval); [ByteByteGo RAG](https://blog.bytebytego.com/p/how-rag-enables-ai-for-your-data)). (2) **Run the prompt-debug ladder live.** Reproduce → localize layer → minimize → one hypothesis → golden lock. Never jump to “bigger model” first ([Huyen LLM engineering](https://huyenchip.com/2023/04/11/llm-engineering.html); [Hamel evals](https://hamel.dev/blog/posts/evals/)). (3) **Rehearse one FDE integration case.** Customer won’t give prod data / SSO blocked / undocumented API — what do you ship Monday? ([Palantir FDSE](https://blog.palantir.com/a-day-in-the-life-of-a-palantir-forward-deployed-software-engineer-45ef2de257b1); [OpenAI FDE](https://openai.com/careers/forward-deployed-engineer-%28fde%29-sf-san-francisco/); [Anthropic FDE](https://job-boards.greenhouse.io/anthropic/jobs/5391016008)). (4) **Bank 8–10 STAR stories** from *your* build. Quantify; reject an alternative aloud; survive follow-ups.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 22 froze a demoable vertical slice. Week 23 asks: can you **repackage that work under interview constraints** — 45-minute whiteboards, broken-prompt live debug, customer-blocker scenarios, and behavioral drills that survive two follow-up depths?
+Before this week you should already have from Week 22:
 
-Five coupled deliverables:
+- **Scope freeze in writing:** one primary user job, one corpus + tool set, success metrics, and an explicit non-goals list; demo contract with happy path + failure demos; pinned model/prompt/index.  
+- **Eval-driven fixes:** sample → open-code → axial taxonomy with counts; rank frequency × severity × leverage; top classes fixed and promoted into golden / CI evals.  
+- **5-minute demo narrative:** stakes → requirements freeze → request + offline paths → live success with citations → intentional refusal/tool failure → metrics/tradeoffs → roadmap as non-goals.
 
-1. **Retrieval design framework** — 10M docs, mixed queries.  
-2. **Prompt-debug ladder** — time-boxed localization.  
-3. **FDE integration case** — blockers as the job.  
-4. **Aloud tradeoffs** — recall/precision, latency/quality, build/buy.  
-5. **STAR packaging** — technically drillable stories from Weeks 6–22.
+You do **not** need an annotated 10M whiteboard, a timed prompt-debug transcript, a full FDE unblock case library, or an 8–10 card STAR bank yet as *finished* products — that is what this week ships. You **do** need Week 22’s frozen slice, taxonomy metrics, and demo narrative as the raw material; without them, whiteboard answers and STAR cards invent numbers you cannot defend.
 
-**Do not start Week 24 (portfolio / resume language) from this chapter** — this week drills **RAG-at-scale whiteboards**, **prompt debugging under the clock**, **FDE integration cases**, **aloud tradeoffs**, and a **STAR bank** extracted from your own builds. Capstone polish (Week 22) is assumed done; packaging for interview loops is the work.
+---
+
+## What this week builds
+
+Week 22 froze a demoable vertical slice, triaged eval logs into fixes, and scripted a 5-minute walkthrough. Week 23 is the **interview packaging** week of Phase 6. Weeks 6–22 already shipped the systems; this week adds **no new product surface**. Capstone polish fails interview loops less from missing architecture knowledge and more from **unrehearsed packaging** under the clock.
+
+This week answers five coupled questions that AI Engineer / FDE loops treat as the minimum bar for packaging a hardened slice:
+
+1. **Can you whiteboard retrieval at ~10M docs?** (pin N, QPS, p95, freshness, ACL, wrong-answer cost — hybrid + ACL pre-filter + deletes + rerank + abstain + eval gate)  
+2. **Can you debug a broken prompt/system live?** (reproduce → localize layer → minimize → one hypothesis → golden lock)  
+3. **Can you unblock a customer Monday?** (no prod data / SSO / undocumented API — thin slice + escalation)  
+4. **Can you narrate tradeoffs aloud?** (axes + pick + monitor; latency + $ budgets)  
+5. **Can you bank drillable STAR stories?** (8–10 cards from *your* Weeks 6–22 builds; dual-track endings)
+
+**Do not start Week 24 (portfolio / resume language — resume bullets, portfolio under 5 min, dual-track AI Engineer vs FDE) from this chapter** — this week drills **RAG-at-scale whiteboards**, **prompt debugging under the clock**, **FDE integration cases**, **aloud tradeoffs**, and a **STAR bank** extracted from your own builds. Capstone polish (Week 22) is assumed done; packaging for interview loops is the work. Do **not** reopen the Week 22 freeze or ship a second agent loop to “have more material.”
 
 **Timed practice path**
 
@@ -50,14 +62,14 @@ Tradeoff one-liners with latency + $ budgets
 
 Interview artifact = **annotated 10M whiteboard** + **one timed prompt-debug transcript** + **one FDE unblock case** + **STAR index (title / metric / systems / 3 follow-ups)** + **tradeoff one-liners**.
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) after Week 22 freeze — now packaged for whiteboard, timed debug, FDE case, and STAR rehearsal.
-
 | This week | Not this week |
 |-----------|----------------|
 | Whiteboard + timed debug + STAR bank | New retrieval theory (Weeks 6–8) — **reuse** those decisions |
-| FDE customer-blocker rehearsal | Capstone polish / new features (Week 22) |
+| FDE customer-blocker rehearsal | Capstone polish / new features (Week 22) — freeze holds |
 | Aloud tradeoff templates | Resume / portfolio copy (Week 24) |
 | Extract metrics from *your* evals | Judge calibration deep-dive (Week 17) |
+
+Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) after Week 22 freeze — now packaged for whiteboard, timed debug, FDE case, and STAR rehearsal.
 
 ---
 
@@ -582,9 +594,16 @@ When those steps are true, Week 23 is done in the syllabus sense: Week 22 polish
 
 ---
 
+## Looking ahead
+
+Week 24 is **portfolio positioning**. After this week’s 10M whiteboard, timed prompt-debug, FDE unblock case, aloud tradeoffs, and STAR bank, the typical remaining failure is hire-readable packaging: a screener cannot find your signal in under five minutes on a resume or portfolio page. Next week you **make evidence hire-readable**, not new interview drills: **mirror one live posting** into resume language with STAR-backed bullets; **ship a portfolio case under 5 minutes** (architecture matching code, three metrics, failure→fix, repro); **write dual talk tracks** for the same flagship — Applied AI Engineer (evals/latency/architecture) vs FDE (discovery/constraint/rollout/codify); freeze resume header + LinkedIn headline for the track you apply to this week. Do **not** start Week 24 by inventing metrics or reopening the Week 22 freeze — feed locked STAR evidence into resume and portfolio surfaces. Whiteboard and debug rehearsal stays available as maintenance; the deep work shifts to packaging for screens.
+
+---
+
 ## Compilation notes
 
 - All concept sections above are grounded in `research/phase-6/week-23-system-design-interview/` (`00`–`05`, README; source map consulted for URL provenance only).  
 - `[NEEDS MORE RESEARCH]` markers appear where research Open Questions leave a claim ungrounded: pgvector rejection corpus-size / GraphRAG expectation in 2026 loops; whether prompt-debug is a named round vs deep-dive (and live judge debugging / Anthropic AI-tool perception); FDE push-back vs absorb-chaos balance, MCP-as-default artifact, gov/classified discussion, travel % calibration; cost-number lead defaults / abstain-as-product-failure / vendor-lock explicitness in lab interviews; personal-project “production” bar, separate safety STAR bank, optimal story count before metric staleness. Those open questions were **not** resolved with invented answers.  
 - Outside URLs from research are cited inline where the notes already named them; operational detail was inlined from the notes.  
+- Editorial pass: Prerequisites Recap bridges Week 22 (scope freeze, eval-driven fixes, 5-min demo narrative); Looking ahead bridges Week 24 (resume language, portfolio under 5 min, dual-track AI Engineer vs FDE); no new technical claims beyond research.  
 - Week 24 resume / portfolio language is explicitly deferred — extract STAR evidence here, polish wording later.
