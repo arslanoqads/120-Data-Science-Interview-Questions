@@ -1,6 +1,6 @@
 # AI Engineer / FDE Curriculum — Research Knowledge Base
 
-Raw source material for the 24-week syllabus (TPM → AI Engineer / Forward Deployed Engineer). **Not a textbook** — research dumps with citations for later synthesis.
+Raw source material for the 24-week syllabus plus Phase 7 supplementary electives (Weeks 25–29) (TPM → AI Engineer / Forward Deployed Engineer). **Not a textbook** — research dumps with citations for later synthesis.
 
 ## Source policy
 
@@ -9,7 +9,7 @@ Raw source material for the 24-week syllabus (TPM → AI Engineer / Forward Depl
 
 ## Layout note
 
-Every week is a **directory** (e.g. `phase-0/week-01-python-production/`) with an overview, one file per concept, and a source map. Weeks 1–24 deep pass complete; Phase 7 electives (25–29) from supplementary syllabus.
+Every week is a **directory** (e.g. `phase-0/week-01-python-production/`) with an overview, one file per concept, and a source map. Weeks 1–24 deep pass complete; Phase 7 electives (25–29) from supplementary syllabus also complete.
 
 ## Entry format (per concept)
 
@@ -91,6 +91,10 @@ Each concept includes:
 | Week | File | Focus |
 |------|------|--------|
 | 25 | [week-25-context-engineering/](phase-7/week-25-context-engineering/) | **Research corpus** — context vs prompt, memory, compaction, isolation, failure modes |
+| 26 | [week-26-fine-tuning/](phase-7/week-26-fine-tuning/) | **Research corpus** — RAG vs FT decision, LoRA/QLoRA, datasets, FT eval, cost/ops |
+| 27 | [week-27-open-source-self-hosted/](phase-7/week-27-open-source-self-hosted/) | **Research corpus** — Llama/Qwen/Gemma, quantization, Ollama/vLLM, air-gap |
+| 28 | [week-28-multimodal/](phase-7/week-28-multimodal/) | **Research corpus** — vision vs generate, STT/TTS, mixed context, real vs gimmick |
+| 29 | [week-29-ai-safety-adversarial/](phase-7/week-29-ai-safety-adversarial/) | **Research corpus** — red-team schedule, bias, moderation, PII/exfil, safety review |
 
 ## Syllabus map (primary content shopping)
 
@@ -105,4 +109,4 @@ Per syllabus source map — use when deepening a week:
 | 4 | Hamel Husain (hamel.dev); Langfuse / Arize Phoenix docs |
 | 5 | Inference/cost docs; LiteLLM / RouteLLM; observability platforms |
 | 6 | Live AI Engineer / FDE job postings (Palantir, Anthropic, OpenAI, Scale, Databricks) |
-| 7 | Anthropic context/agent docs, LangGraph memory, OWASP LLM |
+| 7 | Anthropic context/agent docs; HF PEFT/TRL; Ollama/vLLM; OpenAI/Anthropic multimodal; OWASP LLM / NIST AI RMF |
