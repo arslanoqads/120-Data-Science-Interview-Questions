@@ -1,21 +1,40 @@
 # Chapter 5 — Prompt Engineering as a Versioned Artifact
 
 > **Phase 1 — LLM Application Engineering Core**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-1/week-05-prompt-engineering/`  
 > **Syllabus Build:** Move prompts into version-controlled templates with a changelog; write up the existing prompt-injection guardrail design as a short technical doc. Ship versioned, templated prompts for the FastAPI RAG chatbot from Weeks 1–4: store system text as reviewable artifacts; inject retrieved chunks and the user question as **data**, not instructions; keep static few-shots in the cache-stable prefix (Week 4); canary prompt changes behind a version ID; treat retrieved docs as untrusted.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 4 proved Deployment Copilot can call OpenAI and Anthropic with correct roles, tools, streams, schemas, token budgets, and cache-stable prefixes. Week 5 proves that the **text those APIs consume** is a versioned, testable, attack-aware product artifact—not a string literal pasted into a handler.
+Before this week you should already have from Week 4:
 
-Hiring screens for AI Engineer and Forward Deployed Engineer roles often ask: who changed the refund policy wording, why cache hit rate collapsed after a “small” prompt edit, or how you stop a poisoned wiki page from emailing private data. The answers are engineering answers: immutable prompt versions, typed templates, placement that respects Week 4 cache layout, thin persona over measurable contracts, and architecture that assumes untrusted tokens will try to seize control.
+- A **provider-agnostic LLM client** (`LLMClient` Protocol with OpenAI and Anthropic adapters) that normalizes roles, tools, streaming, and usage.  
+- **Structured-output enforcement** (schema-as-code + retries on malformed or semantically invalid results).  
+- **Token counting** and context-window budgeting before calls leave the client.  
+- **Prompt caching** with a cache-stable prefix layout (stable policy and tools before volatile per-request content).
 
-The five ideas below are one pipeline: **version a contract** → **render it with typed, bounded variables** → **place exemplars where they help without busting cache** → **keep persona thin** → **assume retrieved docs and tool outputs are attacker-controlled**. Skipping any step shows up as silent policy drift, SSTI or delimiter-bypass, cold-cache cost spikes, charming-but-noncompliant bots, or agents that exfiltrate because a webpage told them to.
+You do **not** need versioned prompt registries, typed template fill, few-shot placement policy, or a written injection threat model yet. That is what this week teaches.
 
-Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: Deployment Copilot) growing versioned chat templates on top of the Week 4 provider-agnostic client—not framework-as-core and not inline f-strings in every route.
+---
+
+## What this week builds
+
+Week 4 left you with a client that talks to OpenAI and Anthropic correctly—roles, tools, streams, schemas, token budgets, and cache-stable prefixes. Week 5 makes the **text those APIs consume** a versioned, testable, attack-aware product artifact—not a string literal pasted into a handler.
+
+Hiring screens for AI Engineer and Forward Deployed Engineer roles often ask: who changed the refund policy wording, why cache hit rate collapsed after a “small” prompt edit, or how you stop a poisoned wiki page from emailing private data. The answers are engineering answers.
+
+The five ideas below are one pipeline:
+
+- **Versioned system prompts** (git or registry + canary) make instruction changes reviewable and rollbackable.  
+- **Typed templates** separate stable instructions from runtime variables and keep fills bounded.  
+- **Few-shot placement** steers format and policy without busting Week 4’s shared cache prefix.  
+- **Thin persona over instructions** keeps tone brandable while contracts stay measurable.  
+- **Injection-aware architecture** treats retrieved docs and tool outputs as attacker-controlled.
+
+Skip any step and you get silent policy drift, SSTI or delimiter-bypass, cold-cache cost spikes, charming-but-noncompliant bots, or agents that exfiltrate because a webpage told them to. Read the concepts in order. Each section’s **Worked Example** and **Apply It** assume the same flagship service (working title: **Deployment Copilot**) growing versioned chat templates on top of the Week 4 provider-agnostic client—not framework-as-core and not inline f-strings in every route. Keep the adapters, structured outs, token budgets, and cache layout; you version and defend the text they consume.
 
 Industry object model this week teaches: OpenAI treats prompts as application code (typed builders, fixtures, evals, feature flags); Anthropic’s Agent SDK treats the system prompt as a **preset vs custom string vs append** product surface; LangSmith/Langfuse treat prompts as **immutable commits with environment labels**. Your take-home and customer deploy should look like that object model, not like a tweet pasted into a handler.
 
@@ -393,8 +412,6 @@ Related public bar (from research): AI Engineer “Build a Prompt Learning Loop�
 
 ---
 
-## Compilation notes
+## Looking ahead
 
-- All concept sections above are grounded in `research/phase-1/week-05-prompt-engineering/` (`00`–`05`, README concept table).  
-- No section required `[NEEDS MORE RESEARCH]` for the five syllabus concepts covered in research files `01`–`05`.  
-- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes. Cross-links to Week 4 caching and structured outputs assume the prior chapter.
+Week 6 opens **Phase 2** with **ingestion and chunking**: recursive and semantic splitting strategies, metadata on every chunk, and messy real documents—not a single global character cut dumped into a vector store. Keep the versioned templates, cache-stable few-shots, and injection threat model—you will decide what tokens exist for retrieval to serve into those tagged context blocks.
