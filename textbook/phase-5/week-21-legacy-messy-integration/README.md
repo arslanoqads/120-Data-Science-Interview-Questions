@@ -1,8 +1,18 @@
 # Week 21 Textbook Chapter — Legacy and messy integration
 
-> **Status:** COMPLETE  
+> **Compile:** COMPLETE  
+> **Edit:** COMPLETE  
 > **Source:** `research/phase-5/week-21-legacy-messy-integration/`  
 > **Chapter:** [chapter.md](chapter.md)
+
+## Editorial checklist
+
+- [x] Continuity reviewed (Week 20: routing, cascading, semantic cache, cost dashboards)  
+- [x] Prerequisites Recap added  
+- [x] Framing standardized to **What this week builds**  
+- [x] Looking ahead → Week 22 (capstone integration: freeze scope, top eval bugs, 5-min demo narrative)  
+- [x] Concept structure preserved (6 fields)  
+- [x] Language pass for coherence and simplicity  
 
 ## Concepts covered
 

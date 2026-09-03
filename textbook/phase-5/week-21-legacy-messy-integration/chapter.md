@@ -1,15 +1,29 @@
 # Chapter 21 — Legacy and messy integration
 
 > **Phase 5 — Production, Cost, and Systems**  
-> **Compilation status:** COMPLETE  
+> **Editorial status:** COMPLETE  
 > **Source of truth:** `research/phase-5/week-21-legacy-messy-integration/`  
 > **Syllabus Build:** You already have a **containerized, OIDC-gated, cost-attributed LLM service** (Weeks 18–20). This week you **point it at the customer’s actual data and APIs**. (1) **Do not let the model see the raw ERD.** Curate views / metrics (dbt, LookML, Cube) and a join graph. Ground SQL on filtered `information_schema` + redacted samples. RAG over data dictionaries *before* generating SQL. Prefer parameterized tools (`get_invoice(id)`) for money and PII. (2) **Land bytes before you parse.** Immutable bronze + checksum. Validate with a contract. Quarantine malformed rows; do not abort the batch on the first bad CSV cell. Upsert on business keys so retries do not duplicate. (3) **Assume every customer SaaS is down or 5s slow.** Timeouts on every tool; bulkhead pools; Fowler circuit breaker; degrade with a labeled caveat or queue for later. Never retry non-idempotent POSTs blindly. (4) **Mint idempotency keys at plan time** from `(tenant, run_id, step_id, action, object_id)`. Forward Stripe-style keys to write APIs. On timeout, **look up status**, do not free the key.
 
 ---
 
-## Chapter framing
+## Prerequisites Recap
 
-Week 21 is the **customer systems of record** week of Phase 5. Weeks 18–20 shipped **where it runs**, **who may call it**, and **what it costs**. The remaining failure is the customer’s estate: a 400-table OLTP with `stat_cd`, a SharePoint dump named `final_FINAL_v7.csv`, Salesforce that 503s on Friday deploys, and an agent that retries `create_ticket` three times.
+Before this week you should already have from Week 20:
+
+- **Model routing:** rules first (&lt;1 ms) on path, tier, `task_type`, tools, length; uncertain traffic → embedding (~5 ms) or classifier (50–100 ms) — not an LLM-as-router on the hot path unless measured.  
+- **Cascading / RouteLLM-style selective routing:** quality vs % strong-model calls calibrated on *your* golden set; RouteLLM’s public ~14% GPT-4 / ~95% quality point on MT Bench is existence proof, not your SLA.  
+- **Response caches:** exact-match for deterministic / agentic paths; semantic (embedding + threshold) for paraphrases — **tenant in every key**, off for multi-turn tool traffic; kill switch for wrong hits.  
+- **Prompt cache / compression / batch:** static prefix first; monitor `cache_read` vs `cache_write`; Batch API for offline paths.  
+- **Cost-attribution dashboards:** gateway cube tenant × feature × model (plus router/cache arms); cost per successful task; hard budgets on virtual keys (Week 19).
+
+You do **not** need a semantic layer over the customer warehouse, tolerant ETL with quarantine/DLQ, per-dependency timeouts/breakers, or Stripe-style idempotency for agent writes yet as *finished* products — that is what this week ships. You **do** need the Week 20 routed, tenant-keyed, cost-attributed gateway; without it, an open SQL tool or mutating-tool cache recreates the spend and isolation failures you just closed. Idempotency appeared in Week 20 only as “don’t cache mutating tool results”; dual-write / ETL / unknown-outcome reconcile deepen here.
+
+---
+
+## What this week builds
+
+Week 20 shipped **which model, cache, and dollar** each request consumes. Week 21 is the **customer systems of record** week of Phase 5. Weeks 18–20 already shipped **where it runs**, **who may call it**, and **what it costs**. The remaining failure is the customer’s estate: a 400-table OLTP with `stat_cd`, a SharePoint dump named `final_FINAL_v7.csv`, Salesforce that 503s on Friday deploys, and an agent that retries `create_ticket` three times.
 
 This week answers four coupled questions that FDE embeds, security reviews, and interview whiteboards treat as the minimum bar for an agent that touches real enterprise data:
 
@@ -18,7 +32,7 @@ This week answers four coupled questions that FDE embeds, security reviews, and 
 3. **What happens when *their* system is slow or down?** (timeouts, bulkheads, Fowler breakers, labeled degradation)  
 4. **How do writes stay once-per-intent when the network lies?** (Stripe-style keys, deterministic agent keys, unknown-outcome reconcile)
 
-**Do not start Week 22 (capstone) from this chapter** — this week ships **messy SQL / semantic layers**, **tolerant ETL**, **partial-failure design**, and **idempotent agent side effects**. Weeks 18–20 already isolated tenants, deployed the gateway, and attributed spend; honor tenant/RLS inside SQL tools and do not cache mutating tool results (Week 20). Chunking/rerank theory (Weeks 6–8) is still *used* for dictionary indexes. HITL/dry-run envelopes (Week 14) are *reused* for write approval—do not rewrite them.
+**Do not start Week 22 (capstone integration — freeze scope, top eval bugs, 5-min demo narrative) from this chapter** — this week ships **messy SQL / semantic layers**, **tolerant ETL**, **partial-failure design**, and **idempotent agent side effects**. Weeks 18–20 already isolated tenants, deployed the gateway, and attributed spend; honor tenant/RLS inside SQL tools and do not cache mutating tool results (Week 20). Chunking/rerank theory (Weeks 6–8) is still *used* for dictionary indexes. HITL/dry-run envelopes (Week 14) are *reused* for write approval—do not rewrite them.
 
 **Design: one request path through messy enterprise**
 
@@ -365,3 +379,33 @@ Read the concepts in order. Each section’s **Worked Example** and **Apply It**
   6. Add kill-worker-mid-flight tests; skip-over-duplicate for non-idempotent cron; one key per saga step or compensating actions.
 
 ---
+
+## Week 21 build checklist (end-to-end)
+
+Use this as the chapter’s capstone sequence; every concept above maps here.
+
+1. **Semantic layer first:** Curated views/metrics + approved join graph; ban raw OLTP for open SQL; hybrid tools (`get_invoice(id)` for money/PII).  
+2. **Docs before SQL:** Versioned dictionaries in RAG; retrieve then generate; refuse tables without a citation; schema snapshot in the tool, not the system prompt.  
+3. **SQL allowlist / compiler:** Views only; `LIMIT`; statement timeout; no multi-statement; tenant/RLS injected by middleware; execution-accuracy eval + shadow mode.  
+4. **Tolerant ETL:** Immutable bronze + checksum; contract validate; quarantine/DLQ with rate and age; idempotent upsert on business keys; incremental gold + completeness.  
+5. **Partial failure:** Per-dependency timeouts, bulkheads, Fowler closed/open/half-open; structured errors; labeled degrade or queue; retry budget — never blind non-idempotent POST retries.  
+6. **Idempotent writes:** Mint keys at plan time from `(tenant, run_id, step_id, action, object_id)`; store status + body; unknown outcome → reconcile same key, do not free the key.
+
+When those six steps are true, Week 21 is done in the syllabus sense: Deployment Copilot can read a messy warehouse + tribal docs, survive a malformed ingest row and a timed-out CRM call, and never double-fire a ticket.
+
+Where research leaves open questions (exact AWS Agentic AI Lens BP numbers beyond AGENTREL06-BP03 / BP05 naming), they are marked `[NEEDS MORE RESEARCH]` rather than filled with invented defaults.
+
+---
+
+## Looking ahead
+
+Week 22 is **capstone integration**. After this week’s semantic layer, tolerant ETL, breakers, and idempotent writes, the typical remaining failure is sideways polish: unbounded surface area, an unranked eval backlog, and a demo that shows peak vibes instead of control under failure. Next week you **stop building sideways** and make one vertical slice demo-safe: **freeze scope** in writing (user job, corpus/tools, success metrics, non-goals); triage eval logs into a **top bug queue** (frequency × severity × leverage); script a **5-minute demo narrative** (stakes → architecture → success → intentional failure → metrics). Do **not** start Week 22 by dropping this week’s SQL allowlists, quarantine path, or idempotency keys — compose them into the frozen slice. System-design interview drills deepen in Week 23.
+
+---
+
+## Compilation notes
+
+- All concept sections above are grounded in `research/phase-5/week-21-legacy-messy-integration/` (`00`–`04`, README).  
+- `[NEEDS MORE RESEARCH]` appears where research itself flags incomplete vendor BP detail (AWS Agentic AI Lens beyond AGENTREL06-BP03 / BP05 naming).  
+- Outside URLs from research are not required reading to understand this chapter; operational detail was inlined from the notes.  
+- Editorial pass: Prerequisites Recap bridges Week 20 (routing, cascading, semantic cache, cost dashboards); Looking ahead bridges Week 22 (freeze scope, top eval bugs, 5-min demo narrative); no new technical claims beyond research.
